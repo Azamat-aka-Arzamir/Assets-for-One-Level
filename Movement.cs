@@ -21,15 +21,14 @@ public class Movement : MonoBehaviour
 	bool SlideDown;
 	[SerializeField] int DashSpeed;
 	[SerializeField] int DashLength;
-	[SerializeField] int StaminaRegenerationSpeed;
 
 	[SerializeField] int MaxSpeed;
 	int LocalMaxspeed;
 	[SerializeField] float Acceleration;
+	[SerializeField] float AirAcceleration;
+	float LocalAcceleration;
 	[SerializeField] int JumpForce;
 	[SerializeField] float SlideSpeed;
-
-	[SerializeField] float BasicDamage;
 
 	[SerializeField] int DashCost;
 	[SerializeField] int JumpCost;
@@ -37,16 +36,13 @@ public class Movement : MonoBehaviour
 	[SerializeField] int AttackCost;
 	float JumpAnimationLength;
 	public int Bullets;
-	public int HealthPoints;
-	public int Stamina;
-	int StaminaRemains;
 	int lastDir;
-
-	float a;
+	Entity selfEntity;
 
 	// Start is called before the first frame update
 	void Start()
 	{
+		selfEntity = GetComponent<Entity>();
 		SelfRB = GetComponent<Rigidbody2D>();
 		SelfColl = GetComponent<Collider2D>();
 		JumpAnimationLength = GetJumpAnimationLength();
@@ -57,7 +53,6 @@ public class Movement : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate()
 	{
-		RegenerateStamina();
 		Slide();
 		OnGround = CheckGround();
 	}
@@ -71,16 +66,21 @@ public class Movement : MonoBehaviour
 		{
 			SlideDown = false;
 		}
-		if (!OnGround)
+
+		if (OnGround)
 		{
-			return;
+			LocalAcceleration = Acceleration;
+		}
+		else
+		{
+			LocalAcceleration = AirAcceleration;
 		}
 		Friction();
 		if (IsDashing)
 		{
 			return;
 		}
-		Vector2 force = direction * Acceleration * mass;
+		Vector2 force = direction * LocalAcceleration * mass;
 		if (direction.x == 0)
 		{
 			LocalMaxspeed = 0;
@@ -100,7 +100,7 @@ public class Movement : MonoBehaviour
 	{
 		var k = Mathf.Abs(SelfRB.velocity.x) / (LocalMaxspeed + 1f);
 		if (k > 100) k = 100;
-		Vector2 frictionForce = Vector2.right * mass * Acceleration * -Mathf.Sign(SelfRB.velocity.x) * k;
+		Vector2 frictionForce = Vector2.right * mass * LocalAcceleration * -Mathf.Sign(SelfRB.velocity.x) * k;
 		SelfRB.AddForce(frictionForce);
 	}
 	bool CheckGround()
@@ -140,9 +140,9 @@ public class Movement : MonoBehaviour
 	}
 	IEnumerator IeJump()
 	{
-		if (JumpRemains != 0 && StaminaRemains >= JumpCost && !IsDashing)
+		if (JumpRemains != 0 && selfEntity.StaminaRemains >= JumpCost && !IsDashing)
 		{
-			StaminaRemains -= JumpCost;
+			selfEntity.StaminaRemains -= JumpCost;
 			yield return new WaitForSeconds(JumpAnimationLength);
 			var xSpeed = SelfRB.velocity.x;
 			SelfRB.velocity = new Vector2(xSpeed, 0);
@@ -170,33 +170,27 @@ public class Movement : MonoBehaviour
 		if (animator.HasState(0, Animator.StringToHash("Jump"))) length = clips.Find(x => x.name == "Jump").length - 0.1f;
 		return length;
 	}
-	void RegenerateStamina()
-	{
-		if (StaminaRemains < Stamina)
-		{
-			StaminaRemains += StaminaRegenerationSpeed;
-		}
-	}
+
 	public void Fire(Vector2 direction, Weapon weapon)
 	{
 
 	}
 	void Slide()
 	{
-		if (Wall == 0 || !WallJumpAbility || StaminaRemains < SlideCost || SlideDown)
+		if (Wall == 0 || !WallJumpAbility || selfEntity.StaminaRemains < SlideCost || SlideDown)
 		{
 			return;
 		}
-		StaminaRemains -= SlideCost;
+		selfEntity.StaminaRemains -= SlideCost;
 		float frictionForce = -SelfRB.velocity.y / SlideSpeed * mass;
 		if (frictionForce > Physics2D.gravity.y * mass) frictionForce = Physics2D.gravity.y * mass;
 		if (SelfRB.velocity.y < -SlideSpeed) SelfRB.AddForce(Vector2.up * Physics2D.gravity.y * frictionForce);
 	}
 	public void Dash()
 	{
-		if (DashAbility && !DashCD && StaminaRemains > DashCost&&OnGround)
+		if (DashAbility && !DashCD && selfEntity.StaminaRemains > DashCost&&OnGround)
 		{
-			StaminaRemains -= DashCost;
+			selfEntity.StaminaRemains -= DashCost;
 			DashCD = true;
 			StartCoroutine(IeDash(lastDir));
 		}
