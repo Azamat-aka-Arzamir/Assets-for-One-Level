@@ -83,7 +83,7 @@ public class Movement : MonoBehaviour
 		Vector2 force = direction * LocalAcceleration * mass;
 		if (direction.x == 0)
 		{
-			LocalMaxspeed = 0;
+			if(OnGround)LocalMaxspeed = 0;
 			if (Mathf.Abs(SelfRB.velocity.x) < 1f)
 			{
 				SelfRB.velocity = new Vector2(0, SelfRB.velocity.y);

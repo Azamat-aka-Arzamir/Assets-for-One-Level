@@ -6,7 +6,7 @@ using UnityEngine.InputSystem.Interactions;
 
 public class Controller : MonoBehaviour
 {
-    public Movement selfMove;
+    Movement selfMove;
     float x;
     float y;
     Vector2 input;
