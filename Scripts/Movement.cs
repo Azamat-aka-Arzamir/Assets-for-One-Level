@@ -51,6 +51,7 @@ public class Movement : MonoBehaviour
 	[SerializeField] int Wall;
 	[SerializeField] bool OnGround;
 	[SerializeField] bool OnWall;
+	[SerializeField] bool Sliding;
 
 
 
@@ -78,6 +79,7 @@ public class Movement : MonoBehaviour
 	}
 	public void Move(Vector2 direction)
 	{
+		if (Sliding) direction = new Vector2(-Wall,direction.y);
 		if (direction.y < -0.5)
 		{
 			SlideDown = true;
@@ -199,8 +201,10 @@ public class Movement : MonoBehaviour
 	{
 		if (Wall == 0 || !WallJumpAbility || selfEntity.StaminaRemains < SlideCost || SlideDown)
 		{
+			Sliding = false;
 			return;
 		}
+		Sliding = true;
 		selfEntity.StaminaRemains -= SlideCost;
 		float frictionForce = -SelfRB.velocity.y / SlideSpeed * mass;
 		if (frictionForce > Physics2D.gravity.y * mass) frictionForce = Physics2D.gravity.y * mass;
