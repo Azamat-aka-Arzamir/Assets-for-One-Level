@@ -79,7 +79,7 @@ public class Movement : MonoBehaviour
 	}
 	public void Move(Vector2 direction)
 	{
-		if (Sliding) direction = Vector2.right * -Wall;
+		if (Sliding) direction = new Vector2(-Wall,direction.y);
 		if (direction.y < -0.5)
 		{
 			SlideDown = true;
