@@ -7,41 +7,61 @@ public class Movement : MonoBehaviour
 	Rigidbody2D SelfRB;
 	Collider2D SelfColl;
 	float mass;
+	[Header("Jump properties")]
 	[SerializeField] int JumpRemains;
-
-	[SerializeField] int Wall;
-	[SerializeField] bool OnGround;
 	[SerializeField] int JumpsCount;
+	[SerializeField] int JumpForce;
+	[SerializeField] int JumpCost;
+	[Space]
+
+	[Header("Movement properties")]
+	[SerializeField] int MaxSpeed;
+	[SerializeField] float Acceleration;
+	[SerializeField] float AirAcceleration;
+	[SerializeField] float SlideSpeed;
+	[SerializeField] int SlideCost;
+	[Space]
+
+	[Header("Dash properties")]
+	[SerializeField] int DashSpeed;
+	[SerializeField] int DashLength;
+	[SerializeField] int DashCost;
+	[SerializeField] int DashCoolDown;
+	[Space]
+
+	[Header("Abilities")]
 	[SerializeField] bool WallJumpAbility;
 	[SerializeField] bool DashAbility;
-	[SerializeField] bool OnWall;
-	[SerializeField] int DashCoolDown;
 	bool DashCD;
 	bool IsDashing;
 	bool SlideDown;
-	[SerializeField] int DashSpeed;
-	[SerializeField] int DashLength;
 
-	[SerializeField] int MaxSpeed;
 	int LocalMaxspeed;
-	[SerializeField] float Acceleration;
-	[SerializeField] float AirAcceleration;
 	float LocalAcceleration;
-	[SerializeField] int JumpForce;
-	[SerializeField] float SlideSpeed;
+	[Space]
 
-	[SerializeField] int DashCost;
-	[SerializeField] int JumpCost;
-	[SerializeField] int SlideCost;
-	[SerializeField] int AttackCost;
+	[Header("Weapon")]
+	[Tooltip("First weapon is usually sword")]
+	[SerializeField] Weapon First;
+	[Tooltip("First weapon is usually shield")]
+	[SerializeField] Weapon Second;
+	[Tooltip("First weapon is usually gun")]
+	[SerializeField] Weapon Third;
+	[Header("Debug")]
+	[SerializeField] int Wall;
+	[SerializeField] bool OnGround;
+	[SerializeField] bool OnWall;
+
+
+
 	float JumpAnimationLength;
-	public int Bullets;
 	int lastDir;
 	Entity selfEntity;
 
 	// Start is called before the first frame update
 	void Start()
 	{
+
 		selfEntity = GetComponent<Entity>();
 		SelfRB = GetComponent<Rigidbody2D>();
 		SelfColl = GetComponent<Collider2D>();
@@ -83,7 +103,7 @@ public class Movement : MonoBehaviour
 		Vector2 force = direction * LocalAcceleration * mass;
 		if (direction.x == 0)
 		{
-			if(OnGround)LocalMaxspeed = 0;
+			if (OnGround) LocalMaxspeed = 0;
 			if (Mathf.Abs(SelfRB.velocity.x) < 1f)
 			{
 				SelfRB.velocity = new Vector2(0, SelfRB.velocity.y);
@@ -91,7 +111,7 @@ public class Movement : MonoBehaviour
 		}
 		else
 		{
-			lastDir =(int)Mathf.Sign(direction.x); 
+			lastDir = (int)Mathf.Sign(direction.x);
 			LocalMaxspeed = MaxSpeed;
 		}
 		SelfRB.AddForce(force);
@@ -188,7 +208,7 @@ public class Movement : MonoBehaviour
 	}
 	public void Dash()
 	{
-		if (DashAbility && !DashCD && selfEntity.StaminaRemains > DashCost&&OnGround)
+		if (DashAbility && !DashCD && selfEntity.StaminaRemains > DashCost && OnGround)
 		{
 			selfEntity.StaminaRemains -= DashCost;
 			DashCD = true;
