@@ -10,13 +10,15 @@ public class Weapon : MonoBehaviour
 	public enum type { sword, shield, gun };
 	public type weaponType;
 	Collider2D selfColl;
-	float AnimLength;
+	[HideInInspector]
 	public bool Activate;
 	public int Damage;
 	Vector3 BarrelPoint;
 	int Bullets;
 	Bullet BulletType;
 	[SerializeField] int StaminaCost;
+	[HideInInspector]
+	public float StartZ;
 
 
 #if UNITY_EDITOR
@@ -33,7 +35,7 @@ public class Weapon : MonoBehaviour
 			switch (weapon.weaponType)
 			{
 				case type.sword:
-					weapon.AnimLength = EditorGUILayout.FloatField("Animation Length", weapon.AnimLength);
+					//weapon.AnimLength = EditorGUILayout.FloatField("Animation Length", weapon.AnimLength);
 					break;
 				case type.shield:
 					break;
@@ -48,7 +50,7 @@ public class Weapon : MonoBehaviour
 		{
 			Weapon weapon = (Weapon)target;
 			Handles.matrix = weapon.transform.localToWorldMatrix;
-			if (c&&weapon.weaponType==type.gun)
+			if (c && weapon.weaponType == type.gun)
 			{
 				weapon.BarrelPoint = Handles.PositionHandle(weapon.BarrelPoint, Quaternion.identity);
 				Handles.DrawWireDisc(weapon.BarrelPoint, Vector3.forward, 0.05f);
@@ -72,9 +74,10 @@ public class Weapon : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		StartZ = transform.localPosition.z;
 		TryGetComponent(out selfColl);
 	}
-	void Fire()
+	public void Fire()
 	{
 		switch (weaponType)
 		{
@@ -90,7 +93,8 @@ public class Weapon : MonoBehaviour
 	IEnumerator SwordAttack()
 	{
 		Activate = true;
-		yield return new WaitForSeconds(AnimLength);
+		yield return new WaitForSeconds(Movement.GetAnimationLength("Attack R", gameObject));
+		print(Movement.GetAnimationLength("Attack R", gameObject));
 		Activate = false;
 		yield break;
 	}
@@ -108,9 +112,10 @@ public class Weapon : MonoBehaviour
 		yield break;
 	}
 	// Update is called once per frame
-	void Update()
+	void FixedUpdate()
 	{
 		if (weaponType != type.gun) selfColl.bounds.SetMinMax(GetComponent<SpriteRenderer>().bounds.min, GetComponent<SpriteRenderer>().bounds.max);
+		ControlAnims();
 	}
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
@@ -120,5 +125,12 @@ public class Weapon : MonoBehaviour
 		{
 			entity.HealthPoints -= Damage;
 		}
+	}
+
+	void ControlAnims()
+	{
+		var b = GetComponent<Animator>();
+		var a = transform.parent.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
+		b.Play(a.shortNameHash, 0, a.normalizedTime);
 	}
 }
