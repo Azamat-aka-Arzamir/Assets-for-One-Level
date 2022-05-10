@@ -40,4 +40,11 @@ public class Controller : MonoBehaviour
             selfMove.Dash();
         }
     }
+    public void GetAttack(InputAction.CallbackContext context)
+	{
+        if (context.performed && !context.started)
+        {
+            selfMove.Attack(selfMove.First);
+        }
+    }
 }

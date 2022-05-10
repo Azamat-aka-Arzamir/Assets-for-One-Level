@@ -42,11 +42,11 @@ public class Movement : MonoBehaviour
 
 	[Header("Weapon")]
 	[Tooltip("First weapon is usually sword")]
-	[SerializeField] Weapon First;
+	[SerializeField] public Weapon First;
 	[Tooltip("First weapon is usually shield")]
-	[SerializeField] Weapon Second;
+	[SerializeField] public Weapon Second;
 	[Tooltip("First weapon is usually gun")]
-	[SerializeField] Weapon Third;
+	[SerializeField] public Weapon Third;
 	[Header("Debug")]
 	[SerializeField] int Wall;
 	[SerializeField] bool OnGround;
@@ -54,15 +54,16 @@ public class Movement : MonoBehaviour
 	[SerializeField] bool Sliding;
 
 
-
+	Animator SelfAnim;
 	float JumpAnimationLength;
 	int lastDir;
 	Entity selfEntity;
+	public bool IsAttack;
 
 	// Start is called before the first frame update
 	void Start()
 	{
-
+		SelfAnim = GetComponent<Animator>();
 		selfEntity = GetComponent<Entity>();
 		SelfRB = GetComponent<Rigidbody2D>();
 		SelfColl = GetComponent<Collider2D>();
@@ -76,10 +77,32 @@ public class Movement : MonoBehaviour
 	{
 		Slide();
 		OnGround = CheckGround();
+		if (First.Activate)
+		{
+			IsAttack = true;
+		}
+		else
+		{
+			IsAttack = false;
+		}
 	}
+	public void Attack(Weapon weapon)
+	{
+		SelfAnim.SetTrigger("Attack");
+		weapon.Fire();
+	}
+
+	void MoveWeaponLayer()
+	{
+		if (First != null) First.transform.localPosition = Vector3.forward * First.StartZ * lastDir;
+		if (Second != null) Second.transform.localPosition = Vector3.forward * Second.StartZ * lastDir;
+		if (Third != null) Third.transform.localPosition = Vector3.forward * Third.StartZ * lastDir;
+	}
+
 	public void Move(Vector2 direction)
 	{
-		if (Sliding) direction = new Vector2(-Wall,direction.y);
+		if (IsAttack) direction = Vector2.zero;
+		if (Sliding) direction = new Vector2(-Wall, direction.y);
 		if (direction.y < -0.5)
 		{
 			SlideDown = true;
@@ -97,6 +120,9 @@ public class Movement : MonoBehaviour
 		{
 			LocalAcceleration = AirAcceleration;
 		}
+		SelfAnim.SetFloat("Speed", Mathf.Abs(SelfRB.velocity.x));
+		SelfAnim.SetInteger("Dir", lastDir);
+
 		Friction();
 		if (IsDashing)
 		{
@@ -114,6 +140,7 @@ public class Movement : MonoBehaviour
 		else
 		{
 			lastDir = (int)Mathf.Sign(direction.x);
+			MoveWeaponLayer();
 			LocalMaxspeed = MaxSpeed;
 		}
 		SelfRB.AddForce(force);
@@ -186,17 +213,21 @@ public class Movement : MonoBehaviour
 	float GetJumpAnimationLength()
 	{
 		float length = 0;
-		var animator = GetComponent<Animator>();
 		List<AnimationClip> clips = new List<AnimationClip>();
-		clips.AddRange(animator.runtimeAnimatorController.animationClips);
-		if (animator.HasState(0, Animator.StringToHash("Jump"))) length = clips.Find(x => x.name == "Jump").length - 0.1f;
+		clips.AddRange(SelfAnim.runtimeAnimatorController.animationClips);
+		if (SelfAnim.HasState(0, Animator.StringToHash("Jump"))) length = clips.Find(x => x.name == "Jump").length - 0.1f;
+		return length;
+	}
+	public static float GetAnimationLength(string name, GameObject obj)
+	{
+		var anim = obj.GetComponent<Animator>();
+		float length = 0;
+		List<AnimationClip> clips = new List<AnimationClip>();
+		clips.AddRange(anim.runtimeAnimatorController.animationClips);
+		if (anim.HasState(0, Animator.StringToHash(name))) length = clips.Find(x => x.name == name).length - 0.01f;
 		return length;
 	}
 
-	public void Fire(Vector2 direction, Weapon weapon)
-	{
-
-	}
 	void Slide()
 	{
 		if (Wall == 0 || !WallJumpAbility || selfEntity.StaminaRemains < SlideCost || SlideDown)
