@@ -30,8 +30,19 @@ public class Controller : MonoBehaviour
 	{
 		if (context.performed && !context.started)
 		{
-            selfMove.Jump();
+            selfMove.Jump(1);
 		}
+	}
+    IEnumerator JumpForce(bool perf)
+	{
+        float a = 0;
+		while (perf&&a<1)
+		{
+            a += 0.01f;
+            yield return new WaitForFixedUpdate();
+		}
+        print(a);
+        yield break;
 	}
     public void GetDash(InputAction.CallbackContext context)
 	{

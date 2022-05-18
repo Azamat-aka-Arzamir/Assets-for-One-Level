@@ -9,6 +9,7 @@ public class Weapon : MonoBehaviour
 {
 	public enum type { sword, shield, gun };
 	public type weaponType;
+	Animator SelfAnim;
 	Collider2D selfColl;
 	[HideInInspector]
 	public bool Activate;
@@ -76,13 +77,13 @@ public class Weapon : MonoBehaviour
 	{
 		StartZ = transform.localPosition.z;
 		TryGetComponent(out selfColl);
+		SelfAnim = GetComponent<Animator>();
 	}
 	public void Fire()
 	{
 		switch (weaponType)
 		{
 			case type.sword:
-				StartCoroutine(SwordAttack());
 				break;
 			case type.shield:
 				break;
@@ -90,13 +91,22 @@ public class Weapon : MonoBehaviour
 				break;
 		}
 	}
-	IEnumerator SwordAttack()
+
+	void CheckForActivation()
 	{
-		Activate = true;
-		yield return new WaitForSeconds(Movement.GetAnimationLength("Attack R", gameObject));
-		print(Movement.GetAnimationLength("Attack R", gameObject));
-		Activate = false;
-		yield break;
+		var currentStateTag = SelfAnim.GetCurrentAnimatorStateInfo(0);
+		if (currentStateTag.IsTag("Attack"))
+		{
+			Activate = true;
+		}
+		else
+		{
+			Activate = false;
+		}
+	}
+	void SwordAttack()
+	{
+
 	}
 	void ShieldAttack()
 	{
@@ -116,6 +126,7 @@ public class Weapon : MonoBehaviour
 	{
 		if (weaponType != type.gun) selfColl.bounds.SetMinMax(GetComponent<SpriteRenderer>().bounds.min, GetComponent<SpriteRenderer>().bounds.max);
 		ControlAnims();
+		CheckForActivation();
 	}
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
@@ -129,8 +140,7 @@ public class Weapon : MonoBehaviour
 
 	void ControlAnims()
 	{
-		var b = GetComponent<Animator>();
 		var a = transform.parent.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
-		b.Play(a.shortNameHash, 0, a.normalizedTime);
+		SelfAnim.Play(a.shortNameHash, 0, a.normalizedTime);
 	}
 }

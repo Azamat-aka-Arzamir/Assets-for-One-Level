@@ -77,6 +77,7 @@ public class Movement : MonoBehaviour
 	{
 		Slide();
 		OnGround = CheckGround();
+		SelfAnim.SetBool("On Ground", OnGround);
 		if (First.Activate)
 		{
 			IsAttack = true;
@@ -85,11 +86,15 @@ public class Movement : MonoBehaviour
 		{
 			IsAttack = false;
 		}
+		SelfAnim.SetInteger("Velocity Y", (int)Mathf.Sign(SelfRB.velocity.y));
 	}
 	public void Attack(Weapon weapon)
 	{
-		SelfAnim.SetTrigger("Attack");
-		weapon.Fire();
+		if (OnGround && !IsDashing)
+		{
+			SelfAnim.SetTrigger("Attack");
+			weapon.Fire();
+		}
 	}
 
 	void MoveWeaponLayer()
@@ -123,12 +128,15 @@ public class Movement : MonoBehaviour
 		SelfAnim.SetFloat("Speed", Mathf.Abs(SelfRB.velocity.x));
 		SelfAnim.SetInteger("Dir", lastDir);
 
-		Friction();
 		if (IsDashing)
 		{
 			return;
 		}
 		Vector2 force = direction * LocalAcceleration * mass;
+		SelfRB.AddForce(force);
+		Friction();
+
+
 		if (direction.x == 0)
 		{
 			if (OnGround) LocalMaxspeed = 0;
@@ -143,12 +151,14 @@ public class Movement : MonoBehaviour
 			MoveWeaponLayer();
 			LocalMaxspeed = MaxSpeed;
 		}
-		SelfRB.AddForce(force);
 	}
 	void Friction()
 	{
-		var k = Mathf.Abs(SelfRB.velocity.x) / (LocalMaxspeed + 1f);
-		if (k > 100) k = 100;
+		float maxFriction;
+		if (LocalMaxspeed == 0) maxFriction = MaxSpeed;
+		else maxFriction = LocalMaxspeed;
+		var k = Mathf.Abs(SelfRB.velocity.x) / (maxFriction);
+		if (k > LocalAcceleration) k = LocalAcceleration;
 		Vector2 frictionForce = Vector2.right * mass * LocalAcceleration * -Mathf.Sign(SelfRB.velocity.x) * k;
 		SelfRB.AddForce(frictionForce);
 	}
@@ -159,6 +169,10 @@ public class Movement : MonoBehaviour
 		if (contacts[0].collider == null)
 		{
 			Wall = 0;
+			if(Mathf.Abs(SelfRB.velocity.y)<5f)
+			{
+				return CheckForGroundViaRay();
+			}
 			return false;
 		}
 		foreach (var contact in contacts)
@@ -183,16 +197,30 @@ public class Movement : MonoBehaviour
 		}
 		return false;
 	}
-	public void Jump()
+	bool CheckForGroundViaRay()
+	{
+		var hit = Physics2D.Raycast(transform.position + Vector3.down * (SelfColl.bounds.extents.y+0.1f),Vector2.down,1,LayerMask.GetMask("Ground"));
+		if (hit.transform.tag == "Ground")
+		{
+			return true;
+		}
+		else return false;
+	}
+	public void Jump(float relativeForce)
 	{
 		StartCoroutine(IeJump());
 	}
 	IEnumerator IeJump()
 	{
-		if (JumpRemains != 0 && selfEntity.StaminaRemains >= JumpCost && !IsDashing)
+		if (JumpRemains != 0 && selfEntity.StaminaRemains >= JumpCost && !IsDashing&&!IsAttack)
 		{
+			SelfAnim.SetTrigger("Jump");
 			selfEntity.StaminaRemains -= JumpCost;
-			yield return new WaitForSeconds(JumpAnimationLength);
+
+			if (Mathf.Abs(SelfRB.velocity.x) < 0.1f)
+			{
+				yield return new WaitForSeconds(JumpAnimationLength);
+			}
 			var xSpeed = SelfRB.velocity.x;
 			SelfRB.velocity = new Vector2(xSpeed, 0);
 			if (Wall == 0)
@@ -215,7 +243,7 @@ public class Movement : MonoBehaviour
 		float length = 0;
 		List<AnimationClip> clips = new List<AnimationClip>();
 		clips.AddRange(SelfAnim.runtimeAnimatorController.animationClips);
-		if (SelfAnim.HasState(0, Animator.StringToHash("Jump"))) length = clips.Find(x => x.name == "Jump").length - 0.1f;
+		if (SelfAnim.HasState(0, Animator.StringToHash("Jump L"))) length = clips.Find(x => x.name == "Jump L").length - 0.1f;
 		return length;
 	}
 	public static float GetAnimationLength(string name, GameObject obj)
@@ -226,6 +254,16 @@ public class Movement : MonoBehaviour
 		clips.AddRange(anim.runtimeAnimatorController.animationClips);
 		if (anim.HasState(0, Animator.StringToHash(name))) length = clips.Find(x => x.name == name).length - 0.01f;
 		return length;
+	}
+	/// <summary>
+	/// Get current animation state length
+	/// </summary>
+	/// <param name="obj"></param>
+	/// <returns></returns>
+	public static float GetAnimationLength(GameObject obj)
+	{
+		var anim = obj.GetComponent<Animator>();
+		return anim.GetCurrentAnimatorStateInfo(0).length;
 	}
 
 	void Slide()

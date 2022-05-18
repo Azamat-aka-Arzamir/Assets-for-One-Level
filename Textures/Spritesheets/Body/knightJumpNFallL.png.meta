@@ -1,19 +1,34 @@
 fileFormatVersion: 2
-guid: 0edfb4cc45537504aa3d1000c83099b1
+guid: 7f3d8d0448a30d74c8d2620f70a3414d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7386221642916996058
-    second: knightIdleR_woodenShield_0
+      213: 578832928693799228
+    second: knightJumpNFallL_0
   - first:
-      213: -164407945599380429
-    second: knightIdleR_woodenShield_1
+      213: -4475695789955855822
+    second: knightJumpNFallL_1
   - first:
-      213: 3047729998964337598
-    second: knightIdleR_woodenShield_2
+      213: 4888551548873547334
+    second: knightJumpNFallL_2
   - first:
-      213: 5671058980749412354
-    second: knightIdleR_woodenShield_3
+      213: -6625356256080885432
+    second: knightJumpNFallL_3
+  - first:
+      213: -5944857774943823001
+    second: knightJumpNFallL_4
+  - first:
+      213: -6933097782783067785
+    second: knightJumpNFallL_5
+  - first:
+      213: 1232247878907786471
+    second: knightJumpNFallL_6
+  - first:
+      213: 6405180347694437740
+    second: knightJumpNFallL_7
+  - first:
+      213: 5468775204147228160
+    second: knightJumpNFallL_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -115,85 +130,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: knightIdleR_woodenShield_0
+      name: knightJumpNFallL_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
+        y: 160
         width: 64
-        height: 64
+        height: 80
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62c51a5bc8ede7990800000000000000
-      internalID: -7386221642916996058
+      spriteID: c39c71b5b7d680800800000000000000
+      internalID: 578832928693799228
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightIdleR_woodenShield_1
+      name: knightJumpNFallL_1
       rect:
         serializedVersion: 2
         x: 64
-        y: 64
+        y: 160
         width: 64
-        height: 64
+        height: 80
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3341c4438d7e7bdf0800000000000000
-      internalID: -164407945599380429
+      spriteID: 23a48fc646223e1c0800000000000000
+      internalID: -4475695789955855822
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightIdleR_woodenShield_2
+      name: knightJumpNFallL_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 160
+        width: 64
+        height: 80
+      alignment: 9
+      pivot: {x: 0.55, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64e1bc8abbf97d340800000000000000
+      internalID: 4888551548873547334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knightJumpNFallL_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 64
+        height: 80
+      alignment: 9
+      pivot: {x: 0.55, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84903e576910e04a0800000000000000
+      internalID: -6625356256080885432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knightJumpNFallL_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 80
+        width: 64
+        height: 80
+      alignment: 9
+      pivot: {x: 0.55, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76b1144d95f9f7da0800000000000000
+      internalID: -5944857774943823001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knightJumpNFallL_5
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 80
+        width: 64
+        height: 80
+      alignment: 9
+      pivot: {x: 0.55, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 779ba28bc40b8cf90800000000000000
+      internalID: -6933097782783067785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knightJumpNFallL_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 64
-        height: 64
+        height: 80
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ebb22975946bb4a20800000000000000
-      internalID: 3047729998964337598
+      spriteID: 7e4f689cae2d91110800000000000000
+      internalID: 1232247878907786471
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightIdleR_woodenShield_3
+      name: knightJumpNFallL_7
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 64
-        height: 64
+        height: 80
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2088bdfa816a3be40800000000000000
-      internalID: 5671058980749412354
+      spriteID: c65d3a21795c3e850800000000000000
+      internalID: 6405180347694437740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knightJumpNFallL_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 80
+      alignment: 9
+      pivot: {x: 0.55, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00ee8a7c21ef4eb40800000000000000
+      internalID: 5468775204147228160
       vertices: []
       indices: 
       edges: []
