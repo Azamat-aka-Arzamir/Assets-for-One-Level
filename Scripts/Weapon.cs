@@ -20,6 +20,9 @@ public class Weapon : MonoBehaviour
 	[SerializeField] int StaminaCost;
 	[HideInInspector]
 	public float StartZ;
+	Animator parentAnim;
+	Sprite[] sprites;
+	SpriteRenderer selfRender;
 
 
 #if UNITY_EDITOR
@@ -39,6 +42,7 @@ public class Weapon : MonoBehaviour
 					//weapon.AnimLength = EditorGUILayout.FloatField("Animation Length", weapon.AnimLength);
 					break;
 				case type.shield:
+					weapon.Activate = EditorGUILayout.Toggle("Activate",weapon.Activate);
 					break;
 				case type.gun:
 					weapon.BarrelPoint = EditorGUILayout.Vector3Field("Barrel point", weapon.BarrelPoint);
@@ -75,17 +79,21 @@ public class Weapon : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		sprites = Resources.LoadAll<Sprite>("Weapons Spritesheets");
+		selfRender = GetComponent<SpriteRenderer>();
 		StartZ = transform.localPosition.z;
 		TryGetComponent(out selfColl);
 		SelfAnim = GetComponent<Animator>();
+		parentAnim = transform.parent.GetComponent<Animator>();
 	}
-	public void Fire()
+	public void Fire(bool phase)
 	{
 		switch (weaponType)
 		{
 			case type.sword:
 				break;
 			case type.shield:
+				ShieldAttack(phase);
 				break;
 			case type.gun:
 				break;
@@ -108,9 +116,10 @@ public class Weapon : MonoBehaviour
 	{
 
 	}
-	void ShieldAttack()
+	void ShieldAttack(bool phase)
 	{
-
+		Activate = phase;
+		print(phase);
 	}
 	void GunAttack()
 	{
@@ -124,9 +133,13 @@ public class Weapon : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate()
 	{
-		if (weaponType != type.gun) selfColl.bounds.SetMinMax(GetComponent<SpriteRenderer>().bounds.min, GetComponent<SpriteRenderer>().bounds.max);
+		//if (weaponType != type.gun) selfColl.bounds.SetMinMax(GetComponent<SpriteRenderer>().bounds.min, GetComponent<SpriteRenderer>().bounds.max);
+		if(weaponType == type.sword)CheckForActivation();
+	}
+	private void Update()
+	{
 		ControlAnims();
-		CheckForActivation();
+
 	}
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
@@ -140,7 +153,13 @@ public class Weapon : MonoBehaviour
 
 	void ControlAnims()
 	{
-		var a = transform.parent.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
+		var a = parentAnim.GetCurrentAnimatorStateInfo(0);
 		SelfAnim.Play(a.shortNameHash, 0, a.normalizedTime);
+	}
+
+	private void LateUpdate()
+	{
+		var structure = selfRender.sprite.name.Split('_');
+		selfRender.sprite = System.Array.Find<Sprite>(sprites, x => x.name == (structure[0]+'_'+gameObject.name+'_'+structure[2]));
 	}
 }

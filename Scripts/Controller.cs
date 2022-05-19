@@ -55,7 +55,20 @@ public class Controller : MonoBehaviour
 	{
         if (context.performed && !context.started)
         {
-            selfMove.Attack(selfMove.First);
+            selfMove.Attack(selfMove.First,"1");
         }
     }
+    public void GetDefend(InputAction.CallbackContext context)
+	{
+        if(context.performed && !context.started)
+		{
+            selfMove.Attack(selfMove.Second,"2",true);
+            print("suction");
+        }
+		if (context.canceled)
+		{
+            selfMove.Attack(selfMove.Second,"2",false);
+            print("am cumming");
+        }
+	}
 }

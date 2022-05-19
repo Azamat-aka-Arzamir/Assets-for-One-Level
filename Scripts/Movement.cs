@@ -78,7 +78,7 @@ public class Movement : MonoBehaviour
 		Slide();
 		OnGround = CheckGround();
 		SelfAnim.SetBool("On Ground", OnGround);
-		if (First.Activate)
+		if (First.Activate||Second.Activate)
 		{
 			IsAttack = true;
 		}
@@ -88,12 +88,20 @@ public class Movement : MonoBehaviour
 		}
 		SelfAnim.SetInteger("Velocity Y", (int)Mathf.Sign(SelfRB.velocity.y));
 	}
-	public void Attack(Weapon weapon)
+	public void Attack(Weapon weapon, string number)
 	{
-		if (OnGround && !IsDashing)
+		if (OnGround && !IsDashing&&!(Second.Activate))
 		{
-			SelfAnim.SetTrigger("Attack");
-			weapon.Fire();
+			SelfAnim.SetTrigger("Attack "+number);
+			weapon.Fire(true);
+		}
+	}
+	public void Attack(Weapon weapon, string number, bool phase)
+	{
+		if (OnGround && !IsDashing && !(First.Activate))
+		{
+			SelfAnim.SetTrigger("Attack " + number);
+			weapon.Fire(phase);
 		}
 	}
 
@@ -200,6 +208,7 @@ public class Movement : MonoBehaviour
 	bool CheckForGroundViaRay()
 	{
 		var hit = Physics2D.Raycast(transform.position + Vector3.down * (SelfColl.bounds.extents.y+0.1f),Vector2.down,1,LayerMask.GetMask("Ground"));
+		if (hit.transform == null) return false;
 		if (hit.transform.tag == "Ground")
 		{
 			return true;
