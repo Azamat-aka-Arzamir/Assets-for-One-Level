@@ -1,25 +1,19 @@
 fileFormatVersion: 2
-guid: 7316f679ffb14bc4da22cb81c709cec8
+guid: 3c6cf9cee6a8d884f9c86db990ddf257
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6514969414892422696
-    second: knightRunL_ironSword_0
+      213: -8035661311355749474
+    second: LIdle_0
   - first:
-      213: 5034667870013646428
-    second: knightRunL_ironSword_1
+      213: -3803082027158573939
+    second: LIdle_1
   - first:
-      213: 4770431334279938738
-    second: knightRunL_ironSword_2
+      213: -7449026923367844576
+    second: LIdle_2
   - first:
-      213: -285449871282916588
-    second: knightRunL_ironSword_3
-  - first:
-      213: -4454582994761363359
-    second: knightRunL_ironSword_4
-  - first:
-      213: -4678499694539953362
-    second: knightRunL_ironSword_5
+      213: -5679534405503014147
+    second: LIdle_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -66,7 +60,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -121,49 +115,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: knightRunL_ironSword_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.55, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 82682314a22d96a50800000000000000
-      internalID: 6514969414892422696
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: knightRunL_ironSword_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 128
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.55, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c566c32c0cbbed540800000000000000
-      internalID: 5034667870013646428
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: knightRunL_ironSword_2
+      name: LIdle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -177,14 +129,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b20621160af33240800000000000000
-      internalID: 4770431334279938738
+      spriteID: e9b7a41bc989b7090800000000000000
+      internalID: -8035661311355749474
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightRunL_ironSword_3
+      name: LIdle_1
       rect:
         serializedVersion: 2
         x: 64
@@ -198,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 413300dbad0e90cf0800000000000000
-      internalID: -285449871282916588
+      spriteID: d8c6a8fbb0db83bc0800000000000000
+      internalID: -3803082027158573939
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightRunL_ironSword_4
+      name: LIdle_2
       rect:
         serializedVersion: 2
         x: 0
@@ -219,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 160d0ce1e542e22c0800000000000000
-      internalID: -4454582994761363359
+      spriteID: 025b656da7dbf9890800000000000000
+      internalID: -7449026923367844576
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightRunL_ironSword_5
+      name: LIdle_3
       rect:
         serializedVersion: 2
         x: 64
@@ -240,8 +192,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2b2c29c051a21fb0800000000000000
-      internalID: -4678499694539953362
+      spriteID: dfa2266bc8d3e21b0800000000000000
+      internalID: -5679534405503014147
       vertices: []
       indices: 
       edges: []

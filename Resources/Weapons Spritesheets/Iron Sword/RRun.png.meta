@@ -1,34 +1,25 @@
 fileFormatVersion: 2
-guid: cebe20826447a40418b513dd624f25f4
+guid: 0ca05b65ddbd0ea4199f9de6e265885e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8840016528637226204
-    second: theknightjumpnfallL_ironSword_0
+      213: -6309240594943740562
+    second: RRun_0
   - first:
-      213: 6296455865371298265
-    second: theknightjumpnfallL_ironSword_1
+      213: 6966251825768184849
+    second: RRun_1
   - first:
-      213: -7245686154677371504
-    second: theknightjumpnfallL_ironSword_2
+      213: -864268013682902830
+    second: RRun_2
   - first:
-      213: -4272739676036068992
-    second: theknightjumpnfallL_ironSword_3
+      213: -2841547863167362536
+    second: RRun_3
   - first:
-      213: -7949564801504421070
-    second: theknightjumpnfallL_ironSword_4
+      213: -6451050629612913757
+    second: RRun_4
   - first:
-      213: -5291540094757943700
-    second: theknightjumpnfallL_ironSword_5
-  - first:
-      213: 4470525312175212754
-    second: theknightjumpnfallL_ironSword_6
-  - first:
-      213: -5908444995480147220
-    second: theknightjumpnfallL_ironSword_7
-  - first:
-      213: 2219378760923022488
-    second: theknightjumpnfallL_ironSword_8
+      213: -8774161685502192389
+    second: RRun_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -75,7 +66,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -130,190 +121,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: theknightjumpnfallL_ironSword_0
+      name: RRun_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 160
+        y: 128
         width: 64
-        height: 80
+        height: 64
       alignment: 9
-      pivot: {x: 0.55, y: 0.5}
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4231ff9bdc3f15580800000000000000
-      internalID: -8840016528637226204
+      spriteID: e6577ef4b131178a0800000000000000
+      internalID: -6309240594943740562
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: theknightjumpnfallL_ironSword_1
+      name: RRun_1
       rect:
         serializedVersion: 2
         x: 64
-        y: 160
+        y: 128
         width: 64
-        height: 80
+        height: 64
       alignment: 9
-      pivot: {x: 0.55, y: 0.5}
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d9816fdf31816750800000000000000
-      internalID: 6296455865371298265
+      spriteID: 11c34d270291da060800000000000000
+      internalID: 6966251825768184849
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: theknightjumpnfallL_ironSword_2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 160
-        width: 64
-        height: 80
-      alignment: 9
-      pivot: {x: 0.55, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 09d3d74e4d6227b90800000000000000
-      internalID: -7245686154677371504
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: theknightjumpnfallL_ironSword_3
+      name: RRun_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 80
+        y: 64
         width: 64
-        height: 80
+        height: 64
       alignment: 9
-      pivot: {x: 0.55, y: 0.5}
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 089072017ed24b4c0800000000000000
-      internalID: -4272739676036068992
+      spriteID: 2d8b2b512d08104f0800000000000000
+      internalID: -864268013682902830
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: theknightjumpnfallL_ironSword_4
+      name: RRun_3
       rect:
         serializedVersion: 2
         x: 64
-        y: 80
+        y: 64
         width: 64
-        height: 80
+        height: 64
       alignment: 9
-      pivot: {x: 0.55, y: 0.5}
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23b516f7ee87da190800000000000000
-      internalID: -7949564801504421070
+      spriteID: 81a93ab064bc098d0800000000000000
+      internalID: -2841547863167362536
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: theknightjumpnfallL_ironSword_5
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 80
-        width: 64
-        height: 80
-      alignment: 9
-      pivot: {x: 0.55, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c664731d15ca096b0800000000000000
-      internalID: -5291540094757943700
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: theknightjumpnfallL_ironSword_6
+      name: RRun_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 64
-        height: 80
+        height: 64
       alignment: 9
-      pivot: {x: 0.55, y: 0.5}
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d88897e51f7a0e30800000000000000
-      internalID: 4470525312175212754
+      spriteID: 3abbcd9a1a34976a0800000000000000
+      internalID: -6451050629612913757
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: theknightjumpnfallL_ironSword_7
+      name: RRun_5
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 64
-        height: 80
+        height: 64
       alignment: 9
-      pivot: {x: 0.55, y: 0.5}
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ceaa875b49cf00ea0800000000000000
-      internalID: -5908444995480147220
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: theknightjumpnfallL_ironSword_8
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 80
-      alignment: 9
-      pivot: {x: 0.55, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8940dda6931dcce10800000000000000
-      internalID: 2219378760923022488
+      spriteID: bf49ccd3f6aeb3680800000000000000
+      internalID: -8774161685502192389
       vertices: []
       indices: 
       edges: []

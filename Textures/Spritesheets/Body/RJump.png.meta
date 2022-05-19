@@ -1,25 +1,61 @@
 fileFormatVersion: 2
-guid: bc2f37324d9b191488a3d094b8e45606
+guid: 26d507d3c6087404c8b161bf52f91013
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6440902521327449515
-    second: knightRunL_0
+      213: 7784333942009674220
+    second: knightJumpNFallR_0
   - first:
-      213: -3344339041127828677
-    second: knightRunL_1
+      213: 2121054519885619032
+    second: knightJumpNFallR_1
   - first:
-      213: 5333082798628894328
-    second: knightRunL_2
+      213: -4818376097321474452
+    second: knightJumpNFallR_2
   - first:
-      213: 6352135007295746525
-    second: knightRunL_3
+      213: -3094210098532414832
+    second: knightJumpNFallR_3
   - first:
-      213: -6801327513183391854
-    second: knightRunL_4
+      213: 3553508913193525309
+    second: knightJumpNFallR_4
   - first:
-      213: 6219777046423417161
-    second: knightRunL_5
+      213: 6656922369205034863
+    second: knightJumpNFallR_5
+  - first:
+      213: 7030180710100875877
+    second: knightJumpNFallR_6
+  - first:
+      213: -9220770750563182531
+    second: knightJumpNFallR_7
+  - first:
+      213: 4526217788704653062
+    second: knightJumpNFallR_8
+  - first:
+      213: 5949748165877386021
+    second: RJump_0
+  - first:
+      213: -1547637932529503436
+    second: RJump_1
+  - first:
+      213: 8483213182425834124
+    second: RJump_2
+  - first:
+      213: -8906419665248125380
+    second: RJump_3
+  - first:
+      213: 820121218066798551
+    second: RJump_4
+  - first:
+      213: -7832250767661777457
+    second: RJump_5
+  - first:
+      213: 2001251279820640750
+    second: RJump_6
+  - first:
+      213: 6362519367708248970
+    second: RJump_7
+  - first:
+      213: -6945572553782059500
+    second: RJump_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -121,127 +157,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: knightRunL_0
+      name: RJump_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
+        y: 160
         width: 64
-        height: 64
+        height: 80
       alignment: 9
-      pivot: {x: 0.55, y: 0.5}
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55a0c5f38415d96a0800000000000000
-      internalID: -6440902521327449515
+      spriteID: 52b472a0f60c19250800000000000000
+      internalID: 5949748165877386021
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightRunL_1
+      name: RJump_1
       rect:
         serializedVersion: 2
         x: 64
-        y: 128
+        y: 160
         width: 64
-        height: 64
+        height: 80
       alignment: 9
-      pivot: {x: 0.55, y: 0.5}
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b33fa157c558691d0800000000000000
-      internalID: -3344339041127828677
+      spriteID: 433b8a6008fa58ae0800000000000000
+      internalID: -1547637932529503436
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightRunL_2
+      name: RJump_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 160
+        width: 64
+        height: 80
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c822764817d6ab570800000000000000
+      internalID: 8483213182425834124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RJump_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
+        y: 80
         width: 64
-        height: 64
+        height: 80
       alignment: 9
-      pivot: {x: 0.55, y: 0.5}
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 876750aac8ae20a40800000000000000
-      internalID: 5333082798628894328
+      spriteID: c3ef450b08a066480800000000000000
+      internalID: -8906419665248125380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightRunL_3
+      name: RJump_4
       rect:
         serializedVersion: 2
         x: 64
-        y: 64
+        y: 80
         width: 64
-        height: 64
+        height: 80
       alignment: 9
-      pivot: {x: 0.55, y: 0.5}
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd1bf235221572850800000000000000
-      internalID: 6352135007295746525
+      spriteID: 7d7d1a317e7a16b00800000000000000
+      internalID: 820121218066798551
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightRunL_4
+      name: RJump_5
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 80
+        width: 64
+        height: 80
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcd3db18c614e4390800000000000000
+      internalID: -7832250767661777457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RJump_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 64
-        height: 64
+        height: 80
       alignment: 9
-      pivot: {x: 0.55, y: 0.5}
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29fec9769a4dc91a0800000000000000
-      internalID: -6801327513183391854
+      spriteID: ee151089f6fd5cb10800000000000000
+      internalID: 2001251279820640750
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightRunL_5
+      name: RJump_7
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 64
-        height: 64
+        height: 80
       alignment: 9
-      pivot: {x: 0.55, y: 0.5}
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 941323a1546115650800000000000000
-      internalID: 6219777046423417161
+      spriteID: a8b0bc4a7a53c4850800000000000000
+      internalID: 6362519367708248970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RJump_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 80
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41e1e12cf8e5c9f90800000000000000
+      internalID: -6945572553782059500
       vertices: []
       indices: 
       edges: []

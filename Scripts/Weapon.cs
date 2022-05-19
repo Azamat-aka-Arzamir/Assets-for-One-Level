@@ -79,7 +79,7 @@ public class Weapon : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		sprites = Resources.LoadAll<Sprite>("Weapons Spritesheets");
+		sprites = Resources.LoadAll<Sprite>("Weapons Spritesheets/"+name);
 		selfRender = GetComponent<SpriteRenderer>();
 		StartZ = transform.localPosition.z;
 		TryGetComponent(out selfColl);
@@ -102,7 +102,7 @@ public class Weapon : MonoBehaviour
 
 	void CheckForActivation()
 	{
-		var currentStateTag = SelfAnim.GetCurrentAnimatorStateInfo(0);
+		var currentStateTag = parentAnim.GetCurrentAnimatorStateInfo(0);
 		if (currentStateTag.IsTag("Attack"))
 		{
 			Activate = true;
@@ -138,7 +138,7 @@ public class Weapon : MonoBehaviour
 	}
 	private void Update()
 	{
-		ControlAnims();
+		//ControlAnims();
 
 	}
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -154,12 +154,14 @@ public class Weapon : MonoBehaviour
 	void ControlAnims()
 	{
 		var a = parentAnim.GetCurrentAnimatorStateInfo(0);
-		SelfAnim.Play(a.shortNameHash, 0, a.normalizedTime);
+		SelfAnim.Play(a.shortNameHash, 0, a.normalizedTime+Time.fixedDeltaTime/a.length);
 	}
 
 	private void LateUpdate()
 	{
-		var structure = selfRender.sprite.name.Split('_');
-		selfRender.sprite = System.Array.Find<Sprite>(sprites, x => x.name == (structure[0]+'_'+gameObject.name+'_'+structure[2]));
+		var structure = transform.parent.GetComponent<SpriteRenderer>();
+		var b = structure.sprite.name;
+		selfRender.sprite = System.Array.Find(sprites, x => x.name == b);
+		print(b[0] + '_' + gameObject.name + '_' + b[1]+"  "+ b[0]+'_'+b[1]);
 	}
 }

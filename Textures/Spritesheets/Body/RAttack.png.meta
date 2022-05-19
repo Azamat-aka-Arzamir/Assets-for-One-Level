@@ -1,34 +1,55 @@
 fileFormatVersion: 2
-guid: 60c9926f59ba9ed439bbf1e0a2654ed4
+guid: abd834c631c8f4440885cbc982b0712a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7763346527993348224
-    second: theknightjumpnfallR_ironSword_0
+      213: 5375720585011609483
+    second: knightAttack1R_0
   - first:
-      213: -7033619560708521592
-    second: theknightjumpnfallR_ironSword_1
+      213: -4385467056583803195
+    second: knightAttack1R_1
   - first:
-      213: 291233976889610216
-    second: theknightjumpnfallR_ironSword_2
+      213: 8064631478803212349
+    second: knightAttack1R_2
   - first:
-      213: 6578276791712688557
-    second: theknightjumpnfallR_ironSword_3
+      213: 9169831063550095585
+    second: knightAttack1R_3
   - first:
-      213: 1697951942579760641
-    second: theknightjumpnfallR_ironSword_4
+      213: 4785194473782883109
+    second: knightAttack1R_4
   - first:
-      213: -3572124650594499122
-    second: theknightjumpnfallR_ironSword_5
+      213: 3925305660773545600
+    second: knightAttack1R_5
   - first:
-      213: -6290700376456587208
-    second: theknightjumpnfallR_ironSword_6
+      213: -166626455877924042
+    second: knightAttack1R_6
   - first:
-      213: 6903693673613140866
-    second: theknightjumpnfallR_ironSword_7
+      213: -7122688586614685488
+    second: knightAttack1R_7
   - first:
-      213: -7604766044085479473
-    second: theknightjumpnfallR_ironSword_8
+      213: -9150601837892155656
+    second: RAttack_0
+  - first:
+      213: -5584860813266533970
+    second: RAttack_1
+  - first:
+      213: -1967571137443802088
+    second: RAttack_2
+  - first:
+      213: 2828767392811888374
+    second: RAttack_3
+  - first:
+      213: 5778449092233210216
+    second: RAttack_4
+  - first:
+      213: -954938142014888047
+    second: RAttack_5
+  - first:
+      213: 5884673777436054668
+    second: RAttack_6
+  - first:
+      213: -2906801914049875859
+    second: RAttack_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -130,13 +151,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: theknightjumpnfallR_ironSword_0
+      name: RAttack_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 160
-        width: 64
-        height: 80
+        y: 128
+        width: 80
+        height: 64
       alignment: 9
       pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,20 +165,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08fb1baf67d034490800000000000000
-      internalID: -7763346527993348224
+      spriteID: 8f6c6634c18820180800000000000000
+      internalID: -9150601837892155656
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: theknightjumpnfallR_ironSword_1
+      name: RAttack_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 160
-        width: 64
-        height: 80
+        x: 80
+        y: 128
+        width: 80
+        height: 64
       alignment: 9
       pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,20 +186,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 881cab67640936e90800000000000000
-      internalID: -7033619560708521592
+      spriteID: ea1cf312ea69e72b0800000000000000
+      internalID: -5584860813266533970
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: theknightjumpnfallR_ironSword_2
+      name: RAttack_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 160
-        width: 64
-        height: 80
+        x: 160
+        y: 128
+        width: 80
+        height: 64
       alignment: 9
       pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -186,20 +207,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ef870b42cbaa0400800000000000000
-      internalID: 291233976889610216
+      spriteID: 814d952a978c1b4e0800000000000000
+      internalID: -1967571137443802088
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: theknightjumpnfallR_ironSword_3
+      name: RAttack_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 80
-        width: 64
-        height: 80
+        y: 64
+        width: 80
+        height: 64
       alignment: 9
       pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -207,20 +228,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da92b3c83ebba4b50800000000000000
-      internalID: 6578276791712688557
+      spriteID: 6fea2c0d4fcc14720800000000000000
+      internalID: 2828767392811888374
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: theknightjumpnfallR_ironSword_4
+      name: RAttack_4
       rect:
         serializedVersion: 2
-        x: 64
-        y: 80
-        width: 64
-        height: 80
+        x: 80
+        y: 64
+        width: 80
+        height: 64
       alignment: 9
       pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,20 +249,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10ea62fab46509710800000000000000
-      internalID: 1697951942579760641
+      spriteID: 8692d3775dc213050800000000000000
+      internalID: 5778449092233210216
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: theknightjumpnfallR_ironSword_5
+      name: RAttack_5
       rect:
         serializedVersion: 2
-        x: 128
-        y: 80
-        width: 64
-        height: 80
+        x: 160
+        y: 64
+        width: 80
+        height: 64
       alignment: 9
       pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -249,20 +270,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec506e36e834d6ec0800000000000000
-      internalID: -3572124650594499122
+      spriteID: 1972bbeb1d06fb2f0800000000000000
+      internalID: -954938142014888047
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: theknightjumpnfallR_ironSword_6
+      name: RAttack_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 80
+        width: 80
+        height: 64
       alignment: 9
       pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -270,20 +291,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83893e05651f2b8a0800000000000000
-      internalID: -6290700376456587208
+      spriteID: c84d12b4f9f8aa150800000000000000
+      internalID: 5884673777436054668
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: theknightjumpnfallR_ironSword_7
+      name: RAttack_7
       rect:
         serializedVersion: 2
-        x: 64
+        x: 80
         y: 0
-        width: 64
-        height: 80
+        width: 80
+        height: 64
       alignment: 9
       pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -291,29 +312,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 283a2dd91d8decf50800000000000000
-      internalID: 6903693673613140866
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: theknightjumpnfallR_ironSword_8
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 80
-      alignment: 9
-      pivot: {x: 0.45, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fc7155e1391767690800000000000000
-      internalID: -7604766044085479473
+      spriteID: d60b1a06f07f8a7d0800000000000000
+      internalID: -2906801914049875859
       vertices: []
       indices: 
       edges: []

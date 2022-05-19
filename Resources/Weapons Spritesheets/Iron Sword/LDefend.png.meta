@@ -1,31 +1,19 @@
 fileFormatVersion: 2
-guid: abd834c631c8f4440885cbc982b0712a
+guid: 215659867d8f9b044a026eb05bd41bbf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5375720585011609483
-    second: knightAttack1R_0
+      213: 2911507369328757111
+    second: LDefend_0
   - first:
-      213: -4385467056583803195
-    second: knightAttack1R_1
+      213: -2811415091933357451
+    second: LDefend_1
   - first:
-      213: 8064631478803212349
-    second: knightAttack1R_2
+      213: 237438161140746237
+    second: LDefend_2
   - first:
-      213: 9169831063550095585
-    second: knightAttack1R_3
-  - first:
-      213: 4785194473782883109
-    second: knightAttack1R_4
-  - first:
-      213: 3925305660773545600
-    second: knightAttack1R_5
-  - first:
-      213: -166626455877924042
-    second: knightAttack1R_6
-  - first:
-      213: -7122688586614685488
-    second: knightAttack1R_7
+      213: -7747748137600862485
+    second: LDefend_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -72,7 +60,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -127,169 +115,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: knightAttack1R_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 80
-        height: 64
-      alignment: 9
-      pivot: {x: 0.45, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b8f3f59e3656a9a40800000000000000
-      internalID: 5375720585011609483
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: knightAttack1R_1
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 128
-        width: 80
-        height: 64
-      alignment: 9
-      pivot: {x: 0.45, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5cef42e72f0b323c0800000000000000
-      internalID: -4385467056583803195
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: knightAttack1R_2
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 128
-        width: 80
-        height: 64
-      alignment: 9
-      pivot: {x: 0.45, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d38af7a0a935bef60800000000000000
-      internalID: 8064631478803212349
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: knightAttack1R_3
+      name: LDefend_0
       rect:
         serializedVersion: 2
         x: 0
         y: 64
-        width: 80
+        width: 64
         height: 64
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e0fe39b4c8c14f70800000000000000
-      internalID: 9169831063550095585
+      spriteID: 779c5cdc680c76820800000000000000
+      internalID: 2911507369328757111
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightAttack1R_4
+      name: LDefend_1
       rect:
         serializedVersion: 2
-        x: 80
+        x: 64
         y: 64
-        width: 80
+        width: 64
         height: 64
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 523bdf6550d686240800000000000000
-      internalID: 4785194473782883109
+      spriteID: 57ad3219ed8dbf8d0800000000000000
+      internalID: -2811415091933357451
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightAttack1R_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 64
-        width: 80
-        height: 64
-      alignment: 9
-      pivot: {x: 0.45, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 086bc3983bc797630800000000000000
-      internalID: 3925305660773545600
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: knightAttack1R_6
+      name: LDefend_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 80
+        width: 64
         height: 64
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63bc6370f1600bdf0800000000000000
-      internalID: -166626455877924042
+      spriteID: df78ae2efbc8b4300800000000000000
+      internalID: 237438161140746237
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightAttack1R_7
+      name: LDefend_3
       rect:
         serializedVersion: 2
-        x: 80
+        x: 64
         y: 0
-        width: 80
+        width: 64
         height: 64
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d04a15d770272d90800000000000000
-      internalID: -7122688586614685488
+      spriteID: be63b114e187a7490800000000000000
+      internalID: -7747748137600862485
       vertices: []
       indices: 
       edges: []

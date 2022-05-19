@@ -1,19 +1,31 @@
 fileFormatVersion: 2
-guid: e6abfe92993d0e645b3e5f30bc50df5e
+guid: 5308d7c00f55f294c8f698ebbc4be041
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4138727233185285114
-    second: knightIdleL_0
+      213: -7279396832022079618
+    second: L_defend_knight_0
   - first:
-      213: 1503159236494620911
-    second: knightIdleL_1
+      213: -16934742982881132
+    second: L_defend_knight_1
   - first:
-      213: -3355585104045169755
-    second: knightIdleL_2
+      213: 838345968638310129
+    second: L_defend_knight_2
   - first:
-      213: -2657749510467701459
-    second: knightIdleL_3
+      213: -6852990753528429473
+    second: L_defend_knight_3
+  - first:
+      213: 2911507369328757111
+    second: LDefend_0
+  - first:
+      213: -2811415091933357451
+    second: LDefend_1
+  - first:
+      213: 237438161140746237
+    second: LDefend_2
+  - first:
+      213: -7747748137600862485
+    second: LDefend_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -115,7 +127,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: knightIdleL_0
+      name: LDefend_0
       rect:
         serializedVersion: 2
         x: 0
@@ -129,14 +141,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af38e3c9d76bf6930800000000000000
-      internalID: 4138727233185285114
+      spriteID: 779c5cdc680c76820800000000000000
+      internalID: 2911507369328757111
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightIdleL_1
+      name: LDefend_1
       rect:
         serializedVersion: 2
         x: 64
@@ -150,14 +162,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe8fb1c8c5b4cd410800000000000000
-      internalID: 1503159236494620911
+      spriteID: 57ad3219ed8dbf8d0800000000000000
+      internalID: -2811415091933357451
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightIdleL_2
+      name: LDefend_2
       rect:
         serializedVersion: 2
         x: 0
@@ -171,14 +183,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a3abc360219e61d0800000000000000
-      internalID: -3355585104045169755
+      spriteID: df78ae2efbc8b4300800000000000000
+      internalID: 237438161140746237
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightIdleL_3
+      name: LDefend_3
       rect:
         serializedVersion: 2
         x: 64
@@ -192,8 +204,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d25ba9ec6e6cd1bd0800000000000000
-      internalID: -2657749510467701459
+      spriteID: be63b114e187a7490800000000000000
+      internalID: -7747748137600862485
       vertices: []
       indices: 
       edges: []

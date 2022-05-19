@@ -1,19 +1,43 @@
 fileFormatVersion: 2
-guid: 61e2a4f5219c17948a11889a3fa63ef5
+guid: 86968840797cb3541a24729f9983f453
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7389936283877940532
-    second: knightDefendR_0
+      213: -1943338590372297999
+    second: knightRunR_0
   - first:
-      213: 2784390254247891407
-    second: knightDefendR_1
+      213: -7224366553863925934
+    second: knightRunR_1
   - first:
-      213: -1884014675819880509
-    second: knightDefendR_2
+      213: -3463426613773166466
+    second: knightRunR_2
   - first:
-      213: 5714350386081192244
-    second: knightDefendR_3
+      213: -7205580463361690393
+    second: knightRunR_3
+  - first:
+      213: 2155123470792381579
+    second: knightRunR_4
+  - first:
+      213: 8021427643966042721
+    second: knightRunR_5
+  - first:
+      213: -6309240594943740562
+    second: RRun_0
+  - first:
+      213: 6966251825768184849
+    second: RRun_1
+  - first:
+      213: -864268013682902830
+    second: RRun_2
+  - first:
+      213: -2841547863167362536
+    second: RRun_3
+  - first:
+      213: -6451050629612913757
+    second: RRun_4
+  - first:
+      213: -8774161685502192389
+    second: RRun_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -115,7 +139,49 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: knightDefendR_0
+      name: RRun_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6577ef4b131178a0800000000000000
+      internalID: -6309240594943740562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RRun_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11c34d270291da060800000000000000
+      internalID: 6966251825768184849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RRun_2
       rect:
         serializedVersion: 2
         x: 0
@@ -129,14 +195,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43d905985e35e8660800000000000000
-      internalID: 7389936283877940532
+      spriteID: 2d8b2b512d08104f0800000000000000
+      internalID: -864268013682902830
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightDefendR_1
+      name: RRun_3
       rect:
         serializedVersion: 2
         x: 64
@@ -150,14 +216,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc151841f2424a620800000000000000
-      internalID: 2784390254247891407
+      spriteID: 81a93ab064bc098d0800000000000000
+      internalID: -2841547863167362536
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightDefendR_2
+      name: RRun_4
       rect:
         serializedVersion: 2
         x: 0
@@ -171,14 +237,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3cf122062a2aad5e0800000000000000
-      internalID: -1884014675819880509
+      spriteID: 3abbcd9a1a34976a0800000000000000
+      internalID: -6451050629612913757
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightDefendR_3
+      name: RRun_5
       rect:
         serializedVersion: 2
         x: 64
@@ -192,8 +258,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4395c7476637d4f40800000000000000
-      internalID: 5714350386081192244
+      spriteID: bf49ccd3f6aeb3680800000000000000
+      internalID: -8774161685502192389
       vertices: []
       indices: 
       edges: []

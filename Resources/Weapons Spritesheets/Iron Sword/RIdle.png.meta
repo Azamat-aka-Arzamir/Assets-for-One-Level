@@ -1,34 +1,19 @@
 fileFormatVersion: 2
-guid: 26d507d3c6087404c8b161bf52f91013
+guid: ff1f8791a2fd1e24088ef94d2fe0b8e5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7784333942009674220
-    second: knightJumpNFallR_0
+      213: -5844976302473088250
+    second: RIdle_0
   - first:
-      213: 2121054519885619032
-    second: knightJumpNFallR_1
+      213: -215380529716118966
+    second: RIdle_1
   - first:
-      213: -4818376097321474452
-    second: knightJumpNFallR_2
+      213: 4189677147376305778
+    second: RIdle_2
   - first:
-      213: -3094210098532414832
-    second: knightJumpNFallR_3
-  - first:
-      213: 3553508913193525309
-    second: knightJumpNFallR_4
-  - first:
-      213: 6656922369205034863
-    second: knightJumpNFallR_5
-  - first:
-      213: 7030180710100875877
-    second: knightJumpNFallR_6
-  - first:
-      213: -9220770750563182531
-    second: knightJumpNFallR_7
-  - first:
-      213: 4526217788704653062
-    second: knightJumpNFallR_8
+      213: -912122880927369372
+    second: RIdle_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -75,7 +60,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -130,13 +115,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: knightJumpNFallR_0
+      name: RIdle_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 160
+        y: 64
         width: 64
-        height: 80
+        height: 64
       alignment: 9
       pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,20 +129,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce9b0822a72870c60800000000000000
-      internalID: 7784333942009674220
+      spriteID: 603f38a550972eea0800000000000000
+      internalID: -5844976302473088250
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightJumpNFallR_1
+      name: RIdle_1
       rect:
         serializedVersion: 2
         x: 64
-        y: 160
+        y: 64
         width: 64
-        height: 80
+        height: 64
       alignment: 9
       pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,104 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85fd40719df7f6d10800000000000000
-      internalID: 2121054519885619032
+      spriteID: a4a3cb2ac80d20df0800000000000000
+      internalID: -215380529716118966
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightJumpNFallR_2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 160
-        width: 64
-        height: 80
-      alignment: 9
-      pivot: {x: 0.45, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c66abe4e770b12db0800000000000000
-      internalID: -4818376097321474452
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: knightJumpNFallR_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 80
-        width: 64
-        height: 80
-      alignment: 9
-      pivot: {x: 0.45, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 09a8c882f482f05d0800000000000000
-      internalID: -3094210098532414832
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: knightJumpNFallR_4
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 80
-        width: 64
-        height: 80
-      alignment: 9
-      pivot: {x: 0.45, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d30a51d7789905130800000000000000
-      internalID: 3553508913193525309
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: knightJumpNFallR_5
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 80
-        width: 64
-        height: 80
-      alignment: 9
-      pivot: {x: 0.45, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f6f51d9ff93226c50800000000000000
-      internalID: 6656922369205034863
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: knightJumpNFallR_6
+      name: RIdle_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 64
-        height: 80
+        height: 64
       alignment: 9
       pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -270,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56abd5cbb18309160800000000000000
-      internalID: 7030180710100875877
+      spriteID: 276cfecea29b42a30800000000000000
+      internalID: 4189677147376305778
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightJumpNFallR_7
+      name: RIdle_3
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 64
-        height: 80
+        height: 64
       alignment: 9
       pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -291,29 +192,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d389e592bdd390080800000000000000
-      internalID: -9220770750563182531
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: knightJumpNFallR_8
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 80
-      alignment: 9
-      pivot: {x: 0.45, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 60f7bcf091b50de30800000000000000
-      internalID: 4526217788704653062
+      spriteID: 46771da821d7753f0800000000000000
+      internalID: -912122880927369372
       vertices: []
       indices: 
       edges: []

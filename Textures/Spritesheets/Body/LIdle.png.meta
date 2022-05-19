@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: 7579da351434192418a2818c67bd9e8f
+guid: e6abfe92993d0e645b3e5f30bc50df5e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1507588711510854066
-    second: knightAttack1L_ironSword_0
+      213: 4138727233185285114
+    second: knightIdleL_0
   - first:
-      213: -2819188571217541560
-    second: knightAttack1L_ironSword_1
+      213: 1503159236494620911
+    second: knightIdleL_1
   - first:
-      213: 8085141449662158132
-    second: knightAttack1L_ironSword_2
+      213: -3355585104045169755
+    second: knightIdleL_2
   - first:
-      213: 9184459728401213967
-    second: knightAttack1L_ironSword_3
+      213: -2657749510467701459
+    second: knightIdleL_3
   - first:
-      213: -2598018683273452373
-    second: knightAttack1L_ironSword_4
+      213: -8035661311355749474
+    second: LIdle_0
   - first:
-      213: 2402454356584603485
-    second: knightAttack1L_ironSword_5
+      213: -3803082027158573939
+    second: LIdle_1
   - first:
-      213: 849517758813510774
-    second: knightAttack1L_ironSword_6
+      213: -7449026923367844576
+    second: LIdle_2
   - first:
-      213: 7786908895256894153
-    second: knightAttack1L_ironSword_7
+      213: -5679534405503014147
+    second: LIdle_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,75 +127,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: knightAttack1L_ironSword_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 80
-        height: 64
-      alignment: 9
-      pivot: {x: 0.55, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e46b10fed08f31be0800000000000000
-      internalID: -1507588711510854066
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: knightAttack1L_ironSword_1
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 128
-        width: 80
-        height: 64
-      alignment: 9
-      pivot: {x: 0.55, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 846ccb16eea30e8d0800000000000000
-      internalID: -2819188571217541560
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: knightAttack1L_ironSword_2
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 128
-        width: 80
-        height: 64
-      alignment: 9
-      pivot: {x: 0.55, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 43556e1cf41343070800000000000000
-      internalID: 8085141449662158132
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: knightAttack1L_ironSword_3
+      name: LIdle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 64
-        width: 80
+        width: 64
         height: 64
       alignment: 9
       pivot: {x: 0.55, y: 0.5}
@@ -204,19 +141,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0a2c3d2671c57f70800000000000000
-      internalID: 9184459728401213967
+      spriteID: e9b7a41bc989b7090800000000000000
+      internalID: -8035661311355749474
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightAttack1L_ironSword_4
+      name: LIdle_1
       rect:
         serializedVersion: 2
-        x: 80
+        x: 64
         y: 64
-        width: 80
+        width: 64
         height: 64
       alignment: 9
       pivot: {x: 0.55, y: 0.5}
@@ -225,40 +162,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba468afb5cbf1fbd0800000000000000
-      internalID: -2598018683273452373
+      spriteID: d8c6a8fbb0db83bc0800000000000000
+      internalID: -3803082027158573939
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightAttack1L_ironSword_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 64
-        width: 80
-        height: 64
-      alignment: 9
-      pivot: {x: 0.55, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d5f9051328b375120800000000000000
-      internalID: 2402454356584603485
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: knightAttack1L_ironSword_6
+      name: LIdle_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 80
+        width: 64
         height: 64
       alignment: 9
       pivot: {x: 0.55, y: 0.5}
@@ -267,19 +183,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67c177496e71acb00800000000000000
-      internalID: 849517758813510774
+      spriteID: 025b656da7dbf9890800000000000000
+      internalID: -7449026923367844576
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightAttack1L_ironSword_7
+      name: LIdle_3
       rect:
         serializedVersion: 2
-        x: 80
+        x: 64
         y: 0
-        width: 80
+        width: 64
         height: 64
       alignment: 9
       pivot: {x: 0.55, y: 0.5}
@@ -288,8 +204,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9cadd182268a01c60800000000000000
-      internalID: 7786908895256894153
+      spriteID: dfa2266bc8d3e21b0800000000000000
+      internalID: -5679534405503014147
       vertices: []
       indices: 
       edges: []

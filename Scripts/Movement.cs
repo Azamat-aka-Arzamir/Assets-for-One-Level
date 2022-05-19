@@ -56,7 +56,7 @@ public class Movement : MonoBehaviour
 
 	Animator SelfAnim;
 	float JumpAnimationLength;
-	int lastDir;
+	int lastDir=1;
 	Entity selfEntity;
 	public bool IsAttack;
 
@@ -87,10 +87,11 @@ public class Movement : MonoBehaviour
 			IsAttack = false;
 		}
 		SelfAnim.SetInteger("Velocity Y", (int)Mathf.Sign(SelfRB.velocity.y));
+		MoveWeaponLayer();
 	}
 	public void Attack(Weapon weapon, string number)
 	{
-		if (OnGround && !IsDashing&&!(Second.Activate))
+		if (OnGround && !IsDashing)
 		{
 			SelfAnim.SetTrigger("Attack "+number);
 			weapon.Fire(true);
@@ -98,18 +99,19 @@ public class Movement : MonoBehaviour
 	}
 	public void Attack(Weapon weapon, string number, bool phase)
 	{
-		if (OnGround && !IsDashing && !(First.Activate))
+		if (OnGround && !IsDashing)
 		{
-			SelfAnim.SetTrigger("Attack " + number);
 			weapon.Fire(phase);
+			SelfAnim.SetBool("Attack " + number,weapon.Activate);
 		}
 	}
 
 	void MoveWeaponLayer()
 	{
-		if (First != null) First.transform.localPosition = Vector3.forward * First.StartZ * lastDir;
-		if (Second != null) Second.transform.localPosition = Vector3.forward * Second.StartZ * lastDir;
-		if (Third != null) Third.transform.localPosition = Vector3.forward * Third.StartZ * lastDir;
+		var a = SelfAnim.GetInteger("Dir");
+		if (First != null) First.transform.localPosition = Vector3.forward * First.StartZ * a;
+		if (Second != null) Second.transform.localPosition = Vector3.forward * Second.StartZ * a;
+		if (Third != null) Third.transform.localPosition = Vector3.forward * Third.StartZ * a;
 	}
 
 	public void Move(Vector2 direction)
@@ -156,7 +158,6 @@ public class Movement : MonoBehaviour
 		else
 		{
 			lastDir = (int)Mathf.Sign(direction.x);
-			MoveWeaponLayer();
 			LocalMaxspeed = MaxSpeed;
 		}
 	}
