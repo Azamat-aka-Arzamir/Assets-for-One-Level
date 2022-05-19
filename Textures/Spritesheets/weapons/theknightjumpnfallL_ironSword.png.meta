@@ -1,19 +1,34 @@
 fileFormatVersion: 2
-guid: 0edfb4cc45537504aa3d1000c83099b1
+guid: 864f39482da37af48876ec4595a51f1c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7386221642916996058
-    second: knightIdleR_woodenShield_0
+      213: -8840016528637226204
+    second: theknightjumpnfallL_ironSword_0
   - first:
-      213: -164407945599380429
-    second: knightIdleR_woodenShield_1
+      213: 6296455865371298265
+    second: theknightjumpnfallL_ironSword_1
   - first:
-      213: 3047729998964337598
-    second: knightIdleR_woodenShield_2
+      213: -7245686154677371504
+    second: theknightjumpnfallL_ironSword_2
   - first:
-      213: 5671058980749412354
-    second: knightIdleR_woodenShield_3
+      213: -4272739676036068992
+    second: theknightjumpnfallL_ironSword_3
+  - first:
+      213: -7949564801504421070
+    second: theknightjumpnfallL_ironSword_4
+  - first:
+      213: -5291540094757943700
+    second: theknightjumpnfallL_ironSword_5
+  - first:
+      213: 4470525312175212754
+    second: theknightjumpnfallL_ironSword_6
+  - first:
+      213: -5908444995480147220
+    second: theknightjumpnfallL_ironSword_7
+  - first:
+      213: 2219378760923022488
+    second: theknightjumpnfallL_ironSword_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -115,85 +130,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: knightIdleR_woodenShield_0
+      name: theknightjumpnfallL_ironSword_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
+        y: 160
         width: 64
-        height: 64
+        height: 80
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62c51a5bc8ede7990800000000000000
-      internalID: -7386221642916996058
+      spriteID: 4231ff9bdc3f15580800000000000000
+      internalID: -8840016528637226204
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightIdleR_woodenShield_1
+      name: theknightjumpnfallL_ironSword_1
       rect:
         serializedVersion: 2
         x: 64
-        y: 64
+        y: 160
         width: 64
-        height: 64
+        height: 80
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3341c4438d7e7bdf0800000000000000
-      internalID: -164407945599380429
+      spriteID: 9d9816fdf31816750800000000000000
+      internalID: 6296455865371298265
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightIdleR_woodenShield_2
+      name: theknightjumpnfallL_ironSword_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 160
+        width: 64
+        height: 80
+      alignment: 9
+      pivot: {x: 0.55, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09d3d74e4d6227b90800000000000000
+      internalID: -7245686154677371504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theknightjumpnfallL_ironSword_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 64
+        height: 80
+      alignment: 9
+      pivot: {x: 0.55, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 089072017ed24b4c0800000000000000
+      internalID: -4272739676036068992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theknightjumpnfallL_ironSword_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 80
+        width: 64
+        height: 80
+      alignment: 9
+      pivot: {x: 0.55, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23b516f7ee87da190800000000000000
+      internalID: -7949564801504421070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theknightjumpnfallL_ironSword_5
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 80
+        width: 64
+        height: 80
+      alignment: 9
+      pivot: {x: 0.55, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c664731d15ca096b0800000000000000
+      internalID: -5291540094757943700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theknightjumpnfallL_ironSword_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 64
-        height: 64
+        height: 80
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ebb22975946bb4a20800000000000000
-      internalID: 3047729998964337598
+      spriteID: 2d88897e51f7a0e30800000000000000
+      internalID: 4470525312175212754
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightIdleR_woodenShield_3
+      name: theknightjumpnfallL_ironSword_7
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 64
-        height: 64
+        height: 80
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2088bdfa816a3be40800000000000000
-      internalID: 5671058980749412354
+      spriteID: ceaa875b49cf00ea0800000000000000
+      internalID: -5908444995480147220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theknightjumpnfallL_ironSword_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 80
+      alignment: 9
+      pivot: {x: 0.55, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8940dda6931dcce10800000000000000
+      internalID: 2219378760923022488
       vertices: []
       indices: 
       edges: []

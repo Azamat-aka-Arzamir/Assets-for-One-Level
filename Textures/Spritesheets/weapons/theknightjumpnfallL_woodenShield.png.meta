@@ -1,31 +1,34 @@
 fileFormatVersion: 2
-guid: 1b990f98773fb6e499900f85482e0a57
+guid: 32de40e2d49a3f649a8a734750f819de
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1507588711510854066
-    second: knightAttack1L_ironSword_0
+      213: 2374195043906465696
+    second: theknightjumpnfallL_woodenShield_0
   - first:
-      213: -2819188571217541560
-    second: knightAttack1L_ironSword_1
+      213: 2965528134455833810
+    second: theknightjumpnfallL_woodenShield_1
   - first:
-      213: 8085141449662158132
-    second: knightAttack1L_ironSword_2
+      213: 5692491585201955325
+    second: theknightjumpnfallL_woodenShield_2
   - first:
-      213: 9184459728401213967
-    second: knightAttack1L_ironSword_3
+      213: -6526371607016935725
+    second: theknightjumpnfallL_woodenShield_3
   - first:
-      213: -2598018683273452373
-    second: knightAttack1L_ironSword_4
+      213: -2881151720577899358
+    second: theknightjumpnfallL_woodenShield_4
   - first:
-      213: 2402454356584603485
-    second: knightAttack1L_ironSword_5
+      213: 4598118310519879019
+    second: theknightjumpnfallL_woodenShield_5
   - first:
-      213: 849517758813510774
-    second: knightAttack1L_ironSword_6
+      213: 2345716507574888225
+    second: theknightjumpnfallL_woodenShield_6
   - first:
-      213: 7786908895256894153
-    second: knightAttack1L_ironSword_7
+      213: -6649825278390550272
+    second: theknightjumpnfallL_woodenShield_7
+  - first:
+      213: -4633592087148636842
+    second: theknightjumpnfallL_woodenShield_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,13 +130,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: knightAttack1L_ironSword_0
+      name: theknightjumpnfallL_woodenShield_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
-        width: 80
-        height: 64
+        y: 160
+        width: 64
+        height: 80
       alignment: 9
       pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,20 +144,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e46b10fed08f31be0800000000000000
-      internalID: -1507588711510854066
+      spriteID: 0afa98b30d5d2f020800000000000000
+      internalID: 2374195043906465696
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightAttack1L_ironSword_1
+      name: theknightjumpnfallL_woodenShield_1
       rect:
         serializedVersion: 2
-        x: 80
-        y: 128
-        width: 80
-        height: 64
+        x: 64
+        y: 160
+        width: 64
+        height: 80
       alignment: 9
       pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,20 +165,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 846ccb16eea30e8d0800000000000000
-      internalID: -2819188571217541560
+      spriteID: 2d4baa1502ca72920800000000000000
+      internalID: 2965528134455833810
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightAttack1L_ironSword_2
+      name: theknightjumpnfallL_woodenShield_2
       rect:
         serializedVersion: 2
-        x: 160
-        y: 128
-        width: 80
-        height: 64
+        x: 128
+        y: 160
+        width: 64
+        height: 80
       alignment: 9
       pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,20 +186,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43556e1cf41343070800000000000000
-      internalID: 8085141449662158132
+      spriteID: df1ecd6cfeacffe40800000000000000
+      internalID: 5692491585201955325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightAttack1L_ironSword_3
+      name: theknightjumpnfallL_woodenShield_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
-        width: 80
-        height: 64
+        y: 80
+        width: 64
+        height: 80
       alignment: 9
       pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,20 +207,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0a2c3d2671c57f70800000000000000
-      internalID: 9184459728401213967
+      spriteID: 3de6f830a9bad65a0800000000000000
+      internalID: -6526371607016935725
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightAttack1L_ironSword_4
+      name: theknightjumpnfallL_woodenShield_4
       rect:
         serializedVersion: 2
-        x: 80
-        y: 64
-        width: 80
-        height: 64
+        x: 64
+        y: 80
+        width: 64
+        height: 80
       alignment: 9
       pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,20 +228,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba468afb5cbf1fbd0800000000000000
-      internalID: -2598018683273452373
+      spriteID: 2a4e2fe66c71408d0800000000000000
+      internalID: -2881151720577899358
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightAttack1L_ironSword_5
+      name: theknightjumpnfallL_woodenShield_5
       rect:
         serializedVersion: 2
-        x: 160
-        y: 64
-        width: 80
-        height: 64
+        x: 128
+        y: 80
+        width: 64
+        height: 80
       alignment: 9
       pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,20 +249,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5f9051328b375120800000000000000
-      internalID: 2402454356584603485
+      spriteID: b65b1c5dd3ccfcf30800000000000000
+      internalID: 4598118310519879019
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightAttack1L_ironSword_6
+      name: theknightjumpnfallL_woodenShield_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 80
-        height: 64
+        width: 64
+        height: 80
       alignment: 9
       pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -267,20 +270,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67c177496e71acb00800000000000000
-      internalID: 849517758813510774
+      spriteID: 12765c94cb8ad8020800000000000000
+      internalID: 2345716507574888225
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightAttack1L_ironSword_7
+      name: theknightjumpnfallL_woodenShield_7
       rect:
         serializedVersion: 2
-        x: 80
+        x: 64
         y: 0
-        width: 80
-        height: 64
+        width: 64
+        height: 80
       alignment: 9
       pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -288,8 +291,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9cadd182268a01c60800000000000000
-      internalID: 7786908895256894153
+      spriteID: 0014e1f342317b3a0800000000000000
+      internalID: -6649825278390550272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: theknightjumpnfallL_woodenShield_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 80
+      alignment: 9
+      pivot: {x: 0.55, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 655d17beb8c22bfb0800000000000000
+      internalID: -4633592087148636842
       vertices: []
       indices: 
       edges: []

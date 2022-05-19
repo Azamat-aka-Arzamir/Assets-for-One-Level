@@ -11469,7 +11469,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 13.227489
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -11854,7 +11854,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 0
@@ -11874,10 +11874,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   JumpRemains: 0
   JumpsCount: 7
-  JumpForce: 500
+  JumpForce: 1500
   JumpCost: 1
-  MaxSpeed: 5
-  Acceleration: 15
+  MaxSpeed: 10
+  Acceleration: 50
   AirAcceleration: 2
   SlideSpeed: 2
   SlideCost: 0
@@ -11885,7 +11885,7 @@ MonoBehaviour:
   DashLength: 200
   DashCost: 0
   DashCoolDown: 2
-  WallJumpAbility: 1
+  WallJumpAbility: 0
   DashAbility: 1
   First: {fileID: 1333705046}
   Second: {fileID: 0}
