@@ -1,19 +1,31 @@
 fileFormatVersion: 2
-guid: 49dbe4d9c8299124f986ffbe9ab46ddc
+guid: 5ef6426a36e6a2742994ffca9257231e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5773752541129945010
-    second: Ldefendknight_woodenShield_0
+      213: -7386221642916996058
+    second: knightIdleR_woodenShield_0
   - first:
-      213: 4893851632581644182
-    second: Ldefendknight_woodenShield_1
+      213: -164407945599380429
+    second: knightIdleR_woodenShield_1
   - first:
-      213: 4377962019442062882
-    second: Ldefendknight_woodenShield_2
+      213: 3047729998964337598
+    second: knightIdleR_woodenShield_2
   - first:
-      213: -2957598144874673341
-    second: Ldefendknight_woodenShield_3
+      213: 5671058980749412354
+    second: knightIdleR_woodenShield_3
+  - first:
+      213: -5844976302473088250
+    second: RIdle_0
+  - first:
+      213: -215380529716118966
+    second: RIdle_1
+  - first:
+      213: 4189677147376305778
+    second: RIdle_2
+  - first:
+      213: -912122880927369372
+    second: RIdle_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -115,7 +127,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ldefendknight_woodenShield_0
+      name: RIdle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -123,20 +135,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 9
-      pivot: {x: 0.55, y: 0.5}
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bf2f03785d702050800000000000000
-      internalID: 5773752541129945010
+      spriteID: 603f38a550972eea0800000000000000
+      internalID: -5844976302473088250
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ldefendknight_woodenShield_1
+      name: RIdle_1
       rect:
         serializedVersion: 2
         x: 64
@@ -144,20 +156,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 9
-      pivot: {x: 0.55, y: 0.5}
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69f8e7f81247ae340800000000000000
-      internalID: 4893851632581644182
+      spriteID: a4a3cb2ac80d20df0800000000000000
+      internalID: -215380529716118966
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ldefendknight_woodenShield_2
+      name: RIdle_2
       rect:
         serializedVersion: 2
         x: 0
@@ -165,20 +177,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 9
-      pivot: {x: 0.55, y: 0.5}
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 226fef0e245a1cc30800000000000000
-      internalID: 4377962019442062882
+      spriteID: 276cfecea29b42a30800000000000000
+      internalID: 4189677147376305778
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ldefendknight_woodenShield_3
+      name: RIdle_3
       rect:
         serializedVersion: 2
         x: 64
@@ -186,14 +198,14 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 9
-      pivot: {x: 0.55, y: 0.5}
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34b0462482084f6d0800000000000000
-      internalID: -2957598144874673341
+      spriteID: 46771da821d7753f0800000000000000
+      internalID: -912122880927369372
       vertices: []
       indices: 
       edges: []

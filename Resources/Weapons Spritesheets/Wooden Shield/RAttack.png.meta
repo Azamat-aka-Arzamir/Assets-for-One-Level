@@ -1,19 +1,55 @@
 fileFormatVersion: 2
-guid: 5ef6426a36e6a2742994ffca9257231e
+guid: ecc38dd4503f16144ba4e52ef08ae8ac
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7386221642916996058
-    second: knightIdleR_woodenShield_0
+      213: 5994171570159100091
+    second: knightAttack1R_woodenShield_0
   - first:
-      213: -164407945599380429
-    second: knightIdleR_woodenShield_1
+      213: -8133480321580944659
+    second: knightAttack1R_woodenShield_1
   - first:
-      213: 3047729998964337598
-    second: knightIdleR_woodenShield_2
+      213: -3081539211685347549
+    second: knightAttack1R_woodenShield_2
   - first:
-      213: 5671058980749412354
-    second: knightIdleR_woodenShield_3
+      213: 6576396118431900038
+    second: knightAttack1R_woodenShield_3
+  - first:
+      213: -6815068379574297746
+    second: knightAttack1R_woodenShield_4
+  - first:
+      213: 6644237469849286315
+    second: knightAttack1R_woodenShield_5
+  - first:
+      213: 8402140373798601448
+    second: knightAttack1R_woodenShield_6
+  - first:
+      213: -3248231146489520037
+    second: knightAttack1R_woodenShield_7
+  - first:
+      213: -9150601837892155656
+    second: RAttack_0
+  - first:
+      213: -5584860813266533970
+    second: RAttack_1
+  - first:
+      213: -1967571137443802088
+    second: RAttack_2
+  - first:
+      213: 2828767392811888374
+    second: RAttack_3
+  - first:
+      213: 5778449092233210216
+    second: RAttack_4
+  - first:
+      213: -954938142014888047
+    second: RAttack_5
+  - first:
+      213: 5884673777436054668
+    second: RAttack_6
+  - first:
+      213: -2906801914049875859
+    second: RAttack_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -115,12 +151,75 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: knightIdleR_woodenShield_0
+      name: RAttack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 80
+        height: 64
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f6c6634c18820180800000000000000
+      internalID: -9150601837892155656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RAttack_1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 128
+        width: 80
+        height: 64
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea1cf312ea69e72b0800000000000000
+      internalID: -5584860813266533970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RAttack_2
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 128
+        width: 80
+        height: 64
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 814d952a978c1b4e0800000000000000
+      internalID: -1967571137443802088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RAttack_3
       rect:
         serializedVersion: 2
         x: 0
         y: 64
-        width: 64
+        width: 80
         height: 64
       alignment: 9
       pivot: {x: 0.45, y: 0.5}
@@ -129,19 +228,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62c51a5bc8ede7990800000000000000
-      internalID: -7386221642916996058
+      spriteID: 6fea2c0d4fcc14720800000000000000
+      internalID: 2828767392811888374
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightIdleR_woodenShield_1
+      name: RAttack_4
       rect:
         serializedVersion: 2
-        x: 64
+        x: 80
         y: 64
-        width: 64
+        width: 80
         height: 64
       alignment: 9
       pivot: {x: 0.45, y: 0.5}
@@ -150,19 +249,40 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3341c4438d7e7bdf0800000000000000
-      internalID: -164407945599380429
+      spriteID: 8692d3775dc213050800000000000000
+      internalID: 5778449092233210216
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightIdleR_woodenShield_2
+      name: RAttack_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64
+        width: 80
+        height: 64
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1972bbeb1d06fb2f0800000000000000
+      internalID: -954938142014888047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RAttack_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
+        width: 80
         height: 64
       alignment: 9
       pivot: {x: 0.45, y: 0.5}
@@ -171,19 +291,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ebb22975946bb4a20800000000000000
-      internalID: 3047729998964337598
+      spriteID: c84d12b4f9f8aa150800000000000000
+      internalID: 5884673777436054668
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightIdleR_woodenShield_3
+      name: RAttack_7
       rect:
         serializedVersion: 2
-        x: 64
+        x: 80
         y: 0
-        width: 64
+        width: 80
         height: 64
       alignment: 9
       pivot: {x: 0.45, y: 0.5}
@@ -192,8 +312,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2088bdfa816a3be40800000000000000
-      internalID: 5671058980749412354
+      spriteID: d60b1a06f07f8a7d0800000000000000
+      internalID: -2906801914049875859
       vertices: []
       indices: 
       edges: []

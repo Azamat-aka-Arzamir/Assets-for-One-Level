@@ -29,6 +29,33 @@ TextureImporter:
   - first:
       213: -4633592087148636842
     second: theknightjumpnfallL_woodenShield_8
+  - first:
+      213: -2560492656191347822
+    second: LJump_0
+  - first:
+      213: -7154948090662987991
+    second: LJump_1
+  - first:
+      213: -6138645151783163866
+    second: LJump_2
+  - first:
+      213: -2624566859621264595
+    second: LJump_3
+  - first:
+      213: 1761032829765686390
+    second: LJump_4
+  - first:
+      213: -3118402039721155573
+    second: LJump_5
+  - first:
+      213: -5691630664162638043
+    second: LJump_6
+  - first:
+      213: -7376669711328976291
+    second: LJump_7
+  - first:
+      213: 3570174929115211697
+    second: LJump_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -130,7 +157,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: theknightjumpnfallL_woodenShield_0
+      name: LJump_0
       rect:
         serializedVersion: 2
         x: 0
@@ -144,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0afa98b30d5d2f020800000000000000
-      internalID: 2374195043906465696
+      spriteID: 293e7b9ce7d477cd0800000000000000
+      internalID: -2560492656191347822
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: theknightjumpnfallL_woodenShield_1
+      name: LJump_1
       rect:
         serializedVersion: 2
         x: 64
@@ -165,14 +192,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d4baa1502ca72920800000000000000
-      internalID: 2965528134455833810
+      spriteID: 9275cadbe9484bc90800000000000000
+      internalID: -7154948090662987991
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: theknightjumpnfallL_woodenShield_2
+      name: LJump_2
       rect:
         serializedVersion: 2
         x: 128
@@ -186,14 +213,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df1ecd6cfeacffe40800000000000000
-      internalID: 5692491585201955325
+      spriteID: 6286ac522c62fcaa0800000000000000
+      internalID: -6138645151783163866
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: theknightjumpnfallL_woodenShield_3
+      name: LJump_3
       rect:
         serializedVersion: 2
         x: 0
@@ -207,14 +234,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3de6f830a9bad65a0800000000000000
-      internalID: -6526371607016935725
+      spriteID: d231303c85aa39bd0800000000000000
+      internalID: -2624566859621264595
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: theknightjumpnfallL_woodenShield_4
+      name: LJump_4
       rect:
         serializedVersion: 2
         x: 64
@@ -228,14 +255,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a4e2fe66c71408d0800000000000000
-      internalID: -2881151720577899358
+      spriteID: 6741cff3702707810800000000000000
+      internalID: 1761032829765686390
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: theknightjumpnfallL_woodenShield_5
+      name: LJump_5
       rect:
         serializedVersion: 2
         x: 128
@@ -249,14 +276,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b65b1c5dd3ccfcf30800000000000000
-      internalID: 4598118310519879019
+      spriteID: b04219bedd539b4d0800000000000000
+      internalID: -3118402039721155573
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: theknightjumpnfallL_woodenShield_6
+      name: LJump_6
       rect:
         serializedVersion: 2
         x: 0
@@ -270,14 +297,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12765c94cb8ad8020800000000000000
-      internalID: 2345716507574888225
+      spriteID: 5278dd501144301b0800000000000000
+      internalID: -5691630664162638043
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: theknightjumpnfallL_woodenShield_7
+      name: LJump_7
       rect:
         serializedVersion: 2
         x: 64
@@ -291,14 +318,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0014e1f342317b3a0800000000000000
-      internalID: -6649825278390550272
+      spriteID: d526ad61bfdc0a990800000000000000
+      internalID: -7376669711328976291
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: theknightjumpnfallL_woodenShield_8
+      name: LJump_8
       rect:
         serializedVersion: 2
         x: 128
@@ -312,8 +339,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 655d17beb8c22bfb0800000000000000
-      internalID: -4633592087148636842
+      spriteID: 1b7eae3be2fcb8130800000000000000
+      internalID: 3570174929115211697
       vertices: []
       indices: 
       edges: []

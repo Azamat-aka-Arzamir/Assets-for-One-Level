@@ -1,25 +1,43 @@
 fileFormatVersion: 2
-guid: 540f1bd04e3958e48bb4c45006287e1c
+guid: f125a6b29974fc14ab8289722564f530
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3495458896101761441
-    second: knightRunL_woodenShield_0
+      213: 2400234248118492700
+    second: knightRunR_woodenShield_0
   - first:
-      213: -5913822906439533286
-    second: knightRunL_woodenShield_1
+      213: 6778968822432813075
+    second: knightRunR_woodenShield_1
   - first:
-      213: -6456022536897210305
-    second: knightRunL_woodenShield_2
+      213: -4337065126601147106
+    second: knightRunR_woodenShield_2
   - first:
-      213: -6557407461646050768
-    second: knightRunL_woodenShield_3
+      213: -1625469145192404136
+    second: knightRunR_woodenShield_3
   - first:
-      213: 6873049321995382575
-    second: knightRunL_woodenShield_4
+      213: 235660656075043296
+    second: knightRunR_woodenShield_4
   - first:
-      213: -1906784620983220889
-    second: knightRunL_woodenShield_5
+      213: 1552103950015725769
+    second: knightRunR_woodenShield_5
+  - first:
+      213: -6309240594943740562
+    second: RRun_0
+  - first:
+      213: 6966251825768184849
+    second: RRun_1
+  - first:
+      213: -864268013682902830
+    second: RRun_2
+  - first:
+      213: -2841547863167362536
+    second: RRun_3
+  - first:
+      213: -6451050629612913757
+    second: RRun_4
+  - first:
+      213: -8774161685502192389
+    second: RRun_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -121,7 +139,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: knightRunL_woodenShield_0
+      name: RRun_0
       rect:
         serializedVersion: 2
         x: 0
@@ -129,20 +147,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 9
-      pivot: {x: 0.55, y: 0.5}
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f5e10ea57a2ad7fc0800000000000000
-      internalID: -3495458896101761441
+      spriteID: e6577ef4b131178a0800000000000000
+      internalID: -6309240594943740562
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightRunL_woodenShield_1
+      name: RRun_1
       rect:
         serializedVersion: 2
         x: 64
@@ -150,20 +168,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 9
-      pivot: {x: 0.55, y: 0.5}
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1d7a1d3661ededa0800000000000000
-      internalID: -5913822906439533286
+      spriteID: 11c34d270291da060800000000000000
+      internalID: 6966251825768184849
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightRunL_woodenShield_2
+      name: RRun_2
       rect:
         serializedVersion: 2
         x: 0
@@ -171,20 +189,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 9
-      pivot: {x: 0.55, y: 0.5}
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f38535a45b99766a0800000000000000
-      internalID: -6456022536897210305
+      spriteID: 2d8b2b512d08104f0800000000000000
+      internalID: -864268013682902830
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightRunL_woodenShield_3
+      name: RRun_3
       rect:
         serializedVersion: 2
         x: 64
@@ -192,20 +210,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 9
-      pivot: {x: 0.55, y: 0.5}
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03a571108a86ff4a0800000000000000
-      internalID: -6557407461646050768
+      spriteID: 81a93ab064bc098d0800000000000000
+      internalID: -2841547863167362536
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightRunL_woodenShield_4
+      name: RRun_4
       rect:
         serializedVersion: 2
         x: 0
@@ -213,20 +231,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 9
-      pivot: {x: 0.55, y: 0.5}
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2f264181f9f16f50800000000000000
-      internalID: 6873049321995382575
+      spriteID: 3abbcd9a1a34976a0800000000000000
+      internalID: -6451050629612913757
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightRunL_woodenShield_5
+      name: RRun_5
       rect:
         serializedVersion: 2
         x: 64
@@ -234,14 +252,14 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 9
-      pivot: {x: 0.55, y: 0.5}
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7650e136d7db985e0800000000000000
-      internalID: -1906784620983220889
+      spriteID: bf49ccd3f6aeb3680800000000000000
+      internalID: -8774161685502192389
       vertices: []
       indices: 
       edges: []

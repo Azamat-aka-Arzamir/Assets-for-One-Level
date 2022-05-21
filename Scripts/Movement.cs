@@ -55,6 +55,7 @@ public class Movement : MonoBehaviour
 
 
 	Animator SelfAnim;
+	SpriteRenderer SelfRenderer;
 	float JumpAnimationLength;
 	int lastDir=1;
 	Entity selfEntity;
@@ -63,6 +64,7 @@ public class Movement : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		SelfRenderer = GetComponent<SpriteRenderer>();
 		SelfAnim = GetComponent<Animator>();
 		selfEntity = GetComponent<Entity>();
 		SelfRB = GetComponent<Rigidbody2D>();
@@ -108,7 +110,12 @@ public class Movement : MonoBehaviour
 
 	void MoveWeaponLayer()
 	{
-		var a = SelfAnim.GetInteger("Dir");
+		int a = 0;
+		if (SelfRenderer.sprite.ToString().StartsWith("L"))
+		{
+			a = -1;
+		}
+		else a = 1;
 		if (First != null) First.transform.localPosition = Vector3.forward * First.StartZ * a;
 		if (Second != null) Second.transform.localPosition = Vector3.forward * Second.StartZ * a;
 		if (Third != null) Third.transform.localPosition = Vector3.forward * Third.StartZ * a;
