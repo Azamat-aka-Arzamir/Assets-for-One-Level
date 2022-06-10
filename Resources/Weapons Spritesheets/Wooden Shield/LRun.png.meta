@@ -1,31 +1,43 @@
 fileFormatVersion: 2
-guid: 2c3ffb41c6daa4440815e9b75e963d64
+guid: 540f1bd04e3958e48bb4c45006287e1c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5473782527661886292
-    second: knightAttack1L_woodenShield_0
+      213: -3495458896101761441
+    second: knightRunL_woodenShield_0
   - first:
-      213: 8327474403678918604
-    second: knightAttack1L_woodenShield_1
+      213: -5913822906439533286
+    second: knightRunL_woodenShield_1
   - first:
-      213: -3189438599441007991
-    second: knightAttack1L_woodenShield_2
+      213: -6456022536897210305
+    second: knightRunL_woodenShield_2
   - first:
-      213: 8884727286406499678
-    second: knightAttack1L_woodenShield_3
+      213: -6557407461646050768
+    second: knightRunL_woodenShield_3
   - first:
-      213: 7989510203434519684
-    second: knightAttack1L_woodenShield_4
+      213: 6873049321995382575
+    second: knightRunL_woodenShield_4
   - first:
-      213: -5133115027578682300
-    second: knightAttack1L_woodenShield_5
+      213: -1906784620983220889
+    second: knightRunL_woodenShield_5
   - first:
-      213: 7534492534858634757
-    second: knightAttack1L_woodenShield_6
+      213: -5182951242550245136
+    second: LRun_0
   - first:
-      213: 5582972695268540727
-    second: knightAttack1L_woodenShield_7
+      213: -8156476096995630462
+    second: LRun_1
+  - first:
+      213: -5958491382817863363
+    second: LRun_2
+  - first:
+      213: 7404667659278870804
+    second: LRun_3
+  - first:
+      213: -5959505968752273262
+    second: LRun_4
+  - first:
+      213: -5439641275742486951
+    second: LRun_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,12 +139,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: knightAttack1L_woodenShield_0
+      name: LRun_0
       rect:
         serializedVersion: 2
         x: 0
         y: 128
-        width: 80
+        width: 64
         height: 64
       alignment: 9
       pivot: {x: 0.55, y: 0.5}
@@ -141,19 +153,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45bc6032538c6fb40800000000000000
-      internalID: 5473782527661886292
+      spriteID: 0f88f9b2e457218b0800000000000000
+      internalID: -5182951242550245136
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightAttack1L_woodenShield_1
+      name: LRun_1
       rect:
         serializedVersion: 2
-        x: 80
+        x: 64
         y: 128
-        width: 80
+        width: 64
         height: 64
       alignment: 9
       pivot: {x: 0.55, y: 0.5}
@@ -162,40 +174,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc7907b69d1219370800000000000000
-      internalID: 8327474403678918604
+      spriteID: 2826c9364306ece80800000000000000
+      internalID: -8156476096995630462
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightAttack1L_woodenShield_2
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 128
-        width: 80
-        height: 64
-      alignment: 9
-      pivot: {x: 0.55, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 98a366ffd76dcb3d0800000000000000
-      internalID: -3189438599441007991
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: knightAttack1L_woodenShield_3
+      name: LRun_2
       rect:
         serializedVersion: 2
         x: 0
         y: 64
-        width: 80
+        width: 64
         height: 64
       alignment: 9
       pivot: {x: 0.55, y: 0.5}
@@ -204,19 +195,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5dca78c464ec4b70800000000000000
-      internalID: 8884727286406499678
+      spriteID: d394ae128af2f4da0800000000000000
+      internalID: -5958491382817863363
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightAttack1L_woodenShield_4
+      name: LRun_3
       rect:
         serializedVersion: 2
-        x: 80
+        x: 64
         y: 64
-        width: 80
+        width: 64
         height: 64
       alignment: 9
       pivot: {x: 0.55, y: 0.5}
@@ -225,40 +216,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48cc215233170ee60800000000000000
-      internalID: 7989510203434519684
+      spriteID: 419e327210aa2c660800000000000000
+      internalID: 7404667659278870804
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightAttack1L_woodenShield_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 64
-        width: 80
-        height: 64
-      alignment: 9
-      pivot: {x: 0.55, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 44404fd241383c8b0800000000000000
-      internalID: -5133115027578682300
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: knightAttack1L_woodenShield_6
+      name: LRun_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 80
+        width: 64
         height: 64
       alignment: 9
       pivot: {x: 0.55, y: 0.5}
@@ -267,19 +237,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 506d41f7a05ef8860800000000000000
-      internalID: 7534492534858634757
+      spriteID: 29853bf65e49b4da0800000000000000
+      internalID: -5959505968752273262
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knightAttack1L_woodenShield_7
+      name: LRun_5
       rect:
         serializedVersion: 2
-        x: 80
+        x: 64
         y: 0
-        width: 80
+        width: 64
         height: 64
       alignment: 9
       pivot: {x: 0.55, y: 0.5}
@@ -288,8 +258,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 731cf242614ba7d40800000000000000
-      internalID: 5582972695268540727
+      spriteID: 95ef0d584138284b0800000000000000
+      internalID: -5439641275742486951
       vertices: []
       indices: 
       edges: []
