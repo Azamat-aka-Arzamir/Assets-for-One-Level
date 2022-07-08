@@ -19,7 +19,7 @@ public class Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        selfMove.Move(input);
+        selfMove.Move(input,false,selfMove.LocalAcceleration);
     }
     public void GetMovement(InputAction.CallbackContext context)
 	{
@@ -30,7 +30,7 @@ public class Controller : MonoBehaviour
 	{
 		if (context.performed && !context.started)
 		{
-            selfMove.Jump(1);
+            selfMove.Jump(selfMove.JumpForce);
 		}
 	}
     IEnumerator JumpForce(bool perf)
@@ -70,5 +70,10 @@ public class Controller : MonoBehaviour
             selfMove.Attack(selfMove.Second,"2",false);
             print("am cumming");
         }
+	}
+    public void Die()
+	{
+        SceneM.ReloadActiveScene();
+
 	}
 }
