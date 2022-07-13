@@ -172,6 +172,9 @@ public class Movement : MonoBehaviour
 		}
 	}
 
+
+	//Почалось
+
 	void MoveWeaponLayer()
 	{
 		if (SelfRenderer.sprite == null) return;
