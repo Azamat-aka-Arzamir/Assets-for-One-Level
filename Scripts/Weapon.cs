@@ -10,13 +10,17 @@ public class Weapon : MonoBehaviour
 	public enum type { sword, shield, gun };
 	public type weaponType;
 	Animator SelfAnim;
-	PolygonCollider2D selfColl;
+	Collider2D selfColl;
 	[HideInInspector]
 	public bool Activate;
+	bool Reloaded=true;
+	[HideInInspector]public float GunCD;
+	Vector2Int dir;
+	Movement parentMove;
 	public int Damage;
 	[HideInInspector] public Vector3 BarrelPoint;
 	[HideInInspector] public int Bullets;
-	[HideInInspector] public Bullet BulletType;
+	[HideInInspector] public GameObject Bullet;
 	[SerializeField] int StaminaCost;
 	[HideInInspector]
 	public float StartZ;
@@ -28,6 +32,7 @@ public class Weapon : MonoBehaviour
 	[HideInInspector] public int pushingForce;
 	[HideInInspector] public bool AttackSameEntity;
 	[HideInInspector] public bool DynamicAttackFrames;
+	[HideInInspector] public Entity parentEnt;
 
 
 #if UNITY_EDITOR
@@ -44,6 +49,7 @@ public class Weapon : MonoBehaviour
 		private SerializedProperty _ASE;
 		private SerializedProperty _daf;
 		private SerializedProperty _baf;
+		private SerializedProperty _GCD;
 		Vector3 a;
 		Vector3 b;
 		bool c;
@@ -59,6 +65,7 @@ public class Weapon : MonoBehaviour
 			_ASE = serializedObject.FindProperty("AttackSameEntity");
 			_daf = serializedObject.FindProperty("DynamicAttackFrames");
 			_baf = serializedObject.FindProperty("beforeAttackFrames");
+			_GCD = serializedObject.FindProperty("GunCD");
 			c = true;
 
 		}
@@ -87,11 +94,13 @@ public class Weapon : MonoBehaviour
 					break;
 				case type.shield:
 					weapon.Activate = EditorGUILayout.Toggle("Activate", weapon.Activate);
+					EditorGUILayout.PropertyField(_psoa);
 					break;
 				case type.gun:
 					weapon.BarrelPoint = EditorGUILayout.Vector3Field("Barrel point", weapon.BarrelPoint);
 					weapon.Bullets = EditorGUILayout.IntField("Bullets count", weapon.Bullets);
-					weapon.BulletType = EditorGUILayout.ObjectField("Bullet type", weapon.BulletType, typeof(Bullet), false) as Bullet;
+					weapon.Bullet = EditorGUILayout.ObjectField("Bullet type", weapon.Bullet, typeof(GameObject), false) as GameObject;
+					EditorGUILayout.PropertyField(_GCD);
 					break;
 
 			}
@@ -122,8 +131,13 @@ public class Weapon : MonoBehaviour
 		TryGetComponent(out selfRender);
 		StartZ = transform.localPosition.z;
 		TryGetComponent(out selfColl);
+		transform.parent.TryGetComponent(out parentEnt);
 		SelfAnim = GetComponent<Animator>();
 		parentAnim = transform.parent.GetComponent<Animator>();
+		if (transform.parent != null)
+		{
+			transform.parent.TryGetComponent(out parentMove);
+		}
 	}
 	public void Fire(bool phase)
 	{
@@ -136,12 +150,21 @@ public class Weapon : MonoBehaviour
 				ShieldAttack(phase);
 				break;
 			case type.gun:
+				if(Reloaded)GunAttack();
 				break;
 		}
 	}
 	void UpdatePhysicsOutline()
 	{
-		selfColl.points = selfRender.sprite.vertices;
+		//selfColl.points = selfRender.sprite.vertices;
+		if (selfRender.sprite.name.ToString().StartsWith("L"))
+		{
+			selfColl.offset = new Vector2(-Mathf.Abs(selfColl.offset.x),selfColl.offset.y);
+		}
+		if (selfRender.sprite.name.ToString().StartsWith("R"))
+		{
+			selfColl.offset = new Vector2(Mathf.Abs(selfColl.offset.x), selfColl.offset.y);
+		}
 	}
 
 	[System.Obsolete("Удали потом")]
@@ -188,7 +211,7 @@ public class Weapon : MonoBehaviour
 			yield return new WaitForSeconds(a);
 		}
 		Activate = false;
-		StopCoroutine(IeGunAttack());
+		StopCoroutine(IeSwordAttack());
 		yield break;
 	}
 	void ShieldAttack(bool phase)
@@ -198,11 +221,36 @@ public class Weapon : MonoBehaviour
 	}
 	void GunAttack()
 	{
-
+		transform.localScale = new Vector3(dir.x, 1, 1);
+		selfRender.enabled = true;
+		if (dir.y == 0)
+		{
+			transform.localEulerAngles = new Vector3(0, 0, 0);
+		}
+		else
+		{
+			transform.localEulerAngles = new Vector3(0, 0, 90*dir.y*dir.x);
+		}
+		var bullet = Instantiate(Bullet, (Vector3)(transform.localToWorldMatrix * BarrelPoint) + transform.position, Quaternion.identity);
+		if (dir.y == 0)
+		{
+			bullet.GetComponent<Bullet>().Dir = dir;
+		}
+		else
+		{
+			bullet.GetComponent<Bullet>().Dir = Vector2.up * dir.y;
+		}
+		bullet.GetComponent<Bullet>().weapon = this;
+		Bullets--;
+		StartCoroutine(CoolDown());
 	}
-	IEnumerator IeGunAttack()
+	IEnumerator CoolDown()
 	{
-
+		Reloaded = false;
+		yield return new WaitForSeconds(GunCD);
+		Reloaded = true;
+		StopCoroutine(CoolDown());
+		selfRender.enabled = false;
 		yield break;
 	}
 	// Update is called once per frame
@@ -214,6 +262,28 @@ public class Weapon : MonoBehaviour
 			//CheckForActivation();
 			if (selfRender != null) UpdatePhysicsOutline();
 		}
+		if (weaponType == type.shield)
+		{
+			UpdateImmunity();
+		}
+	}
+	void UpdateImmunity()
+	{
+		if (parentEnt != null && Activate)
+		{
+			if (selfRender.sprite.name.ToString().StartsWith("L"))
+			{
+				parentEnt.ImmuneToDamageV2 = new Vector2(-1, 0);
+			}
+			if (selfRender.sprite.name.ToString().StartsWith("R"))
+			{
+				parentEnt.ImmuneToDamageV2 = new Vector2(1, 0);
+			}
+		}
+		if (!Activate)
+		{
+			parentEnt.ImmuneToDamageV2 = new Vector2(0, 0);
+		}
 	}
 	private void Update()
 	{
@@ -222,6 +292,7 @@ public class Weapon : MonoBehaviour
 		{
 			//print("suction");
 		}
+		dir = parentMove.CurrentDir;
 	}
 	private void OnTriggerStay2D(Collider2D collision)
 	{
@@ -249,6 +320,10 @@ public class Weapon : MonoBehaviour
 				}
 			}
 		}
+		if (weaponType == type.shield && Activate&& (int)Mathf.Sign((entity.transform.position - transform.position).normalized.x)==parentEnt.ImmuneToDamageV2.x && entity != null)
+		{
+			entity.GetDamage(Damage, (int)Mathf.Sign((entity.transform.position - transform.position).normalized.x), transform.parent.gameObject, pushingForce, this);
+		}
 	}
 
 	[System.Obsolete("Удали потом")]
@@ -260,9 +335,13 @@ public class Weapon : MonoBehaviour
 
 	private void LateUpdate()
 	{
+		if (selfRender != null&&weaponType!=type.gun) ChangeSprite();
+	}
+	void ChangeSprite()
+	{
 		var structure = transform.parent.GetComponent<SpriteRenderer>();
+		if (structure.sprite == null) return;
 		var b = structure.sprite.name;
 		if (selfRender != null) selfRender.sprite = System.Array.Find(sprites, x => x.name == b);
-		//print(b[0] + '_' + gameObject.name + '_' + b[1]+"  "+ b[0]+'_'+b[1]);
 	}
 }

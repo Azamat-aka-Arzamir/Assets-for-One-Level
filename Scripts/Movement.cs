@@ -59,10 +59,11 @@ public class Movement : MonoBehaviour
 	bool Shit;
 
 
-	Animator SelfAnim;
+	[HideInInspector]public Animator SelfAnim;
 	SpriteRenderer SelfRenderer;
 	float JumpAnimationLength;
-	int lastDir=1;
+	[HideInInspector]public Vector2Int CurrentDir=Vector2Int.right;
+	[HideInInspector] public int lastDir = 1;
 	[HideInInspector]public Entity selfEntity;
 	public bool IsAttack;
 	float gravityScale;
@@ -72,10 +73,13 @@ public class Movement : MonoBehaviour
 	float MaxYVel;
 	[HideInInspector]public bool AnotherInput;
 
-	/// <summary>
-	/// Only for pushing entities
-	/// </summary>
+	AnimationClip runL;
+	AnimationClip runR;
+	List<AnimatorControllerParameter> animParams = new List<AnimatorControllerParameter>();
+	List<string> animParamsNames = new List<string>();
 
+	bool HasRunSpeedParam;
+	bool HasVelXParam;
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -87,6 +91,25 @@ public class Movement : MonoBehaviour
 		if(SelfAnim!=null)JumpAnimationLength = GetJumpAnimationLength();
 		mass = SelfRB.mass;
 		gravityScale = SelfRB.gravityScale;
+		animParams.AddRange(SelfAnim.parameters);
+
+		InitializeParamsExistance();
+	}
+
+	void InitializeParamsExistance()
+	{
+		foreach (var par in animParams)
+		{
+			animParamsNames.Add(par.name);
+		}
+		if (animParamsNames.Contains("Run Speed"))
+		{
+			HasRunSpeedParam = true;
+		}
+		if (animParamsNames.Contains("VelX"))
+		{
+			HasVelXParam = true;
+		}
 	}
 
 
@@ -99,18 +122,18 @@ public class Movement : MonoBehaviour
 		SetLocalAcceleration();
 		if (SelfAnim != null)
 		{
+			var a = Mathf.Abs(SelfRB.velocity.x) / MaxSpeed;
+			if (a < 0.5f) a = 0.5f;
+			if(HasRunSpeedParam)SelfAnim.SetFloat("Run Speed",a);
 			SelfAnim.SetBool("On Ground", OnGround);
 			SelfAnim.SetInteger("Velocity Y", (int)Mathf.Sign(SelfRB.velocity.y));
 			SelfAnim.SetFloat("Speed", Mathf.Abs(SelfRB.velocity.x));
 			SelfAnim.SetInteger("Dir", lastDir);
+			if(HasVelXParam)SelfAnim.SetInteger("VelX", (int)Mathf.Sign(SelfRB.velocity.x));
 			if (Shit)
 			{
 				SelfAnim.SetTrigger("Jump");
 				Shit = false;
-			}
-			if (CanFly)
-			{
-				SelfAnim.SetFloat("Relative Y Velocity", SelfRB.velocity.y / MaxYVel);
 			}
 		}
 		if (First != null || Second != null || Third != null)
@@ -151,6 +174,7 @@ public class Movement : MonoBehaviour
 
 	void MoveWeaponLayer()
 	{
+		if (SelfRenderer.sprite == null) return;
 		int a = 0;
 		if (SelfRenderer.sprite.ToString().StartsWith("L"))
 		{
@@ -175,10 +199,20 @@ public class Movement : MonoBehaviour
 		}
 
 		float force = JumpForce*0.3f+JumpForce*0.7f*factor;
-		MaxYVel= (y * 2 * MaxSpeed - MinVelocity(force));
-		if (SelfRB.velocity.y < y*2*MaxSpeed-MinVelocity(force))
+		var myv = y * 2 * MaxSpeed - MinVelocity(force);
+		MaxYVel = myv;
+		if (SelfRB.velocity.y < myv*0.9)
 		{
-			//print(SelfRB.velocity.y + "    " + (y * 2 * MaxSpeed - MinVelocity()));
+			SelfAnim.SetTrigger("Fly");
+			//SelfAnim.speed = 1/(Mathf.Abs(myv) / (Physics2D.gravity.magnitude * gravityScale));
+			//SelfAnim.SetFloat("speed", 1/(Mathf.Abs(myv) / (Physics2D.gravity.magnitude * gravityScale)));
+		}
+		else
+		{
+			
+		}
+			if (SelfRB.velocity.y < myv)
+		{
 			if(!IsJumping)Jump(force);
 		}
 	}
@@ -244,6 +278,8 @@ public class Movement : MonoBehaviour
 			lastDir = (int)Mathf.Sign(direction.x);
 			LocalMaxspeed = MaxSpeed;
 		}
+		if(Mathf.Abs(direction.y)>0.1)CurrentDir = new Vector2Int(lastDir,(int)Mathf.Sign(direction.y));
+		else CurrentDir = new Vector2Int(lastDir, 0);
 		if (CanFly)
 		{
 			Flight(direction.y*LocalAcceleration/this.LocalAcceleration);
@@ -338,6 +374,7 @@ public class Movement : MonoBehaviour
 		StopCoroutine(IeJump(force));
 		yield break;
 	}
+
 	float GetJumpAnimationLength()
 	{
 		float length = 0;
@@ -346,6 +383,7 @@ public class Movement : MonoBehaviour
 		if (SelfAnim.HasState(0, Animator.StringToHash("Jump L"))) length = clips.Find(x => x.name == "Jump L").length - 0.1f;
 		return length;
 	}
+
 	public static float GetAnimationLength(string name, GameObject obj)
 	{
 		var anim = obj.GetComponent<Animator>();

@@ -6,74 +6,87 @@ using UnityEngine.InputSystem.Interactions;
 
 public class Controller : MonoBehaviour
 {
-    Movement selfMove;
-    float x;
-    float y;
-    Vector2 input;
-    // Start is called before the first frame update
-    void Start()
-    {
-        selfMove = GetComponent<Movement>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        selfMove.Move(input,false,selfMove.LocalAcceleration);
-    }
-    public void GetMovement(InputAction.CallbackContext context)
+	Movement selfMove;
+	float x;
+	float y;
+	Vector2 input;
+	// Start is called before the first frame update
+	void Start()
 	{
-        x = context.ReadValue<Vector2>().x;
-        input = context.ReadValue<Vector2>();
-    }
-    public void GetJump(InputAction.CallbackContext context)
+		selfMove = GetComponent<Movement>();
+	}
+
+	// Update is called once per frame
+	void Update()
+	{
+		selfMove.Move(input, false, selfMove.LocalAcceleration);
+	}
+	public void GetMovement(InputAction.CallbackContext context)
+	{
+		x = context.ReadValue<Vector2>().x;
+		input = context.ReadValue<Vector2>();
+	}
+	bool jumpEnd = false;
+	public void GetJump(InputAction.CallbackContext context)
+	{
+		if (!context.performed && context.started)
+		{
+			jumpEnd = false;
+			StartCoroutine(JumpForce(Time.time));
+		}
+		if (!context.performed && !context.started)
+		{
+			jumpEnd = true;
+		}
+
+	}
+	IEnumerator JumpForce(double timest)
+	{
+		System.Func<bool> ret = ()=>Time.time - timest > 0.1d||jumpEnd;
+		yield return new WaitUntil(ret);
+		var f = (float)(Time.time - timest) * 10;
+		if (f < 0.7) f = 0.7f;
+		if (f > 1) f = 1;
+		selfMove.Jump(selfMove.JumpForce*f);
+		yield break;
+	}
+	public void GetDash(InputAction.CallbackContext context)
 	{
 		if (context.performed && !context.started)
 		{
-            selfMove.Jump(selfMove.JumpForce);
+			selfMove.Dash();
 		}
 	}
-    IEnumerator JumpForce(bool perf)
+	public void GetAttack(InputAction.CallbackContext context)
 	{
-        float a = 0;
-		while (perf&&a<1)
+		if (context.performed && !context.started)
 		{
-            a += 0.01f;
-            yield return new WaitForFixedUpdate();
+			selfMove.Attack(selfMove.First, "1");
 		}
-        print(a);
-        yield break;
 	}
-    public void GetDash(InputAction.CallbackContext context)
+	public void GetDefend(InputAction.CallbackContext context)
 	{
-        if (context.performed && !context.started)
-        {
-            selfMove.Dash();
-        }
-    }
-    public void GetAttack(InputAction.CallbackContext context)
-	{
-        if (context.performed && !context.started)
-        {
-            selfMove.Attack(selfMove.First,"1");
-        }
-    }
-    public void GetDefend(InputAction.CallbackContext context)
-	{
-        if(context.performed && !context.started)
+		if (context.performed && !context.started)
 		{
-            selfMove.Attack(selfMove.Second,"2",true);
-            print("suction");
-        }
+			selfMove.Attack(selfMove.Second, "2", true);
+			print("suction");
+		}
 		if (context.canceled)
 		{
-            selfMove.Attack(selfMove.Second,"2",false);
-            print("am cumming");
-        }
+			selfMove.Attack(selfMove.Second, "2", false);
+			print("am cumming");
+		}
 	}
-    public void Die()
+	public void Die()
 	{
-        SceneM.ReloadActiveScene();
+		SceneM.ReloadActiveScene();
 
+	}
+	public void GetShoot(InputAction.CallbackContext context)
+	{
+		if (context.performed && !context.started)
+		{
+			selfMove.Attack(selfMove.Third, "3");
+		}
 	}
 }

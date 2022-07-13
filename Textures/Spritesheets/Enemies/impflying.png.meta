@@ -20,6 +20,24 @@ TextureImporter:
   - first:
       213: -4316920040298919320
     second: impflying_5
+  - first:
+      213: 1537195613102572728
+    second: impflying_6
+  - first:
+      213: 1777427251412845270
+    second: impflying_7
+  - first:
+      213: 3506117255525148277
+    second: impflying_8
+  - first:
+      213: 6333769606056609792
+    second: impflying_9
+  - first:
+      213: 6067410971373448370
+    second: impflying_10
+  - first:
+      213: -1985845732274173792
+    second: impflying_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -60,11 +78,11 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 1
-  spriteMeshType: 1
+  spriteExtrude: 0
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
@@ -125,11 +143,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
-        width: 32
+        y: 320
+        width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.546875}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -145,12 +163,12 @@ TextureImporter:
       name: impflying_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 64
-        width: 32
+        x: 64
+        y: 320
+        width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3125}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -166,12 +184,12 @@ TextureImporter:
       name: impflying_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
-        width: 32
+        x: 128
+        y: 320
+        width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.1875}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -187,12 +205,12 @@ TextureImporter:
       name: impflying_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
+        x: 192
+        y: 320
+        width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.109375}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -208,12 +226,12 @@ TextureImporter:
       name: impflying_4
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
+        x: 256
+        y: 320
+        width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.09375}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -229,12 +247,12 @@ TextureImporter:
       name: impflying_5
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
+        x: 320
+        y: 320
+        width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.078125}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -242,6 +260,132 @@ TextureImporter:
       bones: []
       spriteID: 86ac73a68183714c0800000000000000
       internalID: -4316920040298919320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: impflying_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b484450447355510800000000000000
+      internalID: 1537195613102572728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: impflying_7
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d2cf8efaa0baa810800000000000000
+      internalID: 1777427251412845270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: impflying_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 576a174511b38a030800000000000000
+      internalID: 3506117255525148277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: impflying_9
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0088b2226e116e750800000000000000
+      internalID: 6333769606056609792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: impflying_10
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bca507c126c33450800000000000000
+      internalID: 6067410971373448370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: impflying_11
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a88215f3dbd074e0800000000000000
+      internalID: -1985845732274173792
       vertices: []
       indices: 
       edges: []

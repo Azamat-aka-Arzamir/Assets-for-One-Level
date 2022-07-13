@@ -381,22 +381,7 @@ public class Hive : MonoBehaviour
 			Hurricane = false;
 		}
 	}
-	void PrepareToHurricane()
-	{
-		foreach (var imp in Imps)
-		{
-			print("unpush");
-			imp.GetComponent<Entity>().Push = false;
-		}
-	}
-	void UnprepareToHurricane()
-	{
-		foreach (var imp in Imps)
-		{
-			print("unpush");
-			imp.GetComponent<Entity>().Push = true;
-		}
-	}
+
 	public float hurricaneSpeed = 1.5f;
 	public float hurricaneStartWidth = 1;
 	public float hurricaneWidth = 0.3f;
@@ -409,6 +394,7 @@ public class Hive : MonoBehaviour
 	}
 	IEnumerator HurricaneAttack()
 	{
+		yield return new WaitForSeconds(2);
 		while (true)
 		{
 			System.Func<bool> can = () => SeeEnemy && Hurricane;
@@ -422,7 +408,7 @@ public class Hive : MonoBehaviour
 			yield return new WaitForSeconds(2);
 			foreach(var imp in Imps)
 			{
-				if (SeeEnemy) imp.SpearAttack();
+				if (SeeEnemy) imp.SelfImpAdd.SpearAttack();
 				else imp.ParabAttack();
 			}
 			hurricaneStartWidth = 1;

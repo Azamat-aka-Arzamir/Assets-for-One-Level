@@ -8,7 +8,8 @@ public class ImpController : MonoBehaviour
 	public bool SeeEnemy;
 	public bool InHive;
 	Movement SelfMovement;
-	ImpMovement SelfImpAdd;
+	[HideInInspector]public ImpMovement SelfImpAdd;
+	[HideInInspector]public Entity SelfEntity;
 	public Vector2 Target;
 	float RaysCount;
 	[SerializeField] float x;
@@ -65,11 +66,12 @@ public class ImpController : MonoBehaviour
 	Dictionary<string, bool> WallDirs = new Dictionary<string, bool>();
 	public string Corridor;
 	int GlobalJumpForce;
-	float WallCheckingRayLength = 10;
+	[SerializeField] float WallCheckingRayLength = 10;
 	// Start is called before the first frame update
 	void Start()
 	{
 		SelfMovement = GetComponent<Movement>();
+		SelfEntity = GetComponent<Entity>();
 		SelfImpAdd = GetComponent<ImpMovement>();
 		InitializeWalls();
 		SelfRB = GetComponent<Rigidbody2D>();
@@ -90,14 +92,21 @@ public class ImpController : MonoBehaviour
 		InitializeWalls();
 	}
 
-	public bool check;
+	public bool stop;
+	public bool a;
 	// Update is called once per frame
 	void FixedUpdate()
 	{
-		if (check)
+		if (stop)
 		{
-			check = false;
-			SpearAttack();
+			stop = false;
+			SelfRB.velocity = Vector2.zero;
+		}
+		if (a)
+		{
+			a = false;
+			SelfRB.velocity = Vector2.zero;
+			ParabAttack();
 		}
 		Sight();
 		SimpleSight();
@@ -197,12 +206,10 @@ public class ImpController : MonoBehaviour
 					{
 						if (imp.InHive && !InHive)
 						{
-							//print("connecting");
 							ConnectToHive(imp.MyHive);
 						}
 						else if(!imp.InHive && !InHive)
 						{
-							//print("creating");
 							CreateHive(imp);
 						}
 						else if (imp.InHive && InHive)
@@ -217,7 +224,6 @@ public class ImpController : MonoBehaviour
 			}
 			if (hit.collider.tag == "Ground")
 			{
-				//Debug.DrawRay(transform.position, ray.normalized*hit.distance, Color.red, 0.1f);
 				break;
 			}
 		}
@@ -457,11 +463,7 @@ public class ImpController : MonoBehaviour
 		if(SelfMovement.draw)Misc.DrawCross(a, Time.fixedDeltaTime, Misc.MyColors.pink, 2);
 		return a;
 	}
-	public void SpearAttack()
-	{
-		SelfRB.AddForce(Vector2.down * 1500);
-		SelfMovement.Attack(SelfMovement.Second, "1");
-	}
+
 	public void Die()
 	{
 		if(InHive)DisconnectFromHive();

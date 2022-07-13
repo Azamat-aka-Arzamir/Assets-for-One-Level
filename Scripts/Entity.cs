@@ -24,10 +24,12 @@ public class Entity : MonoBehaviour
 	Rigidbody2D SelfRb;
 
 	[HideInInspector] public bool GettingDamage;
+	SpriteRenderer selfRender;
 	List<GameObject> LastDamages = new List<GameObject>();
 	public int a;
 	public bool IsDead = false;
 	public bool ImmuneToDamage;
+	public Vector2 ImmuneToDamageV2;
 
 
 
@@ -38,6 +40,7 @@ public class Entity : MonoBehaviour
 		SelfColl = GetComponent<Collider2D>();
 		TryGetComponent(out SelfRb);
 		InitializeEntityTrigger();
+		TryGetComponent(out selfRender);
 	}
 	void InitializeEntityTrigger()
 	{
@@ -103,7 +106,10 @@ public class Entity : MonoBehaviour
 	}
 	public void GetDamage(int damage, int dir, GameObject origin, int force, Weapon weapon)
 	{
-		
+		if (dir == ImmuneToDamageV2.x)
+		{
+			return;
+		}
 		if (!LastDamages.Contains(origin)&&!ImmuneToDamage)
 		{
 			HealthPoints -= damage;
@@ -118,11 +124,12 @@ public class Entity : MonoBehaviour
 				SelfRb.velocity = Vector2.zero;
 				SelfRb.AddForce(force * SelfRb.mass * dir * Vector2.right);
 			}
-			StartCoroutine(IeGetDamage(origin));
+			if(damage>0)StartCoroutine(IeGetDamage(origin));
 		}
 	}
 	IEnumerator IeGetDamage(GameObject origin)
 	{
+		var blink = StartCoroutine(Blink());
 		GettingDamage = true;
 		ImmuneToDamage = true;
 		LastDamages.Add(origin);
@@ -135,8 +142,20 @@ public class Entity : MonoBehaviour
 		LastDamages.Remove(origin);
 		yield return new WaitForSeconds(2);
 		ImmuneToDamage = false;
+		StopCoroutine(blink);
+		selfRender.color = new Color(1, 1, 1, 1);
 		StopCoroutine(IeGetDamage(origin));
 		yield break;
+	}
+	IEnumerator Blink()
+	{
+		while (true)
+		{
+			selfRender.color = new Color(1,0,0,0.5f);
+			yield return new WaitForSeconds(0.2f);
+			selfRender.color = new Color(1, 1, 1, 0.5f);
+			yield return new WaitForSeconds(0.2f);
+		}
 	}
 
 	void Die(string killerName, Weapon weapon)
@@ -299,5 +318,12 @@ public static class Misc
 		{
 			component.gameObject.GetComponent<Controller>().Die();
 		}
+	}
+	public static AnimationClip GetAnimation(string name, Animator anim)
+	{
+		List<AnimationClip> clips = new List<AnimationClip>();
+		clips.AddRange(anim.runtimeAnimatorController.animationClips);
+		if (anim.HasState(0, Animator.StringToHash(name))) return clips.Find(x => x.name == name);
+		else return null;
 	}
 }
