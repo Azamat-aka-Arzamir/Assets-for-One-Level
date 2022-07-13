@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ImpMovement : MonoBehaviour
 {
@@ -9,11 +10,17 @@ public class ImpMovement : MonoBehaviour
 	public float Speed;
 	bool CanParabol=true;
 	[SerializeField] float CoolDown;
+
+	UnityEvent ClawsAttackEvent = new UnityEvent();
+	UnityEvent SpearAttackEvent = new UnityEvent();
+
 	// Start is called before the first frame update
 	void Start()
 	{
 		SelfMovement = GetComponent<Movement>();
 		srb = GetComponent<Rigidbody2D>();
+		SpearAttackEvent.AddListener(SelfMovement.Second.Fire);
+		ClawsAttackEvent.AddListener(SelfMovement.First.Fire);
 	}
 
 	// Update is called once per frame
@@ -32,7 +39,7 @@ public class ImpMovement : MonoBehaviour
 	public void SpearAttack()
 	{
 		srb.AddForce(Vector2.down * 500);
-		SelfMovement.Attack(SelfMovement.Second, "2");
+		SpearAttackEvent.Invoke();
 	}
 	IEnumerator IeParabolicFlight(Vector2 TargetPos)
 	{
@@ -92,7 +99,7 @@ public class ImpMovement : MonoBehaviour
 			}
 			if (Mathf.Abs(localPos.x) <= Mathf.Abs(srb.velocity.x) * Time.fixedDeltaTime * 2)
 			{
-				SelfMovement.Attack(SelfMovement.First, "1");
+				ClawsAttackEvent.Invoke();
 			}
 			yield return new WaitForFixedUpdate();
 		}

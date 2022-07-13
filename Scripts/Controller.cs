@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
+using UnityEngine.Events;
 
 public class Controller : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class Controller : MonoBehaviour
 	float x;
 	float y;
 	Vector2 input;
+	public UnityEvent FirstAttack = new UnityEvent();
+	public UnityEvent Defend = new UnityEvent();
+	public UnityEvent ThirdAttack = new UnityEvent();
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -61,20 +65,21 @@ public class Controller : MonoBehaviour
 	{
 		if (context.performed && !context.started)
 		{
-			selfMove.Attack(selfMove.First, "1");
+			FirstAttack.Invoke();
+			selfMove.SelfAnim.SetTrigger("Attack 1");
 		}
 	}
 	public void GetDefend(InputAction.CallbackContext context)
 	{
 		if (context.performed && !context.started)
 		{
-			selfMove.Attack(selfMove.Second, "2", true);
-			print("suction");
+			selfMove.SelfAnim.SetBool("Attack 2",true);
+			Defend.Invoke();
 		}
 		if (context.canceled)
 		{
-			selfMove.Attack(selfMove.Second, "2", false);
-			print("am cumming");
+			selfMove.SelfAnim.SetBool("Attack 2", false);
+			Defend.Invoke();
 		}
 	}
 	public void Die()
@@ -86,7 +91,8 @@ public class Controller : MonoBehaviour
 	{
 		if (context.performed && !context.started)
 		{
-			selfMove.Attack(selfMove.Third, "3");
+			selfMove.SelfAnim.SetTrigger("Attack 3");
+			ThirdAttack.Invoke();
 		}
 	}
 }

@@ -139,15 +139,21 @@ public class Weapon : MonoBehaviour
 			transform.parent.TryGetComponent(out parentMove);
 		}
 	}
-	public void Fire(bool phase)
+	public void OnTurned()
 	{
+		//ChangeLayer
+		transform.localPosition = new Vector3(transform.localPosition.x,transform.localPosition.y,transform.localPosition.z*-1);
+	}
+	public void Fire()
+	{
+		parentMove.IsAttack = true;
 		switch (weaponType)
 		{
 			case type.sword:
 				SwordAttack();
 				break;
 			case type.shield:
-				ShieldAttack(phase);
+				ShieldAttack();
 				break;
 			case type.gun:
 				if(Reloaded)GunAttack();
@@ -167,19 +173,6 @@ public class Weapon : MonoBehaviour
 		}
 	}
 
-	[System.Obsolete("Удали потом")]
-	void CheckForActivation()
-	{
-		var currentStateTag = parentAnim.GetCurrentAnimatorStateInfo(0);
-		if (currentStateTag.IsTag("Attack"))
-		{
-			Activate = true;
-		}
-		else
-		{
-			Activate = false;
-		}
-	}
 	void SwordAttack()
 	{
 		StartCoroutine(IeSwordAttack());
@@ -211,13 +204,14 @@ public class Weapon : MonoBehaviour
 			yield return new WaitForSeconds(a);
 		}
 		Activate = false;
+		parentMove.IsAttack = false;
 		StopCoroutine(IeSwordAttack());
 		yield break;
 	}
-	void ShieldAttack(bool phase)
+	void ShieldAttack()
 	{
-		Activate = phase;
-		print(phase);
+		Activate = !Activate;
+		parentMove.IsAttack = false;
 	}
 	void GunAttack()
 	{
@@ -242,6 +236,7 @@ public class Weapon : MonoBehaviour
 		}
 		bullet.GetComponent<Bullet>().weapon = this;
 		Bullets--;
+		parentMove.IsAttack = false;
 		StartCoroutine(CoolDown());
 	}
 	IEnumerator CoolDown()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ImpController : MonoBehaviour
 {
@@ -67,6 +68,8 @@ public class ImpController : MonoBehaviour
 	public string Corridor;
 	int GlobalJumpForce;
 	[SerializeField] float WallCheckingRayLength = 10;
+
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -77,7 +80,6 @@ public class ImpController : MonoBehaviour
 		SelfRB = GetComponent<Rigidbody2D>();
 		GlobalJumpForce = SelfMovement.JumpForce;
 		StartCoroutine(DisconnectTimer());
-
 	}
 	void InitializeWalls()
 	{
@@ -167,7 +169,6 @@ public class ImpController : MonoBehaviour
 	public void ParabAttack()
 	{
 		SelfImpAdd.ParabolicFlight(LastTargetPos);
-		Misc.DrawCross(LastTargetPos, 1, Color.magenta, 2);
 	}
 	private void Update()
 	{
@@ -245,7 +246,6 @@ public class ImpController : MonoBehaviour
 
 				WallsCount++;
 				SeeWall = true;
-				//Misc.DrawCross(hit.point, 1, Color.green, 1);
 				break;
 			}
 		}
@@ -341,6 +341,7 @@ public class ImpController : MonoBehaviour
 		InHive = true;
 		MyHive = hive;
 		hive.Imps.Add(this);
+		hive.SomeoneConnected.Invoke(this);
 	}
 	public IEnumerator DisconnectTimer()
 	{
@@ -373,6 +374,7 @@ public class ImpController : MonoBehaviour
 	}
 	public void DisconnectFromHive()
 	{
+		MyHive.SomeoneDisconnected.Invoke(this);
 		InHive = false;
 		MyHive.Imps.Remove(this);
 		MyHive = null;
@@ -460,7 +462,6 @@ public class ImpController : MonoBehaviour
 			transform.position = new Vector3(transform.position.x, transform.position.y, 1);
 
 		}
-		if(SelfMovement.draw)Misc.DrawCross(a, Time.fixedDeltaTime, Misc.MyColors.pink, 2);
 		return a;
 	}
 

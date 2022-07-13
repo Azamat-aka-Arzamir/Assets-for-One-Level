@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Movement : MonoBehaviour
 {
@@ -80,6 +81,7 @@ public class Movement : MonoBehaviour
 
 	bool HasRunSpeedParam;
 	bool HasVelXParam;
+	UnityEvent TurnedOverY = new UnityEvent();
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -94,6 +96,10 @@ public class Movement : MonoBehaviour
 		animParams.AddRange(SelfAnim.parameters);
 
 		InitializeParamsExistance();
+		TurnedOverY.AddListener(this.OnTurned);
+		TurnedOverY.AddListener(First.OnTurned);
+		TurnedOverY.AddListener(Second.OnTurned);
+		TurnedOverY.AddListener(Third.OnTurned);
 	}
 
 	void InitializeParamsExistance()
@@ -128,7 +134,6 @@ public class Movement : MonoBehaviour
 			SelfAnim.SetBool("On Ground", OnGround);
 			SelfAnim.SetInteger("Velocity Y", (int)Mathf.Sign(SelfRB.velocity.y));
 			SelfAnim.SetFloat("Speed", Mathf.Abs(SelfRB.velocity.x));
-			SelfAnim.SetInteger("Dir", lastDir);
 			if(HasVelXParam)SelfAnim.SetInteger("VelX", (int)Mathf.Sign(SelfRB.velocity.x));
 			if (Shit)
 			{
@@ -136,59 +141,8 @@ public class Movement : MonoBehaviour
 				Shit = false;
 			}
 		}
-		if (First != null || Second != null || Third != null)
-		{
-			MoveWeaponLayer();
-			if (First.Activate || Second.Activate)
-			{
-				IsAttack = true;
-			}
-			else
-			{
-				IsAttack = false;
-			}
-		}
-		if (selfEntity.GettingDamage)
-		{
-			//StopAllCoroutines();
-			IsDashing = false;
-			IsJumping = false;
-		}
-	}
-	public void Attack(Weapon weapon, string number)
-	{
-		if (!IsDashing)
-		{
-			SelfAnim.SetTrigger("Attack "+number);
-			weapon.Fire(true);
-		}
-	}
-	public void Attack(Weapon weapon, string number, bool phase)
-	{
-		if ((OnGround||CanFly) && !IsDashing)
-		{
-			weapon.Fire(phase);
-			SelfAnim.SetBool("Attack " + number,weapon.Activate);
-		}
 	}
 
-
-	//Почалось?
-
-	void MoveWeaponLayer()
-	{
-		if (SelfRenderer.sprite == null) return;
-		int a = 0;
-		if (SelfRenderer.sprite.ToString().StartsWith("L"))
-		{
-			a = -1;
-		}
-		else a = 1;
-		if (First != null) First.transform.localPosition = Vector3.forward * First.StartZ * a;
-		if (Second != null) Second.transform.localPosition = Vector3.forward * Second.StartZ * a;
-		if (Third != null) Third.transform.localPosition = Vector3.forward * Third.StartZ * a;
-	}
-	public bool draw;
 	void Flight(float y)
 	{
 		float factor = 0;
@@ -207,14 +161,8 @@ public class Movement : MonoBehaviour
 		if (SelfRB.velocity.y < myv*0.9)
 		{
 			SelfAnim.SetTrigger("Fly");
-			//SelfAnim.speed = 1/(Mathf.Abs(myv) / (Physics2D.gravity.magnitude * gravityScale));
-			//SelfAnim.SetFloat("speed", 1/(Mathf.Abs(myv) / (Physics2D.gravity.magnitude * gravityScale)));
 		}
-		else
-		{
-			
-		}
-			if (SelfRB.velocity.y < myv)
+		if (SelfRB.velocity.y < myv)
 		{
 			if(!IsJumping)Jump(force);
 		}
@@ -243,6 +191,12 @@ public class Movement : MonoBehaviour
 			LocalAcceleration = DashSpeed;
 		}
 	}
+	void OnTurned()
+	{
+		SelfAnim.SetInteger("Dir", lastDir);
+	}
+
+
 	public void Move(Vector2 direction, bool SideInput, float LocalAcceleration)
 	{
 		if (direction != Vector2.zero) direction = direction.normalized;
@@ -278,7 +232,11 @@ public class Movement : MonoBehaviour
 		}
 		else
 		{
-			lastDir = (int)Mathf.Sign(direction.x);
+			if(lastDir!= (int)Mathf.Sign(direction.x))
+			{
+				lastDir = (int)Mathf.Sign(direction.x);
+				TurnedOverY.Invoke();
+			}
 			LocalMaxspeed = MaxSpeed;
 		}
 		if(Mathf.Abs(direction.y)>0.1)CurrentDir = new Vector2Int(lastDir,(int)Mathf.Sign(direction.y));

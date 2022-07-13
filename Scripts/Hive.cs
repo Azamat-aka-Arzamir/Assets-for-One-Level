@@ -26,6 +26,10 @@ public class Hive : MonoBehaviour
 	public bool SeeEnemy;
 	bool stop;
 	[SerializeField] bool DestinationAchivied;
+	UnityEngine.Events.UnityEvent parabAttackEvent = new UnityEngine.Events.UnityEvent();
+	UnityEngine.Events.UnityEvent spearAttackEvent = new UnityEngine.Events.UnityEvent();
+	public ConnectionEvent SomeoneConnected = new ConnectionEvent();
+	public ConnectionEvent SomeoneDisconnected = new ConnectionEvent();
 	int SimpleRayNumber
 	{
 		get
@@ -49,9 +53,24 @@ public class Hive : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		SomeoneConnected.AddListener(OnConnect);
+		SomeoneDisconnected.AddListener(OnDisconnect);
 		InitializeHive();
 		StartCoroutine(WaitToStartHurricane());
 		StartCoroutine(HurricaneAttack());
+
+	}
+	void OnConnect(ImpController connectedImp)
+	{
+		parabAttackEvent.AddListener(connectedImp.ParabAttack);
+		print(connectedImp.name + " connected");
+		spearAttackEvent.AddListener(connectedImp.SelfImpAdd.SpearAttack);
+	}
+	void OnDisconnect(ImpController disconnectedImp)
+	{
+		parabAttackEvent.RemoveListener(disconnectedImp.ParabAttack);
+		print(disconnectedImp.name + " disconnected");
+		spearAttackEvent.RemoveListener(disconnectedImp.SelfImpAdd.SpearAttack);
 	}
 
 	// Update is called once per frame
@@ -109,6 +128,7 @@ public class Hive : MonoBehaviour
 		{
 			imp.MyHive = this;
 			imp.InHive = true;
+			SomeoneConnected.Invoke(imp);
 		}
 	}
 
@@ -406,11 +426,8 @@ public class Hive : MonoBehaviour
 				addHivingHeight = 4;
 			}
 			yield return new WaitForSeconds(2);
-			foreach(var imp in Imps)
-			{
-				if (SeeEnemy) imp.SelfImpAdd.SpearAttack();
-				else imp.ParabAttack();
-			}
+			if (SeeEnemy) spearAttackEvent.Invoke();
+			else parabAttackEvent.Invoke();
 			hurricaneStartWidth = 1;
 			stop = false;
 			hurricaneSpeed = 1.5f;
@@ -418,5 +435,5 @@ public class Hive : MonoBehaviour
 			yield return new WaitForSeconds(8);
 		}
 	}
-
+	public class ConnectionEvent : UnityEngine.Events.UnityEvent<ImpController> { }
 }
