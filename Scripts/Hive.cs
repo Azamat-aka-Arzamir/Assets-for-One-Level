@@ -63,13 +63,11 @@ public class Hive : MonoBehaviour
 	void OnConnect(ImpController connectedImp)
 	{
 		parabAttackEvent.AddListener(connectedImp.ParabAttack);
-		print(connectedImp.name + " connected");
 		spearAttackEvent.AddListener(connectedImp.SelfImpAdd.SpearAttack);
 	}
 	void OnDisconnect(ImpController disconnectedImp)
 	{
 		parabAttackEvent.RemoveListener(disconnectedImp.ParabAttack);
-		print(disconnectedImp.name + " disconnected");
 		spearAttackEvent.RemoveListener(disconnectedImp.SelfImpAdd.SpearAttack);
 	}
 

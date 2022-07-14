@@ -161,6 +161,7 @@ public class Entity : MonoBehaviour
 	void Die(string killerName, Weapon weapon)
 	{
 		IsDead = true;
+		Push = false;
 		Component[] components = GetComponents<Component>();
 		for(int i = 0; i < components.Length; i++)
 		{
@@ -171,7 +172,6 @@ public class Entity : MonoBehaviour
 				Destroy(components[i]);
 			}
 		}
-		Push = true;
 		PushingForce *= 0.5f;
 		SelfColl.sharedMaterial = new PhysicsMaterial2D();
 		SelfColl.sharedMaterial.friction = 10;
@@ -327,3 +327,4 @@ public static class Misc
 		else return null;
 	}
 }
+public class IntContextEvent : UnityEngine.Events.UnityEvent<int> { }

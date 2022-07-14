@@ -14,10 +14,13 @@ public class Controller : MonoBehaviour
 	public UnityEvent FirstAttack = new UnityEvent();
 	public UnityEvent Defend = new UnityEvent();
 	public UnityEvent ThirdAttack = new UnityEvent();
+	public IntContextEvent lookUp = new IntContextEvent();
+	
 	// Start is called before the first frame update
 	void Start()
 	{
 		selfMove = GetComponent<Movement>();
+		lookUp.AddListener(selfMove.Third.OnLookUp);
 	}
 
 	// Update is called once per frame
@@ -29,6 +32,14 @@ public class Controller : MonoBehaviour
 	{
 		x = context.ReadValue<Vector2>().x;
 		input = context.ReadValue<Vector2>();
+		if (Mathf.Abs(input.y) < 0.2f)
+		{
+			lookUp.Invoke(0);
+		}
+		else
+		{
+			lookUp.Invoke((int)Mathf.Sign(input.y));
+		}
 	}
 	bool jumpEnd = false;
 	public void GetJump(InputAction.CallbackContext context)

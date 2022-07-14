@@ -10,8 +10,8 @@ public class Bullet : MonoBehaviour
 	public delegate void Action();
     Action actionOnDestruct;
     public float Speed;
+	Vector2 dir;
 	[HideInInspector]public Weapon weapon;
-    [HideInInspector]public Vector2 Dir;
     public enum type { Bullet,Bomb}
     public type _type;
     Rigidbody2D srb;
@@ -19,9 +19,11 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+		dir = weapon.Dir;
+		if (dir.y != 0) dir = new Vector2(0, dir.y);
         timest = Time.time;
         srb = GetComponent<Rigidbody2D>();
-        srb.AddForce(Dir * Speed);
+        srb.AddForce(dir * Speed);
 		if (_type == type.Bomb)
 		{
 			actionOnDestruct = Detonate;
@@ -31,17 +33,24 @@ public class Bullet : MonoBehaviour
             actionOnDestruct = Die;
 		}
     }
-
+	Vector2 direct;
     // Update is called once per frame
     void Update()
     {
 		Entity ent;
-		var ray = Physics2D.Raycast((Vector2)transform.position+Dir*0.2f, srb.velocity*Time.deltaTime, srb.velocity.magnitude,LayerMask.GetMask("Entity"));
-		Debug.DrawRay(transform.position, srb.velocity * Time.deltaTime, Color.cyan);
-		if (ray)
+		if (srb.velocity.magnitude > 0)
 		{
-			print(ray.collider);
-			ray.collider.TryGetComponent(out ent);
+			direct = srb.velocity;
+		}
+		else if (Time.time-timest>Time.fixedDeltaTime&&_type == type.Bullet && GetComponent<Collider2D>().sharedMaterial == null)
+		{
+			actionOnDestruct();
+		}
+		var ray = Physics2D.RaycastAll(transform.position, direct.normalized, direct.magnitude * Time.deltaTime, LayerMask.GetMask("Entity")|LayerMask.GetMask("Ground"));
+		Debug.DrawRay(transform.position, direct, Color.cyan);
+		foreach (var hit in ray)
+		{
+			hit.collider.TryGetComponent(out ent);
 			if (ent != null&&ent!=weapon.parentEnt)
 			{
 				ent.GetDamage(weapon.Damage, (int)Mathf.Sign((ent.transform.position - transform.position).normalized.x), weapon.transform.parent.gameObject, weapon.pushingForce, weapon);
@@ -55,43 +64,21 @@ public class Bullet : MonoBehaviour
 					actionOnDestruct();
 				}
 			}
+			if(hit.collider.tag == "Ground")
+			{
+				if (PossibleCollisions > 0)
+				{
+					PossibleCollisions--;
+					//Jump?
+				}
+				else
+				{
+					actionOnDestruct();
+				}
+				break;
+			}
 		}
     }
-
-
-	private void OnCollisionEnter2D(Collision2D collision)
-	{
-		if (Time.time - timest < 0.2)
-		{
-			return;
-		}
-		if (PossibleCollisions > 0)
-		{
-			PossibleCollisions--;
-			//Jump?
-		}
-		else
-		{
-			actionOnDestruct();
-		}
-	}
-	private void OnCollisionStay2D(Collision2D collision)
-	{
-		if (Time.time - timest < 0.2)
-		{
-			return;
-		}
-		if (PossibleCollisions > 0)
-		{
-			PossibleCollisions--;
-			//Jump?
-		}
-		else
-		{
-			actionOnDestruct();
-		}
-	}
-
 
 	void Detonate()
 	{

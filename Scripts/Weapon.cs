@@ -13,9 +13,8 @@ public class Weapon : MonoBehaviour
 	Collider2D selfColl;
 	[HideInInspector]
 	public bool Activate;
-	bool Reloaded=true;
-	[HideInInspector]public float GunCD;
-	Vector2Int dir;
+	bool Reloaded = true;
+	[HideInInspector] public float GunCD;
 	Movement parentMove;
 	public int Damage;
 	[HideInInspector] public Vector3 BarrelPoint;
@@ -33,6 +32,7 @@ public class Weapon : MonoBehaviour
 	[HideInInspector] public bool AttackSameEntity;
 	[HideInInspector] public bool DynamicAttackFrames;
 	[HideInInspector] public Entity parentEnt;
+	 [HideInInspector]public Vector2 Dir;
 
 
 #if UNITY_EDITOR
@@ -127,6 +127,7 @@ public class Weapon : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		Dir = Vector2.right;
 		sprites = Resources.LoadAll<Sprite>("Weapons Spritesheets/" + name);
 		TryGetComponent(out selfRender);
 		StartZ = transform.localPosition.z;
@@ -142,7 +143,13 @@ public class Weapon : MonoBehaviour
 	public void OnTurned()
 	{
 		//ChangeLayer
-		transform.localPosition = new Vector3(transform.localPosition.x,transform.localPosition.y,transform.localPosition.z*-1);
+		transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z * -1);
+		if (weaponType == type.gun)
+		{
+			transform.localScale = new Vector3(transform.localScale.x * -1, 1, 1);
+			transform.localEulerAngles = new Vector3(0, 0, 90 * Dir.y * Dir.x);
+		}
+		Dir = new Vector2(Dir.x * -1, Dir.y);
 	}
 	public void Fire()
 	{
@@ -156,7 +163,7 @@ public class Weapon : MonoBehaviour
 				ShieldAttack();
 				break;
 			case type.gun:
-				if(Reloaded)GunAttack();
+				if (Reloaded) GunAttack();
 				break;
 		}
 	}
@@ -165,7 +172,7 @@ public class Weapon : MonoBehaviour
 		//selfColl.points = selfRender.sprite.vertices;
 		if (selfRender.sprite.name.ToString().StartsWith("L"))
 		{
-			selfColl.offset = new Vector2(-Mathf.Abs(selfColl.offset.x),selfColl.offset.y);
+			selfColl.offset = new Vector2(-Mathf.Abs(selfColl.offset.x), selfColl.offset.y);
 		}
 		if (selfRender.sprite.name.ToString().StartsWith("R"))
 		{
@@ -177,11 +184,16 @@ public class Weapon : MonoBehaviour
 	{
 		StartCoroutine(IeSwordAttack());
 	}
+	public void OnLookUp(int context)
+	{
+		Dir = new Vector2(Dir.x, context);
+		transform.localEulerAngles = new Vector3(0, 0, 90 * Dir.y * Dir.x);
+	}
 	IEnumerator IeSwordAttack()
 	{
 		var currentState = parentAnim.GetCurrentAnimatorStateInfo(0);
 		var a = currentState.length;
-		if (a == 0||!DynamicAttackFrames)
+		if (a == 0 || !DynamicAttackFrames)
 		{
 			if (beforeAttackFrames != 0)
 			{
@@ -194,7 +206,7 @@ public class Weapon : MonoBehaviour
 			Activate = true;
 			for (int i = 0; i < attackFrames; i++)
 			{
-				Misc.DrawCross(new Vector2(transform.position.x-2*transform.localPosition.z, transform.position.y), Time.fixedDeltaTime, Color.red, 3);
+				Misc.DrawCross(new Vector2(transform.position.x - 2 * transform.localPosition.z, transform.position.y), Time.fixedDeltaTime, Color.red, 3);
 				yield return new WaitForFixedUpdate();
 			}
 		}
@@ -215,25 +227,9 @@ public class Weapon : MonoBehaviour
 	}
 	void GunAttack()
 	{
-		transform.localScale = new Vector3(dir.x, 1, 1);
+		transform.localEulerAngles = new Vector3(0, 0, 90 * Dir.y * Dir.x);
 		selfRender.enabled = true;
-		if (dir.y == 0)
-		{
-			transform.localEulerAngles = new Vector3(0, 0, 0);
-		}
-		else
-		{
-			transform.localEulerAngles = new Vector3(0, 0, 90*dir.y*dir.x);
-		}
-		var bullet = Instantiate(Bullet, (Vector3)(transform.localToWorldMatrix * BarrelPoint) + transform.position, Quaternion.identity);
-		if (dir.y == 0)
-		{
-			bullet.GetComponent<Bullet>().Dir = dir;
-		}
-		else
-		{
-			bullet.GetComponent<Bullet>().Dir = Vector2.up * dir.y;
-		}
+		var bullet = Instantiate(Bullet, (Vector3)(transform.localToWorldMatrix*BarrelPoint)+ transform.position, Quaternion.identity);
 		bullet.GetComponent<Bullet>().weapon = this;
 		Bullets--;
 		parentMove.IsAttack = false;
@@ -282,12 +278,7 @@ public class Weapon : MonoBehaviour
 	}
 	private void Update()
 	{
-		//ControlAnims();
-		if (Activate)
-		{
-			//print("suction");
-		}
-		dir = parentMove.CurrentDir;
+
 	}
 	private void OnTriggerStay2D(Collider2D collision)
 	{
@@ -305,17 +296,17 @@ public class Weapon : MonoBehaviour
 		{
 			if (AttackSameEntity)
 			{
-				entity.GetDamage(Damage, (int)Mathf.Sign((entity.transform.position - transform.position).normalized.x), transform.parent.gameObject, pushingForce,this);
+				entity.GetDamage(Damage, (int)Mathf.Sign((entity.transform.position - transform.position).normalized.x), transform.parent.gameObject, pushingForce, this);
 			}
 			else
 			{
-				if(entity.Type != transform.GetComponentInParent<Entity>().Type)
+				if (entity.Type != transform.GetComponentInParent<Entity>().Type)
 				{
-					entity.GetDamage(Damage, (int)Mathf.Sign((entity.transform.position - transform.position).normalized.x), transform.parent.gameObject, pushingForce,this);
+					entity.GetDamage(Damage, (int)Mathf.Sign((entity.transform.position - transform.position).normalized.x), transform.parent.gameObject, pushingForce, this);
 				}
 			}
 		}
-		if (weaponType == type.shield && Activate&& (int)Mathf.Sign((entity.transform.position - transform.position).normalized.x)==parentEnt.ImmuneToDamageV2.x && entity != null)
+		if (weaponType == type.shield && Activate && (int)Mathf.Sign((entity.transform.position - transform.position).normalized.x) == parentEnt.ImmuneToDamageV2.x && entity != null)
 		{
 			entity.GetDamage(Damage, (int)Mathf.Sign((entity.transform.position - transform.position).normalized.x), transform.parent.gameObject, pushingForce, this);
 		}
@@ -330,7 +321,7 @@ public class Weapon : MonoBehaviour
 
 	private void LateUpdate()
 	{
-		if (selfRender != null&&weaponType!=type.gun) ChangeSprite();
+		if (selfRender != null && weaponType != type.gun) ChangeSprite();
 	}
 	void ChangeSprite()
 	{

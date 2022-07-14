@@ -32,10 +32,7 @@ public class ImpMovement : MonoBehaviour
 	{
 		if(!SelfMovement.AnotherInput&&CanParabol)StartCoroutine(IeParabolicFlight(TargetPos));
 	}
-	private void OnDestroy()
-	{
-		print("pashol nahui  "+gameObject.name+srb.velocity+"   "+srb.angularVelocity);
-	}
+
 	public void SpearAttack()
 	{
 		srb.AddForce(Vector2.down * 500);
