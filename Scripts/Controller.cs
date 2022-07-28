@@ -77,19 +77,19 @@ public class Controller : MonoBehaviour
 		if (context.performed && !context.started)
 		{
 			FirstAttack.Invoke();
-			selfMove.SelfAnim.SetTrigger("Attack 1");
+			//selfMove.SelfAnim.SetTrigger("Attack 1");
 		}
 	}
 	public void GetDefend(InputAction.CallbackContext context)
 	{
 		if (context.performed && !context.started)
 		{
-			selfMove.SelfAnim.SetBool("Attack 2",true);
+			//selfMove.SelfAnim.SetBool("Attack 2",true);
 			Defend.Invoke();
 		}
 		if (context.canceled)
 		{
-			selfMove.SelfAnim.SetBool("Attack 2", false);
+			//selfMove.SelfAnim.SetBool("Attack 2", false);
 			Defend.Invoke();
 		}
 	}
@@ -102,7 +102,7 @@ public class Controller : MonoBehaviour
 	{
 		if (context.performed && !context.started)
 		{
-			selfMove.SelfAnim.SetTrigger("Attack 3");
+			//selfMove.SelfAnim.SetTrigger("Attack 3");
 			ThirdAttack.Invoke();
 		}
 	}

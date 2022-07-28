@@ -93,9 +93,9 @@ public class Movement : MonoBehaviour
 		if(SelfAnim!=null)JumpAnimationLength = GetJumpAnimationLength();
 		mass = SelfRB.mass;
 		gravityScale = SelfRB.gravityScale;
-		animParams.AddRange(SelfAnim.parameters);
+		if (SelfAnim != null) animParams.AddRange(SelfAnim.parameters);
 
-		InitializeParamsExistance();
+		if (SelfAnim != null) InitializeParamsExistance();
 		TurnedOverY.AddListener(this.OnTurned);
 		TurnedOverY.AddListener(First.OnTurned);
 		TurnedOverY.AddListener(Second.OnTurned);
@@ -124,7 +124,23 @@ public class Movement : MonoBehaviour
 	void FixedUpdate()
 	{
 		if(WallJumpAbility) Slide();
+		var lastGroundCheck = OnGround;
 		OnGround = CheckGround();
+		if (!lastGroundCheck && OnGround)
+		{
+			LandEvent.Invoke();
+		}
+		if (!OnGround&&!lastGroundCheck)
+		{
+			if (SelfRB.velocity.y > 0)
+			{
+				InAirUp.Invoke();
+			}
+			else
+			{
+				InAirDown.Invoke();
+			}
+		}
 		SetLocalAcceleration();
 		if (SelfAnim != null)
 		{
@@ -193,10 +209,11 @@ public class Movement : MonoBehaviour
 	}
 	void OnTurned()
 	{
-		SelfAnim.SetInteger("Dir", lastDir);
+		//SelfAnim.SetInteger("Dir", lastDir);
 	}
 
-
+	public UnityEvent MoveEvent = new UnityEvent();
+	public UnityEvent StopEvent = new UnityEvent();
 	public void Move(Vector2 direction, bool SideInput, float LocalAcceleration)
 	{
 		if (direction != Vector2.zero) direction = direction.normalized;
@@ -229,9 +246,11 @@ public class Movement : MonoBehaviour
 			{
 				SelfRB.velocity = new Vector2(0, SelfRB.velocity.y);
 			}
+
 		}
 		else
 		{
+
 			if(lastDir!= (int)Mathf.Sign(direction.x))
 			{
 				lastDir = (int)Mathf.Sign(direction.x);
@@ -244,6 +263,14 @@ public class Movement : MonoBehaviour
 		if (CanFly)
 		{
 			Flight(direction.y*LocalAcceleration/this.LocalAcceleration);
+		}
+		if (Mathf.Abs(SelfRB.velocity.x) < 3)
+		{
+			if(!IsDashing)StopEvent.Invoke();
+		}
+		else
+		{
+			if (!IsDashing) MoveEvent.Invoke();
 		}
 	}
 	void Friction(float LocalAcceleration)
@@ -301,6 +328,10 @@ public class Movement : MonoBehaviour
 		}
 		else return false;
 	}
+	public UnityEvent JumpEvent;
+	public UnityEvent LandEvent;
+	public UnityEvent InAirUp;
+	public UnityEvent InAirDown;
 	public void Jump(float force)
 	{
 		StartCoroutine(IeJump(force));
@@ -311,6 +342,7 @@ public class Movement : MonoBehaviour
 		{
 			Shit = true;
 			IsJumping = true;
+			JumpEvent.Invoke();
 			selfEntity.StaminaRemains -= JumpCost;
 
 			if (Mathf.Abs(SelfRB.velocity.x) < 0.1f&&!CanFly)
@@ -387,8 +419,10 @@ public class Movement : MonoBehaviour
 			StartCoroutine(IeDash(lastDir));
 		}
 	}
+	public UnityEvent dashEvent=new UnityEvent();
 	IEnumerator IeDash(float direction)
 	{
+		dashEvent.Invoke();
 		IsDashing = true;
 		AnotherInput = true;
 		selfEntity.Push = false;
