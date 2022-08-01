@@ -144,8 +144,6 @@ public class Entity : MonoBehaviour
 		ImmuneToDamage = false;
 		StopCoroutine(blink);
 		selfRender.color = new Color(1, 1, 1, 1);
-		StopCoroutine(IeGetDamage(origin));
-		yield break;
 	}
 	IEnumerator Blink()
 	{

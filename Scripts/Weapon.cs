@@ -132,12 +132,19 @@ public class Weapon : MonoBehaviour
 		TryGetComponent(out selfRender);
 		StartZ = transform.localPosition.z;
 		TryGetComponent(out selfColl);
-		transform.parent.TryGetComponent(out parentEnt);
+		parentEnt = GetComponentInParent<Entity>();
 		SelfAnim = GetComponent<Animator>();
 		parentAnim = transform.parent.GetComponent<Animator>();
 		if (transform.parent != null)
 		{
 			transform.parent.TryGetComponent(out parentMove);
+		}
+		if (parentMove == null)
+		{
+			if (transform.parent.parent != null)
+			{
+				transform.parent.parent.TryGetComponent(out parentMove);
+			}
 		}
 	}
 	public void OnTurned()
@@ -170,13 +177,13 @@ public class Weapon : MonoBehaviour
 	void UpdatePhysicsOutline()
 	{
 		//selfColl.points = selfRender.sprite.vertices;
-		if (selfRender.sprite.name.ToString().StartsWith("L"))
+		//if (selfRender.sprite.name.ToString().StartsWith("L"))
 		{
 			selfColl.offset = new Vector2(-Mathf.Abs(selfColl.offset.x), selfColl.offset.y);
 		}
-		if (selfRender.sprite.name.ToString().StartsWith("R"))
+		//if (selfRender.sprite.name.ToString().StartsWith("R"))
 		{
-			selfColl.offset = new Vector2(Mathf.Abs(selfColl.offset.x), selfColl.offset.y);
+			//selfColl.offset = new Vector2(Mathf.Abs(selfColl.offset.x), selfColl.offset.y);
 		}
 	}
 
@@ -191,9 +198,9 @@ public class Weapon : MonoBehaviour
 	}
 	IEnumerator IeSwordAttack()
 	{
-		var currentState = parentAnim.GetCurrentAnimatorStateInfo(0);
-		var a = currentState.length;
-		if (a == 0 || !DynamicAttackFrames)
+		//var currentState = parentAnim.GetCurrentAnimatorStateInfo(0);
+		//var a = currentState.length;
+		//if (a == 0 || !DynamicAttackFrames)
 		{
 			if (beforeAttackFrames != 0)
 			{
@@ -210,10 +217,10 @@ public class Weapon : MonoBehaviour
 				yield return new WaitForFixedUpdate();
 			}
 		}
-		else
+		//else
 		{
-			Activate = true;
-			yield return new WaitForSeconds(a);
+		//	Activate = true;
+			//yield return new WaitForSeconds(a);
 		}
 		Activate = false;
 		parentMove.IsAttack = false;
@@ -262,11 +269,13 @@ public class Weapon : MonoBehaviour
 	{
 		if (parentEnt != null && Activate)
 		{
-			if (selfRender.sprite.name.ToString().StartsWith("L"))
+			if(transform.parent.localScale.x ==-1)
+			//if (selfRender.sprite.name.ToString().StartsWith("L"))
 			{
 				parentEnt.ImmuneToDamageV2 = new Vector2(-1, 0);
 			}
-			if (selfRender.sprite.name.ToString().StartsWith("R"))
+			if (transform.parent.localScale.x == 1)
+			//if (selfRender.sprite.name.ToString().StartsWith("R"))
 			{
 				parentEnt.ImmuneToDamageV2 = new Vector2(1, 0);
 			}
