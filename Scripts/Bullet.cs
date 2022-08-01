@@ -19,7 +19,19 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		dir = weapon.Dir;
+		var a = weapon.GetComponent<CustomAnimator>().CurrentAnim.animName;
+		if (a.Contains("Up"))
+		{
+			dir = Vector2.up;
+		}
+		else if (a.Contains("Down"))
+		{
+			dir = Vector2.down;
+		}
+		else
+		{
+			dir = Vector2.right;
+		}
 		if (dir.y != 0) dir = new Vector2(0, dir.y);
         timest = Time.time;
         srb = GetComponent<Rigidbody2D>();

@@ -13,6 +13,7 @@ public class Controller : MonoBehaviour
 	Vector2 input;
 	public UnityEvent FirstAttack = new UnityEvent();
 	public UnityEvent Defend = new UnityEvent();
+	public UnityEvent DefendStop = new UnityEvent();
 	public UnityEvent ThirdAttack = new UnityEvent();
 	public IntContextEvent lookUp = new IntContextEvent();
 	
@@ -90,7 +91,7 @@ public class Controller : MonoBehaviour
 		if (context.canceled)
 		{
 			//selfMove.SelfAnim.SetBool("Attack 2", false);
-			Defend.Invoke();
+			DefendStop.Invoke();
 		}
 	}
 	public void Die()

@@ -9,13 +9,11 @@ public class Weapon : MonoBehaviour
 {
 	public enum type { sword, shield, gun };
 	public type weaponType;
-	Animator SelfAnim;
 	Collider2D selfColl;
 	[HideInInspector]
 	public bool Activate;
 	bool Reloaded = true;
 	[HideInInspector] public float GunCD;
-	Movement parentMove;
 	public int Damage;
 	[HideInInspector] public Vector3 BarrelPoint;
 	[HideInInspector] public int Bullets;
@@ -23,16 +21,18 @@ public class Weapon : MonoBehaviour
 	[SerializeField] int StaminaCost;
 	[HideInInspector]
 	public float StartZ;
-	Animator parentAnim;
+	CustomAnimator selfAnim;
 	Sprite[] sprites;
-	SpriteRenderer selfRender;
 	[HideInInspector] public int attackFrames;
 	[HideInInspector] public int beforeAttackFrames;
 	[HideInInspector] public int pushingForce;
 	[HideInInspector] public bool AttackSameEntity;
 	[HideInInspector] public bool DynamicAttackFrames;
 	[HideInInspector] public Entity parentEnt;
-	 [HideInInspector]public Vector2 Dir;
+	[HideInInspector] public UnityEngine.Events.UnityEvent ShootUp = new UnityEngine.Events.UnityEvent();
+	[HideInInspector] public UnityEngine.Events.UnityEvent Shoot = new UnityEngine.Events.UnityEvent();
+	[HideInInspector] public UnityEngine.Events.UnityEvent ShootDown = new UnityEngine.Events.UnityEvent();
+	[HideInInspector]public Vector2 Dir;
 
 
 #if UNITY_EDITOR
@@ -50,6 +50,10 @@ public class Weapon : MonoBehaviour
 		private SerializedProperty _daf;
 		private SerializedProperty _baf;
 		private SerializedProperty _GCD;
+		private SerializedProperty _ShUp;
+		private SerializedProperty _Sh;
+		private SerializedProperty _ShDn;
+
 		Vector3 a;
 		Vector3 b;
 		bool c;
@@ -66,6 +70,9 @@ public class Weapon : MonoBehaviour
 			_daf = serializedObject.FindProperty("DynamicAttackFrames");
 			_baf = serializedObject.FindProperty("beforeAttackFrames");
 			_GCD = serializedObject.FindProperty("GunCD");
+			_ShUp = serializedObject.FindProperty("ShootUp");
+			_Sh= serializedObject.FindProperty("Shoot");
+			_ShDn= serializedObject.FindProperty("ShootDown");
 			c = true;
 
 		}
@@ -101,6 +108,9 @@ public class Weapon : MonoBehaviour
 					weapon.Bullets = EditorGUILayout.IntField("Bullets count", weapon.Bullets);
 					weapon.Bullet = EditorGUILayout.ObjectField("Bullet type", weapon.Bullet, typeof(GameObject), false) as GameObject;
 					EditorGUILayout.PropertyField(_GCD);
+					EditorGUILayout.PropertyField(_Sh);
+					EditorGUILayout.PropertyField(_ShUp);
+					EditorGUILayout.PropertyField(_ShDn);
 					break;
 
 			}
@@ -129,38 +139,24 @@ public class Weapon : MonoBehaviour
 	{
 		Dir = Vector2.right;
 		sprites = Resources.LoadAll<Sprite>("Weapons Spritesheets/" + name);
-		TryGetComponent(out selfRender);
+		TryGetComponent(out selfAnim);
 		StartZ = transform.localPosition.z;
 		TryGetComponent(out selfColl);
 		parentEnt = GetComponentInParent<Entity>();
-		SelfAnim = GetComponent<Animator>();
-		parentAnim = transform.parent.GetComponent<Animator>();
-		if (transform.parent != null)
-		{
-			transform.parent.TryGetComponent(out parentMove);
-		}
-		if (parentMove == null)
-		{
-			if (transform.parent.parent != null)
-			{
-				transform.parent.parent.TryGetComponent(out parentMove);
-			}
-		}
 	}
 	public void OnTurned()
 	{
 		//ChangeLayer
-		transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z * -1);
+		//transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z * -1);
 		if (weaponType == type.gun)
 		{
-			transform.localScale = new Vector3(transform.localScale.x * -1, 1, 1);
-			transform.localEulerAngles = new Vector3(0, 0, 90 * Dir.y * Dir.x);
+			//transform.localScale = new Vector3(transform.localScale.x * -1, 1, 1);
+			//transform.localEulerAngles = new Vector3(0, 0, 90 * Dir.y * Dir.x);
 		}
 		Dir = new Vector2(Dir.x * -1, Dir.y);
 	}
 	public void Fire()
 	{
-		parentMove.IsAttack = true;
 		switch (weaponType)
 		{
 			case type.sword:
@@ -194,7 +190,7 @@ public class Weapon : MonoBehaviour
 	public void OnLookUp(int context)
 	{
 		Dir = new Vector2(Dir.x, context);
-		transform.localEulerAngles = new Vector3(0, 0, 90 * Dir.y * Dir.x);
+		//transform.localEulerAngles = new Vector3(0, 0, 90 * Dir.y * Dir.x);
 	}
 	IEnumerator IeSwordAttack()
 	{
@@ -223,23 +219,31 @@ public class Weapon : MonoBehaviour
 			//yield return new WaitForSeconds(a);
 		}
 		Activate = false;
-		parentMove.IsAttack = false;
 		StopCoroutine(IeSwordAttack());
 		yield break;
 	}
 	void ShieldAttack()
 	{
 		Activate = !Activate;
-		parentMove.IsAttack = false;
 	}
+
 	void GunAttack()
 	{
-		transform.localEulerAngles = new Vector3(0, 0, 90 * Dir.y * Dir.x);
-		selfRender.enabled = true;
-		var bullet = Instantiate(Bullet, (Vector3)(transform.localToWorldMatrix*BarrelPoint)+ transform.position, Quaternion.identity);
+		if (!Reloaded) return;
+		if (Dir.y == 1) ShootUp.Invoke();
+		if (Dir.y == -1) ShootDown.Invoke();
+		if (Dir.y == 0) Shoot.Invoke();
+		StartCoroutine(IeGunAttack());
+
+	}
+	IEnumerator IeGunAttack()
+	{
+		yield return new WaitUntil(() => selfAnim.CurrentAnim.animName.Contains("Fire")&&selfAnim.CurrentFrameIndex==1);
+		Vector3 point = selfAnim.CurrentAnim.frames[selfAnim.CurrentFrameIndex].point;
+		var bullet = Instantiate(Bullet, point + transform.position, Quaternion.identity);
+		var a = selfAnim.GetComponentInParent<SimpleAnimHolder>().Animators[0].CurrentAnim.animName;
 		bullet.GetComponent<Bullet>().weapon = this;
 		Bullets--;
-		parentMove.IsAttack = false;
 		StartCoroutine(CoolDown());
 	}
 	IEnumerator CoolDown()
@@ -248,7 +252,6 @@ public class Weapon : MonoBehaviour
 		yield return new WaitForSeconds(GunCD);
 		Reloaded = true;
 		StopCoroutine(CoolDown());
-		selfRender.enabled = false;
 		yield break;
 	}
 	// Update is called once per frame
@@ -258,11 +261,18 @@ public class Weapon : MonoBehaviour
 		if (weaponType == type.sword)
 		{
 			//CheckForActivation();
-			if (selfRender != null) UpdatePhysicsOutline();
 		}
 		if (weaponType == type.shield)
 		{
 			UpdateImmunity();
+			if(selfAnim.CurrentAnim.name=="Def"|| selfAnim.CurrentAnim.name == "DefStatic")
+			{
+				//transform.localPosition = new Vector3(transform.localPosition.x,transform.localPosition.y,-Mathf.Sign(StartZ)*2.5f);
+			}
+			else
+			{
+				//transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, Mathf.Sign(StartZ) * 2.5f);
+			}
 		}
 	}
 	void UpdateImmunity()
@@ -321,22 +331,8 @@ public class Weapon : MonoBehaviour
 		}
 	}
 
-	[System.Obsolete("Удали потом")]
-	void ControlAnims()
-	{
-		var a = parentAnim.GetCurrentAnimatorStateInfo(0);
-		SelfAnim.Play(a.shortNameHash, 0, a.normalizedTime + Time.fixedDeltaTime / a.length);
-	}
-
 	private void LateUpdate()
 	{
-		if (selfRender != null && weaponType != type.gun) ChangeSprite();
-	}
-	void ChangeSprite()
-	{
-		var structure = transform.parent.GetComponent<SpriteRenderer>();
-		if (structure.sprite == null) return;
-		var b = structure.sprite.name;
-		if (selfRender != null) selfRender.sprite = System.Array.Find(sprites, x => x.name == b);
+		
 	}
 }

@@ -179,6 +179,9 @@ public class Entity : MonoBehaviour
 }
 public static class Misc
 {
+
+	
+	public delegate bool condition(CustomAnimatorContextInfo animatorInfo);
 	public struct MyColors
 	{
 		public static UnityEngine.Color pink

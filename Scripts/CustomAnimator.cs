@@ -7,16 +7,27 @@ using UnityEngine.Events;
 
 public class CustomAnimator : MonoBehaviour
 {
+	[Tooltip("If animaions between mother and child are equal, child get frame index of mother's animation")]
+	public CustomAnimator MotherAnimator;
 	public string DefaultAnim;
 	private CustomAnimation defaultAnim;
+	public bool draw;
 	public bool Reset;
+	public bool AddNewAnim;
 	public float timeFromFrameStart;
 	private int currentFrameIndex;
+	public int CurrentFrameIndex
+	{
+		get
+		{
+			return currentFrameIndex;
+		}
+	}
 	private SpriteRenderer selfRender;
-	[HideInInspector]public CustomAnimation CurrentAnim;
+	[HideInInspector] public CustomAnimation CurrentAnim;
 	public List<CustomAnimation> AllAnims = new List<CustomAnimation>();
 	public List<Sprite> SpritesInOT;
-	public int[][] SliceScheme;
+	[SerializeField]List<string> Impulses=new List<string>(); 
 	public List<int> FireAnimScheme;
 	public List<int> FireUpAnimScheme;
 	public List<int> FireDownAnimScheme;
@@ -41,7 +52,7 @@ public class CustomAnimator : MonoBehaviour
 		private void OnEnable()
 		{
 			animator = (CustomAnimator)target;
-			animator.SerializeAnimations();
+			//animator.SerializeAnimations();
 			animator.AssignPriority();
 		}
 		public override void OnInspectorGUI()
@@ -52,14 +63,34 @@ public class CustomAnimator : MonoBehaviour
 				animator.SerializeAnimations();
 				animator.AssignPriority();
 			}
-			if(animator.CurrentAnim!=null)EditorGUILayout.LabelField("CurrentAnimName",animator.CurrentAnim.name);
+			if (animator.AddNewAnim)
+			{
+				animator.AddNewAnim = false;
+				animator.SerializeAnimation(null, "New Anim", 0, false, null);
+			}
+			if (animator.draw)
+			{
+				animator.draw = false;
+				print(animator.AllAnims.Find(x => x.animName == "DefReverse").m_condition.Method);
+			}
+			if (animator.CurrentAnim != null) EditorGUILayout.LabelField("CurrentAnimName", animator.CurrentAnim.name);
 			else EditorGUILayout.LabelField("CurrentAnimName", "Null");
 			EditorGUILayout.LabelField("CurrentFrameIndex", animator.currentFrameIndex.ToString());
 			base.OnInspectorGUI();
 		}
 	}
 #endif
-
+	public static Misc.condition alwaysTrue = (CustomAnimatorContextInfo a) => true;
+	public static bool cond(CustomAnimatorContextInfo a)
+	{
+		if (a.currentStateName == "DefStatic" || a.currentStateName == "Def") return true;
+		else return false;
+	}
+	public static bool DefCond(CustomAnimatorContextInfo a)
+	{
+		a.animator.Impulses.RemoveAll(x => x == "DefReverse");
+		return true;
+	}
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -70,48 +101,69 @@ public class CustomAnimator : MonoBehaviour
 		animChanged.AddListener(OnStateChanged);
 		AnimEnd.AddListener(OnAnimFinished);
 		AssignPriority();
+		InitializeConditions();
+		//print(AllAnims.Find(x => x.animName == "Def").m_condition.Method);
+	}
+	void InitializeConditions()
+	{
+		foreach(var anim in AllAnims)
+		{
+			if (anim.conditionName != "")
+			{
+				anim.InitializeCondition();
+			}
+		}
 	}
 	void SerializeAnimations()
 	{
 		SerializeAnimation(FireAnimScheme, "Fire");
 		SerializeAnimation(FireUpAnimScheme, "FireUp");
 		SerializeAnimation(FireDownAnimScheme, "FireDown");
-		SerializeAnimation(IdleAnimScheme, "Idle", 8,true);
-		SerializeAnimation(DefAnimScheme, "Def");
-		SerializeAnimation(AttackAnimScheme, "Attack",12);
+		SerializeAnimation(IdleAnimScheme, "Idle", 8, true);
+		SerializeAnimation(DefAnimScheme, "Def",8,false,new string[0],false,DefCond,false);
+		SerializeAnimation(new List<int>() { DefAnimScheme[1] }, "DefStatic", 8, true);
+		SerializeAnimation(DefAnimScheme, "DefReverse", 6, false, new string[0], true, cond, true);
+		SerializeAnimation(AttackAnimScheme, "Attack", 12, false, new string[0],true);
 		SerializeAnimation(JumpAnimScheme, "Jump");
-		SerializeAnimation(FlyUpAnimScheme, "FlyUp",8,true);
-		SerializeAnimation(FlyDownAnimScheme, "FlyDown",8,true);
-		SerializeAnimation(LandAnimScheme, "Land");
-		SerializeAnimation(RunAnimScheme, "Run",12,true);
+		SerializeAnimation(FlyUpAnimScheme, "FlyUp", 8, true);
+		SerializeAnimation(FlyDownAnimScheme, "FlyDown", 8, true, new string[] { "Land" });
+		SerializeAnimation(LandAnimScheme, "Land", 8, false, new string[] { "Idle" });
+		SerializeAnimation(RunAnimScheme, "Run", 12, true, new string[] { "Idle" });
 		SerializeAnimation(RollAnimScheme, "Roll", 12);
-		SerializeAnimation(Attack2AnimScheme, "Attack2");
-		SerializeAnimation(Attack3AnimScheme, "Attack3");
-		SerializeAnimation(GunIdleAnimScheme, "GunIdle",8,true);
+		SerializeAnimation(Attack2AnimScheme, "Attack2", 12, false, new string[0], true);
+		SerializeAnimation(Attack3AnimScheme, "Attack3", 12, false, new string[0],true);
+		SerializeAnimation(GunIdleAnimScheme, "GunIdle", 8, true);
 	}
+
 	void AssignPriority()
 	{
 		int prior = 0;
-		foreach(var anim in AllAnims)
+		foreach (var anim in AllAnims)
 		{
 			anim.priority = prior;
 			prior++;
 		}
 	}
+
 	void SerializeAnimation(List<int> framesInOT, string name)
 	{
-		List<Sprite> frames = new List<Sprite>();
-		foreach (var num in framesInOT)
+		List<CustomFrame> frames = new List<CustomFrame>();
+		if (framesInOT != null)
 		{
-			frames.Add(SpritesInOT[num]);
+			foreach (var num in framesInOT)
+			{
+				CustomFrame a = ScriptableObject.CreateInstance<CustomFrame>();
+				a.sprite = SpritesInOT[num];
+				frames.Add(a);
+			}
 		}
-
 		var newAnim = ScriptableObject.CreateInstance<CustomAnimation>();
 		newAnim.frames = frames;
 		newAnim.animName = name;
-		newAnim.speed = 16;
-		newAnim.name=name;
+		newAnim.speed = 8;
+		newAnim.name = name;
 		newAnim.repeatable = false;
+		newAnim.m_condition = alwaysTrue;
 		var pred = AllAnims.Find(x => x.name == name);
 		if (pred == null)
 		{
@@ -124,14 +176,18 @@ public class CustomAnimator : MonoBehaviour
 			AllAnims.Insert(ind, newAnim);
 		}
 	}
-	void SerializeAnimation(List<int> framesInOT, string name,int fps)
+	void SerializeAnimation(List<int> framesInOT, string name, int fps)
 	{
-		List<Sprite> frames = new List<Sprite>();
-		foreach (var num in framesInOT)
+		List<CustomFrame> frames = new List<CustomFrame>();
+		if (framesInOT != null)
 		{
-			frames.Add(SpritesInOT[num]);
+			foreach (var num in framesInOT)
+			{
+				CustomFrame a = ScriptableObject.CreateInstance<CustomFrame>();
+				a.sprite = SpritesInOT[num];
+				frames.Add(a);
+			}
 		}
-
 		var newAnim = ScriptableObject.CreateInstance(typeof(CustomAnimation));
 		newAnim.name = name;
 		var an = (CustomAnimation)newAnim;
@@ -139,6 +195,7 @@ public class CustomAnimator : MonoBehaviour
 		an.animName = name;
 		an.speed = fps;
 		an.repeatable = false;
+		an.m_condition = alwaysTrue;
 		var pred = AllAnims.Find(x => x.name == name);
 		if (pred == null)
 		{
@@ -151,20 +208,25 @@ public class CustomAnimator : MonoBehaviour
 			AllAnims.Insert(ind, an);
 		}
 	}
-	void SerializeAnimation(List<int> framesInOT, string name, int fps,bool repeatable)
+	void SerializeAnimation(List<int> framesInOT, string name, int fps, bool repeatable)
 	{
-		List<Sprite> frames = new List<Sprite>();
-		foreach (var num in framesInOT)
+		List<CustomFrame> frames = new List<CustomFrame>();
+		if (framesInOT != null)
 		{
-			frames.Add(SpritesInOT[num]);
+			foreach (var num in framesInOT)
+			{
+				CustomFrame a = ScriptableObject.CreateInstance<CustomFrame>();
+				a.sprite = SpritesInOT[num];
+				frames.Add(a);
+			}
 		}
-
 		var newAnim = ScriptableObject.CreateInstance<CustomAnimation>();
 		newAnim.frames = frames;
 		newAnim.animName = name;
 		newAnim.speed = fps;
 		newAnim.name = name;
 		newAnim.repeatable = repeatable;
+		newAnim.m_condition = alwaysTrue;
 		var pred = AllAnims.Find(x => x.name == name);
 		if (pred == null)
 		{
@@ -174,83 +236,274 @@ public class CustomAnimator : MonoBehaviour
 		{
 			var ind = AllAnims.IndexOf(pred);
 			AllAnims.Remove(pred);
-			AllAnims.Insert(ind,newAnim);
+			AllAnims.Insert(ind, newAnim);
 		}
 	}
+	void SerializeAnimation(List<int> framesInOT, string name, int fps, bool repeatable, string[] transitionsTo)
+	{
+		List<CustomFrame> frames = new List<CustomFrame>();
+		if (framesInOT != null)
+		{
+			foreach (var num in framesInOT)
+			{
+				CustomFrame a = ScriptableObject.CreateInstance<CustomFrame>();
+				a.sprite = SpritesInOT[num];
+				frames.Add(a);
+			}
+		}
+
+		var newAnim = ScriptableObject.CreateInstance<CustomAnimation>();
+		newAnim.frames = frames;
+		newAnim.animName = name;
+		newAnim.speed = fps;
+		newAnim.name = name;
+		newAnim.repeatable = repeatable;
+		newAnim.transitionsTo = transitionsTo;
+		newAnim.m_condition = alwaysTrue;
+		var pred = AllAnims.Find(x => x.name == name);
+		if (pred == null)
+		{
+			AllAnims.Add(newAnim);
+		}
+		else
+		{
+			var ind = AllAnims.IndexOf(pred);
+			AllAnims.Remove(pred);
+			AllAnims.Insert(ind, newAnim);
+		}
+	}
+	void SerializeAnimation(List<int> framesInOT, string name, int fps, bool repeatable, string[] transitionsTo, bool saveImp)
+	{
+		List<CustomFrame> frames = new List<CustomFrame>();
+		if (framesInOT != null)
+		{
+			foreach (var num in framesInOT)
+			{
+				CustomFrame a = ScriptableObject.CreateInstance<CustomFrame>();
+				a.sprite = SpritesInOT[num];
+				frames.Add(a);
+			}
+		}
+		var newAnim = ScriptableObject.CreateInstance<CustomAnimation>();
+		newAnim.frames = frames;
+		newAnim.animName = name;
+		newAnim.speed = fps;
+		newAnim.name = name;
+		newAnim.repeatable = repeatable;
+		newAnim.transitionsTo = transitionsTo;
+		newAnim.saveImpulse = saveImp;
+		newAnim.m_condition = alwaysTrue;
+		var pred = AllAnims.Find(x => x.name == name);
+		if (pred == null)
+		{
+			AllAnims.Add(newAnim);
+		}
+		else
+		{
+			var ind = AllAnims.IndexOf(pred);
+			AllAnims.Remove(pred);
+			AllAnims.Insert(ind, newAnim);
+		}
+	}
+	void SerializeAnimation(List<int> framesInOT, string name, int fps, bool repeatable, string[] transitionsTo, bool saveImp, Misc.condition condition, bool reversed)
+	{
+		List<CustomFrame> frames = new List<CustomFrame>();
+		if (framesInOT != null)
+		{
+			foreach (var num in framesInOT)
+			{
+				CustomFrame a = ScriptableObject.CreateInstance<CustomFrame>();
+				a.sprite = SpritesInOT[num];
+				frames.Add(a);
+			}
+		}
+		var newAnim = ScriptableObject.CreateInstance<CustomAnimation>();
+		newAnim.frames = frames;
+		newAnim.animName = name;
+		newAnim.speed = fps;
+		newAnim.name = name;
+		newAnim.repeatable = repeatable;
+		newAnim.transitionsTo = transitionsTo;
+		newAnim.saveImpulse = saveImp;
+		newAnim.m_condition = condition;
+		newAnim.conditionName = condition.Method.Name;
+		var pred = AllAnims.Find(x => x.name == name);
+		if (pred == null)
+		{
+			AllAnims.Add(newAnim);
+		}
+		else
+		{
+			var ind = AllAnims.IndexOf(pred);
+			AllAnims.Remove(pred);
+			AllAnims.Insert(ind, newAnim);
+		}
+	}
+
 	// Update is called once per frame
 	void Update()
 	{
+
 		if (AllAnims.Count > 0) PlayCurrentAnim();
-		if (runInEditMode)
-		{
-			//CurrentAnim = AllAnims[DefaultAnim];
-		}
+		//if (CurrentAnim.animName == "Idle") Impulses.Clear();
 	}
-	UnityEvent animChanged = new UnityEvent();
+	AnimContextEvent animChanged = new AnimContextEvent();
 	public void PlayAnim(CustomAnimation anim)
 	{
-		if (anim == CurrentAnim) return;
-		if (anim.priority < CurrentAnim.priority) return;
-		StartCoroutine(WaitforEndOfAnimFrame(animChanged, anim,false));
+		if (anim.saveImpulse) Impulses.Add(anim.animName);
+		if (anim == CurrentAnim)
+		{
+			return;
+		}
+		if (anim.m_condition != null && !anim.m_condition(new CustomAnimatorContextInfo(this))) return;
+		if (anim.priority < CurrentAnim.priority && (CurrentAnim.transitionsTo == null || !System.Array.Exists(CurrentAnim.transitionsTo, x => x == anim.name))) return;
+		//MostCurrentAnim = anim;
+		StopAllCoroutines();
+		StartCoroutine(WaitforEndOfAnimFrame(animChanged, anim, false));
 	}
 	public void PlayAnim(string animName)
 	{
-
-		var anim = AllAnims.Find(x => x.name == animName);
-		if (anim == CurrentAnim) return;
-
-		if (anim.priority < CurrentAnim.priority) return;
-		StartCoroutine(WaitforEndOfAnimFrame(animChanged, anim,false));
+		var anim = AllAnims.Find(x => x.animName == animName);
+		if (anim.saveImpulse) Impulses.Add(anim.animName);
+		if (animName == CurrentAnim.animName )
+		{
+			return;
+		}
+		if (anim.m_condition != null && !anim.m_condition(new CustomAnimatorContextInfo(this))) return;
+		if (anim.priority < CurrentAnim.priority && (CurrentAnim.transitionsTo == null || !System.Array.Exists(CurrentAnim.transitionsTo, x => x == anim.name))) return;
+		//MostCurrentAnim = anim;
+		StopAllCoroutines();
+		StartCoroutine(WaitforEndOfAnimFrame(animChanged, anim, false));
 	}
 	public void PlayAnim(int animNum)
 	{
 		var anim = AllAnims[animNum];
-		if (anim == CurrentAnim) return;
-
-		if (anim.priority < CurrentAnim.priority) return;
-		StartCoroutine(WaitforEndOfAnimFrame(animChanged, anim,false));
-	}
-	void OnStateChanged()
-	{
-		if (name == "SteelGreaves")
+		if (anim.saveImpulse)Impulses.Add(anim.animName);
+		if (anim.name == CurrentAnim.animName)
 		{
-
+			return;
+		}
+		if (anim.m_condition !=null&& !anim.m_condition(new CustomAnimatorContextInfo(this))) return;
+		if (anim.priority < CurrentAnim.priority && (CurrentAnim.transitionsTo == null || !System.Array.Exists(CurrentAnim.transitionsTo, x => x == anim.name))) return;
+		//MostCurrentAnim = anim;
+		StopAllCoroutines();
+		StartCoroutine(WaitforEndOfAnimFrame(animChanged, anim, false));
+	}
+	void OnStateChanged(CustomAnimation newAnim)
+	{
+		if (Impulses.Exists(x => x == newAnim.animName))
+		{
+			Impulses.RemoveAll(x => x == newAnim.animName);
 		}
 		currentFrameIndex = 0;
-		selfRender.sprite = CurrentAnim.frames[0];
-		print("StateChanged  "+name);
+		//print(CurrentAnim.name + newAnim.name);
+		selfRender.sprite = newAnim.frames[0];
+
+		if (MotherAnimator != null && MotherAnimator.CurrentAnim.animName == newAnim.animName)
+		{
+			if (MotherAnimator.CurrentAnim.frames.Count == newAnim.frames.Count)
+			{
+				currentFrameIndex = MotherAnimator.currentFrameIndex;
+				timeFromFrameStart = MotherAnimator.timeFromFrameStart;
+				selfRender.sprite = newAnim.frames[MotherAnimator.currentFrameIndex];
+			}
+		}
+
+
+		//print("StateChanged  "+name);
 	}
 	public void ReturnToDefaultAnim()
 	{
-		if (CurrentAnim == defaultAnim||(!CurrentAnim.repeatable&&currentFrameIndex<CurrentAnim.frames.Count-1)) return ;
-		StartCoroutine(WaitforEndOfAnimFrame(animChanged, defaultAnim,true));
+		//Impulses.Clear();
+		if (CurrentAnim == defaultAnim)
+		{
+			return;
+		}
+		if (!CurrentAnim.repeatable && currentFrameIndex < CurrentAnim.frames.Count - 1 && timeFromFrameStart < 1 / CurrentAnim.speed)
+		{
+			return;
+		}
+		StartCoroutine(WaitforEndOfAnimFrame(animChanged, defaultAnim, true));
 	}
 	bool IfTimeZero()
 	{
 		return timeFromFrameStart == 0;
 	}
-	IEnumerator WaitforEndOfAnimFrame(UnityEvent todo,CustomAnimation startAnim,bool waitNextFrame)
+	IEnumerator WaitforEndOfAnimFrame(AnimContextEvent todo, CustomAnimation startAnim, bool waitNextFrame)
 	{
-		//if (waitNextFrame) yield return new WaitWhile(IfTimeZero);
-		if(timeFromFrameStart!=0)yield return new WaitUntil(IfTimeZero);
-		todo.Invoke();
+		//if (waitNextFrame) yield return new WaitWhile(IfTimeNotZero);
+		if (timeFromFrameStart != 0) yield return new WaitUntil(IfTimeZero);
+		todo.Invoke(startAnim);
 		CurrentAnim = startAnim;
 	}
 	AnimContextEvent AnimEnd = new AnimContextEvent();
+	string[] NotReturnToDefault = new string[] { "Attack", "Attack2", "Attack3", "Def" };
+
 	void OnAnimFinished(CustomAnimation finishedAnim)
 	{
-		if (!finishedAnim.repeatable)
+		//var a = System.Array.Exists(NotReturnToDefault, x => x == finishedAnim.animName);
+		if (!finishedAnim.repeatable && !System.Array.Exists(NotReturnToDefault, x => x == finishedAnim.animName))
 		{
 			ReturnToDefaultAnim();
 		}
-		else
+		if (finishedAnim.repeatable)
 		{
 			currentFrameIndex = 0;
 		}
-		if(finishedAnim.name == "Roll")
+		if (finishedAnim.name == "Jump")
 		{
-			PlayAnim("Idle"); 
+			PlayAnim("FlyUp");
 		}
+		if (finishedAnim.animName == "Def")
+		{
+			if(!Impulses.Exists(x => x == "DefReverse"))
+			{
+				PlayAnim("DefStatic");
+			}
+			else
+			{
+				PlayAnim("DefReverse");
+			}
+		}
+		if (finishedAnim.name == "Roll")
+		{
+			PlayAnim("Idle");
+		}
+		if (finishedAnim.animName == "Attack")
+		{
+			if (Impulses.Exists(x=>x=="Attack"))
+			{
+				PlayAnim("Attack2");
+				Impulses.RemoveAll(z => z == "Attack");
+			}
+			else
+			{
+				ReturnToDefaultAnim();
+			}
+		}
+		if (finishedAnim.animName == "Attack2")
+		{
+			if (Impulses.Exists(x => x == "Attack"))
+			{
+				PlayAnim("Attack3");
+				Impulses.RemoveAll(z => z == "Attack");
+			}
+			{
+				ReturnToDefaultAnim();
+			}
+		}
+		if (finishedAnim.animName == "Attack3")
+		{
+			if (Impulses.Exists(x => x == "Attack"))
+			{
+				PlayAnim("Attack");
+				Impulses.RemoveAll(z => z == "Attack");
+			}
+			{
+				ReturnToDefaultAnim();
+			}
+		}
+
 	}
 	void PlayCurrentAnim()
 	{
@@ -263,9 +516,59 @@ public class CustomAnimator : MonoBehaviour
 			{
 				AnimEnd.Invoke(CurrentAnim);
 			}
-			selfRender.sprite = CurrentAnim.frames[currentFrameIndex];
+			var frame = CurrentAnim.frames[currentFrameIndex];
+			selfRender.sprite = frame;
+			if (frame.position != Vector3.zero)
+			{
+				transform.position = frame.position;
+			}
 		}
 	}
+
 }
 
 public class AnimContextEvent : UnityEngine.Events.UnityEvent<CustomAnimation> { }
+public class CustomAnimatorContextInfo
+{
+	public CustomAnimator animator;
+	int cfi;
+	public int currentFrameIndex
+	{
+		get
+		{
+			return cfi;
+		}
+	}
+	string csn;
+	public string currentStateName
+	{
+		get
+		{
+			return csn;
+		}
+	}
+	float tffs;
+	public float timeFromFrameStart
+	{
+		get
+		{
+			return tffs;
+		}
+	}
+	string[] attributes;
+	public string[] currentAnimationAttributes
+	{
+		get
+		{
+			return attributes;
+		}
+	}
+	public CustomAnimatorContextInfo(CustomAnimator customAnimator)
+	{
+		animator = customAnimator;
+		cfi = customAnimator.CurrentFrameIndex;
+		csn = customAnimator.CurrentAnim.animName;
+		tffs = customAnimator.timeFromFrameStart;
+		//attributes = customAnimator.CurrentAnim.attributes;
+	}
+}

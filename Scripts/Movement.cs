@@ -119,16 +119,25 @@ public class Movement : MonoBehaviour
 	}
 
 
-
+	float OnGroundTimer;
 	// Update is called once per frame
 	void FixedUpdate()
 	{
 		if(WallJumpAbility) Slide();
 		var lastGroundCheck = OnGround;
 		OnGround = CheckGround();
+		if (OnGround)
+		{
+			OnGroundTimer += Time.deltaTime;
+		}
+		else
+		{
+			OnGroundTimer = 0;
+		}
 		if (!lastGroundCheck && OnGround)
 		{
 			LandEvent.Invoke();
+			print("Landed");
 		}
 		if (!OnGround&&!lastGroundCheck)
 		{
@@ -266,11 +275,11 @@ public class Movement : MonoBehaviour
 		}
 		if (Mathf.Abs(SelfRB.velocity.x) < 3)
 		{
-			if(!IsDashing)StopEvent.Invoke();
+			if(!IsDashing&&!IsJumping&&SelfRB.velocity.y==0&&OnGroundTimer>=2f/8f)StopEvent.Invoke();
 		}
 		else
 		{
-			if (!IsDashing) MoveEvent.Invoke();
+			if (!IsDashing && !IsJumping && SelfRB.velocity.y == 0) MoveEvent.Invoke();
 		}
 	}
 	void Friction(float LocalAcceleration)
@@ -328,10 +337,10 @@ public class Movement : MonoBehaviour
 		}
 		else return false;
 	}
-	public UnityEvent JumpEvent;
-	public UnityEvent LandEvent;
-	public UnityEvent InAirUp;
-	public UnityEvent InAirDown;
+	public UnityEvent JumpEvent= new UnityEvent();
+	public UnityEvent LandEvent = new UnityEvent();
+	public UnityEvent InAirUp = new UnityEvent();
+	public UnityEvent InAirDown = new UnityEvent();
 	public void Jump(float force)
 	{
 		StartCoroutine(IeJump(force));
@@ -347,7 +356,7 @@ public class Movement : MonoBehaviour
 
 			if (Mathf.Abs(SelfRB.velocity.x) < 0.1f&&!CanFly)
 			{
-				yield return new WaitForSeconds(JumpAnimationLength);
+				yield return new WaitForSeconds(2f/8f);
 			}
 			var xSpeed = SelfRB.velocity.x;
 			SelfRB.velocity = new Vector2(xSpeed, 0);
