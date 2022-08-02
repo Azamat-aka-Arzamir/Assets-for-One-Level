@@ -9,7 +9,7 @@ public class Weapon : MonoBehaviour
 {
 	public enum type { sword, shield, gun };
 	public type weaponType;
-	Collider2D selfColl;
+	PolygonCollider2D selfColl;
 	[HideInInspector]
 	public bool Activate;
 	bool Reloaded = true;
@@ -170,16 +170,12 @@ public class Weapon : MonoBehaviour
 				break;
 		}
 	}
-	void UpdatePhysicsOutline()
+	public void UpdatePhysicsOutline()
 	{
-		//selfColl.points = selfRender.sprite.vertices;
-		//if (selfRender.sprite.name.ToString().StartsWith("L"))
+		var a = selfAnim.CurrentAnim.frames[selfAnim.CurrentFrameIndex].PhysicsShape;
+		if (a.Length > 2)
 		{
-			selfColl.offset = new Vector2(-Mathf.Abs(selfColl.offset.x), selfColl.offset.y);
-		}
-		//if (selfRender.sprite.name.ToString().StartsWith("R"))
-		{
-			//selfColl.offset = new Vector2(Mathf.Abs(selfColl.offset.x), selfColl.offset.y);
+			selfColl.points = a;
 		}
 	}
 
@@ -224,7 +220,14 @@ public class Weapon : MonoBehaviour
 	}
 	void ShieldAttack()
 	{
-		Activate = !Activate;
+		StartCoroutine(IeShieldAttack());
+	}
+	IEnumerator IeShieldAttack()
+	{
+		yield return new WaitUntil(() => selfAnim.CurrentAnim.animName == "DefStatic");
+		Activate = true;
+		yield return new WaitUntil(() => selfAnim.CurrentAnim.animName != "DefStatic");
+		Activate = false;
 	}
 
 	void GunAttack()
@@ -260,6 +263,7 @@ public class Weapon : MonoBehaviour
 		//if (weaponType != type.gun) selfColl.bounds.SetMinMax(GetComponent<SpriteRenderer>().bounds.min, GetComponent<SpriteRenderer>().bounds.max);
 		if (weaponType == type.sword)
 		{
+			//UpdatePhysicsOutline();
 			//CheckForActivation();
 		}
 		if (weaponType == type.shield)
@@ -295,10 +299,6 @@ public class Weapon : MonoBehaviour
 			parentEnt.ImmuneToDamageV2 = new Vector2(0, 0);
 		}
 	}
-	private void Update()
-	{
-
-	}
 	private void OnTriggerStay2D(Collider2D collision)
 	{
 		Entity entity;
@@ -329,10 +329,5 @@ public class Weapon : MonoBehaviour
 		{
 			entity.GetDamage(Damage, (int)Mathf.Sign((entity.transform.position - transform.position).normalized.x), transform.parent.gameObject, pushingForce, this);
 		}
-	}
-
-	private void LateUpdate()
-	{
-		
 	}
 }

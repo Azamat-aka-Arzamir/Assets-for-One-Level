@@ -30,14 +30,32 @@ public class CustomFrame : ScriptableObject
 		}
 		private void OnSceneGUI(SceneView sv)
 		{
+			Handles.color = Color.blue;
+			//if(frame.PhysicsShape.Length>2) frame.PhysicsShape = a.GetComponent<PolygonCollider2D>().points;
+			for (int i = 0; i<frame.PhysicsShape.Length;i++)
+			{
+				var currP = frame.PhysicsShape[i];
+				var nextP = frame.PhysicsShape[0];
+				if(i< frame.PhysicsShape.Length-1)
+				{
+					nextP= frame.PhysicsShape[i+1];
+				}
+				frame.PhysicsShape[i] = Handles.PositionHandle(frame.PhysicsShape[i], Quaternion.identity);
+				sv.Repaint();
+				Handles.DrawLine(currP, nextP);
+
+			}
+			Handles.color = Color.red;
 			frame.point=Handles.PositionHandle(frame.point, Quaternion.identity);
 			Handles.DrawWireDisc(frame.point, Vector3.forward, 0.05f);
 		}
+
 	}
 #endif
 	public Sprite sprite;
 	public Vector3 position= new Vector3(0,0,0);
 	public Vector3 point;
+	public Vector2[] PhysicsShape;
 	public CustomFrame(Sprite _sprite)
 	{
 		sprite = _sprite;

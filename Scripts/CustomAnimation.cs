@@ -8,6 +8,7 @@ public class CustomAnimation : ScriptableObject
 {
 	//public bool playTrigger;
 	//public string[] attributes=new string[0];
+	public string tag;
 	public bool saveImpulse = false;
 	public float speed;//same as framerate or FPS
 	public List<CustomFrame> frames;

@@ -29,6 +29,10 @@ public class Controller : MonoBehaviour
 	{
 		selfMove.Move(input, false, selfMove.LocalAcceleration);
 	}
+	public void GetPause(InputAction.CallbackContext context)
+	{
+		Debug.Break();
+	}
 	public void GetMovement(InputAction.CallbackContext context)
 	{
 		x = context.ReadValue<Vector2>().x;

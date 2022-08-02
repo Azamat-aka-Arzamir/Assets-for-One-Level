@@ -462,6 +462,7 @@ public class ImpController : MonoBehaviour
 			transform.position = new Vector3(transform.position.x, transform.position.y, 1);
 
 		}
+		Misc.DrawCross(a, Time.fixedDeltaTime, Color.magenta, 2);
 		return a;
 	}
 

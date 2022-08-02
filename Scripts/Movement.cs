@@ -223,6 +223,7 @@ public class Movement : MonoBehaviour
 
 	public UnityEvent MoveEvent = new UnityEvent();
 	public UnityEvent StopEvent = new UnityEvent();
+	public UnityEvent StopEventWithShieldUp = new UnityEvent();
 	public void Move(Vector2 direction, bool SideInput, float LocalAcceleration)
 	{
 		if (direction != Vector2.zero) direction = direction.normalized;
@@ -275,7 +276,11 @@ public class Movement : MonoBehaviour
 		}
 		if (Mathf.Abs(SelfRB.velocity.x) < 3)
 		{
-			if(!IsDashing&&!IsJumping&&SelfRB.velocity.y==0&&OnGroundTimer>=2f/8f)StopEvent.Invoke();
+			if (!IsDashing && !IsJumping && SelfRB.velocity.y == 0 && OnGroundTimer >= 2f / 8f)
+			{
+				if(Second.weaponType==Weapon.type.shield&&!Second.Activate)StopEvent.Invoke();
+				if (Second.weaponType == Weapon.type.shield && Second.Activate) StopEventWithShieldUp.Invoke();
+			}
 		}
 		else
 		{
