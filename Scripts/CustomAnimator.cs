@@ -523,12 +523,13 @@ public class CustomAnimator : MonoBehaviour
 			//Animation finished
 		}
 		//Animation can be interrupted or has already finished
-		if (name == "BlueCrest" && CurrentAnim.animName == "Land"&&currentFrameIndex>CurrentAnim.frames.Count)
+		if (name == "SteelGreaves" && CurrentAnim.animName == "FlyDown" && FindMostPrioritizedAnim(!finished).animName == "Idle")
 		{
 
 		}
 		var nextState = defaultAnim;
 		nextState = FindMostPrioritizedAnim(!finished);
+
 		if (nextState!=CurrentAnim||(CurrentAnim.repeatable&&finished))
 		{
 			animChanged.Invoke(nextState);
