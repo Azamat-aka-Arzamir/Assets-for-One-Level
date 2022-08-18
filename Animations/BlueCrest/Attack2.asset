@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101f641d4b3b2f84b9c35bfba3d6bad1, type: 3}
+  m_Name: Attack2
+  m_EditorClassIdentifier: 
+  animName: Attack2
+  tag: Attack
+  saveImpulse: 1
+  speed: 12
+  frames:
+  - name: blueCrest_13
+    Show: 0
+    sprite: {fileID: 6015756339614023269, guid: f60d6b1f055223549b9e42dfec21612a, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: blueCrest_14
+    Show: 0
+    sprite: {fileID: 8204206451417154941, guid: f60d6b1f055223549b9e42dfec21612a, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: blueCrest_15
+    Show: 0
+    sprite: {fileID: 6406432589438252821, guid: f60d6b1f055223549b9e42dfec21612a, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: blueCrest_16
+    Show: 0
+    sprite: {fileID: -2230146196741693617, guid: f60d6b1f055223549b9e42dfec21612a, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  priority: 0
+  repeatable: 0
+  interruptable: 0
+  transitionsTo: []
+  doNotTransitTo: []
+  conditionName: 

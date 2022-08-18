@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101f641d4b3b2f84b9c35bfba3d6bad1, type: 3}
+  m_Name: Roll
+  m_EditorClassIdentifier: 
+  animName: Roll
+  tag: Roll
+  saveImpulse: 0
+  speed: 12
+  frames:
+  - name: steelgreaves_31
+    Show: 0
+    sprite: {fileID: 1677826061231308168, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: steelgreaves_32
+    Show: 0
+    sprite: {fileID: 8539530638529721286, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: steelgreaves_33
+    Show: 0
+    sprite: {fileID: -1404346721040945563, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: steelgreaves_34
+    Show: 0
+    sprite: {fileID: -7757570874648937012, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: steelgreaves_35
+    Show: 0
+    sprite: {fileID: -6573464811670736564, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  priority: 0
+  repeatable: 0
+  interruptable: 0
+  transitionsTo: []
+  doNotTransitTo: []
+  conditionName: 

@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101f641d4b3b2f84b9c35bfba3d6bad1, type: 3}
+  m_Name: Attack3
+  m_EditorClassIdentifier: 
+  animName: Attack3
+  tag: Attack
+  saveImpulse: 1
+  speed: 12
+  frames:
+  - name: steelSword_40
+    Show: 0
+    sprite: {fileID: -2963529764097973984, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: steelSword_41
+    Show: 0
+    sprite: {fileID: 3859997690364537881, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: steelSword_42
+    Show: 0
+    sprite: {fileID: -2746996562025131512, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: steelSword_43
+    Show: 0
+    sprite: {fileID: 6739989689769076643, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  priority: 0
+  repeatable: 0
+  interruptable: 0
+  transitionsTo:
+  - Attack
+  doNotTransitTo: []
+  conditionName: 

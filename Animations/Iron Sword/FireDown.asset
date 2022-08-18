@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101f641d4b3b2f84b9c35bfba3d6bad1, type: 3}
+  m_Name: FireDown
+  m_EditorClassIdentifier: 
+  animName: FireDown
+  tag: 
+  saveImpulse: 0
+  speed: 8
+  frames:
+  - name: steelSword_5
+    Show: 0
+    sprite: {fileID: -7927286663819768502, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: steelSword_6
+    Show: 0
+    sprite: {fileID: 4210314593357615414, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  priority: 0
+  repeatable: 0
+  interruptable: 0
+  transitionsTo:
+  - GunIdle
+  - AimDown
+  doNotTransitTo: []
+  conditionName: 

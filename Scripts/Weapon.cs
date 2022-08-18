@@ -270,7 +270,7 @@ public class Weapon : MonoBehaviour
 		if (weaponType == type.shield)
 		{
 			UpdateImmunity();
-			if(selfAnim.CurrentAnim.name=="Def"|| selfAnim.CurrentAnim.name == "DefStatic")
+			if(selfAnim.CurrentAnim.animName == "Def"|| selfAnim.CurrentAnim.animName == "DefStatic")
 			{
 				//transform.localPosition = new Vector3(transform.localPosition.x,transform.localPosition.y,-Mathf.Sign(StartZ)*2.5f);
 			}
