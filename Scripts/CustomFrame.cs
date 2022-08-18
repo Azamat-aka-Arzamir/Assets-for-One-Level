@@ -30,6 +30,7 @@ public class CustomFrame : ScriptableObject
 		}
 		private void OnSceneGUI(SceneView sv)
 		{
+			a.transform.localRotation=(Quaternion.Euler(0, 0, frame.rotation));
 			Handles.color = Color.blue;
 			//if(frame.PhysicsShape.Length>2) frame.PhysicsShape = a.GetComponent<PolygonCollider2D>().points;
 			for (int i = 0; i<frame.PhysicsShape.Length;i++)
@@ -55,6 +56,7 @@ public class CustomFrame : ScriptableObject
 	public Sprite sprite;
 	public Vector3 position= new Vector3(0,0,0);
 	public Vector3 point;
+	public float rotation;
 	public Vector2[] PhysicsShape;
 	public CustomFrame(Sprite _sprite)
 	{

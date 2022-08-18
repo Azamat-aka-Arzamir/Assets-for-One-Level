@@ -46,10 +46,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponType: 0
   Activate: 0
+  GunCD: 0
   Damage: 10
   BarrelPoint: {x: 0, y: 0, z: 0}
   Bullets: 0
-  BulletType: {fileID: 0}
+  Bullet: {fileID: 0}
   StaminaCost: 0
   StartZ: 0
   attackFrames: 50
@@ -58,6 +59,16 @@ MonoBehaviour:
   AttackSameEntity: 0
   DynamicAttackFrames: 0
   parentEnt: {fileID: 0}
+  ShootUp:
+    m_PersistentCalls:
+      m_Calls: []
+  Shoot:
+    m_PersistentCalls:
+      m_Calls: []
+  ShootDown:
+    m_PersistentCalls:
+      m_Calls: []
+  Dir: {x: 0, y: 0}
 --- !u!58 &7016695250716642028
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -136,8 +147,8 @@ MonoBehaviour:
   StaminaRegenerationSpeed: 10
   PushingExceptions: []
   Push: 0
-  PushingForce: 50
-  PushingRadius: 1
+  PushingForce: 0
+  PushingRadius: 0
   DyamicForce: 0
   GettingDamage: 0
   a: 0
@@ -200,9 +211,7 @@ MonoBehaviour:
   DashAbility: 0
   CanFly: 1
   LocalAcceleration: 0
-  First: {fileID: 7016695252305847627}
-  Second: {fileID: 7016695250716642031}
-  Third: {fileID: 7016695252305847627}
+  LastWeapon: {fileID: 7016695252305847627}
   Wall: 0
   OnGround: 0
   OnWall: 0
@@ -210,10 +219,39 @@ MonoBehaviour:
   IsJumping: 0
   IsDashing: 0
   SelfAnim: {fileID: 0}
+  CurrentDir: {x: 1, y: 0}
+  lastDir: 1
+  lastDirY: 0
   selfEntity: {fileID: 0}
   IsAttack: 0
   AnotherInput: 0
-  draw: 1
+  LookUpEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  LookDownEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  MoveEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  StopEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  JumpEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  LandEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  InAirUp:
+    m_PersistentCalls:
+      m_Calls: []
+  InAirDown:
+    m_PersistentCalls:
+      m_Calls: []
+  dashEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7016695251876039035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,6 +266,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 15
   CoolDown: 2
+  ClawsAttackEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7016695252305847627}
+        m_TargetAssemblyTypeName: Weapon, Assembly-CSharp
+        m_MethodName: Fire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  SpearAttackEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7016695250716642031}
+        m_TargetAssemblyTypeName: Weapon, Assembly-CSharp
+        m_MethodName: Fire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7016695251876039034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,6 +309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyHive: {fileID: 0}
+  number: 0
   SeeEnemy: 0
   InHive: 0
   SelfImpAdd: {fileID: 0}
@@ -248,7 +317,7 @@ MonoBehaviour:
   Target: {x: 54, y: -97}
   x: 0
   RayAngle: 10
-  SightRadius: 50
+  SightRadius: 200
   TargetEntity: {fileID: 0}
   LastTargetPos: {x: 0, y: 0}
   SeeWall: 0
@@ -559,10 +628,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponType: 0
   Activate: 0
+  GunCD: 0
   Damage: 10
   BarrelPoint: {x: 0, y: 0, z: 0}
   Bullets: 0
-  BulletType: {fileID: 0}
+  Bullet: {fileID: 0}
   StaminaCost: 0
   StartZ: 0
   attackFrames: 5
@@ -571,6 +641,16 @@ MonoBehaviour:
   AttackSameEntity: 0
   DynamicAttackFrames: 0
   parentEnt: {fileID: 0}
+  ShootUp:
+    m_PersistentCalls:
+      m_Calls: []
+  Shoot:
+    m_PersistentCalls:
+      m_Calls: []
+  ShootDown:
+    m_PersistentCalls:
+      m_Calls: []
+  Dir: {x: 0, y: 0}
 --- !u!58 &7016695252305847624
 CircleCollider2D:
   m_ObjectHideFlags: 0

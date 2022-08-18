@@ -15,7 +15,7 @@ public class Hive : MonoBehaviour
 	[SerializeField] float RoomSize;
 	List<Vector2> Walls = new List<Vector2>();
 	List<Vector2> Space = new List<Vector2>();
-	float WallCheckingRayLength = 30;
+	float WallCheckingRayLength = 330;
 	[SerializeField] float MinRequiredSpace = 5;
 	[SerializeField] float RequiredSpace = 0;
 	bool OpenSpace;
@@ -62,6 +62,7 @@ public class Hive : MonoBehaviour
 	}
 	void OnConnect(ImpController connectedImp)
 	{
+		connectedImp.number = Imps.Count;
 		parabAttackEvent.AddListener(connectedImp.ParabAttack);
 		spearAttackEvent.AddListener(connectedImp.SelfImpAdd.SpearAttack);
 	}
@@ -130,7 +131,7 @@ public class Hive : MonoBehaviour
 		}
 	}
 
-	float addHivingHeight = 1;
+	float addHivingHeight = 1f;
 	void SetCurrentTarget()
 	{
 		List<ImpController> activeImps = new List<ImpController>();
@@ -400,14 +401,14 @@ public class Hive : MonoBehaviour
 		}
 	}
 
-	public float hurricaneSpeed = 1.5f;
+	public float hurricaneSpeed = 1;
 	public float hurricaneStartWidth = 1;
-	public float hurricaneWidth = 0.3f;
+	public float hurricaneWidth = 0.2f;
 	void ToHurricane()
 	{
 		foreach (var imp in Imps)
 		{
-			imp.Target = imp.RotatingPoint(transform.position + Vector3.up * 0.5f * Imps.IndexOf(imp)*addHivingHeight/2+Vector3.up*addHivingHeight, hurricaneStartWidth + (float)Imps.IndexOf(imp)* hurricaneWidth, hurricaneSpeed, 2);
+			imp.Target = imp.RotatingPoint(transform.position + Vector3.up * 0.5f * Imps.IndexOf(imp)*addHivingHeight/2+Vector3.up*addHivingHeight, hurricaneStartWidth + Imps.IndexOf(imp) * hurricaneWidth, hurricaneSpeed, 2);
 		}
 	}
 	IEnumerator HurricaneAttack()

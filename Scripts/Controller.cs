@@ -21,7 +21,6 @@ public class Controller : MonoBehaviour
 	void Start()
 	{
 		selfMove = GetComponent<Movement>();
-		lookUp.AddListener(selfMove.Third.OnLookUp);
 	}
 
 	// Update is called once per frame
