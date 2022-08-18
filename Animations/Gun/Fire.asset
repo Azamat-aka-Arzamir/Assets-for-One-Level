@@ -21,12 +21,9 @@ MonoBehaviour:
     Show: 0
     sprite: {fileID: -4511550898982680012, guid: 530e0f7d5d3808d46a59f0f1ab0c776f, type: 3}
     position: {x: 0, y: 0, z: 0}
-    point: {x: 0.6917231, y: -0.104411006, z: 0}
+    point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0.9847431, y: -0.84833974}
-    - {x: -0.5742608, y: 0.8352884}
-    - {x: -0.15661657, y: -1.0180078}
+    PhysicsShape: []
   - name: basicGun_1
     Show: 0
     sprite: {fileID: 4285978571166167848, guid: 530e0f7d5d3808d46a59f0f1ab0c776f, type: 3}

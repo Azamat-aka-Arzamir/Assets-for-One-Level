@@ -23,40 +23,35 @@ MonoBehaviour:
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelgreaves_26
     Show: 0
     sprite: {fileID: 5611005333481554978, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelgreaves_27
     Show: 0
     sprite: {fileID: -3054322014714823774, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelgreaves_28
     Show: 0
     sprite: {fileID: 66530320610590487, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelgreaves_29
     Show: 0
     sprite: {fileID: -409666252551992448, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelgreaves_30
     Show: 0
     sprite: {fileID: -6099963119513553863, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
@@ -72,5 +67,9 @@ MonoBehaviour:
   - Idle
   - Def
   - GunIdle
-  doNotTransitTo: []
+  - FlyUp
+  - FlyDown
+  doNotTransitTo:
+  - FireDown
+  - FireUp
   conditionName: 

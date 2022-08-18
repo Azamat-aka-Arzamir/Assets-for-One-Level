@@ -23,40 +23,35 @@ MonoBehaviour:
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelSword_26
     Show: 0
     sprite: {fileID: 1385937751925822742, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelSword_27
     Show: 0
     sprite: {fileID: -5697989348861419905, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelSword_28
     Show: 0
     sprite: {fileID: 7476328497274741860, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelSword_29
     Show: 0
     sprite: {fileID: -5948357904175951457, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelSword_30
     Show: 0
     sprite: {fileID: 839825710674623120, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}

@@ -23,32 +23,28 @@ MonoBehaviour:
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: brownshield_32
     Show: 0
     sprite: {fileID: 2086084798606297507, guid: 1059ffd18bbcbdb4c9ed10124ee5b8fc, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: brownshield_33
     Show: 0
     sprite: {fileID: -8405057982145905243, guid: 1059ffd18bbcbdb4c9ed10124ee5b8fc, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: brownshield_34
     Show: 0
     sprite: {fileID: 8154524439593933540, guid: 1059ffd18bbcbdb4c9ed10124ee5b8fc, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: brownshield_35
     Show: 0
     sprite: {fileID: 8353438843929381661, guid: 1059ffd18bbcbdb4c9ed10124ee5b8fc, type: 3}

@@ -23,8 +23,7 @@ MonoBehaviour:
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelgreaves_20
     Show: 0
     sprite: {fileID: 1664348318338796576, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
@@ -36,6 +35,8 @@ MonoBehaviour:
   priority: 0
   repeatable: 1
   interruptable: 0
-  transitionsTo: []
+  transitionsTo:
+  - FireUp
+  - FireDown
   doNotTransitTo: []
   conditionName: 

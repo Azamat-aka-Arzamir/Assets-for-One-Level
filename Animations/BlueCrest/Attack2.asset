@@ -23,24 +23,21 @@ MonoBehaviour:
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: blueCrest_14
     Show: 0
     sprite: {fileID: 8204206451417154941, guid: f60d6b1f055223549b9e42dfec21612a, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: blueCrest_15
     Show: 0
     sprite: {fileID: 6406432589438252821, guid: f60d6b1f055223549b9e42dfec21612a, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: blueCrest_16
     Show: 0
     sprite: {fileID: -2230146196741693617, guid: f60d6b1f055223549b9e42dfec21612a, type: 3}

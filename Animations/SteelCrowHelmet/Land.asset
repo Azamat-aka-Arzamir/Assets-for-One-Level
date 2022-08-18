@@ -23,8 +23,7 @@ MonoBehaviour:
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelCrowHelmet_24
     Show: 0
     sprite: {fileID: -1108126333534899021, guid: ed66ff32450bcca44b7111f1336c7592, type: 3}

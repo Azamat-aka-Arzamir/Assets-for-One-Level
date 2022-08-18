@@ -23,8 +23,7 @@ MonoBehaviour:
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelarmbracesLeftHand_22
     Show: 0
     sprite: {fileID: -7473219857599121948, guid: 3adf6b6cafdebcc4180e47142166043a, type: 3}

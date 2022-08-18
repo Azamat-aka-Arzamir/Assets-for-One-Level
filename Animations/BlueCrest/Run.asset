@@ -23,40 +23,35 @@ MonoBehaviour:
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: blueCrest_26
     Show: 0
     sprite: {fileID: 1446034972709547894, guid: f60d6b1f055223549b9e42dfec21612a, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: blueCrest_27
     Show: 0
     sprite: {fileID: 8395177133921348922, guid: f60d6b1f055223549b9e42dfec21612a, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: blueCrest_28
     Show: 0
     sprite: {fileID: 5766763490501526193, guid: f60d6b1f055223549b9e42dfec21612a, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: blueCrest_29
     Show: 0
     sprite: {fileID: -3976010720151380230, guid: f60d6b1f055223549b9e42dfec21612a, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: blueCrest_30
     Show: 0
     sprite: {fileID: 6278130409577290974, guid: f60d6b1f055223549b9e42dfec21612a, type: 3}

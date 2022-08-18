@@ -23,24 +23,21 @@ MonoBehaviour:
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelarmbracesLeftHand_14
     Show: 0
     sprite: {fileID: -1811845551312555, guid: 3adf6b6cafdebcc4180e47142166043a, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelarmbracesLeftHand_15
     Show: 0
     sprite: {fileID: -5020251400749049659, guid: 3adf6b6cafdebcc4180e47142166043a, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelarmbracesLeftHand_16
     Show: 0
     sprite: {fileID: 5964840209787104534, guid: 3adf6b6cafdebcc4180e47142166043a, type: 3}

@@ -23,32 +23,28 @@ MonoBehaviour:
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelcuirass_32
     Show: 0
     sprite: {fileID: 8044964633989450035, guid: a3da22396c81c7844be926b56d73a2af, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelcuirass_33
     Show: 0
     sprite: {fileID: -4400922497535895851, guid: a3da22396c81c7844be926b56d73a2af, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelcuirass_34
     Show: 0
     sprite: {fileID: -343656714838805108, guid: a3da22396c81c7844be926b56d73a2af, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelcuirass_35
     Show: 0
     sprite: {fileID: -7261411885008849427, guid: a3da22396c81c7844be926b56d73a2af, type: 3}

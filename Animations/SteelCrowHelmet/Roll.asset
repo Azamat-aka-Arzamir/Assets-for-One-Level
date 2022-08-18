@@ -23,32 +23,28 @@ MonoBehaviour:
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelCrowHelmet_32
     Show: 0
     sprite: {fileID: 3991106092976979208, guid: ed66ff32450bcca44b7111f1336c7592, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelCrowHelmet_33
     Show: 0
     sprite: {fileID: -5615678405633095999, guid: ed66ff32450bcca44b7111f1336c7592, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelCrowHelmet_34
     Show: 0
     sprite: {fileID: 507258390056383007, guid: ed66ff32450bcca44b7111f1336c7592, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelCrowHelmet_35
     Show: 0
     sprite: {fileID: -2235987166959929851, guid: ed66ff32450bcca44b7111f1336c7592, type: 3}

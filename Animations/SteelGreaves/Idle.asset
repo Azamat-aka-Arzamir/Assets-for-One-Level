@@ -23,24 +23,21 @@ MonoBehaviour:
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelgreaves_8
     Show: 0
     sprite: {fileID: 4681360235049468180, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelgreaves_9
     Show: 0
     sprite: {fileID: -4437249028329753115, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelgreaves_10
     Show: 0
     sprite: {fileID: -4360642337840944561, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
@@ -53,5 +50,7 @@ MonoBehaviour:
   repeatable: 1
   interruptable: 0
   transitionsTo: []
-  doNotTransitTo: []
+  doNotTransitTo:
+  - FireDown
+  - FireUp
   conditionName: 

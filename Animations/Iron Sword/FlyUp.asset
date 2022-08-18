@@ -23,8 +23,7 @@ MonoBehaviour:
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
+    PhysicsShape: []
   - name: steelSword_20
     Show: 0
     sprite: {fileID: 5379866039549726864, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
