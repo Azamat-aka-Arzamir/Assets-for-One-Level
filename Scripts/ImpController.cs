@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class ImpController : MonoBehaviour
 {
 	public Hive MyHive;
+	public int number;
 	public bool SeeEnemy;
 	public bool InHive;
 	Movement SelfMovement;

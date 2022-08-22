@@ -35,44 +35,40 @@ public class Movement : MonoBehaviour
 	[SerializeField] bool DashAbility;
 	[SerializeField] bool CanFly;
 	bool DashCD;
-	
+
 	bool SlideDown;
 
 	int LocalMaxspeed;
-	[HideInInspector]public float LocalAcceleration;
+	[HideInInspector] public float LocalAcceleration;
 	[Space]
 
 
 	[Header("Weapon")]
-	[Tooltip("First weapon is usually sword")]
-	[SerializeField] public Weapon First;
-	[Tooltip("First weapon is usually shield")]
-	[SerializeField] public Weapon Second;
-	[Tooltip("First weapon is usually gun")]
-	[SerializeField] public Weapon Third;
+	public Weapon LastWeapon;
 	[Header("Debug")]
 	[SerializeField] int Wall;
 	[SerializeField] bool OnGround;
 	[SerializeField] bool OnWall;
 	[SerializeField] bool Sliding;
 	[SerializeField] bool IsJumping;
-	[SerializeField]bool IsDashing;
+	[SerializeField] bool IsDashing;
 	bool Shit;
 
 
-	[HideInInspector]public Animator SelfAnim;
+	[HideInInspector] public Animator SelfAnim;
 	SpriteRenderer SelfRenderer;
 	float JumpAnimationLength;
-	[HideInInspector]public Vector2Int CurrentDir=Vector2Int.right;
+	[HideInInspector] public Vector2Int CurrentDir = Vector2Int.right;
 	[HideInInspector] public int lastDir = 1;
-	[HideInInspector]public Entity selfEntity;
+	[HideInInspector] public int lastDirY = 0;
+	[HideInInspector] public Entity selfEntity;
 	public bool IsAttack;
 	float gravityScale;
 	/// <summary>
 	/// For flying objects only
 	/// </summary>
 	float MaxYVel;
-	[HideInInspector]public bool AnotherInput;
+	[HideInInspector] public bool AnotherInput;
 
 	AnimationClip runL;
 	AnimationClip runR;
@@ -81,7 +77,6 @@ public class Movement : MonoBehaviour
 
 	bool HasRunSpeedParam;
 	bool HasVelXParam;
-	UnityEvent TurnedOverY = new UnityEvent();
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -90,16 +85,12 @@ public class Movement : MonoBehaviour
 		selfEntity = GetComponent<Entity>();
 		SelfRB = GetComponent<Rigidbody2D>();
 		SelfColl = GetComponent<Collider2D>();
-		if(SelfAnim!=null)JumpAnimationLength = GetJumpAnimationLength();
+		if (SelfAnim != null) JumpAnimationLength = GetJumpAnimationLength();
 		mass = SelfRB.mass;
 		gravityScale = SelfRB.gravityScale;
 		if (SelfAnim != null) animParams.AddRange(SelfAnim.parameters);
 
 		if (SelfAnim != null) InitializeParamsExistance();
-		TurnedOverY.AddListener(this.OnTurned);
-		TurnedOverY.AddListener(First.OnTurned);
-		TurnedOverY.AddListener(Second.OnTurned);
-		TurnedOverY.AddListener(Third.OnTurned);
 	}
 
 	void InitializeParamsExistance()
@@ -123,7 +114,7 @@ public class Movement : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate()
 	{
-		if(WallJumpAbility) Slide();
+		if (WallJumpAbility) Slide();
 		var lastGroundCheck = OnGround;
 		OnGround = CheckGround();
 		if (OnGround)
@@ -139,7 +130,7 @@ public class Movement : MonoBehaviour
 			LandEvent.Invoke();
 			print("Landed");
 		}
-		if (!OnGround&&!lastGroundCheck)
+		if (!OnGround && !lastGroundCheck)
 		{
 			if (SelfRB.velocity.y > 0)
 			{
@@ -155,11 +146,11 @@ public class Movement : MonoBehaviour
 		{
 			var a = Mathf.Abs(SelfRB.velocity.x) / MaxSpeed;
 			if (a < 0.5f) a = 0.5f;
-			if(HasRunSpeedParam)SelfAnim.SetFloat("Run Speed",a);
+			if (HasRunSpeedParam) SelfAnim.SetFloat("Run Speed", a);
 			SelfAnim.SetBool("On Ground", OnGround);
 			SelfAnim.SetInteger("Velocity Y", (int)Mathf.Sign(SelfRB.velocity.y));
 			SelfAnim.SetFloat("Speed", Mathf.Abs(SelfRB.velocity.x));
-			if(HasVelXParam)SelfAnim.SetInteger("VelX", (int)Mathf.Sign(SelfRB.velocity.x));
+			if (HasVelXParam) SelfAnim.SetInteger("VelX", (int)Mathf.Sign(SelfRB.velocity.x));
 			if (Shit)
 			{
 				SelfAnim.SetTrigger("Jump");
@@ -180,16 +171,16 @@ public class Movement : MonoBehaviour
 			factor = y / (Mathf.Sqrt(2) / 2);
 		}
 
-		float force = JumpForce*0.3f+JumpForce*0.7f*factor;
+		float force = JumpForce * 0.3f + JumpForce * 0.7f * factor;
 		var myv = y * 2 * MaxSpeed - MinVelocity(force);
 		MaxYVel = myv;
-		if (SelfRB.velocity.y < myv*0.9)
+		if (SelfRB.velocity.y < myv * 0.9)
 		{
 			SelfAnim.SetTrigger("Fly");
 		}
 		if (SelfRB.velocity.y < myv)
 		{
-			if(!IsJumping)Jump(force);
+			if (!IsJumping) Jump(force);
 		}
 	}
 	float MinVelocity(float force)
@@ -197,8 +188,8 @@ public class Movement : MonoBehaviour
 		float deltaT = Time.fixedDeltaTime;
 		var g = Physics2D.gravity.magnitude;
 		var Sc = gravityScale;
-		float A = force - g*mass*Sc;
-		float vel = A  * deltaT;
+		float A = force - g * mass * Sc;
+		float vel = A * deltaT;
 		return vel;
 	}
 	void SetLocalAcceleration()
@@ -220,10 +211,10 @@ public class Movement : MonoBehaviour
 	{
 		//SelfAnim.SetInteger("Dir", lastDir);
 	}
-
+	public UnityEvent LookUpEvent = new UnityEvent();
+	public UnityEvent LookDownEvent = new UnityEvent();
 	public UnityEvent MoveEvent = new UnityEvent();
 	public UnityEvent StopEvent = new UnityEvent();
-	public UnityEvent StopEventWithShieldUp = new UnityEvent();
 	public void Move(Vector2 direction, bool SideInput, float LocalAcceleration)
 	{
 		if (direction != Vector2.zero) direction = direction.normalized;
@@ -238,21 +229,34 @@ public class Movement : MonoBehaviour
 		{
 			SlideDown = false;
 		}
-		
-		if (AnotherInput&&!SideInput)
+
+		if (AnotherInput && !SideInput)
 		{
 			return;
 		}
-		
-		Vector2 force = direction.x *Vector2.right * LocalAcceleration * mass;
+
+		Vector2 force = direction.x * Vector2.right * LocalAcceleration * mass;
 		SelfRB.AddForce(force);
 		Friction(LocalAcceleration);
 
+		if (direction.y != 0)
+		{
+			lastDirY = (int)Mathf.Sign(direction.y);
+			if (lastDirY == -1&&LastWeapon.weaponType==Weapon.type.gun)
+			{
+				LookDownEvent.Invoke();
+			}
+			if (lastDirY == 1 && LastWeapon.weaponType == Weapon.type.gun)
+			{
+				LookUpEvent.Invoke();
+			}
+		}
+		else lastDirY = 0;
 
 		if (direction.x == 0)
 		{
 			if (OnGround) LocalMaxspeed = 0;
-			if (Mathf.Abs(SelfRB.velocity.x) < 1f&&!selfEntity.GettingDamage)
+			if (Mathf.Abs(SelfRB.velocity.x) < 1f && !selfEntity.GettingDamage)
 			{
 				SelfRB.velocity = new Vector2(0, SelfRB.velocity.y);
 			}
@@ -261,30 +265,28 @@ public class Movement : MonoBehaviour
 		else
 		{
 
-			if(lastDir!= (int)Mathf.Sign(direction.x))
+			if (lastDir != (int)Mathf.Sign(direction.x))
 			{
 				lastDir = (int)Mathf.Sign(direction.x);
-				TurnedOverY.Invoke();
 			}
 			LocalMaxspeed = MaxSpeed;
 		}
-		if(Mathf.Abs(direction.y)>0.1)CurrentDir = new Vector2Int(lastDir,(int)Mathf.Sign(direction.y));
+		if (Mathf.Abs(direction.y) > 0.1) CurrentDir = new Vector2Int(lastDir, (int)Mathf.Sign(direction.y));
 		else CurrentDir = new Vector2Int(lastDir, 0);
 		if (CanFly)
 		{
-			Flight(direction.y*LocalAcceleration/this.LocalAcceleration);
+			Flight(direction.y * LocalAcceleration / this.LocalAcceleration);
 		}
 		if (Mathf.Abs(SelfRB.velocity.x) < 3)
 		{
 			if (!IsDashing && !IsJumping && SelfRB.velocity.y == 0 && OnGroundTimer >= 2f / 8f)
 			{
-				if(Second.weaponType==Weapon.type.shield&&!Second.Activate)StopEvent.Invoke();
-				if (Second.weaponType == Weapon.type.shield && Second.Activate) StopEventWithShieldUp.Invoke();
+				StopEvent.Invoke();
 			}
 		}
 		else
 		{
-			if (!IsDashing && !IsJumping && SelfRB.velocity.y == 0) MoveEvent.Invoke();
+			if (!IsDashing && !IsJumping&&OnGround) MoveEvent.Invoke();
 		}
 	}
 	void Friction(float LocalAcceleration)
@@ -304,7 +306,7 @@ public class Movement : MonoBehaviour
 		if (contacts[0].collider == null)
 		{
 			Wall = 0;
-			if(Mathf.Abs(SelfRB.velocity.y)<5f)
+			if (Mathf.Abs(SelfRB.velocity.y) < 5f)
 			{
 				return CheckForGroundViaRay();
 			}
@@ -334,7 +336,7 @@ public class Movement : MonoBehaviour
 	}
 	bool CheckForGroundViaRay()
 	{
-		var hit = Physics2D.Raycast(transform.position + Vector3.down * (SelfColl.bounds.extents.y+0.1f),Vector2.down,1,LayerMask.GetMask("Ground"));
+		var hit = Physics2D.Raycast(transform.position + Vector3.down * (SelfColl.bounds.extents.y + 0.1f), Vector2.down, 1, LayerMask.GetMask("Ground"));
 		if (hit.transform == null) return false;
 		if (hit.transform.tag == "Ground")
 		{
@@ -342,7 +344,7 @@ public class Movement : MonoBehaviour
 		}
 		else return false;
 	}
-	public UnityEvent JumpEvent= new UnityEvent();
+	public UnityEvent JumpEvent = new UnityEvent();
 	public UnityEvent LandEvent = new UnityEvent();
 	public UnityEvent InAirUp = new UnityEvent();
 	public UnityEvent InAirDown = new UnityEvent();
@@ -350,22 +352,22 @@ public class Movement : MonoBehaviour
 	{
 		StartCoroutine(IeJump(force));
 	}
-	IEnumerator IeJump( float force)
+	IEnumerator IeJump(float force)
 	{
-		if (JumpRemains != 0 && selfEntity.StaminaRemains >= JumpCost && !IsDashing&&!IsAttack)
+		if (JumpRemains != 0 && selfEntity.StaminaRemains >= JumpCost && !IsDashing && !IsAttack)
 		{
 			Shit = true;
 			IsJumping = true;
 			JumpEvent.Invoke();
 			selfEntity.StaminaRemains -= JumpCost;
 
-			if (Mathf.Abs(SelfRB.velocity.x) < 0.1f&&!CanFly)
+			if (Mathf.Abs(SelfRB.velocity.x) < 0.1f && !CanFly)
 			{
-				yield return new WaitForSeconds(2f/8f);
+				yield return new WaitForSeconds(2f / 8f);
 			}
 			var xSpeed = SelfRB.velocity.x;
 			SelfRB.velocity = new Vector2(xSpeed, 0);
-			if (Wall == 0||!WallJumpAbility)
+			if (Wall == 0 || !WallJumpAbility)
 			{
 				SelfRB.AddForce(Vector2.up * force * mass);
 			}
@@ -375,7 +377,7 @@ public class Movement : MonoBehaviour
 			}
 			yield return new WaitForFixedUpdate();
 			yield return new WaitForFixedUpdate();
-			if(!CanFly)JumpRemains--;
+			if (!CanFly) JumpRemains--;
 			IsJumping = false;
 		}
 		StopCoroutine(IeJump(force));
@@ -433,7 +435,7 @@ public class Movement : MonoBehaviour
 			StartCoroutine(IeDash(lastDir));
 		}
 	}
-	public UnityEvent dashEvent=new UnityEvent();
+	public UnityEvent dashEvent = new UnityEvent();
 	IEnumerator IeDash(float direction)
 	{
 		dashEvent.Invoke();
@@ -444,7 +446,7 @@ public class Movement : MonoBehaviour
 		for (int i = 0; i < DashLength; i++)
 		{
 			LocalMaxspeed = DashSpeed;
-			Move(Vector2.right * direction,true,LocalAcceleration*10);
+			Move(Vector2.right * direction, true, LocalAcceleration * 10);
 			yield return new WaitForFixedUpdate();
 		}
 		IsDashing = false;
@@ -459,4 +461,42 @@ public class Movement : MonoBehaviour
 
 
 
+}
+public class MovementContext
+{
+	private bool m_shieldUp=false;
+	private Weapon.type m_last_weapon;
+	private int m_dir;
+	private int m_dir_y;
+	private bool m_on_ground;
+	public bool ShieldUp
+	{
+		get { return m_shieldUp; }
+	}
+	public bool OnGround
+	{
+		get { return m_on_ground; }
+	}
+	public Weapon.type LastWeapon
+	{
+		get { return m_last_weapon; }
+	}
+	public int Dir
+	{
+		get { return m_dir; }
+	}
+	public int DirY
+	{
+		get { return m_dir_y; }
+	}
+	public MovementContext(Movement m)
+	{
+		m_last_weapon = m.LastWeapon.weaponType;
+		if (m_last_weapon == Weapon.type.shield && m.LastWeapon.Activate)
+		{
+			m_shieldUp = true;
+		}
+		m_dir = m.lastDir;
+		m_dir_y = m.lastDirY;
+	}
 }

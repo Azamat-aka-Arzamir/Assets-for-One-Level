@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 101f641d4b3b2f84b9c35bfba3d6bad1, type: 3}
   m_Name: sjhdhgfhjksbdg
   m_EditorClassIdentifier: 
+  tag: 
+  saveImpulse: 0
   speed: 0
   frames: []
   animName: 
+  priority: 0
+  repeatable: 0
+  transitionsTo: []
+  conditionName: 

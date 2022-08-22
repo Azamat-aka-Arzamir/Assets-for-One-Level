@@ -15,21 +15,11 @@ public class CustomAnimation : ScriptableObject
 	public string animName;
 	public int priority;
 	public bool repeatable;
+	public bool interruptable;
 	public string[] transitionsTo;
-	public DelegateHolder dholder = new DelegateHolder();
-	public string conditionName;
-	public Misc.condition m_condition
-	{
-		get
-		{
-			return dholder.condition;
-
-		}
-		set
-		{
-			dholder.condition = value;
-		}
-	}
+	public string[] doNotTransitTo;
+	public string conditionName = "";
+	public Misc.condition m_condition;
 	private void OnEnable()
 	{
 		name = animName;
@@ -38,16 +28,16 @@ public class CustomAnimation : ScriptableObject
 	{
 		name = animName;
 	}
+	static Misc.condition alwaysTrue = (CustomAnimatorContextInfo a) => true;
 	public void InitializeCondition()
 	{
-		m_condition = (Misc.condition)typeof(CustomAnimator).GetMethod(conditionName).CreateDelegate(typeof(Misc.condition));
+		Debug.Log(conditionName);
+		m_condition = conditionName is""? alwaysTrue:FindCondition();
+
 	}
-}
-public class DelegateHolder
-{
-	public Misc.condition condition;
-	public DelegateHolder()
+	Misc.condition FindCondition()
 	{
-		condition = null;
+		var a = (Misc.condition)typeof(CustomAnimator).GetMethod(conditionName).CreateDelegate(typeof(Misc.condition));
+		return a;
 	}
 }

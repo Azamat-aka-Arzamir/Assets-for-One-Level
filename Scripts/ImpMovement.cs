@@ -11,16 +11,14 @@ public class ImpMovement : MonoBehaviour
 	bool CanParabol=true;
 	[SerializeField] float CoolDown;
 
-	UnityEvent ClawsAttackEvent = new UnityEvent();
-	UnityEvent SpearAttackEvent = new UnityEvent();
+	public UnityEvent ClawsAttackEvent = new UnityEvent();
+	public UnityEvent SpearAttackEvent = new UnityEvent();
 
 	// Start is called before the first frame update
 	void Start()
 	{
 		SelfMovement = GetComponent<Movement>();
 		srb = GetComponent<Rigidbody2D>();
-		SpearAttackEvent.AddListener(SelfMovement.Second.Fire);
-		ClawsAttackEvent.AddListener(SelfMovement.First.Fire);
 	}
 
 	// Update is called once per frame

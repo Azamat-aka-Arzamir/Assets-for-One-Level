@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour
 	public enum type { sword, shield, gun };
 	public type weaponType;
 	PolygonCollider2D selfColl;
+	Movement parentMove;
 	[HideInInspector]
 	public bool Activate;
 	bool Reloaded = true;
@@ -140,6 +141,7 @@ public class Weapon : MonoBehaviour
 		Dir = Vector2.right;
 		sprites = Resources.LoadAll<Sprite>("Weapons Spritesheets/" + name);
 		TryGetComponent(out selfAnim);
+		parentMove=GetComponentInParent<Movement>();
 		StartZ = transform.localPosition.z;
 		TryGetComponent(out selfColl);
 		parentEnt = GetComponentInParent<Entity>();
@@ -157,6 +159,7 @@ public class Weapon : MonoBehaviour
 	}
 	public void Fire()
 	{
+		if(parentMove!=null)parentMove.LastWeapon = this;
 		switch (weaponType)
 		{
 			case type.sword:
@@ -233,18 +236,16 @@ public class Weapon : MonoBehaviour
 	void GunAttack()
 	{
 		if (!Reloaded) return;
-		if (Dir.y == 1) ShootUp.Invoke();
-		if (Dir.y == -1) ShootDown.Invoke();
-		if (Dir.y == 0) Shoot.Invoke();
+
 		StartCoroutine(IeGunAttack());
 
 	}
 	IEnumerator IeGunAttack()
 	{
-		yield return new WaitUntil(() => selfAnim.CurrentAnim.animName.Contains("Fire")&&selfAnim.CurrentFrameIndex==1);
+		Shoot.Invoke();
+		yield return new WaitUntil(() => selfAnim.CurrentAnim.animName.Contains("Fire")&&selfAnim.CurrentFrameIndex==0);
 		Vector3 point = selfAnim.CurrentAnim.frames[selfAnim.CurrentFrameIndex].point;
 		var bullet = Instantiate(Bullet, point + transform.position, Quaternion.identity);
-		var a = selfAnim.GetComponentInParent<SimpleAnimHolder>().Animators[0].CurrentAnim.animName;
 		bullet.GetComponent<Bullet>().weapon = this;
 		Bullets--;
 		StartCoroutine(CoolDown());
