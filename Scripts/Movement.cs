@@ -48,11 +48,19 @@ public class Movement : MonoBehaviour
 	[Header("Debug")]
 	[SerializeField] int Wall;
 	[SerializeField] bool OnGround;
+	[HideInInspector]
+	public bool IsOnGround
+	{
+		get
+		{
+			return OnGround;
+		}
+	}
 	[SerializeField] bool OnWall;
 	[SerializeField] bool Sliding;
 	[SerializeField] bool IsJumping;
 	[SerializeField] bool IsDashing;
-	bool Shit;
+	[SerializeField] bool CheckTurnConstantly;
 
 
 	[HideInInspector] public Animator SelfAnim;
@@ -64,49 +72,17 @@ public class Movement : MonoBehaviour
 	[HideInInspector] public Entity selfEntity;
 	public bool IsAttack;
 	float gravityScale;
-	/// <summary>
-	/// For flying objects only
-	/// </summary>
-	float MaxYVel;
-	[HideInInspector] public bool AnotherInput;
 
-	AnimationClip runL;
-	AnimationClip runR;
-	List<AnimatorControllerParameter> animParams = new List<AnimatorControllerParameter>();
-	List<string> animParamsNames = new List<string>();
-
-	bool HasRunSpeedParam;
-	bool HasVelXParam;
+	 public bool AnotherInput;
 	// Start is called before the first frame update
 	void Start()
 	{
 		SelfRenderer = GetComponent<SpriteRenderer>();
-		TryGetComponent(out SelfAnim);
 		selfEntity = GetComponent<Entity>();
 		SelfRB = GetComponent<Rigidbody2D>();
 		SelfColl = GetComponent<Collider2D>();
-		if (SelfAnim != null) JumpAnimationLength = GetJumpAnimationLength();
 		mass = SelfRB.mass;
 		gravityScale = SelfRB.gravityScale;
-		if (SelfAnim != null) animParams.AddRange(SelfAnim.parameters);
-
-		if (SelfAnim != null) InitializeParamsExistance();
-	}
-
-	void InitializeParamsExistance()
-	{
-		foreach (var par in animParams)
-		{
-			animParamsNames.Add(par.name);
-		}
-		if (animParamsNames.Contains("Run Speed"))
-		{
-			HasRunSpeedParam = true;
-		}
-		if (animParamsNames.Contains("VelX"))
-		{
-			HasVelXParam = true;
-		}
 	}
 
 
@@ -142,20 +118,17 @@ public class Movement : MonoBehaviour
 			}
 		}
 		SetLocalAcceleration();
-		if (SelfAnim != null)
+		if (CheckTurnConstantly) CheckTurn();
+	}
+	void CheckTurn()
+	{
+		if (SelfRB.velocity.x == 0) return;
+		int sign = (int)Mathf.Sign(SelfRB.velocity.x);
+		if (sign != lastDir)
 		{
-			var a = Mathf.Abs(SelfRB.velocity.x) / MaxSpeed;
-			if (a < 0.5f) a = 0.5f;
-			if (HasRunSpeedParam) SelfAnim.SetFloat("Run Speed", a);
-			SelfAnim.SetBool("On Ground", OnGround);
-			SelfAnim.SetInteger("Velocity Y", (int)Mathf.Sign(SelfRB.velocity.y));
-			SelfAnim.SetFloat("Speed", Mathf.Abs(SelfRB.velocity.x));
-			if (HasVelXParam) SelfAnim.SetInteger("VelX", (int)Mathf.Sign(SelfRB.velocity.x));
-			if (Shit)
-			{
-				SelfAnim.SetTrigger("Jump");
-				Shit = false;
-			}
+			lastDir = sign;
+			if(lastDir==1)TurnEventR.Invoke();
+			if (lastDir == -1) TurnEventL.Invoke();
 		}
 	}
 
@@ -173,10 +146,10 @@ public class Movement : MonoBehaviour
 
 		float force = JumpForce * 0.3f + JumpForce * 0.7f * factor;
 		var myv = y * 2 * MaxSpeed - MinVelocity(force);
-		MaxYVel = myv;
+
 		if (SelfRB.velocity.y < myv * 0.9)
 		{
-			SelfAnim.SetTrigger("Fly");
+			
 		}
 		if (SelfRB.velocity.y < myv)
 		{
@@ -215,6 +188,8 @@ public class Movement : MonoBehaviour
 	public UnityEvent LookDownEvent = new UnityEvent();
 	public UnityEvent MoveEvent = new UnityEvent();
 	public UnityEvent StopEvent = new UnityEvent();
+	public UnityEvent TurnEventL = new UnityEvent();
+	public UnityEvent TurnEventR = new UnityEvent();
 	public void Move(Vector2 direction, bool SideInput, float LocalAcceleration)
 	{
 		if (direction != Vector2.zero) direction = direction.normalized;
@@ -265,9 +240,11 @@ public class Movement : MonoBehaviour
 		else
 		{
 
-			if (lastDir != (int)Mathf.Sign(direction.x))
+			if (lastDir != (int)Mathf.Sign(direction.x)&&!CheckTurnConstantly)
 			{
 				lastDir = (int)Mathf.Sign(direction.x);
+				TurnEventR.Invoke();
+				TurnEventL.Invoke();
 			}
 			LocalMaxspeed = MaxSpeed;
 		}
@@ -356,7 +333,6 @@ public class Movement : MonoBehaviour
 	{
 		if (JumpRemains != 0 && selfEntity.StaminaRemains >= JumpCost && !IsDashing && !IsAttack)
 		{
-			Shit = true;
 			IsJumping = true;
 			JumpEvent.Invoke();
 			selfEntity.StaminaRemains -= JumpCost;

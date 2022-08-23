@@ -19,6 +19,9 @@ public class Weapon : MonoBehaviour
 	[HideInInspector] public Vector3 BarrelPoint;
 	[HideInInspector] public int Bullets;
 	[HideInInspector] public GameObject Bullet;
+	[HideInInspector] public GameObject FireEffect;
+	[HideInInspector]
+	public float Knockback;
 	[SerializeField] int StaminaCost;
 	[HideInInspector]
 	public float StartZ;
@@ -54,6 +57,7 @@ public class Weapon : MonoBehaviour
 		private SerializedProperty _ShUp;
 		private SerializedProperty _Sh;
 		private SerializedProperty _ShDn;
+		private SerializedProperty _KB;
 
 		Vector3 a;
 		Vector3 b;
@@ -74,6 +78,7 @@ public class Weapon : MonoBehaviour
 			_ShUp = serializedObject.FindProperty("ShootUp");
 			_Sh= serializedObject.FindProperty("Shoot");
 			_ShDn= serializedObject.FindProperty("ShootDown");
+			_KB = serializedObject.FindProperty("Knockback");
 			c = true;
 
 		}
@@ -108,6 +113,8 @@ public class Weapon : MonoBehaviour
 					weapon.BarrelPoint = EditorGUILayout.Vector3Field("Barrel point", weapon.BarrelPoint);
 					weapon.Bullets = EditorGUILayout.IntField("Bullets count", weapon.Bullets);
 					weapon.Bullet = EditorGUILayout.ObjectField("Bullet type", weapon.Bullet, typeof(GameObject), false) as GameObject;
+					weapon.FireEffect = EditorGUILayout.ObjectField("Fire Effect", weapon.FireEffect, typeof(GameObject), false) as GameObject;
+					EditorGUILayout.PropertyField(_KB);
 					EditorGUILayout.PropertyField(_GCD);
 					EditorGUILayout.PropertyField(_Sh);
 					EditorGUILayout.PropertyField(_ShUp);
@@ -246,6 +253,21 @@ public class Weapon : MonoBehaviour
 		yield return new WaitUntil(() => selfAnim.CurrentAnim.animName.Contains("Fire")&&selfAnim.CurrentFrameIndex==0);
 		Vector3 point = selfAnim.CurrentAnim.frames[selfAnim.CurrentFrameIndex].point;
 		var bullet = Instantiate(Bullet, point + transform.position, Quaternion.identity);
+		if (FireEffect != null)
+		{
+			var feffect = Instantiate(FireEffect, point + transform.position, Quaternion.identity);
+			feffect.GetComponent<CustomAnimator>().DefaultAnim =selfAnim.CurrentAnim.animName;
+		}
+		var dir = new Vector2();
+		if(parentMove.lastDirY == 0)
+		{
+			dir = new Vector2(parentMove.lastDir, parentMove.lastDirY);
+		}
+		else
+		{
+			dir = new Vector2(0, parentMove.lastDirY);
+		}
+		parentMove.GetComponent<Rigidbody2D>().AddForce(-dir * Knockback);
 		bullet.GetComponent<Bullet>().weapon = this;
 		Bullets--;
 		StartCoroutine(CoolDown());
@@ -270,7 +292,7 @@ public class Weapon : MonoBehaviour
 		if (weaponType == type.shield)
 		{
 			UpdateImmunity();
-			if(selfAnim.CurrentAnim.name=="Def"|| selfAnim.CurrentAnim.name == "DefStatic")
+			if(selfAnim.CurrentAnim.animName == "Def"|| selfAnim.CurrentAnim.animName == "DefStatic")
 			{
 				//transform.localPosition = new Vector3(transform.localPosition.x,transform.localPosition.y,-Mathf.Sign(StartZ)*2.5f);
 			}

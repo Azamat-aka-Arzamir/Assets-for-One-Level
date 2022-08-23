@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101f641d4b3b2f84b9c35bfba3d6bad1, type: 3}
+  m_Name: Run
+  m_EditorClassIdentifier: 
+  animName: Run
+  tag: Run
+  flip: 0
+  speed: 12
+  frames:
+  - name: brownshield_25
+    Show: 0
+    sprite: {fileID: 7084943838304883175, guid: 1059ffd18bbcbdb4c9ed10124ee5b8fc, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape: []
+  - name: brownshield_26
+    Show: 0
+    sprite: {fileID: 5852698076248352206, guid: 1059ffd18bbcbdb4c9ed10124ee5b8fc, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape: []
+  - name: brownshield_27
+    Show: 0
+    sprite: {fileID: 3208522914738070902, guid: 1059ffd18bbcbdb4c9ed10124ee5b8fc, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape: []
+  - name: brownshield_28
+    Show: 0
+    sprite: {fileID: 1340500197258158760, guid: 1059ffd18bbcbdb4c9ed10124ee5b8fc, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape: []
+  - name: brownshield_29
+    Show: 0
+    sprite: {fileID: -4935162467242074784, guid: 1059ffd18bbcbdb4c9ed10124ee5b8fc, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape: []
+  - name: brownshield_30
+    Show: 0
+    sprite: {fileID: -4826844000858084093, guid: 1059ffd18bbcbdb4c9ed10124ee5b8fc, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  priority: 2
+  repeatable: 1
+  interruptable: 0
+  transitionsTo:
+  - Idle
+  - Def
+  - GunIdle
+  doNotTransitTo: []
+  conditionName: 

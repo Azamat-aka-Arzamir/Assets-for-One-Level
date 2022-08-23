@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101f641d4b3b2f84b9c35bfba3d6bad1, type: 3}
+  m_Name: Fire
+  m_EditorClassIdentifier: 
+  animName: Fire
+  tag: 
+  flip: 0
+  speed: 8
+  frames:
+  - name: brownshield_0
+    Show: 0
+    sprite: {fileID: -2599239989909963780, guid: 1059ffd18bbcbdb4c9ed10124ee5b8fc, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape: []
+  - name: brownshield_1
+    Show: 0
+    sprite: {fileID: -8426334321635019384, guid: 1059ffd18bbcbdb4c9ed10124ee5b8fc, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape: []
+  - name: brownshield_2
+    Show: 0
+    sprite: {fileID: 3261076910101697070, guid: 1059ffd18bbcbdb4c9ed10124ee5b8fc, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  priority: 12
+  repeatable: 0
+  interruptable: 0
+  transitionsTo:
+  - GunIdle
+  doNotTransitTo: []
+  conditionName: 
