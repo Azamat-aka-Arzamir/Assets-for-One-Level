@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animName: Roll
   tag: Roll
-  saveImpulse: 0
+  flip: 0
   speed: 12
   frames:
   - name: blueCrest_31
@@ -53,7 +53,7 @@ MonoBehaviour:
     rotation: 0
     PhysicsShape:
     - {x: 0, y: 0}
-  priority: 0
+  priority: 18
   repeatable: 0
   interruptable: 0
   transitionsTo: []

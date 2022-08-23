@@ -14,39 +14,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animName: GunIdle
   tag: 
-  saveImpulse: 0
+  flip: 0
   speed: 8
   frames:
   - name: steelarmbracesRightHand_44
     Show: 0
     sprite: {fileID: -6839115407182515459, guid: df59580f1060de14b8ca428a0462acb8, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -2}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape: []
   - name: steelarmbracesRightHand_45
     Show: 0
     sprite: {fileID: 1464330190478156222, guid: df59580f1060de14b8ca428a0462acb8, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -2}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape: []
   - name: steelarmbracesRightHand_46
     Show: 0
     sprite: {fileID: 2063022065646726880, guid: df59580f1060de14b8ca428a0462acb8, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -2}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape: []
   - name: steelarmbracesRightHand_47
     Show: 0
     sprite: {fileID: -5398444646086109725, guid: df59580f1060de14b8ca428a0462acb8, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -2}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:
     - {x: 0, y: 0}
-  priority: 0
+  priority: 6
   repeatable: 1
   interruptable: 0
   transitionsTo: []

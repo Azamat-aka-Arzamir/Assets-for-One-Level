@@ -14,34 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animName: Idle
   tag: 
-  saveImpulse: 0
+  flip: 0
   speed: 8
   frames:
   - name: steelarmbracesRightHand_7
     Show: 0
     sprite: {fileID: -7438733910286710507, guid: df59580f1060de14b8ca428a0462acb8, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -2}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape: []
   - name: steelarmbracesRightHand_8
     Show: 0
     sprite: {fileID: -6629524542898464104, guid: df59580f1060de14b8ca428a0462acb8, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -2}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape: []
   - name: steelarmbracesRightHand_9
     Show: 0
     sprite: {fileID: -3870002966264054643, guid: df59580f1060de14b8ca428a0462acb8, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -2}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape: []
   - name: steelarmbracesRightHand_10
     Show: 0
     sprite: {fileID: -6915491881360645427, guid: df59580f1060de14b8ca428a0462acb8, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -2}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:

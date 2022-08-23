@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animName: Fire
   tag: 
-  saveImpulse: 0
-  speed: 8
+  flip: 0
+  speed: 12
   frames:
   - name: fire_0
     Show: 0
@@ -44,9 +44,10 @@ MonoBehaviour:
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
-    PhysicsShape: []
+    PhysicsShape:
+    - {x: 0, y: 0}
   priority: 0
-  repeatable: 0
+  repeatable: 1
   interruptable: 0
   transitionsTo:
   - GunIdle

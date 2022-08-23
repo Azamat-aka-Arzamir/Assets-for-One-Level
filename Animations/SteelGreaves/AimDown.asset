@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animName: AimDown
   tag: 
-  saveImpulse: 0
+  flip: 0
   speed: 8
   frames:
   - name: steelgreaves_5

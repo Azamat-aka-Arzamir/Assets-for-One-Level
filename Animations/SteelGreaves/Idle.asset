@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animName: Idle
   tag: 
-  saveImpulse: 0
+  flip: 0
   speed: 8
   frames:
   - name: steelgreaves_7
@@ -46,7 +46,7 @@ MonoBehaviour:
     rotation: 0
     PhysicsShape:
     - {x: 0, y: 0}
-  priority: 0
+  priority: 2
   repeatable: 1
   interruptable: 0
   transitionsTo: []

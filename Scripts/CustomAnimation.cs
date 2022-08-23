@@ -21,10 +21,10 @@ public class CustomAnimation : ScriptableObject
 		public override void OnInspectorGUI()
 		{
 			activeFrame = EditorGUILayout.IntPopup("Inspected Frame",activeFrame, names,numbers);
-			frame = animation.frames[activeFrame];
+			if (animation.frames.Count != 0) frame = animation.frames[activeFrame];
 
-			b.sprite = frame;
-			a.name = frame.sprite.name;
+			if (animation.frames.Count != 0 && frame.sprite != null) b.sprite = frame;
+			if (animation.frames.Count != 0&&frame.sprite!=null) a.name = frame.sprite.name;
 			base.OnInspectorGUI();
 		}
 		private void OnEnable()
@@ -32,12 +32,14 @@ public class CustomAnimation : ScriptableObject
 			animation = (CustomAnimation)target;
 			numbers = new int[animation.frames.Count];
 			names = new string[animation.frames.Count];
-			for (int i = 0; i < numbers.Length; i++)
+			if (animation.frames.Count != 0)
 			{
-				numbers[i] = i;
-				names[i] = i.ToString();
+				for (int i = 0; i < numbers.Length; i++)
+				{
+					numbers[i] = i;
+					names[i] = i.ToString();
+				}
 			}
-
 			a = new GameObject();
 			b=a.AddComponent<SpriteRenderer>();
 
@@ -51,10 +53,10 @@ public class CustomAnimation : ScriptableObject
 		}
 		private void OnSceneGUI(SceneView sv)
 		{
-			if(a!=null)a.transform.localRotation = (Quaternion.Euler(0, 0, frame.rotation));
+			if(a!=null&&frame!=null)a.transform.localRotation= (Quaternion.Euler(0, 0, frame.rotation));
 			Handles.color = Color.blue;
 			//if(frame.PhysicsShape.Length>2) frame.PhysicsShape = a.GetComponent<PolygonCollider2D>().points;
-			if (frame.PhysicsShape.Length != 0)
+			if (frame!=null&&frame.PhysicsShape.Length != 0)
 			{
 				for (int i = 0; i < frame.PhysicsShape.Length; i++)
 				{
@@ -71,8 +73,8 @@ public class CustomAnimation : ScriptableObject
 				}
 			}
 			Handles.color = Color.red;
-			frame.point = Handles.PositionHandle(frame.point, Quaternion.identity);
-			Handles.DrawWireDisc(frame.point, Vector3.forward, 0.05f);
+			if(frame!=null)frame.point = Handles.PositionHandle(frame.point, Quaternion.identity);
+			if (frame != null) Handles.DrawWireDisc(frame.point, Vector3.forward, 0.05f);
 		}
 	}
 #endif
@@ -80,9 +82,9 @@ public class CustomAnimation : ScriptableObject
 	//public bool playTrigger;
 	//public string[] attributes=new string[0];
 	public string tag;
-	public bool saveImpulse = false;
+	public bool flip = false;
 	public float speed;//same as framerate or FPS
-	public List<CustomFrame> frames;
+	public List<CustomFrame> frames = new List<CustomFrame>();
 
 	public int priority;
 	public bool repeatable;

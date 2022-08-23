@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SimpleAnimHolder : MonoBehaviour
 {
+	Misc.Side side = Misc.Side.R;
 	public List<CustomAnimator> Animators;
 	public Movement Invoker;
 	MovementContext context;
@@ -36,6 +37,14 @@ public class SimpleAnimHolder : MonoBehaviour
 		foreach (var a in Animators)
 		{
 			a.PlayAnim(Name);
+		}
+	}
+	public void Turn()
+	{
+		side = side is Misc.Side.R ? Misc.Side.L : Misc.Side.R;
+		foreach(var a in Animators)
+		{
+			a.ChangeSide();
 		}
 	}
 	void GetContext()

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animName: DefStatic
   tag: 
-  saveImpulse: 0
+  flip: 0
   speed: 8
   frames:
   - name: brownshield_12
@@ -25,7 +25,7 @@ MonoBehaviour:
     rotation: 0
     PhysicsShape:
     - {x: 0, y: 0}
-  priority: 0
+  priority: 8
   repeatable: 1
   interruptable: 0
   transitionsTo: []

@@ -14,25 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animName: Land
   tag: 
-  saveImpulse: 0
+  flip: 0
   speed: 8
   frames:
   - name: steelgreaves_23
     Show: 0
     sprite: {fileID: -7158266517058885899, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
     position: {x: 0, y: 0, z: 0}
-    point: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: -0.3, z: 0}
     rotation: 0
     PhysicsShape: []
   - name: steelgreaves_24
     Show: 0
     sprite: {fileID: -397090172823680395, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
     position: {x: 0, y: 0, z: 0}
-    point: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: -0.3, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
-  priority: 0
+    PhysicsShape: []
+  priority: 14
   repeatable: 0
   interruptable: 0
   transitionsTo:

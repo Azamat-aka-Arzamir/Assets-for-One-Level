@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animName: FlyDown
   tag: 
-  saveImpulse: 0
+  flip: 0
   speed: 8
   frames:
   - name: blueCrest_21
@@ -32,7 +32,7 @@ MonoBehaviour:
     rotation: 0
     PhysicsShape:
     - {x: 0, y: 0}
-  priority: 0
+  priority: 5
   repeatable: 1
   interruptable: 0
   transitionsTo:

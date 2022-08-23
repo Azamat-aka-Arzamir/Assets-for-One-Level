@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animName: Attack2
   tag: Attack
-  saveImpulse: 1
+  flip: 0
   speed: 12
   frames:
   - name: steelarmbracesLeftHand_36
@@ -46,7 +46,7 @@ MonoBehaviour:
     rotation: 0
     PhysicsShape:
     - {x: 0, y: 0}
-  priority: 0
+  priority: 16
   repeatable: 0
   interruptable: 0
   transitionsTo: []

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animName: FireUp
   tag: 
-  saveImpulse: 0
+  flip: 0
   speed: 8
   frames:
   - name: blueCrest_3
@@ -32,7 +32,7 @@ MonoBehaviour:
     rotation: 0
     PhysicsShape:
     - {x: 0, y: 0}
-  priority: 0
+  priority: 13
   repeatable: 0
   interruptable: 0
   transitionsTo:

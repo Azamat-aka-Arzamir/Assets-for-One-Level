@@ -124,7 +124,7 @@ public class Entity : MonoBehaviour
 				SelfRb.velocity = Vector2.zero;
 				SelfRb.AddForce(force * SelfRb.mass * dir * Vector2.right);
 			}
-			if(damage>0)StartCoroutine(IeGetDamage(origin));
+			if(damage>0&&!IsDead)StartCoroutine(IeGetDamage(origin));
 		}
 	}
 	IEnumerator IeGetDamage(GameObject origin)
@@ -143,28 +143,40 @@ public class Entity : MonoBehaviour
 		yield return new WaitForSeconds(2);
 		ImmuneToDamage = false;
 		StopCoroutine(blink);
-		selfRender.color = new Color(1, 1, 1, 1);
+		var v = GetComponentsInChildren<SpriteRenderer>();
+		foreach (var a in v)
+		{
+			a.color =  new Color(1, 1, 1, 1);
+		}
 	}
 	IEnumerator Blink()
 	{
+		var v = GetComponentsInChildren<SpriteRenderer>();
 		while (true)
 		{
-			selfRender.color = new Color(1,0,0,0.5f);
+			foreach(var a in v)
+			{
+				a.color = new Color(1, 0, 0, 0.5f);
+			}
 			yield return new WaitForSeconds(0.2f);
-			selfRender.color = new Color(1, 1, 1, 0.5f);
+			foreach (var a in v)
+			{
+				a.color = new Color(1, 1, 1, 0.5f);
+			}
 			yield return new WaitForSeconds(0.2f);
 		}
 	}
-
+	public UnityEngine.Events.UnityEvent DeathEvent = new UnityEngine.Events.UnityEvent();
 	void Die(string killerName, Weapon weapon)
 	{
 		IsDead = true;
+		DeathEvent.Invoke();
 		Push = false;
 		Component[] components = GetComponents<Component>();
 		for(int i = 0; i < components.Length; i++)
 		{
 			var type = components[i].GetType();
-			if (type != typeof(Transform) && !Misc.IsCollider(type) && type != typeof(Animator) && type != typeof(SpriteRenderer) && type != typeof(Rigidbody2D)&&type!=typeof(Entity))
+			if (type != typeof(Transform) && !Misc.IsCollider(type) && type != typeof(Animator) && type != typeof(SpriteRenderer) && type != typeof(Rigidbody2D)&&type!=typeof(Entity)&&type!=typeof(CustomAnimator))
 			{
 				Misc.KillComponent(components[i]);
 				Destroy(components[i]);
@@ -180,6 +192,7 @@ public class Entity : MonoBehaviour
 public static class Misc
 {
 	public delegate bool condition(CustomAnimatorContextInfo animatorContextInfo);
+	public enum Side { L, R };
 	public struct MyColors
 	{
 		public static UnityEngine.Color pink

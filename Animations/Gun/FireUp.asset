@@ -14,25 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animName: FireUp
   tag: 
-  saveImpulse: 0
+  flip: 0
   speed: 8
   frames:
   - name: basicGun_3
     Show: 0
     sprite: {fileID: -2048393315887679703, guid: 530e0f7d5d3808d46a59f0f1ab0c776f, type: 3}
-    position: {x: 0, y: 0, z: 0}
-    point: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -3.14}
+    point: {x: 0.6298473, y: 1.0647416, z: 0}
     rotation: 0
     PhysicsShape: []
   - name: basicGun_4
     Show: 0
     sprite: {fileID: 1991946306787964545, guid: 530e0f7d5d3808d46a59f0f1ab0c776f, type: 3}
-    position: {x: 0, y: 0, z: 0}
-    point: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -3.14}
+    point: {x: 0.62984717, y: 0.9747635, z: 0}
     rotation: 0
-    PhysicsShape:
-    - {x: 0, y: 0}
-  priority: 0
+    PhysicsShape: []
+  priority: 13
   repeatable: 0
   interruptable: 0
   transitionsTo:
