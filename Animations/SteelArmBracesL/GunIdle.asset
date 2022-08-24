@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101f641d4b3b2f84b9c35bfba3d6bad1, type: 3}
+  m_Name: GunIdle
+  m_EditorClassIdentifier: 
+  animName: GunIdle
+  tag: 
+  flip: 0
+  speed: 8
+  frames:
+  - name: steelarmbracesLeftHand_44
+    Show: 0
+    sprite: {fileID: 5787032804743479212, guid: 3adf6b6cafdebcc4180e47142166043a, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape: []
+  - name: steelarmbracesLeftHand_45
+    Show: 0
+    sprite: {fileID: 73913311587030523, guid: 3adf6b6cafdebcc4180e47142166043a, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape: []
+  - name: steelarmbracesLeftHand_46
+    Show: 0
+    sprite: {fileID: -6059518113806154091, guid: 3adf6b6cafdebcc4180e47142166043a, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape: []
+  - name: steelarmbracesLeftHand_47
+    Show: 0
+    sprite: {fileID: -2568875945692302132, guid: 3adf6b6cafdebcc4180e47142166043a, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  priority: 6
+  repeatable: 1
+  interruptable: 0
+  transitionsTo: []
+  doNotTransitTo: []
+  conditionName: 

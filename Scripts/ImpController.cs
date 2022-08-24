@@ -68,8 +68,9 @@ public class ImpController : MonoBehaviour
 	Dictionary<string, bool> WallDirs = new Dictionary<string, bool>();
 	public string Corridor;
 	int GlobalJumpForce;
+	public bool CanMove = true;
 	[SerializeField] float WallCheckingRayLength = 10;
-
+	[SerializeField] Vector2 control;
 
 	// Start is called before the first frame update
 	void Start()
@@ -113,7 +114,7 @@ public class ImpController : MonoBehaviour
 		}
 		Sight();
 		SimpleSight();
-		MoveTowardsTarget(Target);
+		if(CanMove)MoveTowardsTarget(Target);
 		if (MyHive != null && MyHive.Hurricane) SelfMovement.selfEntity.Push = false;
 		else SelfMovement.selfEntity.Push = true;
 	}
@@ -123,22 +124,26 @@ public class ImpController : MonoBehaviour
 	}
 	void MoveTowardsTarget(Vector2 target)
 	{
+		if (SelfMovement.IsOnGround) SelfMovement.Jump(SelfMovement.JumpForce);
 		if (Corridor != "")
 		{
 			if (Corridor == "Horizontal")
 			{
 				//SelfMovement.JumpForce = GlobalJumpForce / 3;
 				SelfMovement.Move(Vector2.right * Mathf.Sign(SelfRB.velocity.x), false,SelfMovement.LocalAcceleration);
+				control = Vector2.right * Mathf.Sign(SelfRB.velocity.x)*SelfMovement.LocalAcceleration;
 			}
 			if (Corridor == "Vertical")
 			{
 				SelfMovement.Move(Vector2.up * Mathf.Sign(SelfRB.velocity.y), false,SelfMovement.LocalAcceleration);
+				control = Vector2.up * Mathf.Sign(SelfRB.velocity.y) * SelfMovement.LocalAcceleration;
 			}
 		}
 		else if (SeeWall)
 		{
 			//SelfMovement.JumpForce = GlobalJumpForce;
 			SelfMovement.Move((target - (Vector2)transform.position).normalized * (Wall.Distance / WallCheckingRayLength) + Wall.Direction * (1 - (Wall.Distance / WallCheckingRayLength)), false,SelfMovement.LocalAcceleration);
+			control = (target - (Vector2)transform.position).normalized * (Wall.Distance / WallCheckingRayLength) + Wall.Direction * (1 - (Wall.Distance / WallCheckingRayLength)) * SelfMovement.LocalAcceleration;
 			//Debug.DrawRay(transform.position, ((target - (Vector2)transform.position).normalized * (Wall.Distance / WallCheckingRayLength) + Wall.Direction).normalized*10, Color.cyan);
 		}
 		else if ((target - (Vector2)transform.position).magnitude > 0.5)
@@ -147,6 +152,7 @@ public class ImpController : MonoBehaviour
 			var f = (target - (Vector2)transform.position).magnitude / 5;
 			if (f > 1) f = 1;
 			SelfMovement.Move((target - (Vector2)transform.position).normalized, false, f*SelfMovement.LocalAcceleration);
+			control = (target - (Vector2)transform.position).normalized * f * SelfMovement.LocalAcceleration;
 		}
 		else
 		{
@@ -453,13 +459,19 @@ public class ImpController : MonoBehaviour
 		{
 			if (((Vector2)transform.position - a).magnitude < 2 + radius)
 			{
-				GetComponent<SpriteRenderer>().color = Color.gray;
+				foreach (var s in GetComponentsInChildren<SpriteRenderer>())
+				{
+					s.color = Color.gray;
+				}
 				transform.position = new Vector3(transform.position.x, transform.position.y, 2);
 			}
 		}
 		else
 		{
-			GetComponent<SpriteRenderer>().color = Color.white;
+			foreach (var s in GetComponentsInChildren<SpriteRenderer>())
+			{
+				s.color = Color.white;
+			}
 			transform.position = new Vector3(transform.position.x, transform.position.y, 1);
 
 		}
