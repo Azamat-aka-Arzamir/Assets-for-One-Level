@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101f641d4b3b2f84b9c35bfba3d6bad1, type: 3}
+  m_Name: Roll
+  m_EditorClassIdentifier: 
+  animName: Roll
+  tag: Roll
+  flip: 0
+  speed: 12
+  frames:
+  - name: steelCrowHelmet_31
+    Show: 0
+    sprite: {fileID: -5852556873729860435, guid: 8fa0e4723863041438258d9ed8eba296, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: steelCrowHelmet_32
+    Show: 0
+    sprite: {fileID: 3991106092976979208, guid: 8fa0e4723863041438258d9ed8eba296, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: steelCrowHelmet_33
+    Show: 0
+    sprite: {fileID: -5615678405633095999, guid: 8fa0e4723863041438258d9ed8eba296, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: steelCrowHelmet_34
+    Show: 0
+    sprite: {fileID: 507258390056383007, guid: 8fa0e4723863041438258d9ed8eba296, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: steelCrowHelmet_35
+    Show: 0
+    sprite: {fileID: -2235987166959929851, guid: 8fa0e4723863041438258d9ed8eba296, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  priority: 18
+  repeatable: 0
+  interruptable: 0
+  transitionsTo: []
+  doNotTransitTo: []
+  conditionName: 

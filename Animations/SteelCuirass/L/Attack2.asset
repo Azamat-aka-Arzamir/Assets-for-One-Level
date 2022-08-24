@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101f641d4b3b2f84b9c35bfba3d6bad1, type: 3}
+  m_Name: Attack2
+  m_EditorClassIdentifier: 
+  animName: Attack2
+  tag: Attack
+  flip: 0
+  speed: 12
+  frames:
+  - name: steelCuirass_13
+    Show: 0
+    sprite: {fileID: 3951558356400187729, guid: 562b0ca36d6f1c94884614faf1c05b46, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: steelCuirass_14
+    Show: 0
+    sprite: {fileID: 8431379836600401402, guid: 562b0ca36d6f1c94884614faf1c05b46, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: steelCuirass_15
+    Show: 0
+    sprite: {fileID: -160974559314016685, guid: 562b0ca36d6f1c94884614faf1c05b46, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: steelCuirass_16
+    Show: 0
+    sprite: {fileID: 4507368764571417954, guid: 562b0ca36d6f1c94884614faf1c05b46, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  priority: 16
+  repeatable: 0
+  interruptable: 0
+  transitionsTo: []
+  doNotTransitTo: []
+  conditionName: 

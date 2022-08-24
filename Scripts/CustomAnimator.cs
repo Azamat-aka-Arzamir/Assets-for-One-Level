@@ -39,6 +39,7 @@ public class CustomAnimator : MonoBehaviour
 	[SerializeField] public List<CustomAnimation> AllAnimsL = new List<CustomAnimation>();
 	public List<string> SynchronizeWithMA;
 	public List<Sprite> SpritesInOT;
+	public List<Sprite> SpritesInOTForOtherSide;
 	[SerializeField] List<CustomAnimation> PlayingQueue = new List<CustomAnimation>();
 	public List<int> FireAnimScheme;
 	public List<int> FireUpAnimScheme;
@@ -77,6 +78,7 @@ public class CustomAnimator : MonoBehaviour
 				animator.Reset = false;
 				animator.SerializeAnimations();
 				animator.AssignPriority();
+				animator.AssignPriorityForOtherSide();
 			}
 			if (animator.AssignNewPosToEveryFrame)
 			{
@@ -99,13 +101,21 @@ public class CustomAnimator : MonoBehaviour
 							frame.position = value;
 						}
 					}
+					foreach (var anim in animator.AllAnimsL)
+					{
+						foreach (var frame in anim.frames)
+						{
+							print(value);
+							frame.position = -value;
+						}
+					}
 					g = false;
 				}
 			}
 			if (animator.AddNewAnim)
 			{
 				animator.AddNewAnim = false;
-				animator.SerializeAnimation(null, "New Anim", 0, false, null);
+				animator.SerializeAnimation(Misc.Side.R,null, "New Anim", 0, false, null);
 			}
 			if (animator.CurrentAnim != null) EditorGUILayout.LabelField("CurrentAnimName", animator.CurrentAnim.animName);
 			else EditorGUILayout.LabelField("CurrentAnimName", "Null");
@@ -141,6 +151,7 @@ public class CustomAnimator : MonoBehaviour
 		animChanged.AddListener(OnStateChanged);
 		//AnimEnd.AddListener(OnAnimFinished);
 		AssignPriority();
+		AssignPriorityForOtherSide();
 		InitializeConditions();
 		//print(AllAnims.Find(x => x.animName == "Def").m_condition.Method);
 	}
@@ -157,25 +168,46 @@ public class CustomAnimator : MonoBehaviour
 	}
 	void SerializeAnimations()
 	{
-		SerializeAnimation(FireAnimScheme, "Fire", 8, false, new string[] { "GunIdle" });
-		SerializeAnimation(FireUpAnimScheme, "FireUp", 8, false, new string[] { "GunIdle", "AimUp" });
-		SerializeAnimation(FireDownAnimScheme, "FireDown", 8, false, new string[] { "GunIdle", "AimDown" });
-		SerializeAnimation(IdleAnimScheme, "Idle", 8, true);
-		SerializeAnimation(DefAnimScheme, "Def", 8, false, new string[0], DefCond, false);
-		if (DefAnimScheme.Count > 0) SerializeAnimation(new List<int>() { DefAnimScheme[1] }, "DefStatic", 8, true);
-		SerializeAnimation(DefAnimScheme, "DefReverse", 6, false, new string[0], Cond, true);
-		SerializeAnimation(AttackAnimScheme, "Attack", 12, false, new string[0], "Attack");
-		SerializeAnimation(JumpAnimScheme, "Jump");
-		SerializeAnimation(FlyUpAnimScheme, "FlyUp", 8, true);
-		SerializeAnimation(FlyDownAnimScheme, "FlyDown", 8, true, new string[] { "Land" });
-		SerializeAnimation(LandAnimScheme, "Land", 8, false, new string[] { "Idle", "Def", "GunIdle" });
-		SerializeAnimation(RunAnimScheme, "Run", 12, true, new string[] { "Idle", "Def", "GunIdle" }, "Run");
-		SerializeAnimation(RollAnimScheme, "Roll", 12, false, null, "Roll");
-		SerializeAnimation(Attack2AnimScheme, "Attack2", 12, false, new string[0], "Attack");
-		SerializeAnimation(Attack3AnimScheme, "Attack3", 12, false, new string[] { "Attack" }, "Attack");
-		SerializeAnimation(GunIdleAnimScheme, "GunIdle", 8, true);
-		SerializeAnimation(FireUpAnimScheme, "AimUp", 8, true, new string[] { "GunIdle", "AimDown" });
-		SerializeAnimation(FireDownAnimScheme, "AimDown", 8, true, new string[] { "GunIdle", "AimUp" });
+		SerializeAnimation(Misc.Side.R,FireAnimScheme, "Fire", 8, false, new string[] { "GunIdle" });
+		SerializeAnimation(Misc.Side.R, FireUpAnimScheme, "FireUp", 8, false, new string[] { "GunIdle", "AimUp" });
+		SerializeAnimation(Misc.Side.R, FireDownAnimScheme, "FireDown", 8, false, new string[] { "GunIdle", "AimDown" });
+		SerializeAnimation(Misc.Side.R, IdleAnimScheme, "Idle", 8, true);
+		SerializeAnimation(Misc.Side.R, DefAnimScheme, "Def", 8, false, new string[0], DefCond, false);
+		if (DefAnimScheme.Count > 0) SerializeAnimation(Misc.Side.R, new List<int>() { DefAnimScheme[1] }, "DefStatic", 8, true);
+		SerializeAnimation(Misc.Side.R, DefAnimScheme, "DefReverse", 6, false, new string[0], Cond, true);
+		SerializeAnimation(Misc.Side.R, AttackAnimScheme, "Attack", 12, false, new string[0], "Attack");
+		SerializeAnimation(Misc.Side.R, JumpAnimScheme, "Jump");
+		SerializeAnimation(Misc.Side.R, FlyUpAnimScheme, "FlyUp", 8, true);
+		SerializeAnimation(Misc.Side.R, FlyDownAnimScheme, "FlyDown", 8, true, new string[] { "Land" });
+		SerializeAnimation(Misc.Side.R, LandAnimScheme, "Land", 8, false, new string[] { "Idle", "Def", "GunIdle" });
+		SerializeAnimation(Misc.Side.R, RunAnimScheme, "Run", 12, true, new string[] { "Idle", "Def", "GunIdle" }, "Run");
+		SerializeAnimation(Misc.Side.R, RollAnimScheme, "Roll", 12, false, null, "Roll");
+		SerializeAnimation(Misc.Side.R, Attack2AnimScheme, "Attack2", 12, false, new string[0], "Attack");
+		SerializeAnimation(Misc.Side.R, Attack3AnimScheme, "Attack3", 12, false, new string[] { "Attack" }, "Attack");
+		SerializeAnimation(Misc.Side.R, GunIdleAnimScheme, "GunIdle", 8, true);
+		SerializeAnimation(Misc.Side.R, FireUpAnimScheme, "AimUp", 8, true, new string[] { "GunIdle", "AimDown" });
+		SerializeAnimation(Misc.Side.R, FireDownAnimScheme, "AimDown", 8, true, new string[] { "GunIdle", "AimUp" });
+
+
+		SerializeAnimation(Misc.Side.L, FireAnimScheme, "Fire", 8, false, new string[] { "GunIdle" });
+		SerializeAnimation(Misc.Side.L, FireUpAnimScheme, "FireUp", 8, false, new string[] { "GunIdle", "AimUp" });
+		SerializeAnimation(Misc.Side.L, FireDownAnimScheme, "FireDown", 8, false, new string[] { "GunIdle", "AimDown" });
+		SerializeAnimation(Misc.Side.L, IdleAnimScheme, "Idle", 8, true);
+		SerializeAnimation(Misc.Side.L, DefAnimScheme, "Def", 8, false, new string[0], DefCond, false);
+		if (DefAnimScheme.Count > 0) SerializeAnimation(Misc.Side.L, new List<int>() { DefAnimScheme[1] }, "DefStatic", 8, true);
+		SerializeAnimation(Misc.Side.L, DefAnimScheme, "DefReverse", 6, false, new string[0], Cond, true);
+		SerializeAnimation(Misc.Side.L, AttackAnimScheme, "Attack", 12, false, new string[0], "Attack");
+		SerializeAnimation(Misc.Side.L, JumpAnimScheme, "Jump");
+		SerializeAnimation(Misc.Side.L, FlyUpAnimScheme, "FlyUp", 8, true);
+		SerializeAnimation(Misc.Side.L, FlyDownAnimScheme, "FlyDown", 8, true, new string[] { "Land" });
+		SerializeAnimation(Misc.Side.L, LandAnimScheme, "Land", 8, false, new string[] { "Idle", "Def", "GunIdle" });
+		SerializeAnimation(Misc.Side.L, RunAnimScheme, "Run", 12, true, new string[] { "Idle", "Def", "GunIdle" }, "Lun");
+		SerializeAnimation(Misc.Side.L, RollAnimScheme, "Roll", 12, false, null, "Roll");
+		SerializeAnimation(Misc.Side.L, Attack2AnimScheme, "Attack2", 12, false, new string[0], "Attack");
+		SerializeAnimation(Misc.Side.L, Attack3AnimScheme, "Attack3", 12, false, new string[] { "Attack" }, "Attack");
+		SerializeAnimation(Misc.Side.L, GunIdleAnimScheme, "GunIdle", 8, true);
+		SerializeAnimation(Misc.Side.L, FireUpAnimScheme, "AimUp", 8, true, new string[] { "GunIdle", "AimDown" });
+		SerializeAnimation(Misc.Side.L, FireDownAnimScheme, "AimDown", 8, true, new string[] { "GunIdle", "AimUp" });
 
 	}
 
@@ -185,29 +217,53 @@ public class CustomAnimator : MonoBehaviour
 		foreach (var anim in AllAnims)
 		{
 			anim.priority = prior;
-			var lCopy = AllAnimsL.Find(x => x.animName.TrimEnd('L') == anim.animName);
+			var lCopy = AllAnimsL.Find(x => x.animName == anim.animName);
 			if (lCopy != null) lCopy.priority = prior; else throw new System.Exception("Left copy of Animation named " + anim.animName + " has not found");
 			prior++;
 		}
 	}
-	void AddFrames(List<int> framesInOT, ref List<CustomFrame> frames)
+	void AssignPriorityForOtherSide()
+	{
+		foreach(var anim in AllAnims)
+		{
+			var lCopy=AllAnimsL.Find(z => z.animName == anim.animName);
+			if (lCopy != null)
+			{
+				AllAnimsL.Remove(lCopy);
+				AllAnimsL.Insert(AllAnims.IndexOf(anim), lCopy);
+			}
+
+		}
+		AssignPriority();
+	}
+	void AddFrames(Misc.Side mm_side,List<int> framesInOT, ref List<CustomFrame> frames)
 	{
 		foreach (var num in framesInOT)
 		{
-			CustomFrame a = new CustomFrame(SpritesInOT[num]);
+			Sprite sprite;
+			if (mm_side == Misc.Side.R)
+			{
+				sprite = SpritesInOT[num];
+			}
+			else
+			{
+				sprite = SpritesInOTForOtherSide[num];
+			}
+				
+			CustomFrame a = new CustomFrame(sprite);
 
 			frames.Add(a);
 		}
 	}
-	void AddAnimation(CustomAnimation pred, CustomAnimation newAnim)
+	void AddAnimation(List<CustomAnimation> AddTo, CustomAnimation pred, CustomAnimation newAnim,string side)
 	{
 		if (pred == null)
 		{
-			AllAnims.Add(newAnim);
+			AddTo.Add(newAnim);
 		}
 		else
 		{
-			var ind = AllAnims.IndexOf(pred);
+			var ind = AddTo.IndexOf(pred);
 			for (int i = 0; i < newAnim.frames.Count - 1; i++)
 			{
 				if (i > pred.frames.Count - 1) break;
@@ -225,19 +281,28 @@ public class CustomAnimator : MonoBehaviour
 			}
 			if (pred.tag != "") newAnim.tag = pred.tag;
 			newAnim.interruptable = pred.interruptable;
-			AllAnims.Remove(pred);
-			AllAnims.Insert(ind, newAnim);
-
-			AssetDatabase.CreateAsset(newAnim, "Assets/Animations/" + name + "/" + newAnim.animName + ".asset");
+			AddTo.Remove(pred);
+			AddTo.Insert(ind, newAnim);
+			if(!AssetDatabase.IsValidFolder("Assets/Animations/" + gameObject.name ))
+			{
+				Directory.CreateDirectory("Assets/Animations/"+ gameObject.name );
+			}
+			AssetDatabase.Refresh();
+			if (!AssetDatabase.IsValidFolder("Assets/Animations/" + gameObject.name + "/"+side))
+			{
+				Directory.CreateDirectory("Assets/Animations/" + gameObject.name + "/"+ side);
+			}
+			AssetDatabase.Refresh();
+			AssetDatabase.CreateAsset(newAnim, "Assets/Animations/" + gameObject.name + "/" + side+"/" + newAnim.animName + ".asset");
 			AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(newAnim));
 		}
 	}
-	void SerializeAnimation(List<int> framesInOT, string name)
+	void SerializeAnimation(Misc.Side mm_side, List<int> framesInOT, string name)
 	{
 		List<CustomFrame> frames = new List<CustomFrame>();
 		if (framesInOT != null && framesInOT.Count > 0)
 		{
-			AddFrames(framesInOT, ref frames);
+			AddFrames(mm_side,framesInOT, ref frames);
 		}
 		else
 		{
@@ -251,14 +316,16 @@ public class CustomAnimator : MonoBehaviour
 		newAnim.repeatable = false;
 		newAnim.m_condition = alwaysTrue;
 		var pred = AllAnims.Find(x => x.animName == name);
-		AddAnimation(pred, newAnim);
+		if (mm_side == Misc.Side.L) pred = AllAnimsL.Find(x => x.animName == name);
+		if (mm_side == Misc.Side.R) AddAnimation(AllAnims, pred, newAnim,"R");
+		if (mm_side == Misc.Side.L) AddAnimation(AllAnimsL, pred, newAnim,"L");
 	}
-	void SerializeAnimation(List<int> framesInOT, string name, int fps)
+	void SerializeAnimation(Misc.Side mm_side,List<int> framesInOT, string name, int fps)
 	{
 		List<CustomFrame> frames = new List<CustomFrame>();
 		if (framesInOT != null && framesInOT.Count > 0)
 		{
-			AddFrames(framesInOT, ref frames);
+			AddFrames(mm_side, framesInOT, ref frames);
 		}
 		else
 		{
@@ -273,14 +340,16 @@ public class CustomAnimator : MonoBehaviour
 		an.repeatable = false;
 		an.m_condition = alwaysTrue;
 		var pred = AllAnims.Find(x => x.animName == name);
-		AddAnimation(pred, an);
+		if (mm_side == Misc.Side.L) pred = AllAnimsL.Find(x => x.animName == name);
+		if (mm_side == Misc.Side.R) AddAnimation(AllAnims, pred, newAnim,"R");
+		if (mm_side == Misc.Side.L) AddAnimation(AllAnimsL, pred, newAnim,"L");
 	}
-	void SerializeAnimation(List<int> framesInOT, string name, int fps, bool repeatable)
+	void SerializeAnimation(Misc.Side mm_side, List<int> framesInOT, string name, int fps, bool repeatable)
 	{
 		List<CustomFrame> frames = new List<CustomFrame>();
 		if (framesInOT != null && framesInOT.Count > 0)
 		{
-			AddFrames(framesInOT, ref frames);
+			AddFrames(mm_side, framesInOT, ref frames);
 		}
 		else
 		{
@@ -294,14 +363,16 @@ public class CustomAnimator : MonoBehaviour
 		newAnim.repeatable = repeatable;
 		newAnim.m_condition = alwaysTrue;
 		var pred = AllAnims.Find(x => x.animName == name);
-		AddAnimation(pred, newAnim);
+		if (mm_side == Misc.Side.L) pred = AllAnimsL.Find(x => x.animName == name);
+		if (mm_side == Misc.Side.R) AddAnimation(AllAnims, pred, newAnim,"R");
+		if (mm_side == Misc.Side.L) AddAnimation(AllAnimsL, pred, newAnim,"L");
 	}
-	void SerializeAnimation(List<int> framesInOT, string name, int fps, bool repeatable, string[] transitionsTo)
+	void SerializeAnimation(Misc.Side mm_side, List<int> framesInOT, string name, int fps, bool repeatable, string[] transitionsTo)
 	{
 		List<CustomFrame> frames = new List<CustomFrame>();
 		if (framesInOT != null && framesInOT.Count > 0)
 		{
-			AddFrames(framesInOT, ref frames);
+			AddFrames(mm_side, framesInOT, ref frames);
 		}
 		else
 		{
@@ -316,7 +387,9 @@ public class CustomAnimator : MonoBehaviour
 		newAnim.transitionsTo = transitionsTo;
 		newAnim.m_condition = alwaysTrue;
 		var pred = AllAnims.Find(x => x.animName == name);
-		AddAnimation(pred, newAnim);
+		if (mm_side == Misc.Side.L) pred = AllAnimsL.Find(x => x.animName == name);
+		if (mm_side == Misc.Side.R) AddAnimation(AllAnims, pred, newAnim,"R");
+		if (mm_side == Misc.Side.L) AddAnimation(AllAnimsL, pred, newAnim,"L");
 	}
 	/*void SerializeAnimation(List<int> framesInOT, string name, int fps, bool repeatable, string[] transitionsTo)
 	{
@@ -340,12 +413,12 @@ public class CustomAnimator : MonoBehaviour
 		var pred = AllAnims.Find(x => x.animName == name);
 		AddAnimation(pred, newAnim);
 	}*/
-	void SerializeAnimation(List<int> framesInOT, string name, int fps, bool repeatable, string[] transitionsTo, string tag)
+	void SerializeAnimation(Misc.Side mm_side, List<int> framesInOT, string name, int fps, bool repeatable, string[] transitionsTo, string tag)
 	{
 		List<CustomFrame> frames = new List<CustomFrame>();
 		if (framesInOT != null && framesInOT.Count > 0)
 		{
-			AddFrames(framesInOT, ref frames);
+			AddFrames(mm_side, framesInOT, ref frames);
 		}
 		else
 		{
@@ -361,14 +434,16 @@ public class CustomAnimator : MonoBehaviour
 		newAnim.m_condition = alwaysTrue;
 		newAnim.tag = tag;
 		var pred = AllAnims.Find(x => x.animName == name);
-		AddAnimation(pred, newAnim);
+		if (mm_side == Misc.Side.L) pred = AllAnimsL.Find(x => x.animName == name);
+		if (mm_side == Misc.Side.R) AddAnimation(AllAnims, pred, newAnim,"R");
+		if (mm_side == Misc.Side.L) AddAnimation(AllAnimsL, pred, newAnim,"L");
 	}
-	void SerializeAnimation(List<int> framesInOT, string name, int fps, bool repeatable, string[] transitionsTo, Misc.condition condition, bool reversed)
+	void SerializeAnimation(Misc.Side mm_side, List<int> framesInOT, string name, int fps, bool repeatable, string[] transitionsTo, Misc.condition condition, bool reversed)
 	{
 		List<CustomFrame> frames = new List<CustomFrame>();
 		if (framesInOT != null && framesInOT.Count > 0)
 		{
-			AddFrames(framesInOT, ref frames);
+			AddFrames(mm_side, framesInOT, ref frames);
 		}
 		else
 		{
@@ -384,7 +459,9 @@ public class CustomAnimator : MonoBehaviour
 		newAnim.m_condition = condition;
 		newAnim.conditionName = condition.Method.Name;
 		var pred = AllAnims.Find(x => x.animName == name);
-		AddAnimation(pred, newAnim);
+		if (mm_side == Misc.Side.L) pred = AllAnimsL.Find(x => x.animName == name);
+		if (mm_side == Misc.Side.R) AddAnimation(AllAnims, pred, newAnim,"R");
+		if (mm_side == Misc.Side.L) AddAnimation(AllAnimsL, pred, newAnim,"L");
 	}
 	#endregion
 	// Update is called once per frame

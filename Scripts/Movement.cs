@@ -244,7 +244,7 @@ public class Movement : MonoBehaviour
 			{
 				lastDir = (int)Mathf.Sign(direction.x);
 				TurnEventR.Invoke();
-				TurnEventL.Invoke();
+				//TurnEventL.Invoke();
 			}
 			LocalMaxspeed = MaxSpeed;
 		}
