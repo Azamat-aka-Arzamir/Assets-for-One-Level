@@ -257,6 +257,7 @@ public class Weapon : MonoBehaviour
 		{
 			var feffect = Instantiate(FireEffect, point + transform.position, Quaternion.identity);
 			feffect.GetComponent<CustomAnimator>().DefaultAnim =selfAnim.CurrentAnim.animName;
+			if(selfAnim.side==Misc.Side.L)feffect.GetComponent<CustomAnimator>().ChangeSide();
 		}
 		var dir = new Vector2();
 		if(parentMove.lastDirY == 0)

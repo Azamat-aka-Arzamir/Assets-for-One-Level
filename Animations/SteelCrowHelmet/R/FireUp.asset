@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101f641d4b3b2f84b9c35bfba3d6bad1, type: 3}
+  m_Name: FireUp
+  m_EditorClassIdentifier: 
+  animName: FireUp
+  tag: 
+  flip: 0
+  speed: 8
+  frames:
+  - name: steelCrowHelmet_3
+    Show: 0
+    sprite: {fileID: 7120786331536121077, guid: ed66ff32450bcca44b7111f1336c7592, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape: []
+  - name: steelCrowHelmet_4
+    Show: 0
+    sprite: {fileID: -2657827806827813354, guid: ed66ff32450bcca44b7111f1336c7592, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  priority: 13
+  repeatable: 0
+  interruptable: 0
+  transitionsTo:
+  - GunIdle
+  - AimUp
+  doNotTransitTo: []
+  conditionName: 

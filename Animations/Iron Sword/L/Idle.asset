@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101f641d4b3b2f84b9c35bfba3d6bad1, type: 3}
+  m_Name: Idle
+  m_EditorClassIdentifier: 
+  animName: Idle
+  tag: 
+  flip: 0
+  speed: 8
+  frames:
+  - name: steelSword_7
+    Show: 0
+    sprite: {fileID: -1082941594144418109, guid: 1c3feb73c3b3cbb44a64e98904200f13, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: steelSword_8
+    Show: 0
+    sprite: {fileID: 7253876624249160083, guid: 1c3feb73c3b3cbb44a64e98904200f13, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: steelSword_9
+    Show: 0
+    sprite: {fileID: -7351466517248697353, guid: 1c3feb73c3b3cbb44a64e98904200f13, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: steelSword_10
+    Show: 0
+    sprite: {fileID: -391014006156162194, guid: 1c3feb73c3b3cbb44a64e98904200f13, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  priority: 0
+  repeatable: 1
+  interruptable: 0
+  transitionsTo: []
+  doNotTransitTo: []
+  conditionName: 

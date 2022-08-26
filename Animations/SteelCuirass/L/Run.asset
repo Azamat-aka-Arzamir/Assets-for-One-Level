@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101f641d4b3b2f84b9c35bfba3d6bad1, type: 3}
+  m_Name: Run
+  m_EditorClassIdentifier: 
+  animName: Run
+  tag: Lun
+  flip: 0
+  speed: 12
+  frames:
+  - name: steelCuirass_25
+    Show: 0
+    sprite: {fileID: 8053953181845090435, guid: 562b0ca36d6f1c94884614faf1c05b46, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: steelCuirass_26
+    Show: 0
+    sprite: {fileID: -1889904029700818869, guid: 562b0ca36d6f1c94884614faf1c05b46, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: steelCuirass_27
+    Show: 0
+    sprite: {fileID: -2628847940649388084, guid: 562b0ca36d6f1c94884614faf1c05b46, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: steelCuirass_28
+    Show: 0
+    sprite: {fileID: -4957772492959021040, guid: 562b0ca36d6f1c94884614faf1c05b46, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: steelCuirass_29
+    Show: 0
+    sprite: {fileID: 8819517772262367831, guid: 562b0ca36d6f1c94884614faf1c05b46, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  - name: steelCuirass_30
+    Show: 0
+    sprite: {fileID: 6126289623509096372, guid: 562b0ca36d6f1c94884614faf1c05b46, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 0, y: 0}
+  priority: 2
+  repeatable: 1
+  interruptable: 0
+  transitionsTo:
+  - Idle
+  - Def
+  - GunIdle
+  doNotTransitTo: []
+  conditionName: 

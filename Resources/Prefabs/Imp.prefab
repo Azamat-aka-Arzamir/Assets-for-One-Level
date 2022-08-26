@@ -113,6 +113,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6cb2f081061451a478a48e26b9f35bd8, type: 2}
   SynchronizeWithMA: []
   SpritesInOT: []
+  SpritesInOTForOtherSide: []
   PlayingQueue: []
   FireAnimScheme: 
   FireUpAnimScheme: 
@@ -547,6 +548,7 @@ MonoBehaviour:
   Corridor: 
   CanMove: 1
   WallCheckingRayLength: 3
+  control: {x: 0, y: 0}
   stop: 0
   a: 0
 --- !u!50 &7016695251876039012

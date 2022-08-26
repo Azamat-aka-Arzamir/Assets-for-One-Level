@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_side: 1
   MotherAnimator: {fileID: 0}
   DefaultAnim: Fire
   Reset: 0
@@ -108,12 +109,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fe95632931348da42b4070c840874b70, type: 2}
   - {fileID: 11400000, guid: 8a57f6b642fc77a489ec4ad60aec4ba6, type: 2}
   - {fileID: 11400000, guid: 0b8814b7ed8f7b342af46edc63c4634c, type: 2}
+  AllAnimsL:
+  - {fileID: 11400000, guid: 9617943551a217a41a62f687c2beb57d, type: 2}
+  - {fileID: 11400000, guid: 0d95ac7377ce94948a80015fb4632f55, type: 2}
+  - {fileID: 11400000, guid: 622881d1c6d107349b0e81b1b6b588d8, type: 2}
+  - {fileID: 11400000, guid: c706d04dbc2fa4f4c9f96904a83d6626, type: 2}
+  - {fileID: 11400000, guid: 4d33f77db9658e249905f3c7e22d9778, type: 2}
   SynchronizeWithMA: []
   SpritesInOT:
   - {fileID: 8334651344603559088, guid: 30e7d6cf51be2f54abe4ead2450bb601, type: 3}
   - {fileID: 9204931480678746970, guid: 30e7d6cf51be2f54abe4ead2450bb601, type: 3}
   - {fileID: -8359625512513901107, guid: 30e7d6cf51be2f54abe4ead2450bb601, type: 3}
   - {fileID: 7804807344221744696, guid: 30e7d6cf51be2f54abe4ead2450bb601, type: 3}
+  SpritesInOTForOtherSide: []
   PlayingQueue: []
   FireAnimScheme: 00000000010000000200000003000000
   FireUpAnimScheme: 00000000010000000200000003000000
