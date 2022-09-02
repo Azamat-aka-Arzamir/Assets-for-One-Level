@@ -20,7 +20,7 @@ MonoBehaviour:
   - name: basicGun_11
     Show: 0
     sprite: {fileID: -2388961416109931114, guid: 110ce67d3de17ac45a3e881cb130c3a9, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -3}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:
@@ -28,7 +28,7 @@ MonoBehaviour:
   - name: basicGun_11
     Show: 0
     sprite: {fileID: -2388961416109931114, guid: 110ce67d3de17ac45a3e881cb130c3a9, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -3}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:
@@ -36,7 +36,7 @@ MonoBehaviour:
   - name: basicGun_11
     Show: 0
     sprite: {fileID: -2388961416109931114, guid: 110ce67d3de17ac45a3e881cb130c3a9, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -3}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:
@@ -44,7 +44,7 @@ MonoBehaviour:
   - name: basicGun_11
     Show: 0
     sprite: {fileID: -2388961416109931114, guid: 110ce67d3de17ac45a3e881cb130c3a9, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -3}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:

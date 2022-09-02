@@ -182,7 +182,7 @@ public class Weapon : MonoBehaviour
 	}
 	public void UpdatePhysicsOutline()
 	{
-		var a = selfAnim.CurrentAnim.frames[selfAnim.CurrentFrameIndex].PhysicsShape;
+		var a = selfAnim.currentFrame.PhysicsShape;
 		if (a.Length > 2)
 		{
 			selfColl.points = a;
@@ -225,8 +225,6 @@ public class Weapon : MonoBehaviour
 			//yield return new WaitForSeconds(a);
 		}
 		Activate = false;
-		StopCoroutine(IeSwordAttack());
-		yield break;
 	}
 	void ShieldAttack()
 	{
@@ -251,7 +249,7 @@ public class Weapon : MonoBehaviour
 	{
 		Shoot.Invoke();
 		yield return new WaitUntil(() => selfAnim.CurrentAnim.animName.Contains("Fire")&&selfAnim.CurrentFrameIndex==0);
-		Vector3 point = selfAnim.CurrentAnim.frames[selfAnim.CurrentFrameIndex].point;
+		Vector3 point = selfAnim.currentFrame.point;
 		var bullet = Instantiate(Bullet, point + transform.position, Quaternion.identity);
 		if (FireEffect != null)
 		{
@@ -278,8 +276,6 @@ public class Weapon : MonoBehaviour
 		Reloaded = false;
 		yield return new WaitForSeconds(GunCD);
 		Reloaded = true;
-		StopCoroutine(CoolDown());
-		yield break;
 	}
 	// Update is called once per frame
 	void FixedUpdate()
@@ -307,12 +303,12 @@ public class Weapon : MonoBehaviour
 	{
 		if (parentEnt != null && Activate)
 		{
-			if(transform.parent.localScale.x ==-1)
+			if(selfAnim.side==Misc.Side.L)
 			//if (selfRender.sprite.name.ToString().StartsWith("L"))
 			{
 				parentEnt.ImmuneToDamageV2 = new Vector2(-1, 0);
 			}
-			if (transform.parent.localScale.x == 1)
+			if (selfAnim.side == Misc.Side.R)
 			//if (selfRender.sprite.name.ToString().StartsWith("R"))
 			{
 				parentEnt.ImmuneToDamageV2 = new Vector2(1, 0);

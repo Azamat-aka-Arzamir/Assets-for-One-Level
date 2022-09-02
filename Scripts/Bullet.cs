@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer),typeof(Rigidbody2D),typeof(Collider2D))]
+[RequireComponent(typeof(SpriteRenderer),typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour
 {
 	[Tooltip("Collisions count before destructing")]
@@ -16,9 +16,12 @@ public class Bullet : MonoBehaviour
     public type _type;
     Rigidbody2D srb;
     float timest;
+	Collider2D selfCollider;
     // Start is called before the first frame update
     void Start()
     {
+		Misc.DrawCross(transform.position, 1, Color.magenta, 2);
+		TryGetComponent(out selfCollider);
 		var a = weapon.GetComponent<CustomAnimator>().CurrentAnim.animName;
 		if (a.Contains("Up"))
 		{
@@ -28,9 +31,13 @@ public class Bullet : MonoBehaviour
 		{
 			dir = Vector2.down;
 		}
-		else
+		else if(weapon.GetComponent<CustomAnimator>().side==Misc.Side.R)
 		{
 			dir = Vector2.right;
+		}
+		else
+		{
+			dir = Vector2.left;
 		}
 		if (dir.y != 0) dir = new Vector2(0, dir.y);
         timest = Time.time;
@@ -54,15 +61,16 @@ public class Bullet : MonoBehaviour
 		{
 			direct = srb.velocity;
 		}
-		else if (Time.time-timest>Time.fixedDeltaTime&&_type == type.Bullet && GetComponent<Collider2D>().sharedMaterial == null)
+		else if (Time.time-timest>Time.fixedDeltaTime*2&&_type == type.Bullet && (selfCollider==null||selfCollider.sharedMaterial == null))
 		{
 			actionOnDestruct();
 		}
-		var ray = Physics2D.RaycastAll(transform.position, direct.normalized, direct.magnitude * Time.deltaTime, LayerMask.GetMask("Entity")|LayerMask.GetMask("Ground"));
-		Debug.DrawRay(transform.position, direct, Color.cyan);
+		var ray = Physics2D.RaycastAll(transform.position, direct.normalized, direct.magnitude * Time.deltaTime, LayerMask.GetMask("Entity")|LayerMask.GetMask("Ground") | LayerMask.GetMask("HitBox"));
+		Debug.DrawRay(transform.position, direct*Time.deltaTime, Color.cyan);
 		foreach (var hit in ray)
 		{
 			hit.collider.TryGetComponent(out ent);
+			if (ent == null) hit.collider.transform.parent.TryGetComponent(out ent);
 			if (ent != null&&ent!=weapon.parentEnt)
 			{
 				ent.GetDamage(weapon.Damage, (int)Mathf.Sign((ent.transform.position - transform.position).normalized.x), weapon.transform.parent.gameObject, weapon.pushingForce, weapon);

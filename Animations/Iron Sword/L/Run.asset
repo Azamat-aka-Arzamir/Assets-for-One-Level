@@ -20,7 +20,7 @@ MonoBehaviour:
   - name: steelSword_25
     Show: 0
     sprite: {fileID: 941339204415855702, guid: 1c3feb73c3b3cbb44a64e98904200f13, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: -0, y: -0, z: 2}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:
@@ -28,7 +28,7 @@ MonoBehaviour:
   - name: steelSword_26
     Show: 0
     sprite: {fileID: 1385937751925822742, guid: 1c3feb73c3b3cbb44a64e98904200f13, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: -0, y: -0, z: 2}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:
@@ -36,7 +36,7 @@ MonoBehaviour:
   - name: steelSword_27
     Show: 0
     sprite: {fileID: -5697989348861419905, guid: 1c3feb73c3b3cbb44a64e98904200f13, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: -0, y: -0, z: 2}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:
@@ -44,7 +44,7 @@ MonoBehaviour:
   - name: steelSword_28
     Show: 0
     sprite: {fileID: 7476328497274741860, guid: 1c3feb73c3b3cbb44a64e98904200f13, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: -0, y: -0, z: 2}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:
@@ -52,7 +52,7 @@ MonoBehaviour:
   - name: steelSword_29
     Show: 0
     sprite: {fileID: -5948357904175951457, guid: 1c3feb73c3b3cbb44a64e98904200f13, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: -0, y: -0, z: 2}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:
@@ -60,7 +60,7 @@ MonoBehaviour:
   - name: steelSword_30
     Show: 0
     sprite: {fileID: 839825710674623120, guid: 1c3feb73c3b3cbb44a64e98904200f13, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: -0, y: -0, z: 2}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:

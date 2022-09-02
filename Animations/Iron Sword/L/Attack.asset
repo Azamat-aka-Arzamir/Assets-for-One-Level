@@ -20,35 +20,51 @@ MonoBehaviour:
   - name: steelSword_13
     Show: 0
     sprite: {fileID: -5690565042908991161, guid: 1c3feb73c3b3cbb44a64e98904200f13, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: -0, y: -0, z: 2}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:
-    - {x: 0, y: 0}
+    - {x: -0.17922723, y: -0.7298021}
+    - {x: -0.6888777, y: -0.06813741}
+    - {x: -1.7325435, y: -0.9251201}
+    - {x: -1.9191031, y: -1.7207038}
+    - {x: -1.0024927, y: -1.679062}
   - name: steelSword_14
     Show: 0
     sprite: {fileID: -647252027789694993, guid: 1c3feb73c3b3cbb44a64e98904200f13, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: -0, y: -0, z: 2}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:
-    - {x: 0, y: 0}
+    - {x: -0.17922723, y: -1.7392747}
+    - {x: -1.3975807, y: -2.011324}
+    - {x: -3.170401, y: -1.3269173}
+    - {x: -3.5489526, y: 0.26751208}
+    - {x: -0.79297996, y: -0.098189354}
   - name: steelSword_15
     Show: 0
     sprite: {fileID: -1514696903617408094, guid: 1c3feb73c3b3cbb44a64e98904200f13, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: -0, y: -0, z: 2}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:
-    - {x: 0, y: 0}
+    - {x: -0.9791868, y: 0.8891637}
+    - {x: -3.5049524, y: 2.8885958}
+    - {x: -4.9182897, y: 1.5641432}
+    - {x: -4.1571245, y: -1.1735487}
+    - {x: -1.383426, y: 0.20655715}
   - name: steelSword_16
     Show: 0
     sprite: {fileID: -2465302647809635912, guid: 1c3feb73c3b3cbb44a64e98904200f13, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: -0, y: -0, z: 2}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:
-    - {x: 0, y: 0}
+    - {x: -0.255414, y: -0.40600884}
+    - {x: -1.3475059, y: 2.88694}
+    - {x: -3.1069405, y: 2.0844424}
+    - {x: -3.9483333, y: -0.48459178}
+    - {x: -1.0405862, y: -0.7838689}
   priority: 15
   repeatable: 0
   interruptable: 0

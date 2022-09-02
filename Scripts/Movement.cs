@@ -194,7 +194,6 @@ public class Movement : MonoBehaviour
 	{
 		if (direction != Vector2.zero) direction = direction.normalized;
 		else direction = Vector2.zero;
-		//if (IsAttack) direction = Vector2.zero;
 		if (Sliding) direction = new Vector2(-Wall, direction.y);
 		if (direction.y < -0.5)
 		{
@@ -217,11 +216,11 @@ public class Movement : MonoBehaviour
 		if (direction.y != 0)
 		{
 			lastDirY = (int)Mathf.Sign(direction.y);
-			if (lastDirY == -1&&LastWeapon.weaponType==Weapon.type.gun)
+			if (lastDirY == -1&&direction.y<=-0.7&&LastWeapon.weaponType==Weapon.type.gun)
 			{
 				LookDownEvent.Invoke();
 			}
-			if (lastDirY == 1 && LastWeapon.weaponType == Weapon.type.gun)
+			if (lastDirY == 1 && direction.y >= 0.7 && LastWeapon.weaponType == Weapon.type.gun)
 			{
 				LookUpEvent.Invoke();
 			}

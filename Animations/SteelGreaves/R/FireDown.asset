@@ -20,14 +20,14 @@ MonoBehaviour:
   - name: steelgreaves_5
     Show: 0
     sprite: {fileID: 1172335417114779767, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape: []
   - name: steelgreaves_6
     Show: 0
     sprite: {fileID: 1561322304979364825, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:

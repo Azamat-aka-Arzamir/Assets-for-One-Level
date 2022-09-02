@@ -20,7 +20,7 @@ MonoBehaviour:
   - name: steelarmbracesLeftHand_40
     Show: 0
     sprite: {fileID: 8790606149105716209, guid: 2c31d9cc2f55f2d498e5e18e8139e855, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: -0, y: -0, z: -0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:
@@ -28,7 +28,7 @@ MonoBehaviour:
   - name: steelarmbracesLeftHand_41
     Show: 0
     sprite: {fileID: 6830871780057576977, guid: 2c31d9cc2f55f2d498e5e18e8139e855, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: -0, y: -0, z: -0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:
@@ -36,7 +36,7 @@ MonoBehaviour:
   - name: steelarmbracesLeftHand_42
     Show: 0
     sprite: {fileID: 1026887196368026980, guid: 2c31d9cc2f55f2d498e5e18e8139e855, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: -0, y: -0, z: -0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:
@@ -44,7 +44,7 @@ MonoBehaviour:
   - name: steelarmbracesLeftHand_43
     Show: 0
     sprite: {fileID: 3731929491661216078, guid: 2c31d9cc2f55f2d498e5e18e8139e855, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: -0, y: -0, z: -0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:

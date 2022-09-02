@@ -20,7 +20,7 @@ MonoBehaviour:
   - name: steelSword_12
     Show: 0
     sprite: {fileID: 4494174615468003892, guid: 1c3feb73c3b3cbb44a64e98904200f13, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: -0, y: -0, z: 2}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:

@@ -127,10 +127,12 @@ public class Entity : MonoBehaviour
 			if(damage>0&&!IsDead)StartCoroutine(IeGetDamage(origin));
 		}
 	}
+	public UnityEngine.Events.UnityEvent DamageEvent = new UnityEngine.Events.UnityEvent();
 	IEnumerator IeGetDamage(GameObject origin)
 	{
 		var blink = StartCoroutine(Blink());
 		GettingDamage = true;
+		DamageEvent.Invoke();
 		ImmuneToDamage = true;
 		LastDamages.Add(origin);
 		for (int i = 0; i < 20; i++)
@@ -167,6 +169,10 @@ public class Entity : MonoBehaviour
 		}
 	}
 	public UnityEngine.Events.UnityEvent DeathEvent = new UnityEngine.Events.UnityEvent();
+	[SerializeField]
+	bool DestroyOnDeath;
+	[SerializeField]
+	float DestroyTimer;
 	void Die(string killerName, Weapon weapon)
 	{
 		IsDead = true;
@@ -186,6 +192,7 @@ public class Entity : MonoBehaviour
 		SelfColl.sharedMaterial = new PhysicsMaterial2D();
 		SelfColl.sharedMaterial.friction = 10;
 		print(gameObject.name + " was killed by " + weapon.name + " in " + killerName + "'s hands");
+		if(DestroyOnDeath)Destroy(gameObject, DestroyTimer);
 	}
 
 }

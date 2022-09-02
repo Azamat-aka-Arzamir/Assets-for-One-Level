@@ -20,28 +20,28 @@ MonoBehaviour:
   - name: steelgreaves_13
     Show: 0
     sprite: {fileID: -8491236063150745295, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape: []
   - name: steelgreaves_14
     Show: 0
     sprite: {fileID: -6092778670929246949, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape: []
   - name: steelgreaves_15
     Show: 0
     sprite: {fileID: -7247006459810315954, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape: []
   - name: steelgreaves_16
     Show: 0
     sprite: {fileID: 5741725990193086575, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:

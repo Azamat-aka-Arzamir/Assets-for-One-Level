@@ -20,7 +20,7 @@ MonoBehaviour:
   - name: steelGreaves_7
     Show: 0
     sprite: {fileID: -8005272621073520739, guid: 1c035ec207ed4674d9b476d9f5dee21a, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:
@@ -28,7 +28,7 @@ MonoBehaviour:
   - name: steelGreaves_8
     Show: 0
     sprite: {fileID: -2070812649262739848, guid: 1c035ec207ed4674d9b476d9f5dee21a, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:
@@ -36,7 +36,7 @@ MonoBehaviour:
   - name: steelGreaves_9
     Show: 0
     sprite: {fileID: 262758365335629879, guid: 1c035ec207ed4674d9b476d9f5dee21a, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:
@@ -44,7 +44,7 @@ MonoBehaviour:
   - name: steelGreaves_10
     Show: 0
     sprite: {fileID: 4846317525283333434, guid: 1c035ec207ed4674d9b476d9f5dee21a, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:

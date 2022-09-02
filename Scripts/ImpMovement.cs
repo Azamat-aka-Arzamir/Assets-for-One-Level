@@ -8,7 +8,7 @@ public class ImpMovement : MonoBehaviour
 	Movement SelfMovement;
 	Rigidbody2D srb;
 	public float Speed;
-	bool CanParabol=true;
+	[SerializeField]bool CanParabol=true;
 	[SerializeField] float CoolDown;
 
 	public UnityEvent ClawsAttackEvent = new UnityEvent();
@@ -63,10 +63,11 @@ public class ImpMovement : MonoBehaviour
 		Vector2 LocalPos = (Vector2)transform.position - TargetPos;
 		float a = LocalPos.y / (LocalPos.x * LocalPos.x);
 		int i = 0;
+		Debug.DrawRay(transform.position, new Vector2(1, 2 * a * LocalPos.x).normalized*5,Color.white,5);
 		if (!CheckFreeSpaceWithRay(new Vector2(1, 2 * a * LocalPos.x).normalized))
 		{
-			StartCoroutine(IeCoolDown(CoolDown));
 			SelfMovement.AnotherInput = false;
+			CanParabol = true;
 			yield break;
 		}
 
@@ -116,7 +117,7 @@ public class ImpMovement : MonoBehaviour
 			if (i>3&&Mathf.Abs(srb.velocity.normalized.x - new Vector2(1, 2 * a * localPos.x).normalized.x * -Mathf.Sign(LocalPos.x)) > 0.1)
 			{
 				trail.enabled = false;
-				
+				StartCoroutine(IeCoolDown(CoolDown));
 				SelfMovement.AnotherInput = false;
 				transform.localRotation = Quaternion.Euler(0, 0, 0);
 				yield break;
@@ -131,8 +132,6 @@ public class ImpMovement : MonoBehaviour
 		SelfMovement.AnotherInput = false;
 		transform.localRotation = Quaternion.Euler(0, 0, 0);
 		StartCoroutine(IeCoolDown(CoolDown));
-		StopCoroutine(IeParabolicFlight(TargetPos));
-		yield break;
 	}
 	bool CheckFreeSpaceWithRay(Vector2 direction)
 	{
@@ -153,11 +152,8 @@ public class ImpMovement : MonoBehaviour
 	}
 	IEnumerator IeCoolDown(float time)
 	{
-		CanParabol = false;
 		yield return new WaitForSeconds(time);
 		CanParabol = true;
-		StopCoroutine(IeCoolDown(CoolDown));
-		yield break;
 	}
 
 }

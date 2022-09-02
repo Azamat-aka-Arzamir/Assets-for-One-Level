@@ -136,6 +136,8 @@ MonoBehaviour:
   newFrame:
     m_PersistentCalls:
       m_Calls: []
+  saveImpulse:
+  - DefReverse
 --- !u!1 &7016695250716642030
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,6 +310,8 @@ MonoBehaviour:
           m_StringArgument: Die
           m_BoolArgument: 0
         m_CallState: 2
+  DestroyOnDeath: 1
+  DestroyTimer: 1
 --- !u!61 &7016695251876039033
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -472,6 +476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 15
+  CanParabol: 1
   CoolDown: 2
   ClawsAttackEvent:
     m_PersistentCalls:
@@ -689,7 +694,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7016695252262158562}
   - component: {fileID: 7016695252262158563}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HitBox
   m_TagString: HitBox
   m_Icon: {fileID: 0}
@@ -723,7 +728,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.18404901, y: -0.014640808}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -734,7 +739,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9668095, y: 0.73095703}
+  m_Size: {x: 1.4428251, y: 1.4121246}
   m_EdgeRadius: 0
 --- !u!1 &7016695252305847626
 GameObject:

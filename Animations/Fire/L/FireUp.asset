@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animName: FireUp
   tag: 
-  flip: 1
+  flip: 0
   speed: 12
   frames:
   - name: fire_0

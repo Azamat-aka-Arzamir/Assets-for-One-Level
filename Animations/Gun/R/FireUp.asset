@@ -20,14 +20,14 @@ MonoBehaviour:
   - name: basicGun_3
     Show: 0
     sprite: {fileID: -2048393315887679703, guid: 530e0f7d5d3808d46a59f0f1ab0c776f, type: 3}
-    position: {x: 0, y: 0, z: -3.14}
+    position: {x: 0, y: 0, z: -3}
     point: {x: 0.6298473, y: 1.0647416, z: 0}
     rotation: 0
     PhysicsShape: []
   - name: basicGun_4
     Show: 0
     sprite: {fileID: 1991946306787964545, guid: 530e0f7d5d3808d46a59f0f1ab0c776f, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -3}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:

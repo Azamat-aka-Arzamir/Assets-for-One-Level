@@ -34,9 +34,9 @@ public class Controller : MonoBehaviour
 	}
 	public void GetMovement(InputAction.CallbackContext context)
 	{
-		x = context.ReadValue<Vector2>().x;
+		//x = context.ReadValue<Vector2>().x;
 		input = context.ReadValue<Vector2>();
-		if (Mathf.Abs(input.y) < 0.2f)
+		if (Mathf.Abs(input.y) < 0.7f)
 		{
 			lookUp.Invoke(0);
 		}
@@ -78,6 +78,7 @@ public class Controller : MonoBehaviour
 	}
 	public void GetAttack(InputAction.CallbackContext context)
 	{
+		print("semen");
 		if (context.performed && !context.started)
 		{
 			FirstAttack.Invoke();

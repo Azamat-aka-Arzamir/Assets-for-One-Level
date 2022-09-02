@@ -20,14 +20,14 @@ MonoBehaviour:
   - name: steelSword_5
     Show: 0
     sprite: {fileID: -7927286663819768502, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -2}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape: []
   - name: steelSword_6
     Show: 0
     sprite: {fileID: 4210314593357615414, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -2}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:

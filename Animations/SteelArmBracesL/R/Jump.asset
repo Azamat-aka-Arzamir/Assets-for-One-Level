@@ -20,14 +20,14 @@ MonoBehaviour:
   - name: steelarmbracesLeftHand_17
     Show: 0
     sprite: {fileID: -2597314584687470481, guid: 3adf6b6cafdebcc4180e47142166043a, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape: []
   - name: steelarmbracesLeftHand_18
     Show: 0
     sprite: {fileID: 6624762576808690593, guid: 3adf6b6cafdebcc4180e47142166043a, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:

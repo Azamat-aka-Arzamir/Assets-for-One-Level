@@ -20,7 +20,7 @@ MonoBehaviour:
   - name: steelarmbracesRightHand_23
     Show: 0
     sprite: {fileID: 9037032813586277302, guid: f65876a2ae616e04bbdea20c88039af0, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: -0, y: -0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:
@@ -28,7 +28,7 @@ MonoBehaviour:
   - name: steelarmbracesRightHand_24
     Show: 0
     sprite: {fileID: -4805616368138154802, guid: f65876a2ae616e04bbdea20c88039af0, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: -0, y: -0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:

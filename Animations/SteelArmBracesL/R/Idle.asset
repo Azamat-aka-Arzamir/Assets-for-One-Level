@@ -20,28 +20,28 @@ MonoBehaviour:
   - name: steelarmbracesLeftHand_7
     Show: 0
     sprite: {fileID: -302064530682147370, guid: 3adf6b6cafdebcc4180e47142166043a, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape: []
   - name: steelarmbracesLeftHand_8
     Show: 0
     sprite: {fileID: 2295173243959786584, guid: 3adf6b6cafdebcc4180e47142166043a, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape: []
   - name: steelarmbracesLeftHand_9
     Show: 0
     sprite: {fileID: 4531454301969429227, guid: 3adf6b6cafdebcc4180e47142166043a, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape: []
   - name: steelarmbracesLeftHand_10
     Show: 0
     sprite: {fileID: 3791276759134215026, guid: 3adf6b6cafdebcc4180e47142166043a, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:

@@ -26,6 +26,14 @@ public class CustomAnimator : MonoBehaviour
 	public bool AssignNewPosToEveryFrame;
 	public float timeFromFrameStart;
 	private int currentFrameIndex;
+	private CustomFrame m_currentFrame;
+	public CustomFrame currentFrame
+	{
+		get
+		{
+			return m_currentFrame;
+		}
+	}
 	public int CurrentFrameIndex
 	{
 		get
@@ -41,6 +49,7 @@ public class CustomAnimator : MonoBehaviour
 	public List<Sprite> SpritesInOT;
 	public List<Sprite> SpritesInOTForOtherSide;
 	[SerializeField] List<CustomAnimation> PlayingQueue = new List<CustomAnimation>();
+	List<int> WaitingTimer = new List<int>();
 	public List<int> FireAnimScheme;
 	public List<int> FireUpAnimScheme;
 	public List<int> FireDownAnimScheme;
@@ -63,6 +72,7 @@ public class CustomAnimator : MonoBehaviour
 	{
 		CustomAnimator animator;
 		CustomFrame frame;
+		bool invert = true;
 		private void OnEnable()
 		{
 			animator = (CustomAnimator)target;
@@ -85,6 +95,7 @@ public class CustomAnimator : MonoBehaviour
 
 				bool g = false;
 				value = EditorGUILayout.Vector3Field("New Position", value);
+				invert = EditorGUILayout.Toggle("Invert for left side", invert);
 				g = EditorGUILayout.Toggle("Assign", g);
 				EditorGUILayout.Space();
 				EditorGUILayout.Space();
@@ -106,7 +117,8 @@ public class CustomAnimator : MonoBehaviour
 						foreach (var frame in anim.frames)
 						{
 							print(value);
-							frame.position = -value;
+							if (invert) frame.position = -value;
+							else frame.position = value;
 						}
 					}
 					g = false;
@@ -129,12 +141,22 @@ public class CustomAnimator : MonoBehaviour
 	public static bool Cond(CustomAnimatorContextInfo a)
 	{
 		if (a.currentStateName == "DefStatic" || a.currentStateName == "Def") return true;
-		else return false;
+		else
+		{
+			a.animator.PlayingQueue.RemoveAll(x => x.animName == "DefReverse");
+			return false;
+		}
+
 	}
 	public static bool DefCond(CustomAnimatorContextInfo a)
 	{
 		a.animator.PlayingQueue.RemoveAll(x => x.animName == "DefReverse");
 		return true;
+	}
+	public static bool OnGroundCond(CustomAnimatorContextInfo a)
+	{
+		if (!a.animator.GetComponentInParent<Movement>().IsOnGround) return true;
+		else return false;
 	}
 
 	// Start is called before the first frame update
@@ -178,7 +200,7 @@ public class CustomAnimator : MonoBehaviour
 		SerializeAnimation(Misc.Side.R, AttackAnimScheme, "Attack", 12, false, new string[0], "Attack");
 		SerializeAnimation(Misc.Side.R, JumpAnimScheme, "Jump");
 		SerializeAnimation(Misc.Side.R, FlyUpAnimScheme, "FlyUp", 8, true);
-		SerializeAnimation(Misc.Side.R, FlyDownAnimScheme, "FlyDown", 8, true, new string[] { "Land" });
+		SerializeAnimation(Misc.Side.R, FlyDownAnimScheme, "FlyDown", 8, true, new string[] { "Land" }, OnGroundCond, false);
 		SerializeAnimation(Misc.Side.R, LandAnimScheme, "Land", 8, false, new string[] { "Idle", "Def", "GunIdle" });
 		SerializeAnimation(Misc.Side.R, RunAnimScheme, "Run", 12, true, new string[] { "Idle", "Def", "GunIdle" }, "Run");
 		SerializeAnimation(Misc.Side.R, RollAnimScheme, "Roll", 12, false, null, "Roll");
@@ -199,7 +221,7 @@ public class CustomAnimator : MonoBehaviour
 		SerializeAnimation(Misc.Side.L, AttackAnimScheme, "Attack", 12, false, new string[0], "Attack");
 		SerializeAnimation(Misc.Side.L, JumpAnimScheme, "Jump");
 		SerializeAnimation(Misc.Side.L, FlyUpAnimScheme, "FlyUp", 8, true);
-		SerializeAnimation(Misc.Side.L, FlyDownAnimScheme, "FlyDown", 8, true, new string[] { "Land" });
+		SerializeAnimation(Misc.Side.L, FlyDownAnimScheme, "FlyDown", 8, true, new string[] { "Land" }, OnGroundCond, false);
 		SerializeAnimation(Misc.Side.L, LandAnimScheme, "Land", 8, false, new string[] { "Idle", "Def", "GunIdle" });
 		SerializeAnimation(Misc.Side.L, RunAnimScheme, "Run", 12, true, new string[] { "Idle", "Def", "GunIdle" }, "Lun");
 		SerializeAnimation(Misc.Side.L, RollAnimScheme, "Roll", 12, false, null, "Roll");
@@ -283,7 +305,7 @@ public class CustomAnimator : MonoBehaviour
 			newAnim.interruptable = pred.interruptable;
 			AddTo.Remove(pred);
 			AddTo.Insert(ind, newAnim);
-			if(!AssetDatabase.IsValidFolder("Assets/Animations/" + gameObject.name ))
+			/*if(!AssetDatabase.IsValidFolder("Assets/Animations/" + gameObject.name ))
 			{
 				Directory.CreateDirectory("Assets/Animations/"+ gameObject.name );
 			}
@@ -294,7 +316,7 @@ public class CustomAnimator : MonoBehaviour
 			}
 			AssetDatabase.Refresh();
 			AssetDatabase.CreateAsset(newAnim, "Assets/Animations/" + gameObject.name + "/" + side+"/" + newAnim.animName + ".asset");
-			AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(newAnim));
+			AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(newAnim));*/
 		}
 	}
 	void SerializeAnimation(Misc.Side mm_side, List<int> framesInOT, string name)
@@ -469,6 +491,7 @@ public class CustomAnimator : MonoBehaviour
 	{
 		if (AllAnims.Count > 0) PlayCurrentAnim();
 	}
+
 	AnimContextEvent animChanged = new AnimContextEvent();
 	public void PlayAnim(CustomAnimation anim)
 	{
@@ -487,17 +510,19 @@ public class CustomAnimator : MonoBehaviour
 	}
 	void OnStateChanged(CustomAnimation newAnim)
 	{
-		ChangeFrame(newAnim, 0);
+
 		CurrentAnim = newAnim;
-		if (MotherAnimator != null && SynchronizeWithMA.Exists(x => x == newAnim.animName) && MotherAnimator.CurrentAnim.tag == newAnim.tag)
+		if (MotherAnimator != null && SynchronizeWithMA.Exists(x => x == newAnim.animName))
 		{
-			CurrentAnim = AllAnims.Find(x => x.animName == MotherAnimator.CurrentAnim.animName);
+			//CurrentAnim = AllAnims.Find(x => x.animName == MotherAnimator.CurrentAnim.animName);
 			if (MotherAnimator.CurrentAnim.frames.Count == CurrentAnim.frames.Count)
 			{
-				timeFromFrameStart = MotherAnimator.timeFromFrameStart;
-				ChangeFrame(CurrentAnim, MotherAnimator.currentFrameIndex);
+				MotherAnimator.newFrame.AddListener(SynchronizeWithMother);
+				return;
 			}
 		}
+		if(MotherAnimator!=null)MotherAnimator.newFrame.RemoveListener(SynchronizeWithMother);
+		ChangeFrame(newAnim, 0);
 	}
 	//for external purposes
 	public UnityEvent NewAnim = new UnityEvent();
@@ -542,16 +567,20 @@ public class CustomAnimator : MonoBehaviour
 		}
 		if (finishedAnim.animName == "Def")
 		{
-			if (!PlayingQueue.Exists(x => x.animName == "DefReverse"))
+			//if (!PlayingQueue.Exists(x => x.animName == "DefReverse"))
 			{
 				PlayAnim("DefStatic");
 				return;
 			}
-			else
+			//else
 			{
-				PlayAnim("DefReverse");
-				return;
+				//PlayAnim("DefReverse");
+				//return;
 			}
+		}
+		if (finishedAnim.animName == "DefReverse")
+		{
+			PlayingQueue.RemoveAll(z => z.animName == "Def");
 		}
 		if (finishedAnim.animName == "Roll")
 		{
@@ -591,13 +620,21 @@ public class CustomAnimator : MonoBehaviour
 	public UnityEvent newFrame = new UnityEvent();
 	void PlayCurrentAnim()
 	{
-		timeFromFrameStart += Time.deltaTime;
+	    timeFromFrameStart += Time.deltaTime;
 		if (timeFromFrameStart >= 1 / CurrentAnim.speed)
 		{
 			timeFromFrameStart = 0;
 			NewFrame();
 		}
 	}
+	void SynchronizeWithMother()
+	{
+		timeFromFrameStart = MotherAnimator.timeFromFrameStart;
+		m_side = MotherAnimator.side;
+		ChangeFrame(CurrentAnim, MotherAnimator.currentFrameIndex);
+		MotherAnimator.newFrame.RemoveListener(SynchronizeWithMother);
+	}
+	[SerializeField] string[] saveImpulse = new string[] { "DefReverse" };
 	void NewFrame()
 	{
 		bool finished = false;
@@ -619,9 +656,9 @@ public class CustomAnimator : MonoBehaviour
 			//Animation finished
 		}
 		//Animation can be interrupted or has already finished
-		if (name == "SteelGreaves" && CurrentAnim.animName == "FlyDown" && FindMostPrioritizedAnim(!finished).animName == "Idle")
+		if (CurrentAnim.animName == "DefStatic" && PlayingQueue.Exists(z => z.animName == "DefReverse"))
 		{
-
+			//
 		}
 		var nextState = defaultAnim;
 		nextState = FindMostPrioritizedAnim(!finished);
@@ -639,8 +676,9 @@ public class CustomAnimator : MonoBehaviour
 		{
 			ChangeFrame(CurrentAnim);
 		}
+		List<CustomAnimation> unclearableAnims = PlayingQueue.FindAll(x => System.Array.Exists(saveImpulse, z =>z== x.animName));
 		PlayingQueue.Clear();
-		newFrame.Invoke();
+		PlayingQueue.AddRange(unclearableAnims);
 	}
 	void ChangeFrame(CustomAnimation animation)
 	{
@@ -651,9 +689,11 @@ public class CustomAnimator : MonoBehaviour
 		currentFrameIndex++;
 		var _frame = animation.frames[currentFrameIndex];
 		selfRender.sprite = _frame;
+		m_currentFrame = _frame;
 		if (transform.parent != null) transform.localPosition = _frame.position;
 		transform.localRotation = Quaternion.Euler(0, 0, _frame.rotation);
 		selfRender.flipX = animation.flip;
+		newFrame.Invoke();
 	}
 	void ChangeFrame(CustomAnimation animation, int frame)
 	{
@@ -661,23 +701,29 @@ public class CustomAnimator : MonoBehaviour
 		{
 			animation = AllAnimsL[animation.priority];
 		}
-		currentFrameIndex = frame;
+		currentFrameIndex = frame; 
 		var _frame = animation.frames[currentFrameIndex];
 		selfRender.sprite = _frame;
+		m_currentFrame = _frame;
 		if (transform.parent != null) transform.localPosition = _frame.position;
 		transform.localRotation = Quaternion.Euler(0, 0, _frame.rotation);
 		selfRender.flipX = animation.flip;
+		newFrame.Invoke();
 	}
+
+
 	CustomAnimation FindMostPrioritizedAnim(bool CountSelf)
 	{
+
 		if (PlayingQueue.Count == 0)
 		{
 			return CountSelf is false ? defaultAnim : CurrentAnim;
 		}
 		var mostPrioritizedAnim = defaultAnim;
-		if (CountSelf) mostPrioritizedAnim = CurrentAnim;
-		foreach (var anim in PlayingQueue)
+		if (CountSelf&&(CurrentAnim.m_condition==null||CurrentAnim.m_condition(new CustomAnimatorContextInfo(this)))) mostPrioritizedAnim = CurrentAnim;
+		for(int i = 0;i<PlayingQueue.Count;i++)
 		{
+			var anim = PlayingQueue[i];
 			if (!System.Array.Exists(CurrentAnim.doNotTransitTo, x => x == anim.animName))
 			{
 				if (anim.priority > mostPrioritizedAnim.priority || (System.Array.Exists(CurrentAnim.transitionsTo, x => x == anim.animName) && mostPrioritizedAnim == CurrentAnim && CountSelf))
@@ -704,7 +750,6 @@ public class CustomAnimator : MonoBehaviour
 	{
 		if (_side == "L") m_side = Misc.Side.L;
 		if (_side == "R") m_side = Misc.Side.R;
-		print(_side);
 	}
 }
 

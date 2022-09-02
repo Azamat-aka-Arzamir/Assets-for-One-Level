@@ -20,32 +20,51 @@ MonoBehaviour:
   - name: steelSword_40
     Show: 0
     sprite: {fileID: -2963529764097973984, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
-    position: {x: 0, y: 0, z: 0}
-    point: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -2}
+    point: {x: 0.35571194, y: -0.6877103, z: 0}
     rotation: 0
-    PhysicsShape: []
+    PhysicsShape:
+    - {x: -1.0363271, y: -1.3392951}
+    - {x: 1.1399785, y: -2.0362644}
+    - {x: 3.6340935, y: -0.530185}
+    - {x: 0.8873069, y: 0.9568169}
+    - {x: -1.1167727, y: 0.035137206}
   - name: steelSword_41
     Show: 0
     sprite: {fileID: 3859997690364537881, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
-    position: {x: 0, y: 0, z: 0}
-    point: {x: 0, y: 0, z: 0}
-    rotation: 0
-    PhysicsShape: []
-  - name: steelSword_42
-    Show: 0
-    sprite: {fileID: -2746996562025131512, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
-    position: {x: 0, y: 0, z: 0}
-    point: {x: 0, y: 0, z: 0}
-    rotation: 0
-    PhysicsShape: []
-  - name: steelSword_43
-    Show: 0
-    sprite: {fileID: 6739989689769076643, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -2}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:
-    - {x: 0, y: 0}
+    - {x: 3.2302713, y: -0.3585806}
+    - {x: 0.9642676, y: 1.4230698}
+    - {x: -0.7992575, y: 0.6367054}
+    - {x: -1.02391, y: -0.7493243}
+    - {x: 1.3096046, y: -1.3059571}
+  - name: steelSword_42
+    Show: 0
+    sprite: {fileID: -2746996562025131512, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
+    position: {x: 0, y: 0, z: -2}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 3.5165772, y: -1.9905661}
+    - {x: 6.574368, y: 0.1697573}
+    - {x: 3.2821481, y: 2.106606}
+    - {x: 0.918849, y: 0.5268016}
+    - {x: 1.0164528, y: -0.6886357}
+  - name: steelSword_43
+    Show: 0
+    sprite: {fileID: 6739989689769076643, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
+    position: {x: 0, y: 0, z: -2}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    PhysicsShape:
+    - {x: 1.425359, y: -2.222893}
+    - {x: 3.825327, y: -1.3298843}
+    - {x: 2.3415577, y: 0.20495379}
+    - {x: 0.32840252, y: -0.044597983}
+    - {x: -0.2977662, y: -1.0124288}
   priority: 17
   repeatable: 0
   interruptable: 0

@@ -8,7 +8,6 @@ public class SimpleAnimHolder : MonoBehaviour
 	public List<CustomAnimator> Animators;
 	public Movement Invoker;
 	MovementContext context;
-	public string aadf;
 	string[] cum = new string[] { "FlyUp","FlyDown","Jump","Land","Run","Idle" };
 	public void PlayAnim(string Name)
 	{

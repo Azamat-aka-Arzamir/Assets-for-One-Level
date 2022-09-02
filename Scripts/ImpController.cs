@@ -164,7 +164,8 @@ public class ImpController : MonoBehaviour
 			}
 		}
 		var b = (LastTargetPos - (Vector2)transform.position);
-		if (b.magnitude>10&&b.magnitude < 20 && Mathf.Abs(b.x) / Mathf.Abs(b.y) > 0.5f && Mathf.Abs(b.x) / Mathf.Abs(b.y) < 2 && b.y < 0 && (Wall.Distance > 1 || !SeeWall))
+
+		if (b.magnitude>10&&b.magnitude < 20 && Mathf.Abs(b.x) / Mathf.Abs(b.y) > 0.1f && Mathf.Abs(b.x) / Mathf.Abs(b.y) < 10 && b.y < 0 && (Wall.Distance > 1 || !SeeWall))
 		{
 			if (TargetEntity != null && (!InHive || !MyHive.Hurricane))
 			{
@@ -173,6 +174,7 @@ public class ImpController : MonoBehaviour
 		}
 
 	}
+
 	public void ParabAttack()
 	{
 		SelfImpAdd.ParabolicFlight(LastTargetPos);
@@ -482,6 +484,7 @@ public class ImpController : MonoBehaviour
 	public void Die()
 	{
 		if(InHive)DisconnectFromHive();
+		Destroy(this,1);
 	}
 }
 

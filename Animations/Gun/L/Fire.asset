@@ -20,24 +20,24 @@ MonoBehaviour:
   - name: basicGun_0
     Show: 0
     sprite: {fileID: -4511550898982680012, guid: 110ce67d3de17ac45a3e881cb130c3a9, type: 3}
-    position: {x: 0, y: 0, z: 0}
-    point: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -3}
+    point: {x: -0.66664505, y: -0.1176432, z: 0}
     rotation: 0
     PhysicsShape:
     - {x: 0, y: 0}
   - name: basicGun_1
     Show: 0
     sprite: {fileID: 4285978571166167848, guid: 110ce67d3de17ac45a3e881cb130c3a9, type: 3}
-    position: {x: 0, y: 0, z: 0}
-    point: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -3}
+    point: {x: -0.3921442, y: -0.13725042, z: 0}
     rotation: 0
     PhysicsShape:
     - {x: 0, y: 0}
   - name: basicGun_2
     Show: 0
     sprite: {fileID: -2084860497655151022, guid: 110ce67d3de17ac45a3e881cb130c3a9, type: 3}
-    position: {x: 0, y: 0, z: 0}
-    point: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -3}
+    point: {x: -0.58821607, y: 0.019607216, z: 0}
     rotation: 0
     PhysicsShape:
     - {x: 0, y: 0}

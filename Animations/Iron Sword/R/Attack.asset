@@ -20,32 +20,52 @@ MonoBehaviour:
   - name: steelSword_13
     Show: 0
     sprite: {fileID: -5690565042908991161, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
-    position: {x: 0, y: 0, z: 0}
-    point: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -2}
+    point: {x: 0.92493224, y: -0.5162413, z: 0}
     rotation: 0
-    PhysicsShape: []
+    PhysicsShape:
+    - {x: -0.88191247, y: -0.43020105}
+    - {x: -2.1906796, y: -1.7759064}
+    - {x: -0.6928108, y: -2.2960253}
+    - {x: -0.36567163, y: -0.90342224}
   - name: steelSword_14
     Show: 0
     sprite: {fileID: -647252027789694993, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
-    position: {x: 0, y: 0, z: 0}
-    point: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -2}
+    point: {x: -0.32257044, y: -2.7041852, z: 0}
     rotation: 0
-    PhysicsShape: []
+    PhysicsShape:
+    - {x: -1.0346062, y: -1.7234586}
+    - {x: 0.22885585, y: -2.8712459}
+    - {x: 1.6501122, y: -1.9188837}
+    - {x: 0.8328105, y: 0.033061087}
+    - {x: -0.85089386, y: -0.5123643}
   - name: steelSword_15
     Show: 0
     sprite: {fileID: -1514696903617408094, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
-    position: {x: 0, y: 0, z: 0}
-    point: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -2}
+    point: {x: -0.92493224, y: -1.0755026, z: 0}
     rotation: 0
-    PhysicsShape: []
+    PhysicsShape:
+    - {x: 0.914443, y: -2.4949243}
+    - {x: 3.0362647, y: -1.5524399}
+    - {x: 3.9842992, y: 0.8836653}
+    - {x: 3.5363843, y: 2.1836169}
+    - {x: 2.5390866, y: 2.720595}
+    - {x: 0.38109922, y: 1.1080332}
+    - {x: 1.4482365, y: 0.15946722}
   - name: steelSword_16
     Show: 0
     sprite: {fileID: -2465302647809635912, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
-    position: {x: 0, y: 0, z: 0}
-    point: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -2}
+    point: {x: -1.0539927, y: -1.1830529, z: 0}
     rotation: 0
     PhysicsShape:
-    - {x: 0, y: 0}
+    - {x: 0.838892, y: -0.60228145}
+    - {x: 2.9467964, y: -1.107872}
+    - {x: 2.6368399, y: 0.55607605}
+    - {x: 1.5955403, y: 2.337372}
+    - {x: -0.12906027, y: -0.04302001}
   priority: 15
   repeatable: 0
   interruptable: 0

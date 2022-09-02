@@ -20,35 +20,35 @@ MonoBehaviour:
   - name: steelarmbracesRightHand_31
     Show: 0
     sprite: {fileID: -2072890333118128042, guid: df59580f1060de14b8ca428a0462acb8, type: 3}
-    position: {x: 0, y: 0, z: -2}
+    position: {x: 0, y: 0, z: -0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape: []
   - name: steelarmbracesRightHand_32
     Show: 0
     sprite: {fileID: -2424135986681982256, guid: df59580f1060de14b8ca428a0462acb8, type: 3}
-    position: {x: 0, y: 0, z: -2}
+    position: {x: 0, y: 0, z: -0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape: []
   - name: steelarmbracesRightHand_33
     Show: 0
     sprite: {fileID: 8319332064322247053, guid: df59580f1060de14b8ca428a0462acb8, type: 3}
-    position: {x: 0, y: 0, z: -2}
+    position: {x: 0, y: 0, z: -0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape: []
   - name: steelarmbracesRightHand_34
     Show: 0
     sprite: {fileID: 6953670434703769973, guid: df59580f1060de14b8ca428a0462acb8, type: 3}
-    position: {x: 0, y: 0, z: -2}
+    position: {x: 0, y: 0, z: -0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape: []
   - name: steelarmbracesRightHand_35
     Show: 0
     sprite: {fileID: 7709862983529402004, guid: df59580f1060de14b8ca428a0462acb8, type: 3}
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 0, z: -0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     PhysicsShape:
