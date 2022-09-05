@@ -163,7 +163,7 @@ public class Controller : MonoBehaviour
 		if (gunToFollow != null) return;
 		Weapon gun = null;
 		collision.TryGetComponent(out gun);
-		if (gun != null)
+		if (gun != null&&gun!=FirstGunSlot&&gun!=gunToFollow&&gun.weaponType== Weapon.type.gun&&gun.transform.parent==null)
 		{
 			gunToFollow = gun;
 			StartCoroutine(IeFollowGun(gunToFollow));

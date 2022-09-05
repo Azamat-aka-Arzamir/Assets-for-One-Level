@@ -41,6 +41,19 @@ public class Layer : MonoBehaviour
 			CopyImage(new Vector2(-1, 0));
 			CopyImage(new Vector2(-2, 0));
 			CopyImage(new Vector2(-3, 0));
+			CopyImage(new Vector2(4, 0));
+			CopyImage(new Vector2(5, 0));
+			CopyImage(new Vector2(6, 0));
+			CopyImage(new Vector2(-4, 0));
+			CopyImage(new Vector2(-5, 0));
+			CopyImage(new Vector2(-6, 0));
+
+			CopyImage(new Vector2(7, 0));
+			CopyImage(new Vector2(8, 0));
+			CopyImage(new Vector2(9, 0));
+			CopyImage(new Vector2(-7, 0));
+			CopyImage(new Vector2(-8, 0));
+			CopyImage(new Vector2(-9, 0));
 		}
 
 		MoveLayer();
