@@ -751,6 +751,10 @@ public class CustomAnimator : MonoBehaviour
 		if (_side == "L") m_side = Misc.Side.L;
 		if (_side == "R") m_side = Misc.Side.R;
 	}
+	public void ChangeSide(Misc.Side ___side)
+	{
+		m_side = ___side;
+	}
 }
 
 public class AnimContextEvent : UnityEngine.Events.UnityEvent<CustomAnimation> { }

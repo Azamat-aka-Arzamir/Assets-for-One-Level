@@ -11,16 +11,22 @@ public class Controller : MonoBehaviour
 	float x;
 	float y;
 	Vector2 input;
+	bool dead;
+	[SerializeField]Weapon gunToFollow;
+	[SerializeField] GameObject DeathScreen;
 	public UnityEvent FirstAttack = new UnityEvent();
 	public UnityEvent Defend = new UnityEvent();
 	public UnityEvent DefendStop = new UnityEvent();
 	public UnityEvent ThirdAttack = new UnityEvent();
 	public IntContextEvent lookUp = new IntContextEvent();
-	
+
+	public Weapon FirstGunSlot;
+	public SimpleAnimHolder animHolder;
 	// Start is called before the first frame update
 	void Start()
 	{
 		selfMove = GetComponent<Movement>();
+		DeathScreen.GetComponent<UnityEngine.UI.Image>().color = Color.clear;
 	}
 
 	// Update is called once per frame
@@ -58,6 +64,34 @@ public class Controller : MonoBehaviour
 			jumpEnd = true;
 		}
 
+	}
+	void InitializeActiveGun()
+	{
+		ThirdAttack.RemoveAllListeners();
+		ThirdAttack.AddListener(FirstGunSlot.Fire);
+		FirstGunSlot.Shoot.RemoveAllListeners();
+		FirstGunSlot.Shoot.AddListener(PlayFire);
+	}
+	void ChangeGuns()
+	{
+		if (gunToFollow == null) return;
+		animHolder.Animators.Remove(FirstGunSlot.GetComponent<CustomAnimator>());
+		var v = FirstGunSlot.transform.parent;
+		FirstGunSlot.transform.parent = null;
+		FirstGunSlot.GetComponent<SpriteRenderer>().sprite = FirstGunSlot.GetComponent<CustomAnimator>().AllAnims.Find(x => x.animName == "GunIdle").frames[0];
+		FirstGunSlot.GetComponent<CustomAnimator>().enabled = false;
+		FirstGunSlot = gunToFollow;
+		animHolder.Animators.Add(FirstGunSlot.GetComponent<CustomAnimator>());
+		FirstGunSlot.transform.parent = v;
+		FirstGunSlot.GetComponent<CustomAnimator>().enabled = true;
+		FirstGunSlot.Initialize();
+		FirstGunSlot.GetComponent<CustomAnimator>().ChangeSide(animHolder.side);
+		InitializeActiveGun();
+	}
+
+	void PlayFire()
+	{
+		animHolder.PlayAnim("Fire");
 	}
 	IEnumerator JumpForce(double timest)
 	{
@@ -100,15 +134,45 @@ public class Controller : MonoBehaviour
 	}
 	public void Die()
 	{
-		SceneM.ReloadActiveScene();
-
+		dead = true;
+		DeathScreen.transform.SetAsLastSibling();
+		DeathScreen.GetComponent<RectTransform>().sizeDelta = DeathScreen.transform.parent.GetComponent<RectTransform>().sizeDelta;
+		DeathScreen.GetComponent<UnityEngine.UI.Image>().color = Color.white;
+	}
+	public void GetReload(InputAction.CallbackContext context)
+	{
+		if (context.performed && !context.started)
+		{
+			if (dead)
+			{
+				SceneM.ReloadActiveScene();
+			}
+		}
 	}
 	public void GetShoot(InputAction.CallbackContext context)
 	{
 		if (context.performed && !context.started)
 		{
 			//selfMove.SelfAnim.SetTrigger("Attack 3");
+			ChangeGuns();
 			ThirdAttack.Invoke();
 		}
+	}
+	private void OnTriggerStay2D(Collider2D collision)
+	{
+		if (gunToFollow != null) return;
+		Weapon gun = null;
+		collision.TryGetComponent(out gun);
+		if (gun != null)
+		{
+			gunToFollow = gun;
+			StartCoroutine(IeFollowGun(gunToFollow));
+		}
+		else return;
+	}
+	IEnumerator IeFollowGun(Weapon gun)
+	{
+		yield return new WaitWhile(() => (gun.transform.position - transform.position).magnitude < 2);
+		gunToFollow = null;
 	}
 }

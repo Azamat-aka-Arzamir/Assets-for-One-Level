@@ -153,6 +153,13 @@ public class Weapon : MonoBehaviour
 		TryGetComponent(out selfColl);
 		parentEnt = GetComponentInParent<Entity>();
 	}
+	public void Initialize()
+	{
+		parentMove = GetComponentInParent<Movement>();
+		StartZ = transform.localPosition.z;
+		parentEnt = GetComponentInParent<Entity>();
+	}
+
 	public void OnTurned()
 	{
 		//ChangeLayer

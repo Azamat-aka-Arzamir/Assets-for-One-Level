@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SimpleAnimHolder : MonoBehaviour
 {
-	Misc.Side side = Misc.Side.R;
+	public Misc.Side side = Misc.Side.R;
 	public List<CustomAnimator> Animators;
 	public Movement Invoker;
 	MovementContext context;

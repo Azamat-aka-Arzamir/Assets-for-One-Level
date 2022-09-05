@@ -185,7 +185,7 @@ MonoBehaviour:
   weaponType: 0
   Activate: 0
   GunCD: 0
-  Damage: 10
+  Damage: 1
   BarrelPoint: {x: 0, y: 0, z: 0}
   Bullets: 0
   Bullet: {fileID: 0}
@@ -295,6 +295,9 @@ MonoBehaviour:
   ImmuneToDamage: 0
   ImmuneToDamageV2: {x: 0, y: 0}
   kill: 0
+  DamageEvent:
+    m_PersistentCalls:
+      m_Calls: []
   DeathEvent:
     m_PersistentCalls:
       m_Calls:
@@ -788,7 +791,7 @@ MonoBehaviour:
   weaponType: 0
   Activate: 0
   GunCD: 0
-  Damage: 10
+  Damage: 1
   BarrelPoint: {x: 0, y: 0, z: 0}
   Bullets: 0
   Bullet: {fileID: 0}

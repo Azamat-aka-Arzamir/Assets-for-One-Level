@@ -185,7 +185,7 @@ public class Entity : MonoBehaviour
 			if (type != typeof(Transform) && !Misc.IsCollider(type) && type != typeof(Animator) && type != typeof(SpriteRenderer) && type != typeof(Rigidbody2D)&&type!=typeof(Entity)&&type!=typeof(CustomAnimator))
 			{
 				Misc.KillComponent(components[i]);
-				Destroy(components[i]);
+				if(type!=typeof(Controller)&&type!=typeof(UnityEngine.InputSystem.PlayerInput))Destroy(components[i]);
 			}
 		}
 		PushingForce *= 0.5f;
