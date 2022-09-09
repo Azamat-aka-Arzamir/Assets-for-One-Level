@@ -10,11 +10,11 @@ using UnityEditor.UIElements;
 public class CustomFrame
 {
 	public string name;
-	public bool Show;
 	public Sprite sprite;
 	public Vector3 position= new Vector3(0,0,0);
 	public Vector3 point = new Vector3(0, 0, 0);
 	public float rotation = 0 ;
+	public bool invisible = false;
 	public Vector2[] PhysicsShape = new Vector2[] {new Vector2(0,0) };
 	public CustomFrame(Sprite _sprite)
 	{

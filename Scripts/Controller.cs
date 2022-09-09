@@ -27,6 +27,7 @@ public class Controller : MonoBehaviour
 	{
 		selfMove = GetComponent<Movement>();
 		DeathScreen.GetComponent<UnityEngine.UI.Image>().color = Color.clear;
+		InitializeActiveGun();
 	}
 
 	// Update is called once per frame

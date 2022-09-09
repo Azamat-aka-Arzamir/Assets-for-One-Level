@@ -26,6 +26,7 @@ public class CustomAnimator : MonoBehaviour
 	public bool AssignNewPosToEveryFrame;
 	public float timeFromFrameStart;
 	private int currentFrameIndex;
+	private Sprite blank;
 	private CustomFrame m_currentFrame;
 	public CustomFrame currentFrame
 	{
@@ -108,8 +109,23 @@ public class CustomAnimator : MonoBehaviour
 					{
 						foreach (var frame in anim.frames)
 						{
+							var x = value.x;
+							var y = value.y;
+							var z=value.z;
 							print(value);
-							frame.position = value;
+							if(x == 0)
+							{
+								x = frame.position.x;
+							}
+							if (y == 0)
+							{
+								y = frame.position.y;
+							}
+							if (z == 0)
+							{
+								z = frame.position.z;
+							}
+							frame.position = new Vector3(x,y,z);
 						}
 					}
 					foreach (var anim in animator.AllAnimsL)
@@ -127,7 +143,7 @@ public class CustomAnimator : MonoBehaviour
 			if (animator.AddNewAnim)
 			{
 				animator.AddNewAnim = false;
-				animator.SerializeAnimation(Misc.Side.R,null, "New Anim", 0, false, null);
+				animator.SerializeAnimation(Misc.Side.R, null, "New Anim", 0, false, null);
 			}
 			if (animator.CurrentAnim != null) EditorGUILayout.LabelField("CurrentAnimName", animator.CurrentAnim.animName);
 			else EditorGUILayout.LabelField("CurrentAnimName", "Null");
@@ -162,6 +178,7 @@ public class CustomAnimator : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		blank = Resources.Load<Sprite>("Defaults/Blank");
 		//SerializeAnimations();
 		defaultAnim = AllAnims.Find(x => x.animName == DefaultAnim);
 		CurrentAnim = defaultAnim;
@@ -190,7 +207,7 @@ public class CustomAnimator : MonoBehaviour
 	}
 	void SerializeAnimations()
 	{
-		SerializeAnimation(Misc.Side.R,FireAnimScheme, "Fire", 8, false, new string[] { "GunIdle" });
+		SerializeAnimation(Misc.Side.R, FireAnimScheme, "Fire", 8, false, new string[] { "GunIdle" });
 		SerializeAnimation(Misc.Side.R, FireUpAnimScheme, "FireUp", 8, false, new string[] { "GunIdle", "AimUp" });
 		SerializeAnimation(Misc.Side.R, FireDownAnimScheme, "FireDown", 8, false, new string[] { "GunIdle", "AimDown" });
 		SerializeAnimation(Misc.Side.R, IdleAnimScheme, "Idle", 8, true);
@@ -246,9 +263,9 @@ public class CustomAnimator : MonoBehaviour
 	}
 	void AssignPriorityForOtherSide()
 	{
-		foreach(var anim in AllAnims)
+		foreach (var anim in AllAnims)
 		{
-			var lCopy=AllAnimsL.Find(z => z.animName == anim.animName);
+			var lCopy = AllAnimsL.Find(z => z.animName == anim.animName);
 			if (lCopy != null)
 			{
 				AllAnimsL.Remove(lCopy);
@@ -258,7 +275,7 @@ public class CustomAnimator : MonoBehaviour
 		}
 		AssignPriority();
 	}
-	void AddFrames(Misc.Side mm_side,List<int> framesInOT, ref List<CustomFrame> frames)
+	void AddFrames(Misc.Side mm_side, List<int> framesInOT, ref List<CustomFrame> frames)
 	{
 		foreach (var num in framesInOT)
 		{
@@ -271,13 +288,13 @@ public class CustomAnimator : MonoBehaviour
 			{
 				sprite = SpritesInOTForOtherSide[num];
 			}
-				
+
 			CustomFrame a = new CustomFrame(sprite);
 
 			frames.Add(a);
 		}
 	}
-	void AddAnimation(List<CustomAnimation> AddTo, CustomAnimation pred, CustomAnimation newAnim,string side)
+	void AddAnimation(List<CustomAnimation> AddTo, CustomAnimation pred, CustomAnimation newAnim, string side)
 	{
 		if (pred == null)
 		{
@@ -292,6 +309,8 @@ public class CustomAnimator : MonoBehaviour
 				newAnim.frames[i].point = pred.frames[i].point;
 				newAnim.frames[i].position = pred.frames[i].position;
 				newAnim.frames[i].PhysicsShape = pred.frames[i].PhysicsShape;
+				newAnim.frames[i].rotation = pred.frames[i].rotation;
+				newAnim.frames[i].invisible = pred.frames[i].invisible;
 			}
 			if (pred.transitionsTo != null && (newAnim.transitionsTo == null || pred.transitionsTo.Length > newAnim.transitionsTo.Length))
 			{
@@ -305,18 +324,18 @@ public class CustomAnimator : MonoBehaviour
 			newAnim.interruptable = pred.interruptable;
 			AddTo.Remove(pred);
 			AddTo.Insert(ind, newAnim);
-			/*if(!AssetDatabase.IsValidFolder("Assets/Animations/" + gameObject.name ))
+			if (!AssetDatabase.IsValidFolder("Assets/Animations/" + gameObject.name))
 			{
-				Directory.CreateDirectory("Assets/Animations/"+ gameObject.name );
+				Directory.CreateDirectory("Assets/Animations/" + gameObject.name);
 			}
 			AssetDatabase.Refresh();
-			if (!AssetDatabase.IsValidFolder("Assets/Animations/" + gameObject.name + "/"+side))
+			if (!AssetDatabase.IsValidFolder("Assets/Animations/" + gameObject.name + "/" + side))
 			{
-				Directory.CreateDirectory("Assets/Animations/" + gameObject.name + "/"+ side);
+				Directory.CreateDirectory("Assets/Animations/" + gameObject.name + "/" + side);
 			}
 			AssetDatabase.Refresh();
-			AssetDatabase.CreateAsset(newAnim, "Assets/Animations/" + gameObject.name + "/" + side+"/" + newAnim.animName + ".asset");
-			AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(newAnim));*/
+			AssetDatabase.CreateAsset(newAnim, "Assets/Animations/" + gameObject.name + "/" + side + "/" + newAnim.animName + ".asset");
+			AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(newAnim));
 		}
 	}
 	void SerializeAnimation(Misc.Side mm_side, List<int> framesInOT, string name)
@@ -324,7 +343,7 @@ public class CustomAnimator : MonoBehaviour
 		List<CustomFrame> frames = new List<CustomFrame>();
 		if (framesInOT != null && framesInOT.Count > 0)
 		{
-			AddFrames(mm_side,framesInOT, ref frames);
+			AddFrames(mm_side, framesInOT, ref frames);
 		}
 		else
 		{
@@ -339,10 +358,10 @@ public class CustomAnimator : MonoBehaviour
 		newAnim.m_condition = alwaysTrue;
 		var pred = AllAnims.Find(x => x.animName == name);
 		if (mm_side == Misc.Side.L) pred = AllAnimsL.Find(x => x.animName == name);
-		if (mm_side == Misc.Side.R) AddAnimation(AllAnims, pred, newAnim,"R");
-		if (mm_side == Misc.Side.L) AddAnimation(AllAnimsL, pred, newAnim,"L");
+		if (mm_side == Misc.Side.R) AddAnimation(AllAnims, pred, newAnim, "R");
+		if (mm_side == Misc.Side.L) AddAnimation(AllAnimsL, pred, newAnim, "L");
 	}
-	void SerializeAnimation(Misc.Side mm_side,List<int> framesInOT, string name, int fps)
+	void SerializeAnimation(Misc.Side mm_side, List<int> framesInOT, string name, int fps)
 	{
 		List<CustomFrame> frames = new List<CustomFrame>();
 		if (framesInOT != null && framesInOT.Count > 0)
@@ -363,8 +382,8 @@ public class CustomAnimator : MonoBehaviour
 		an.m_condition = alwaysTrue;
 		var pred = AllAnims.Find(x => x.animName == name);
 		if (mm_side == Misc.Side.L) pred = AllAnimsL.Find(x => x.animName == name);
-		if (mm_side == Misc.Side.R) AddAnimation(AllAnims, pred, newAnim,"R");
-		if (mm_side == Misc.Side.L) AddAnimation(AllAnimsL, pred, newAnim,"L");
+		if (mm_side == Misc.Side.R) AddAnimation(AllAnims, pred, newAnim, "R");
+		if (mm_side == Misc.Side.L) AddAnimation(AllAnimsL, pred, newAnim, "L");
 	}
 	void SerializeAnimation(Misc.Side mm_side, List<int> framesInOT, string name, int fps, bool repeatable)
 	{
@@ -386,8 +405,8 @@ public class CustomAnimator : MonoBehaviour
 		newAnim.m_condition = alwaysTrue;
 		var pred = AllAnims.Find(x => x.animName == name);
 		if (mm_side == Misc.Side.L) pred = AllAnimsL.Find(x => x.animName == name);
-		if (mm_side == Misc.Side.R) AddAnimation(AllAnims, pred, newAnim,"R");
-		if (mm_side == Misc.Side.L) AddAnimation(AllAnimsL, pred, newAnim,"L");
+		if (mm_side == Misc.Side.R) AddAnimation(AllAnims, pred, newAnim, "R");
+		if (mm_side == Misc.Side.L) AddAnimation(AllAnimsL, pred, newAnim, "L");
 	}
 	void SerializeAnimation(Misc.Side mm_side, List<int> framesInOT, string name, int fps, bool repeatable, string[] transitionsTo)
 	{
@@ -410,8 +429,8 @@ public class CustomAnimator : MonoBehaviour
 		newAnim.m_condition = alwaysTrue;
 		var pred = AllAnims.Find(x => x.animName == name);
 		if (mm_side == Misc.Side.L) pred = AllAnimsL.Find(x => x.animName == name);
-		if (mm_side == Misc.Side.R) AddAnimation(AllAnims, pred, newAnim,"R");
-		if (mm_side == Misc.Side.L) AddAnimation(AllAnimsL, pred, newAnim,"L");
+		if (mm_side == Misc.Side.R) AddAnimation(AllAnims, pred, newAnim, "R");
+		if (mm_side == Misc.Side.L) AddAnimation(AllAnimsL, pred, newAnim, "L");
 	}
 	/*void SerializeAnimation(List<int> framesInOT, string name, int fps, bool repeatable, string[] transitionsTo)
 	{
@@ -457,8 +476,8 @@ public class CustomAnimator : MonoBehaviour
 		newAnim.tag = tag;
 		var pred = AllAnims.Find(x => x.animName == name);
 		if (mm_side == Misc.Side.L) pred = AllAnimsL.Find(x => x.animName == name);
-		if (mm_side == Misc.Side.R) AddAnimation(AllAnims, pred, newAnim,"R");
-		if (mm_side == Misc.Side.L) AddAnimation(AllAnimsL, pred, newAnim,"L");
+		if (mm_side == Misc.Side.R) AddAnimation(AllAnims, pred, newAnim, "R");
+		if (mm_side == Misc.Side.L) AddAnimation(AllAnimsL, pred, newAnim, "L");
 	}
 	void SerializeAnimation(Misc.Side mm_side, List<int> framesInOT, string name, int fps, bool repeatable, string[] transitionsTo, Misc.condition condition, bool reversed)
 	{
@@ -482,8 +501,8 @@ public class CustomAnimator : MonoBehaviour
 		newAnim.conditionName = condition.Method.Name;
 		var pred = AllAnims.Find(x => x.animName == name);
 		if (mm_side == Misc.Side.L) pred = AllAnimsL.Find(x => x.animName == name);
-		if (mm_side == Misc.Side.R) AddAnimation(AllAnims, pred, newAnim,"R");
-		if (mm_side == Misc.Side.L) AddAnimation(AllAnimsL, pred, newAnim,"L");
+		if (mm_side == Misc.Side.R) AddAnimation(AllAnims, pred, newAnim, "R");
+		if (mm_side == Misc.Side.L) AddAnimation(AllAnimsL, pred, newAnim, "L");
 	}
 	#endregion
 	// Update is called once per frame
@@ -521,7 +540,7 @@ public class CustomAnimator : MonoBehaviour
 				return;
 			}
 		}
-		if(MotherAnimator!=null)MotherAnimator.newFrame.RemoveListener(SynchronizeWithMother);
+		if (MotherAnimator != null) MotherAnimator.newFrame.RemoveListener(SynchronizeWithMother);
 		ChangeFrame(newAnim, 0);
 	}
 	//for external purposes
@@ -620,7 +639,7 @@ public class CustomAnimator : MonoBehaviour
 	public UnityEvent newFrame = new UnityEvent();
 	void PlayCurrentAnim()
 	{
-	    timeFromFrameStart += Time.deltaTime;
+		timeFromFrameStart += Time.deltaTime;
 		if (timeFromFrameStart >= 1 / CurrentAnim.speed)
 		{
 			timeFromFrameStart = 0;
@@ -676,7 +695,7 @@ public class CustomAnimator : MonoBehaviour
 		{
 			ChangeFrame(CurrentAnim);
 		}
-		List<CustomAnimation> unclearableAnims = PlayingQueue.FindAll(x => System.Array.Exists(saveImpulse, z =>z== x.animName));
+		List<CustomAnimation> unclearableAnims = PlayingQueue.FindAll(x => System.Array.Exists(saveImpulse, z => z == x.animName));
 		PlayingQueue.Clear();
 		PlayingQueue.AddRange(unclearableAnims);
 	}
@@ -688,10 +707,19 @@ public class CustomAnimator : MonoBehaviour
 		}
 		currentFrameIndex++;
 		var _frame = animation.frames[currentFrameIndex];
-		selfRender.sprite = _frame;
+		if (!_frame.invisible) selfRender.sprite = _frame;
+		else selfRender.sprite = blank;
 		m_currentFrame = _frame;
-		if (transform.parent != null) transform.localPosition = _frame.position;
-		transform.localRotation = Quaternion.Euler(0, 0, _frame.rotation);
+		int i = 1;
+		if (animation.flip) i = -1;
+		if (transform.parent != null) 
+		{
+			transform.localPosition = new Vector3(_frame.position.x * i, _frame.position.y, _frame.position.z);
+		}
+
+
+		transform.localRotation = Quaternion.Euler(0, 0, _frame.rotation*i);
+
 		selfRender.flipX = animation.flip;
 		newFrame.Invoke();
 	}
@@ -701,13 +729,20 @@ public class CustomAnimator : MonoBehaviour
 		{
 			animation = AllAnimsL[animation.priority];
 		}
-		currentFrameIndex = frame; 
+		currentFrameIndex = frame;
 		var _frame = animation.frames[currentFrameIndex];
-		selfRender.sprite = _frame;
+		if (!_frame.invisible) selfRender.sprite = _frame;
+		else selfRender.sprite = blank;
 		m_currentFrame = _frame;
-		if (transform.parent != null) transform.localPosition = _frame.position;
-		transform.localRotation = Quaternion.Euler(0, 0, _frame.rotation);
+		int i = 1;
+		if (animation.flip) i = -1;
+		if (transform.parent != null)
+		{
+			transform.localPosition = new Vector3(_frame.position.x * i, _frame.position.y, _frame.position.z);
+		}
+		transform.localRotation = Quaternion.Euler(0, 0, _frame.rotation*i);
 		selfRender.flipX = animation.flip;
+
 		newFrame.Invoke();
 	}
 
@@ -720,8 +755,8 @@ public class CustomAnimator : MonoBehaviour
 			return CountSelf is false ? defaultAnim : CurrentAnim;
 		}
 		var mostPrioritizedAnim = defaultAnim;
-		if (CountSelf&&(CurrentAnim.m_condition==null||CurrentAnim.m_condition(new CustomAnimatorContextInfo(this)))) mostPrioritizedAnim = CurrentAnim;
-		for(int i = 0;i<PlayingQueue.Count;i++)
+		if (CountSelf && (CurrentAnim.m_condition == null || CurrentAnim.m_condition(new CustomAnimatorContextInfo(this)))) mostPrioritizedAnim = CurrentAnim;
+		for (int i = 0; i < PlayingQueue.Count; i++)
 		{
 			var anim = PlayingQueue[i];
 			if (!System.Array.Exists(CurrentAnim.doNotTransitTo, x => x == anim.animName))

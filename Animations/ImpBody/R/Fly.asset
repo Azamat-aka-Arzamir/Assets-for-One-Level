@@ -18,74 +18,74 @@ MonoBehaviour:
   speed: 12
   frames:
   - name: 
-    Show: 0
     sprite: {fileID: -2336458428272403407, guid: d83a07caefd98da4a9daf23a104315ea, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
+    invisible: 0
     PhysicsShape: []
   - name: 
-    Show: 0
     sprite: {fileID: -2445351023941764188, guid: d83a07caefd98da4a9daf23a104315ea, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
+    invisible: 0
     PhysicsShape: []
   - name: 
-    Show: 0
     sprite: {fileID: -7723604316368664177, guid: d83a07caefd98da4a9daf23a104315ea, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
+    invisible: 0
     PhysicsShape: []
   - name: 
-    Show: 0
     sprite: {fileID: -2476416228556238305, guid: d83a07caefd98da4a9daf23a104315ea, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
+    invisible: 0
     PhysicsShape: []
   - name: 
-    Show: 0
     sprite: {fileID: 2411902593417430552, guid: d83a07caefd98da4a9daf23a104315ea, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
+    invisible: 0
     PhysicsShape: []
   - name: 
-    Show: 0
     sprite: {fileID: -4316920040298919320, guid: d83a07caefd98da4a9daf23a104315ea, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
+    invisible: 0
     PhysicsShape: []
   - name: 
-    Show: 0
     sprite: {fileID: 2411902593417430552, guid: d83a07caefd98da4a9daf23a104315ea, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
+    invisible: 0
     PhysicsShape: []
   - name: 
-    Show: 0
     sprite: {fileID: -2476416228556238305, guid: d83a07caefd98da4a9daf23a104315ea, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
+    invisible: 0
     PhysicsShape: []
   - name: 
-    Show: 0
     sprite: {fileID: -7723604316368664177, guid: d83a07caefd98da4a9daf23a104315ea, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
+    invisible: 0
     PhysicsShape: []
   - name: 
-    Show: 0
     sprite: {fileID: -2445351023941764188, guid: d83a07caefd98da4a9daf23a104315ea, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
+    invisible: 0
     PhysicsShape: []
   priority: 0
   repeatable: 1

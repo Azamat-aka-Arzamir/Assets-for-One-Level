@@ -13,7 +13,7 @@ public class Weapon : MonoBehaviour
 	Movement parentMove;
 	[HideInInspector]
 	public bool Activate;
-	bool Reloaded = true;
+	[SerializeField]bool Reloaded = true;
 	[HideInInspector] public float GunCD;
 	public int Damage;
 	[HideInInspector] public Vector3 BarrelPoint;

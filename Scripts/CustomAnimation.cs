@@ -11,20 +11,28 @@ public class CustomAnimation : ScriptableObject
 	[CustomEditor(typeof(CustomAnimation))]
 	public class AnimEditor : Editor
 	{
-		int activeFrame=0;
+		int activeFrame = 0;
 		CustomFrame frame;
 		CustomAnimation animation;
 		int[] numbers;
 		string[] names;
 		GameObject a;
+		GameObject parent;
 		SpriteRenderer b;
+		PixelNormalizer pn;
 		public override void OnInspectorGUI()
 		{
-			activeFrame = EditorGUILayout.IntPopup("Inspected Frame",activeFrame, names,numbers);
+			Debug.Log("Cock");
+			timer = 0;
+			activeFrame = EditorGUILayout.IntPopup("Inspected Frame", activeFrame, names, numbers);
 			if (animation.frames.Count != 0) frame = animation.frames[activeFrame];
 
+			a.transform.parent = parent.transform;
+			pn.PPU = frame.sprite.pixelsPerUnit;
 			if (animation.frames.Count != 0 && frame.sprite != null) b.sprite = frame;
-			if (animation.frames.Count != 0&&frame.sprite!=null) a.name = frame.sprite.name;
+			if (animation.frames.Count != 0 && frame.sprite != null) a.name = frame.sprite.name;
+			if (a != null && frame != null) if(Mathf.Abs(a.transform.localRotation.z-frame.rotation)>0.01)a.transform.localRotation = (Quaternion.Euler(0, 0, frame.rotation));
+			if (a != null && frame != null) { parent.transform.position = frame.position; a.transform.localPosition = Vector3.zero; }
 			base.OnInspectorGUI();
 		}
 		private void OnEnable()
@@ -41,7 +49,11 @@ public class CustomAnimation : ScriptableObject
 				}
 			}
 			a = new GameObject();
-			b=a.AddComponent<SpriteRenderer>();
+			parent = new GameObject();
+
+			pn = a.AddComponent<PixelNormalizer>();
+
+			b = a.AddComponent<SpriteRenderer>();
 
 			Handles.matrix = a.transform.localToWorldMatrix;
 			SceneView.duringSceneGui += OnSceneGUI;
@@ -49,14 +61,18 @@ public class CustomAnimation : ScriptableObject
 		private void OnDisable()
 		{
 			DestroyImmediate(a);
+			DestroyImmediate(parent);
 			SceneView.duringSceneGui -= OnSceneGUI;
 		}
+		float timer;
 		private void OnSceneGUI(SceneView sv)
 		{
-			if(a!=null&&frame!=null)a.transform.localRotation= (Quaternion.Euler(0, 0, frame.rotation));
+			timer += Time.deltaTime;
+			if (a != null && frame != null && timer > 1) frame.rotation = a.transform.localRotation.eulerAngles.z;
+			if (a != null && frame != null && timer > 1) frame.position = a.transform.localPosition + parent.transform.position;
 			Handles.color = Color.blue;
 			//if(frame.PhysicsShape.Length>2) frame.PhysicsShape = a.GetComponent<PolygonCollider2D>().points;
-			if (frame!=null&&frame.PhysicsShape.Length != 0)
+			if (frame != null && frame.PhysicsShape.Length != 0)
 			{
 				for (int i = 0; i < frame.PhysicsShape.Length; i++)
 				{
@@ -73,7 +89,7 @@ public class CustomAnimation : ScriptableObject
 				}
 			}
 			Handles.color = Color.red;
-			if(frame!=null)frame.point = Handles.PositionHandle(frame.point, Quaternion.identity);
+			if (frame != null) frame.point = Handles.PositionHandle(frame.point, Quaternion.identity);
 			if (frame != null) Handles.DrawWireDisc(frame.point, Vector3.forward, 0.05f);
 		}
 	}
@@ -105,7 +121,7 @@ public class CustomAnimation : ScriptableObject
 	public void InitializeCondition()
 	{
 		Debug.Log(conditionName);
-		m_condition = conditionName is""? alwaysTrue:FindCondition();
+		m_condition = conditionName is "" ? alwaysTrue : FindCondition();
 
 	}
 	Misc.condition FindCondition()

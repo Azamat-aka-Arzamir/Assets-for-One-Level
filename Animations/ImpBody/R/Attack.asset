@@ -18,11 +18,11 @@ MonoBehaviour:
   speed: 8
   frames:
   - name: 
-    Show: 0
     sprite: {fileID: 1537195613102572728, guid: d83a07caefd98da4a9daf23a104315ea, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
+    invisible: 0
     PhysicsShape: []
   priority: 1
   repeatable: 1

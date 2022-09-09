@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteAlways]
 public class PixelNormalizer : MonoBehaviour
 {
 	public Vector2 posDifference;
@@ -17,6 +18,9 @@ public class PixelNormalizer : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+#if UNITY_EDITOR
+		onePixelCost = 1 / PPU;
+#endif
 		if (Mathf.Abs(transform.localPosition.x) > onePixelCost/2)
 		{
 			transform.localPosition = new Vector3(0, transform.localPosition.y, transform.localPosition.z);

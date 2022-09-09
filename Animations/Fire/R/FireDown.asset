@@ -18,32 +18,32 @@ MonoBehaviour:
   speed: 12
   frames:
   - name: fire_0
-    Show: 0
     sprite: {fileID: 8334651344603559088, guid: 30e7d6cf51be2f54abe4ead2450bb601, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: -90
+    invisible: 0
     PhysicsShape: []
   - name: fire_1
-    Show: 0
     sprite: {fileID: 9204931480678746970, guid: 30e7d6cf51be2f54abe4ead2450bb601, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: -90
+    invisible: 0
     PhysicsShape: []
   - name: fire_2
-    Show: 0
     sprite: {fileID: -8359625512513901107, guid: 30e7d6cf51be2f54abe4ead2450bb601, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: -90
+    invisible: 0
     PhysicsShape: []
   - name: fire_3
-    Show: 0
     sprite: {fileID: 7804807344221744696, guid: 30e7d6cf51be2f54abe4ead2450bb601, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: -90
+    invisible: 0
     PhysicsShape:
     - {x: -1.9183047, y: 0.45872498}
   priority: 2

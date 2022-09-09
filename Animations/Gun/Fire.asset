@@ -18,25 +18,25 @@ MonoBehaviour:
   speed: 8
   frames:
   - name: basicGun_0
-    Show: 0
     sprite: {fileID: -4511550898982680012, guid: 530e0f7d5d3808d46a59f0f1ab0c776f, type: 3}
     position: {x: 0, y: 0, z: -3.14}
     point: {x: 0.69041276, y: -0.11506876, z: 0}
-    rotation: 0
+    rotation: -0
+    invisible: 0
     PhysicsShape: []
   - name: basicGun_1
-    Show: 0
     sprite: {fileID: 4285978571166167848, guid: 530e0f7d5d3808d46a59f0f1ab0c776f, type: 3}
     position: {x: 0, y: 0, z: -3.14}
     point: {x: 0.38356262, y: -0.11506882, z: 0}
     rotation: 0
+    invisible: 0
     PhysicsShape: []
   - name: basicGun_2
-    Show: 0
     sprite: {fileID: -2084860497655151022, guid: 530e0f7d5d3808d46a59f0f1ab0c776f, type: 3}
     position: {x: 0, y: 0, z: -3.14}
     point: {x: 0.5753439, y: 0.019178152, z: 0}
-    rotation: 0
+    rotation: -0
+    invisible: 0
     PhysicsShape: []
   priority: 12
   repeatable: 0

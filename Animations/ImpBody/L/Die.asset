@@ -18,39 +18,39 @@ MonoBehaviour:
   speed: 8
   frames:
   - name: 
-    Show: 0
     sprite: {fileID: 1777427251412845270, guid: d83a07caefd98da4a9daf23a104315ea, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
+    invisible: 0
     PhysicsShape: []
   - name: 
-    Show: 0
     sprite: {fileID: 3506117255525148277, guid: d83a07caefd98da4a9daf23a104315ea, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
+    invisible: 0
     PhysicsShape: []
   - name: 
-    Show: 0
     sprite: {fileID: 6333769606056609792, guid: d83a07caefd98da4a9daf23a104315ea, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
+    invisible: 0
     PhysicsShape: []
   - name: 
-    Show: 0
     sprite: {fileID: 6067410971373448370, guid: d83a07caefd98da4a9daf23a104315ea, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
+    invisible: 0
     PhysicsShape: []
   - name: 
-    Show: 0
     sprite: {fileID: -1985845732274173792, guid: d83a07caefd98da4a9daf23a104315ea, type: 3}
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
+    invisible: 0
     PhysicsShape: []
   priority: 2
   repeatable: 0
