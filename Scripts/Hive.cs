@@ -425,8 +425,8 @@ public class Hive : MonoBehaviour
 				addHivingHeight = 4;
 			}
 			yield return new WaitForSeconds(2);
-			if (SeeEnemy) spearAttackEvent.Invoke();
-			else parabAttackEvent.Invoke();
+			/*if (SeeEnemy)*/ spearAttackEvent.Invoke();
+			//else parabAttackEvent.Invoke();
 			hurricaneStartWidth = 1;
 			stop = false;
 			hurricaneSpeed = 1.5f;

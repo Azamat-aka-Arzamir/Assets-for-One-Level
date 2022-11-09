@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 public class CustomAnimator : MonoBehaviour
 {
-
+	public int refInt;
 	[SerializeField] Misc.Side m_side = Misc.Side.R;
 	[HideInInspector]
 	public Misc.Side side
@@ -43,6 +43,7 @@ public class CustomAnimator : MonoBehaviour
 		}
 	}
 	private SpriteRenderer selfRender;
+	private UnityEngine.UI.Image selfImage;
 	[HideInInspector] public CustomAnimation CurrentAnim;
 	[SerializeField] public List<CustomAnimation> AllAnims = new List<CustomAnimation>();
 	[SerializeField] public List<CustomAnimation> AllAnimsL = new List<CustomAnimation>();
@@ -80,6 +81,10 @@ public class CustomAnimator : MonoBehaviour
 			//animator.SerializeAnimations();
 			animator.AssignPriority();
 			value = new Vector3();
+		}
+		private void OnDisable()
+		{
+			
 		}
 		Vector3 value = new Vector3();
 		public override void OnInspectorGUI()
@@ -151,6 +156,7 @@ public class CustomAnimator : MonoBehaviour
 			base.OnInspectorGUI();
 		}
 
+
 	}
 #endif
 	static Misc.condition alwaysTrue = (CustomAnimatorContextInfo a) => true;
@@ -174,7 +180,7 @@ public class CustomAnimator : MonoBehaviour
 		if (!a.animator.GetComponentInParent<Movement>().IsOnGround) return true;
 		else return false;
 	}
-
+	bool ui = false;
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -183,9 +189,10 @@ public class CustomAnimator : MonoBehaviour
 		defaultAnim = AllAnims.Find(x => x.animName == DefaultAnim);
 		CurrentAnim = defaultAnim;
 
-		selfRender = GetComponent<SpriteRenderer>();
-		selfRender.sprite = CurrentAnim.frames[0];
-		if (transform.parent != null) transform.localPosition = CurrentAnim.frames[0].position;
+		TryGetComponent<SpriteRenderer>(out selfRender);
+		if (selfRender == null) { selfImage = GetComponent<UnityEngine.UI.Image>(); ui = true; }
+		if (!ui) selfRender.sprite = CurrentAnim.frames[0]; else selfImage.sprite = CurrentAnim.frames[0];
+		if (transform.parent != null && !ui) transform.localPosition = CurrentAnim.frames[0].position;
 		transform.localRotation = Quaternion.Euler(0, 0, CurrentAnim.frames[0].rotation);
 		animChanged.AddListener(OnStateChanged);
 		//AnimEnd.AddListener(OnAnimFinished);
@@ -675,10 +682,6 @@ public class CustomAnimator : MonoBehaviour
 			//Animation finished
 		}
 		//Animation can be interrupted or has already finished
-		if (CurrentAnim.animName == "DefStatic" && PlayingQueue.Exists(z => z.animName == "DefReverse"))
-		{
-			//
-		}
 		var nextState = defaultAnim;
 		nextState = FindMostPrioritizedAnim(!finished);
 
@@ -688,7 +691,7 @@ public class CustomAnimator : MonoBehaviour
 		}
 		else if (nextState == CurrentAnim && !CurrentAnim.repeatable && finished)
 		{
-			print("Oops... There's someone's shit in ur pants. Clean it and I'll clean playing queue");
+			print("Oops... There's someone's sh*t in ur pants. Clean it and I'll clean playing queue");
 			animChanged.Invoke(defaultAnim);
 		}
 		else
@@ -707,12 +710,21 @@ public class CustomAnimator : MonoBehaviour
 		}
 		currentFrameIndex++;
 		var _frame = animation.frames[currentFrameIndex];
-		if (!_frame.invisible) selfRender.sprite = _frame;
-		else selfRender.sprite = blank;
+		if (!ui)
+		{
+			if (!_frame.invisible) selfRender.sprite = _frame;
+			else selfRender.sprite = blank;
+		}
+		else
+		{
+			if (!_frame.invisible) selfImage.sprite = _frame;
+			else selfImage.sprite = blank;
+		}
+
 		m_currentFrame = _frame;
 		int i = 1;
 		if (animation.flip) i = -1;
-		if (transform.parent != null) 
+		if (transform.parent != null && !ui) 
 		{
 			transform.localPosition = new Vector3(_frame.position.x * i, _frame.position.y, _frame.position.z);
 		}
@@ -720,7 +732,7 @@ public class CustomAnimator : MonoBehaviour
 
 		transform.localRotation = Quaternion.Euler(0, 0, _frame.rotation*i);
 
-		selfRender.flipX = animation.flip;
+		if(!ui)selfRender.flipX = animation.flip;
 		newFrame.Invoke();
 	}
 	void ChangeFrame(CustomAnimation animation, int frame)
@@ -731,17 +743,26 @@ public class CustomAnimator : MonoBehaviour
 		}
 		currentFrameIndex = frame;
 		var _frame = animation.frames[currentFrameIndex];
-		if (!_frame.invisible) selfRender.sprite = _frame;
-		else selfRender.sprite = blank;
+		if (!ui)
+		{
+			if (!_frame.invisible) selfRender.sprite = _frame;
+			else selfRender.sprite = blank;
+		}
+		else
+		{
+			if (!_frame.invisible) selfImage.sprite = _frame;
+			else selfImage.sprite = blank;
+		}
+
 		m_currentFrame = _frame;
 		int i = 1;
 		if (animation.flip) i = -1;
-		if (transform.parent != null)
+		if (transform.parent != null&&!ui)
 		{
 			transform.localPosition = new Vector3(_frame.position.x * i, _frame.position.y, _frame.position.z);
 		}
 		transform.localRotation = Quaternion.Euler(0, 0, _frame.rotation*i);
-		selfRender.flipX = animation.flip;
+		if(!ui)selfRender.flipX = animation.flip;
 
 		newFrame.Invoke();
 	}
@@ -836,3 +857,13 @@ public class CustomAnimatorContextInfo
 		tffs = customAnimator.timeFromFrameStart;
 	}
 }
+public class AnimTransition
+{
+	
+}
+public class AnimState
+{
+
+}
+
+

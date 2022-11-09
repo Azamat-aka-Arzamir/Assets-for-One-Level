@@ -10,15 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 101f641d4b3b2f84b9c35bfba3d6bad1, type: 3}
-  m_Name: sjhdhgfhjksbdg
+  m_Name: EmptyHP
   m_EditorClassIdentifier: 
-  animName: 
+  animName: EmptyHP
   tag: 
   flip: 0
-  speed: 0
-  frames: []
-  priority: 0
-  repeatable: 0
+  speed: 10
+  frames:
+  - name: 
+    sprite: {fileID: -8827897455606449770, guid: 2b05e6d74dda2e146842bfba21bd312e, type: 3}
+    position: {x: 0, y: 0, z: 0}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    invisible: 0
+    PhysicsShape: []
+  priority: 2
+  repeatable: 1
   interruptable: 0
   transitionsTo: []
   doNotTransitTo: []

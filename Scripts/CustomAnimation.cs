@@ -28,7 +28,8 @@ public class CustomAnimation : ScriptableObject
 			if (animation.frames.Count != 0) frame = animation.frames[activeFrame];
 
 			a.transform.parent = parent.transform;
-			pn.PPU = frame.sprite.pixelsPerUnit;
+			if(frame!=null&&frame.sprite!=null)pn.PPU = frame.sprite.pixelsPerUnit;
+			else pn.PPU = 16;
 			if (animation.frames.Count != 0 && frame.sprite != null) b.sprite = frame;
 			if (animation.frames.Count != 0 && frame.sprite != null) a.name = frame.sprite.name;
 			if (a != null && frame != null) if(Mathf.Abs(a.transform.localRotation.z-frame.rotation)>0.01)a.transform.localRotation = (Quaternion.Euler(0, 0, frame.rotation));

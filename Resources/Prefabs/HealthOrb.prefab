@@ -1,0 +1,147 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4302662354860053837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4302662354860053836}
+  - component: {fileID: 4302662354860053838}
+  - component: {fileID: 4302662354860053839}
+  - component: {fileID: 7145841351144745460}
+  m_Layer: 5
+  m_Name: HealthOrb
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4302662354860053836
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4302662354860053837}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.049410217, y: 0.9115492}
+  m_AnchorMax: {x: 0.049410217, y: 0.9115492}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4302662354860053838
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4302662354860053837}
+  m_CullTransparentMesh: 1
+--- !u!114 &4302662354860053839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4302662354860053837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 892379673207337399, guid: 2b05e6d74dda2e146842bfba21bd312e, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7145841351144745460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4302662354860053837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_side: 1
+  MotherAnimator: {fileID: 0}
+  DefaultAnim: FullHeart
+  Reset: 0
+  AddNewAnim: 0
+  AssignNewPosToEveryFrame: 0
+  timeFromFrameStart: 0
+  CurrentAnim: {fileID: 0}
+  AllAnims:
+  - {fileID: 11400000, guid: 539c3b8642bc4e84aa8606f2214e703c, type: 2}
+  - {fileID: 11400000, guid: 83f26e25339e4d04cbbb3a07a9f9921e, type: 2}
+  - {fileID: 11400000, guid: e99dfba235ebce044b08eeb8e28d24b4, type: 2}
+  AllAnimsL: []
+  SynchronizeWithMA: []
+  SpritesInOT:
+  - {fileID: 892379673207337399, guid: 2b05e6d74dda2e146842bfba21bd312e, type: 3}
+  - {fileID: 2436368191994344812, guid: 2b05e6d74dda2e146842bfba21bd312e, type: 3}
+  - {fileID: 1394625004335712103, guid: 2b05e6d74dda2e146842bfba21bd312e, type: 3}
+  - {fileID: 6702722564831579275, guid: 2b05e6d74dda2e146842bfba21bd312e, type: 3}
+  - {fileID: -3722008346284518132, guid: 2b05e6d74dda2e146842bfba21bd312e, type: 3}
+  - {fileID: -4774077292664557622, guid: 2b05e6d74dda2e146842bfba21bd312e, type: 3}
+  - {fileID: -4765295084396605237, guid: 2b05e6d74dda2e146842bfba21bd312e, type: 3}
+  - {fileID: -4240860823102080807, guid: 2b05e6d74dda2e146842bfba21bd312e, type: 3}
+  - {fileID: 4815532654916404235, guid: 2b05e6d74dda2e146842bfba21bd312e, type: 3}
+  - {fileID: -1650914219155273247, guid: 2b05e6d74dda2e146842bfba21bd312e, type: 3}
+  - {fileID: 4262601468144452971, guid: 2b05e6d74dda2e146842bfba21bd312e, type: 3}
+  - {fileID: -8827897455606449770, guid: 2b05e6d74dda2e146842bfba21bd312e, type: 3}
+  - {fileID: -2602322828867346625, guid: 2b05e6d74dda2e146842bfba21bd312e, type: 3}
+  - {fileID: -1623998768223679496, guid: 2b05e6d74dda2e146842bfba21bd312e, type: 3}
+  - {fileID: 6096101232806781170, guid: 2b05e6d74dda2e146842bfba21bd312e, type: 3}
+  - {fileID: 1881262821659364713, guid: 2b05e6d74dda2e146842bfba21bd312e, type: 3}
+  - {fileID: -1241960713604253993, guid: 2b05e6d74dda2e146842bfba21bd312e, type: 3}
+  SpritesInOTForOtherSide: []
+  PlayingQueue: []
+  FireAnimScheme: 
+  FireUpAnimScheme: 
+  FireDownAnimScheme: 
+  IdleAnimScheme: 
+  DefAnimScheme: 
+  AttackAnimScheme: 
+  JumpAnimScheme: 
+  FlyUpAnimScheme: 
+  FlyDownAnimScheme: 
+  LandAnimScheme: 
+  RunAnimScheme: 
+  RollAnimScheme: 
+  Attack2AnimScheme: 
+  Attack3AnimScheme: 
+  GunIdleAnimScheme: 
+  NewAnim:
+    m_PersistentCalls:
+      m_Calls: []
+  newFrame:
+    m_PersistentCalls:
+      m_Calls: []
+  saveImpulse:
+  - DefReverse

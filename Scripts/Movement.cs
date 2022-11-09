@@ -387,12 +387,21 @@ public class Movement : MonoBehaviour
 		var anim = obj.GetComponent<Animator>();
 		return anim.GetCurrentAnimatorStateInfo(0).length;
 	}
-
+	bool unsuccesfulSlide;
+	int lastWall;
 	void Slide()
 	{
+		if (lastWall == 0 && Wall != 0) unsuccesfulSlide = false;
+		lastWall = Wall;
+		if (unsuccesfulSlide)
+		{
+			return;
+		}
+
 		if (Wall == 0 || selfEntity.StaminaRemains < SlideCost || SlideDown)
 		{
 			Sliding = false;
+			unsuccesfulSlide = true;
 			return;
 		}
 		Sliding = true;
