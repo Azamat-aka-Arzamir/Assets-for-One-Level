@@ -167,12 +167,13 @@ public class TestAnimatorWindow : EditorWindow
 	}
 	public class StateBox : Image
 	{
-
-
+		State inspectedState;
+		bool isRenaming;
 		public static Texture stateBox;
 		//Only for inner use to have int values;
 		private Vector2Int size;
 		Box textbox;
+		VisualElement textLabel = new Label();
 		public Vector3 center
 		{
 			get
@@ -197,11 +198,11 @@ public class TestAnimatorWindow : EditorWindow
 			size.y = stateBox.height / 5;
 			style.width = size.x;
 			style.height = size.y;
-			var _text = new Label(text);
 			textbox = new Box();
 			textbox.style.position = Position.Absolute;
 			style.position = Position.Absolute;
-			textbox.Add(new Label(text));
+			(textLabel as Label).text = text;
+			textbox.Add( textLabel);
 			textbox.style.backgroundColor = Color.clear;
 			Add(textbox);
 
@@ -224,8 +225,30 @@ public class TestAnimatorWindow : EditorWindow
 		void ContextMenuActions(ContextualMenuPopulateEvent _event)
 		{
 			_event.menu.AppendAction("Make transition", MakeTransition, DropdownMenuAction.AlwaysEnabled);
+			_event.menu.AppendAction("Rename", Rename, DropdownMenuAction.AlwaysEnabled);
 		}
 		bool makingTrans = false;
+		void Rename(DropdownMenuAction action)
+		{
+			isRenaming = true;
+			textLabel = new TextField();
+			textbox.RemoveAt(0);
+			textbox.Insert(0, textLabel);
+			(textLabel as TextField).Focus();
+			textbox.RegisterCallback<KeyDownEvent>((x) =>
+			{
+				if (x.keyCode == KeyCode.Return)
+				{
+					Label l = new Label((textLabel as TextField).text);
+					if (l.text == "") l.text = "U fORGOT TO \n WRITE NAME";
+						textLabel = l;
+					isRenaming = false;
+					textbox.RemoveAt(0);
+					textbox.Insert(0, textLabel);
+				}
+			});
+
+		}
 		void MakeTransition(DropdownMenuAction action)
 		{
 			Debug.Log("Im fucking CUMMING!!!!");
@@ -241,6 +264,7 @@ public class TestAnimatorWindow : EditorWindow
 		bool isDragged;
 		void StartDrag(PointerDownEvent evt)
 		{
+			if (isRenaming) return;
 			if (evt.button != 0) return;
 			AnimEventHandler.SetActiveStateBox.Invoke(this);
 			isDragged = true;
