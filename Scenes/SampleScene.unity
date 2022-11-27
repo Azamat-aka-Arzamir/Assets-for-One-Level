@@ -5392,6 +5392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  refInt: 0
   m_side: 1
   MotherAnimator: {fileID: 1750976652}
   DefaultAnim: Idle
@@ -6337,6 +6338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  refInt: 0
   m_side: 1
   MotherAnimator: {fileID: 1750976652}
   DefaultAnim: Idle
@@ -66782,6 +66784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  refInt: 0
   m_side: 1
   MotherAnimator: {fileID: 1420165597}
   DefaultAnim: Idle
@@ -68449,6 +68452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  refInt: 0
   m_side: 1
   MotherAnimator: {fileID: 1750976652}
   DefaultAnim: Idle
@@ -70124,6 +70128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  refInt: 0
   m_side: 1
   MotherAnimator: {fileID: 1750976652}
   DefaultAnim: Idle
@@ -72412,6 +72417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  refInt: 0
   m_side: 1
   MotherAnimator: {fileID: 1750976652}
   DefaultAnim: Idle
@@ -73028,6 +73034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  refInt: 0
   m_side: 1
   MotherAnimator: {fileID: 1750976652}
   DefaultAnim: Idle
@@ -74401,6 +74408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  refInt: 0
   m_side: 1
   MotherAnimator: {fileID: 1526754853}
   DefaultAnim: Idle
@@ -75438,6 +75446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  refInt: 0
   m_side: 1
   MotherAnimator: {fileID: 1750976652}
   DefaultAnim: Idle
@@ -77263,6 +77272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  refInt: 0
   m_side: 1
   MotherAnimator: {fileID: 1526754853}
   DefaultAnim: Idle

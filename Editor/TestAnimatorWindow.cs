@@ -1,26 +1,17 @@
-﻿using ICSharpCode.NRefactory.Ast;
-using System;
-using System.Collections;
+﻿
 using System.Collections.Generic;
-using System.Reflection;
-using Unity.Mathematics;
+using System.Linq;
 using UnityEditor;
-using UnityEditor.UIElements;
+using UnityEditor.VersionControl;
+using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.InputSystem;
-using UnityEngine.PlayerLoop;
 using UnityEngine.UIElements;
-using static GluonGui.WorkspaceWindow.Views.WorkspaceExplorer.Configuration.ConfigurationTreeNodeCheck;
-using static TestAnimatorWindow;
-using static UnityEditor.Rendering.FilterWindow;
-using static UnityEngine.GraphicsBuffer;
+using static UnityEditor.PlayerSettings;
 
-
+public class vittu { }
 public class TestAnimatorWindow : EditorWindow
 {
-	StateBox activeState;
-	[MenuItem("Window/UI Toolkit/TestAnimatorWindow")]
+	[MenuItem("Window/2D/AnimatorWindow")]
 	public static void ShowExample()
 	{
 		TestAnimatorWindow wnd = GetWindow<TestAnimatorWindow>();
@@ -30,7 +21,11 @@ public class TestAnimatorWindow : EditorWindow
 	TwoPaneSplitView panes;
 	VisualElement leftpane;
 	VisualElement rightpane;
-	Label stateName;
+	Box statesSpace;
+	public List<StateBox> states = new List<StateBox>();
+
+	public VisualElement activeElement { get; private set; }
+	VisualElement ActiveElement;
 	public void CreateGUI()
 	{
 		VisualElement root = rootVisualElement;
@@ -41,345 +36,153 @@ public class TestAnimatorWindow : EditorWindow
 		panes.Add(leftpane);
 		panes.Add(rightpane);
 		root.Add(panes);
-		Button btn = new Button(CreateState);
-		root.Add(btn);
+		var controlPanel = new Box();
+		controlPanel.style.backgroundColor = new Color(0.3f, 0.3f, 0.3f, 1);
+		Button btn = new Button(() => CreateState(new Vector3(UnityEngine.Random.Range(0f, 50f), UnityEngine.Random.Range(0f, 50f)), "NewState"));
+		btn.text = "New state";
+		Button btn2 = new Button(Save);
+		btn2.text = "Save";
+		Button btn3 = new Button(Load);
+		btn3.text = "Load";
+		controlPanel.Add(btn);
+		controlPanel.Add(btn2);
+		controlPanel.Add(btn3);
+		controlPanel.style.width = 100;
+		leftpane.Add(controlPanel);
+		statesSpace = new Box();
+		statesSpace.style.position = Position.Absolute;
 
-		stateName = new Label();
-		rightpane.Add(stateName);
+		leftpane.Add(statesSpace);
+		leftpane.RegisterCallback<DragUpdatedEvent>((x) => { 
+			
+			if (DragAndDrop.objectReferences[0].GetType() == typeof(CustomAnimation))
+			{
+				DragAndDrop.visualMode = DragAndDropVisualMode.Link;
+			}
+		});
+		leftpane.RegisterCallback<DragPerformEvent>((x) =>
+		{
+			if (DragAndDrop.objectReferences[0].GetType() == typeof(CustomAnimation))
+			{
+				CreateState(x.mousePosition, DragAndDrop.objectReferences[0].name);
+			}
+		});
+	}
+	void Save()
+	{
 
-		AnimEventHandler.AddListenerToTransitionEvent<StateBox>(StartMakingTransition, AnimEventHandler.eventType.start);
-		AnimEventHandler.AddListenerToTransitionEvent<StateBox>(StopMakingTransition, AnimEventHandler.eventType.stop);
-		AnimEventHandler.SetActiveTransition.AddListener(DrawTransitionWindow);
-		//AnimEventHandler.AddListenerToTransitionEvent<Line>(RemoveActiveLine, AnimEventHandler.eventType.removeline);
+		var scheme = new AnimatorScheme();
+		scheme.Initialize(states);
+		if (!AssetDatabase.IsValidFolder("Assets/Animators"))
+		{
+			System.IO.Directory.CreateDirectory("Assets/Animators");
+		}
+		AssetDatabase.Refresh();
+		//AssetDatabase.CreateAsset(scheme, "Assets/Animators/cum.asset");
+		//AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(scheme));
+
+
+	}
+	void Load()
+	{
+		AnimatorScheme scheme = AnimatorScheme.LoadFromFile("Assets/Animators/semen");
+		states.Clear();
+		statesSpace.Clear();
+		Debug.Log(scheme.states.Count);
+		foreach (var state in scheme.states)
+		{
+			var s = new StateBox(state.name);
+			states.Add(s);
+			s.transform.position = new Vector3(state.position[0], state.position[1]);
+			statesSpace.Add(s);
+		}
+		foreach (var state in states)
+		{
+			var corState = scheme.states.ElementAt(states.IndexOf(state));
+			List<Line> m_trans = new List<Line>();
+			foreach (var tran in corState.transitons)
+			{
+				var a = new Line(state, states.ElementAt(scheme.states.IndexOf(tran.endState)), tran.conditions);
+				m_trans.Add(a);
+				statesSpace.Add(a);
+			}
+			state.trans.Clear();
+			state.trans.AddRange(m_trans);
+		}
 	}
 	private void Update()
 	{
 
 	}
-	Line activeLine;
-	void StartMakingTransition(StateBox box)
+
+
+	void CreateState(Vector3 pos, string name)
 	{
-		activeLine = new Line(box);
-		leftpane.Add(activeLine);
-		rootVisualElement.RegisterCallback<PointerMoveEvent>(activeLine.OnMouseMove);
-		rootVisualElement.RegisterCallback<PointerDownEvent>(activeLine.OnPointerDown);
-	}
-	void StopMakingTransition(StateBox box)
-	{
-		activeLine.Set(box);
-		activeLine = null;
+		var s = new StateBox(name);
+		states.Add(s);
+		s.transform.position = pos;
+		statesSpace.Add(s);
 	}
 
-	void DrawTransitionWindow(Line activeState)
+	/// <summary>
+	/// Set active element which can be inspected, or used for other reasons
+	/// </summary>
+	/// <param name="focusOn"></param>
+	public void FocusOn(VisualElement focusOn)
 	{
+		activeElement = focusOn;
+
+		if (focusOn == null) return;
+		Debug.Log(focusOn.GetType().ToString());
 		rightpane.Clear();
-		rightpane.Add(new ConditionDrawer(activeState.condition).GetContentDrawer());
-	}
-
-
-	List<StateBox> stateBoxes = new List<StateBox>();
-	void CreateState()
-	{
-		var s = new StateBox("New State", this);
-		s.transform.position = new Vector3(UnityEngine.Random.Range(0f, 50f), UnityEngine.Random.Range(0f, 50f));
-		leftpane.Add(s);
-		stateBoxes.Add(s);
-
-	}
-	public class Line : Image
-	{
-		//delete
-		public Condition condition = new Condition();
-
-		private Vector3 start;
-		private Vector3 end;
-		static Texture texture;
-		bool set = false;
-
-		public Line(StateBox startBox)
+		if (focusOn.GetType() == typeof(Line))
 		{
-			start = startBox.center;
-			startBox.AddOnMoveListener(OnStartMoved);
-			if (texture == null)
+			if (!(focusOn as Line).set) return;
+			rightpane.Add(new Label((focusOn as Line).startState.stateName + " --> " + (focusOn as Line).endState.stateName));
+			rightpane.Add(new Label("Conditions"));
+			var list = DrawCondList(focusOn as Line);
+			var but = new Button(() =>
 			{
-				GetTexture();
-			}
-			image = texture;
-			style.width = 10;
-			style.height = 10;
-			style.position = Position.Absolute;
-			transform.position = Vector3.zero;
-			RegisterCallback<PointerDownEvent>(OnPointerDownLocal);
-		}
-		public void OnPointerDown(PointerDownEvent evt)
-		{
-			if (!set && evt.button == 1)
-			{
-				parent.Remove(this);
-			}
+				(focusOn as Line).conditions.Add(new Condition());
+				rightpane.RemoveAt(4);
+				list = DrawCondList(focusOn as Line);
+				rightpane.Add(list);
 
-		}
-		void OnPointerDownLocal(PointerDownEvent evt)
-		{
-			if (set && evt.button == 1 && evt.shiftKey)
-			{
-				parent.Remove(this);
-			}
-			if (set && evt.button == 0)
-			{
-				AnimEventHandler.SetActiveTransition.Invoke(this);
-			}
-		}
-
-
-		public void OnMouseMove(PointerMoveEvent evt)
-		{
-			if (!set) UpdatePos(start, evt.position);
-		}
-		public void OnEndMoved(StateBox endBox)
-		{
-			UpdatePos(start, endBox.center);
-		}
-		public void OnStartMoved(StateBox startBox)
-		{
-			UpdatePos(startBox.center, end);
-		}
-		public void UpdatePos(Vector3 spos, Vector3 epos)
-		{
-			start = spos;
-			end = epos;
-			style.width = (epos - spos).magnitude;
-			transform.position = spos;
-			transform.rotation = Quaternion.Euler(0, 0, Vector3.SignedAngle(Vector3.right, (epos - spos), Vector3.forward));
-
-		}
-		public void Set(StateBox box)
-		{
-			box.AddOnMoveListener(OnEndMoved);
-			set = true;
-		}
-		public static void GetTexture()
-		{
-			texture = (AssetDatabase.LoadAssetAtPath("Assets/Defaults/Editor/SpriteBox.png", typeof(Sprite)) as Sprite).texture;
-		}
-
-
-	}
-	public class StateBox : Image
-	{
-		State inspectedState;
-		bool isRenaming;
-		public static Texture stateBox;
-		//Only for inner use to have int values;
-		private Vector2Int size;
-		Box textbox;
-		VisualElement textLabel = new Label();
-		public Vector3 center
-		{
-			get
-			{
-				return worldBound.center;
-			}
-		}
-		public StateBox(string text, TestAnimatorWindow parentWindow)
-		{
-			parentWindow.rootVisualElement.RegisterCallback<PointerMoveEvent>(Drag);
-			InitializeStateBox(text);
-		}
-		public StateBox(string text)
-		{
-			InitializeStateBox(text);
-		}
-		void InitializeStateBox(string text)
-		{
-			GetTexture();
-			image = stateBox;
-			size.x = stateBox.width / 5;
-			size.y = stateBox.height / 5;
-			style.width = size.x;
-			style.height = size.y;
-			textbox = new Box();
-			textbox.style.position = Position.Absolute;
-			style.position = Position.Absolute;
-			(textLabel as Label).text = text;
-			textbox.Add( textLabel);
-			textbox.style.backgroundColor = Color.clear;
-			Add(textbox);
-
-			RegisterCallback<GeometryChangedEvent>((evt) => SetCenter());
-			RegisterCallback<PointerDownEvent>(StartDrag);
-
-			RegisterCallback<PointerUpEvent>(StopDrag);
-			RegisterCallback<PointerDownEvent>(InvokeTransitionEndEvent);
-			RegisterCallback<PointerOutEvent>(StopDrag);
-
-			ContextualMenuManipulator m = new ContextualMenuManipulator(ContextMenuActions);
-			m.target = this;
-
-		}
-		void InvokeTransitionEndEvent(PointerDownEvent evt)
-		{
-			AnimEventHandler.Stop(this);
-		}
-
-		void ContextMenuActions(ContextualMenuPopulateEvent _event)
-		{
-			_event.menu.AppendAction("Make transition", MakeTransition, DropdownMenuAction.AlwaysEnabled);
-			_event.menu.AppendAction("Rename", Rename, DropdownMenuAction.AlwaysEnabled);
-		}
-		bool makingTrans = false;
-		void Rename(DropdownMenuAction action)
-		{
-			isRenaming = true;
-			textLabel = new TextField();
-			textbox.RemoveAt(0);
-			textbox.Insert(0, textLabel);
-			(textLabel as TextField).Focus();
-			textbox.RegisterCallback<KeyDownEvent>((x) =>
-			{
-				if (x.keyCode == KeyCode.Return)
-				{
-					Label l = new Label((textLabel as TextField).text);
-					if (l.text == "") l.text = "U fORGOT TO \n WRITE NAME";
-						textLabel = l;
-					isRenaming = false;
-					textbox.RemoveAt(0);
-					textbox.Insert(0, textLabel);
-				}
 			});
+			but.text = "Add Conditon";
 
-		}
-		void MakeTransition(DropdownMenuAction action)
-		{
-			Debug.Log("Im fucking CUMMING!!!!");
-			makingTrans = true;
-			if (makingTrans)
+			var but2 = new Button(() =>
 			{
-				AnimEventHandler.Invoke(this);
-			}
-		}
+				list.Refresh();
+				if (list.selectedIndex >= 0) (focusOn as Line).conditions.RemoveAt(list.selectedIndex);
+				rightpane.RemoveAt(4);
+				list = DrawCondList(focusOn as Line);
+				rightpane.Add(list);
 
-		Vector2 targetStartPosition;
-		Vector3 pointerStartPosition;
-		bool isDragged;
-		void StartDrag(PointerDownEvent evt)
-		{
-			if (isRenaming) return;
-			if (evt.button != 0) return;
-			AnimEventHandler.SetActiveStateBox.Invoke(this);
-			isDragged = true;
-			targetStartPosition = transform.position;
-			pointerStartPosition = evt.position;
-			//DragAndDrop.StartDrag("Dragging title");
-		}
-		List<Action<StateBox>> onMoveListeners = new List<Action<StateBox>>();
-		void Drag(PointerMoveEvent evt)
-		{
-			if (!isDragged) return;
-			Vector3 pointerDelta = evt.position - pointerStartPosition;
 
-			transform.position = new Vector2(
-				Mathf.Clamp(targetStartPosition.x + pointerDelta.x, 0, panel.visualTree.worldBound.width),
-				Mathf.Clamp(targetStartPosition.y + pointerDelta.y, 0, panel.visualTree.worldBound.height));
+			});
+			but2.text = "Remove condition";
 
-			foreach (var listener in onMoveListeners)
-			{
-				listener(this);
-			}
-		}
-		void StopDrag(PointerOutEvent evt)
-		{
-			//isDragged = false;
-		}
-		public void AddOnMoveListener(Action<StateBox> action)
-		{
-			onMoveListeners.Add(action);
-		}
-		void StopDrag(PointerUpEvent evt)
-		{
-			isDragged = false;
-		}
-		public static void GetTexture()
-		{
-			stateBox = (AssetDatabase.LoadAssetAtPath("Assets/Defaults/Editor/SpriteBox.png", typeof(Sprite)) as Sprite).texture;
-		}
 
-		public void SetCenter()
-		{
-			textbox.transform.position = new Vector3(size.x / 2 - textbox.layout.width / 2, size.y / 2 - textbox.layout.height / 2);
-			style.width = size.x;
-			style.height = size.y;
+
+			rightpane.Add(but);
+			rightpane.Add(but2);
+			rightpane.Add(list);
 		}
 	}
-	public class AnimEvent<N>
+	ListView DrawCondList(Line trans)
 	{
-		List<Action<N>> listeners = new List<Action<N>>();
-		public void Invoke(N returnObject)
+		var conds = trans.conditions;
+		var items = new List<VisualElement>();
+		foreach (var cond in conds)
 		{
-			foreach (var listener in listeners)
-			{
-				listener.Invoke(returnObject);
-			}
+			items.Add(new ConditionDrawer(cond).GetContentDrawer());
 		}
-		public void AddListener(Action<N> action)
-		{
-			listeners.Add(action);
-		}
-		public void RemoveListener(Action<N> action)
-		{
-			listeners.Remove(action);
-		}
-	}
-	public struct AnimEventHandler
-	{
-		static List<Action<StateBox>> Listeners = new List<Action<StateBox>>();
-		static List<Action<StateBox>> ListenersToStop = new List<Action<StateBox>>();
-		static List<Action<Line>> RemoveLine = new List<Action<Line>>();
-		public static AnimEvent<StateBox> SetActiveStateBox = new AnimEvent<StateBox>();
+		var listView = new ListView(items, 100, () => new Box(), (e, i) => { e.Clear(); e.Add(items[i]); });
+		listView.style.flexGrow = 1f;
+		return listView;
 
-
-		//must be Transition type
-		public static AnimEvent<Line> SetActiveTransition = new AnimEvent<Line>();
-		public enum eventType { start, stop, removeline };
-		public static void AddListenerToTransitionEvent<T>(Action<T> action, eventType type)
-		{
-			if (action.GetType() == typeof(Action<StateBox>))
-			{
-				if (type == eventType.start) Listeners.Add(action as Action<StateBox>);
-				else if (type == eventType.stop) ListenersToStop.Add(action as Action<StateBox>);
-
-			}
-			else if (action.GetType() == typeof(Action<Line>))
-			{
-				if (type == eventType.removeline) RemoveLine.Add(action as Action<Line>);
-			}
-		}
-		public static bool Invoked = false;
-		public static void Invoke(StateBox invoker)
-		{
-			Invoked = true;
-			foreach (var a in Listeners)
-			{
-				a(invoker);
-			}
-		}
-		public static void Invoke(Line invoker, eventType evt)
-		{
-			Invoked = true;
-			foreach (var a in RemoveLine)
-			{
-				a(invoker);
-			}
-		}
-		public static void Stop(StateBox invoker)
-		{
-			if (!Invoked) return;
-			Invoked = false;
-			foreach (var a in ListenersToStop)
-			{
-				a(invoker);
-			}
-		}
 
 	}
+
 }

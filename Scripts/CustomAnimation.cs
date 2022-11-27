@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UIElements;
+using UnityEditorInternal;
 
 [CreateAssetMenu(fileName = "New Custom Animation", menuName = "Custom Animations", order = 51)]
 public class CustomAnimation : ScriptableObject
