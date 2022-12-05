@@ -1,8 +1,9 @@
 ﻿
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEditor;
-using UnityEditor.VersionControl;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -21,8 +22,10 @@ public class TestAnimatorWindow : EditorWindow
 	TwoPaneSplitView panes;
 	VisualElement leftpane;
 	VisualElement rightpane;
+	TextField commandLine;
 	Box statesSpace;
 	public List<StateBox> states = new List<StateBox>();
+	AnimatorScheme inspectedScheme;
 
 	public VisualElement activeElement { get; private set; }
 	VisualElement ActiveElement;
@@ -40,13 +43,21 @@ public class TestAnimatorWindow : EditorWindow
 		controlPanel.style.backgroundColor = new Color(0.3f, 0.3f, 0.3f, 1);
 		Button btn = new Button(() => CreateState(new Vector3(UnityEngine.Random.Range(0f, 50f), UnityEngine.Random.Range(0f, 50f)), "NewState"));
 		btn.text = "New state";
-		Button btn2 = new Button(Save);
+		Button btn2 = new Button(()=>Save("semen"));
 		btn2.text = "Save";
-		Button btn3 = new Button(Load);
+		Button btn3 = new Button(()=>Load("semen"));
 		btn3.text = "Load";
 		controlPanel.Add(btn);
 		controlPanel.Add(btn2);
 		controlPanel.Add(btn3);
+
+
+		commandLine = new TextField();//Command line init
+		controlPanel.Add(commandLine);
+		commandLine.RegisterCallback<KeyDownEvent>(CommandLineParsing);
+
+
+
 		controlPanel.style.width = 100;
 		leftpane.Add(controlPanel);
 		statesSpace = new Box();
@@ -68,7 +79,33 @@ public class TestAnimatorWindow : EditorWindow
 			}
 		});
 	}
-	void Save()
+	void CommandLineParsing(KeyDownEvent callback)
+	{
+		if (callback.keyCode != KeyCode.Return) return;
+		string command = commandLine.value.Split(' ')[0];
+		string arg;
+		switch (command)
+		{
+			case "sad"://SaveAsDefault
+				if (commandLine.value.Split(' ').Length == 1)
+				{
+					throw new System.Exception("Incorrect Argument");
+				}
+				arg = commandLine.value.Split(' ')[1];
+				Save("/Defaults/" + arg);
+				break;
+			case "ld"://Load default scheme
+				if(commandLine.value.Split(' ').Length == 1)
+				{
+					throw new System.Exception("Incorrect Argument");
+				}
+				arg = commandLine.value.Split(' ')[1];
+				Load("Defaults/" + arg);
+				break;
+		}
+		commandLine.value = "";
+	}
+	void Save(string path)
 	{
 
 		var scheme = new AnimatorScheme();
@@ -78,14 +115,45 @@ public class TestAnimatorWindow : EditorWindow
 			System.IO.Directory.CreateDirectory("Assets/Animators");
 		}
 		AssetDatabase.Refresh();
-		//AssetDatabase.CreateAsset(scheme, "Assets/Animators/cum.asset");
-		//AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(scheme));
+		var splittedPath = path.Split('/');
+		if (splittedPath.Length > 1)
+		{
+			string pa = "/";
+			for(int i = 0;i< splittedPath.Length-1;i++)
+			{
+				string p = splittedPath[i];
+				if (!AssetDatabase.IsValidFolder("Assets/Animators"+pa+p))
+				{
+					System.IO.Directory.CreateDirectory("Assets/Animators"+pa+p);
+				}
+				pa += p + "/";
+			}
+		}
 
-
+		var formatter = new BinaryFormatter();
+		FileStream fileStream = new FileStream("Assets/Animators/"+path,FileMode.Create);
+		formatter.Serialize(fileStream, scheme);
+		fileStream.Close();
 	}
-	void Load()
+	void Load(string path)
 	{
-		AnimatorScheme scheme = AnimatorScheme.LoadFromFile("Assets/Animators/semen");
+		var p=path.Split('/');
+		p[p.Length - 1] = "";
+		string folderOnly="";
+		for(int i = 0; i < p.Length-1; i++)
+		{
+			folderOnly += p[i];
+			if (i < p.Length - 2) folderOnly += "/";
+		}
+		if (!Directory.Exists("Assets/Animators/" +folderOnly))
+		{
+			throw new System.Exception("Loading failed - Incorrect Directory: Assets/Animators/" + folderOnly);
+		}
+		var formatter = new BinaryFormatter();
+		var fileStream = new FileStream("Assets/Animators/" + path, FileMode.Open);
+		var scheme= (AnimatorScheme)formatter.Deserialize(fileStream);
+
+		fileStream.Close();
 		states.Clear();
 		statesSpace.Clear();
 		Debug.Log(scheme.states.Count);

@@ -33,22 +33,6 @@ public class AnimatorScheme
 			state.transitons.AddRange(m_trans);
 		}
 
-		Save();
-	}
-	void Save()
-	{
-		var formatter = new BinaryFormatter();
-		var fileStream = new FileStream("Assets/Animators/semen", FileMode.Create);
-		formatter.Serialize(fileStream, this);
-		fileStream.Close();
-	}
-	public static AnimatorScheme LoadFromFile(string path)
-	{
-		var formatter = new BinaryFormatter();
-		var fileStream = new FileStream("Assets/Animators/semen", FileMode.Open);
-		var aS = (AnimatorScheme)formatter.Deserialize(fileStream);
-		fileStream.Close();
-		return aS;
 	}
 	[System.Serializable]
 	public struct StateInfo
