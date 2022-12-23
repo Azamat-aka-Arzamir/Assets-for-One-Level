@@ -46,9 +46,3 @@ MonoBehaviour:
     invisible: 0
     PhysicsShape:
     - {x: 0, y: 0}
-  priority: 0
-  repeatable: 1
-  interruptable: 0
-  transitionsTo: []
-  doNotTransitTo: []
-  conditionName: 

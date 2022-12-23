@@ -38,10 +38,3 @@ MonoBehaviour:
     rotation: 3.57
     invisible: 0
     PhysicsShape: []
-  priority: 12
-  repeatable: 0
-  interruptable: 0
-  transitionsTo:
-  - GunIdle
-  doNotTransitTo: []
-  conditionName: 

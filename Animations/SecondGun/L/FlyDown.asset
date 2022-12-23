@@ -32,10 +32,3 @@ MonoBehaviour:
     invisible: 0
     PhysicsShape:
     - {x: 0, y: 0}
-  priority: 4
-  repeatable: 1
-  interruptable: 0
-  transitionsTo:
-  - Land
-  doNotTransitTo: []
-  conditionName: OnGroundCond

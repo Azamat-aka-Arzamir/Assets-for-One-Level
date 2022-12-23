@@ -7,71 +7,11 @@ using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 using System;
 using Codice.Client.BaseCommands;
+using UnityEditor.TestTools.TestRunner.Api;
+using UnityEditorInternal;
+using System.Runtime.Remoting.Messaging;
 
-[System.Serializable]
-public class Condition
-{
-	public FieldInfo property;
-	public System.Reflection.TypeInfo objectRef;
-	public int objectHash;
-	public object value;
 
-	public enum CondType { E, G, L, LOE, GOE, NE }
-	public CondType type;
-	bool IsTrue()
-	{
-
-		var a = property.GetValue(GetObject());
-		if (value.GetType() == typeof(string) || value.GetType() == typeof(bool))
-		{
-			switch (type)
-			{
-				case CondType.E:
-					if (a == value) return true;
-					else return false;
-				case CondType.NE:
-					if (a != value) return true;
-					else return false;
-				default:
-					throw new Exception("Wrong operation in some condition (FIND IT BY YOURSELF, BITCH!)\n" + "ok, property holder on " + GetObject() + " and its name is  " + property.Name);
-			}
-		}
-		else
-		{
-			var b = (float)a;
-			var c = (float)value;
-			switch (type)
-			{
-				case CondType.E:
-					if (b == c) return true;
-					break;
-				case CondType.G:
-					if (b > c) return true;
-					break;
-				case CondType.L:
-					if (b < c) return true;
-					break;
-				case CondType.GOE:
-					if (b >= c) return true;
-					break;
-				case CondType.LOE:
-					if (b <= c) return true;
-					break;
-				case CondType.NE:
-					if (b != c) return true;
-					break;
-			}
-			return false;
-		}
-	}
-	public UnityEngine.Object GetObject()
-	{
-		if (objectRef == null || objectHash == 0) return null;
-		List<UnityEngine.Object> list = new List<UnityEngine.Object>();
-		list.AddRange(UnityEngine.Object.FindObjectsOfType(objectRef));
-		return list.Find((x) => x.GetHashCode() == objectHash);
-	}
-}
 #if UNITY_EDITOR
 public class ConditionDrawer
 {
@@ -190,6 +130,7 @@ public class StateBox : Image
 	private Vector2Int size;
 	Box textbox;
 	public string stateName;
+	public CustomAnimation animation;
 	VisualElement textLabel = new Label();
 	public  List<Line> trans { get; protected set; } = new List<Line>();
 	public List<Line> endOnMe { get; protected set; } = new List<Line>();
@@ -287,9 +228,10 @@ public class StateBox : Image
 		{
 			//if it is already set, it will just ignore set request
 			if((aLine as Line).Set(this)) endOnMe.Add(aLine as Line);
-			
-		}
-		(parentWindow as TestAnimatorWindow).FocusOn(aLine);
+            (parentWindow as TestAnimatorWindow).FocusOn(aLine);
+        }
+        (parentWindow as TestAnimatorWindow).FocusOn(this);
+
 
 		//preparing for dragging
 
@@ -334,12 +276,50 @@ public class StateBox : Image
 		style.height = size.y;
 	}
 }
+public class StateBoxDrawer
+{
+	StateBox inspectedState;
+	ObjectField animBox;
 
+    public StateBoxDrawer(StateBox _inspectedState)
+	{
+		inspectedState = _inspectedState;
+	}
+	public VisualElement GetVisualElement()
+	{
+		SyncValuesWithInspectedState();
+		VisualElement output = new VisualElement();
+		animBox.RegisterValueChangedCallback(x=> inspectedState.animation = x.newValue as CustomAnimation);
+		output.Add(animBox);
+		var listView = new ListView(inspectedState.trans, 16, () =>  new Label(), (e, i) => { (e as Label).text = inspectedState.trans[i].endState.stateName; });
+		listView.reorderable = true;
+		listView.style.height = inspectedState.trans.Count*16;
+		listView.style.width = 100;
+        listView.style.flexGrow = 1f;
+		var h1 = new Label("Transitions");
+		h1.transform.position+=new Vector3(20,20);
+		listView.transform.position += new Vector3(20, 50);
+        output.Add(h1);
+
+        output.Add(listView);
+		
+		return output;
+	}
+
+	//Sets values in inspector according to inspected StateBox
+	void SyncValuesWithInspectedState()
+	{
+        animBox = new ObjectField();
+		animBox.objectType = typeof(CustomAnimation);
+		animBox.value = inspectedState.animation;
+    }
+}
 public class Line : Image
 {
 	TestAnimatorWindow parentWindow;
 	//delete
 	public List<Condition> conditions = new List<Condition>();
+	public bool hasExitTime;
 	private Vector3 start;
 	private Vector3 end;
 	public StateBox startState { get; private set; }
@@ -369,8 +349,9 @@ public class Line : Image
 		RegisterCallback<PointerDownEvent>(OnPointerDownLocal);
 	}
 
-	public Line(StateBox startBox, StateBox endBox, List<Condition> conds)
+	public Line(StateBox startBox, StateBox endBox, List<Condition> conds,bool _het)
 	{
+		hasExitTime = _het;
 		conditions = conds;
 		set = true;
 		startState = startBox;
@@ -379,6 +360,10 @@ public class Line : Image
 		parentWindow.FocusOn(this);
 		start = startBox.transform.position + Vector3.down*startBox.style.height.value.value;
 		end = endBox.transform.position + Vector3.down * startBox.style.height.value.value;
+		if (startBox == endBox)
+		{
+			end += Vector3.down * 20;
+		}
 		RegisterCallback<GeometryChangedEvent>((x) => UpdatePos(startState.worldBound.center,endState.worldBound.center));
 		startBox.AddOnMoveListener(OnStartMoved);
 		endBox.AddOnMoveListener(OnEndMoved);
@@ -407,7 +392,9 @@ public class Line : Image
 		if (set && evt.button == 1 && evt.shiftKey)
 		{
 			parent.Remove(this);
-		}
+			startState.trans.Remove(this);
+			endState.trans.Remove(this);
+        }
 		if (set && evt.button == 0)
 		{
 			parentWindow.FocusOn(this);
@@ -434,6 +421,15 @@ public class Line : Image
 	}
 	public void UpdatePos(Vector3 spos, Vector3 epos)
 	{
+		if (startState == endState)
+		{
+            start = spos;
+			end= epos+Vector3.down*20;
+			style.width = 20;
+            transform.position = spos;
+            transform.rotation = Quaternion.Euler(0, 0, 90);
+            return;
+		}
 		start = spos;
 		end = epos;
 		style.width = (epos - spos).magnitude;
@@ -479,6 +475,7 @@ public struct AnimEventHandler
 {
 
 }
+
 
 
 

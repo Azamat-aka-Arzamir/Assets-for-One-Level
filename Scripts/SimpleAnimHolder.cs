@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 public class SimpleAnimHolder : MonoBehaviour
-{
+{/*
 #if UNITY_EDITOR
 	[CustomEditor(typeof(SimpleAnimHolder))]
 	public class SAHEditor : Editor
@@ -91,8 +91,8 @@ public class SimpleAnimHolder : MonoBehaviour
 	{
 		foreach(var animator in Animators)
 		{
-			if(_side==Misc.Side.R)animator.GetComponent<SpriteRenderer>().sprite = animator.AllAnims.Find(x => x.animName == animName).frames[frame];
-			else animator.GetComponent<SpriteRenderer>().sprite = animator.AllAnimsL.Find(x => x.animName == animName).frames[frame];
+			if(_side==Misc.Side.R)animator.GetComponent<SpriteRenderer>().sprite = animator.GetAnimation(animator.animatorScheme.states.Find(x => x.name == animName)).frames[frame];
+			else animator.GetComponent<SpriteRenderer>().sprite = animator.GetAnimation(animator.animatorScheme.states.Find(x => x.name == animName)).frames[frame];
 		}
 	}
-}
+*/}

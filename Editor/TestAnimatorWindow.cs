@@ -1,12 +1,15 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static AnimatorScheme;
 using static UnityEditor.PlayerSettings;
 
 public class vittu { }
@@ -23,6 +26,7 @@ public class TestAnimatorWindow : EditorWindow
 	VisualElement leftpane;
 	VisualElement rightpane;
 	TextField commandLine;
+	FileField ASField;
 	Box statesSpace;
 	public List<StateBox> states = new List<StateBox>();
 	AnimatorScheme inspectedScheme;
@@ -43,13 +47,17 @@ public class TestAnimatorWindow : EditorWindow
 		controlPanel.style.backgroundColor = new Color(0.3f, 0.3f, 0.3f, 1);
 		Button btn = new Button(() => CreateState(new Vector3(UnityEngine.Random.Range(0f, 50f), UnityEngine.Random.Range(0f, 50f)), "NewState"));
 		btn.text = "New state";
-		Button btn2 = new Button(()=>Save("semen"));
+        ASField = new FileField();
+        Button btn2 = new Button(() => Save(ASField.fileName));
 		btn2.text = "Save";
-		Button btn3 = new Button(()=>Load("semen"));
-		btn3.text = "Load";
+		//Button btn3 = new Button(() => Load("semen"));
+		//btn3.text = "Load";
+		ASField.RegisterCallback<ChangeEvent<string>>(x => Load(ASField.path));
+
+        controlPanel.Add(ASField);
 		controlPanel.Add(btn);
 		controlPanel.Add(btn2);
-		controlPanel.Add(btn3);
+		//controlPanel.Add(btn3);
 
 
 		commandLine = new TextField();//Command line init
@@ -64,8 +72,8 @@ public class TestAnimatorWindow : EditorWindow
 		statesSpace.style.position = Position.Absolute;
 
 		leftpane.Add(statesSpace);
-		leftpane.RegisterCallback<DragUpdatedEvent>((x) => { 
-			
+		leftpane.RegisterCallback<DragUpdatedEvent>((x) => {
+
 			if (DragAndDrop.objectReferences[0].GetType() == typeof(CustomAnimation))
 			{
 				DragAndDrop.visualMode = DragAndDropVisualMode.Link;
@@ -75,10 +83,72 @@ public class TestAnimatorWindow : EditorWindow
 		{
 			if (DragAndDrop.objectReferences[0].GetType() == typeof(CustomAnimation))
 			{
-				CreateState(x.mousePosition, DragAndDrop.objectReferences[0].name);
+				CreateState(x.mousePosition, DragAndDrop.objectReferences[0].name).animation = DragAndDrop.objectReferences[0] as CustomAnimation;
 			}
 		});
 	}
+	class FileField : VisualElement
+	{
+		Box box = new Box();
+		VisualElement label = new Label("null");
+		public DefaultAsset file;
+		public string path;
+		public string fileName = null;
+		public FileField()
+		{
+            ContextualMenuManipulator m = new ContextualMenuManipulator(ContextMenuActions);
+            m.target = this;
+            box.style.width = 100;
+			box.style.height = 20;
+			box.style.backgroundColor = new Color(0.2f, 0.2f, 0.2f);
+			box.Add(label);
+			Add(box);
+            box.RegisterCallback<DragUpdatedEvent>((x) => {
+
+                if (DragAndDrop.objectReferences[0].GetType() == typeof(DefaultAsset))
+                {
+                    DragAndDrop.visualMode = DragAndDropVisualMode.Link;
+                }
+            });
+            box.RegisterCallback<DragPerformEvent>((x) =>
+            {
+				if (DragAndDrop.objectReferences[0].GetType() == typeof(DefaultAsset))
+                {
+					file = DragAndDrop.objectReferences[0] as DefaultAsset;
+					path = AssetDatabase.GetAssetPath(file);
+					fileName = file.name;
+					(label as Label).text = DragAndDrop.objectReferences[0].name;
+                }
+            });
+        }
+        void ContextMenuActions(ContextualMenuPopulateEvent _event)
+        {
+            _event.menu.AppendAction("Rename", Rename, DropdownMenuAction.AlwaysEnabled);
+        }
+        void Rename(DropdownMenuAction action)
+        {
+			box.RemoveAt(0);
+            label = new TextField();
+			box.Add(label);
+            (label as TextField).Focus();
+            label.RegisterCallback<KeyDownEvent>((x) =>
+            {
+                if (x.keyCode == KeyCode.Return)
+                {
+                    Label l = new Label((label as TextField).text);
+                    if (l.text == "") l.text = "U fORGOT TO \n WRITE NAME";
+                    label = l;
+                    box.RemoveAt(0);
+                    box.Add(label);
+                    fileName = l.text;
+                }
+            });
+
+        }
+    }
+	const string helpData = 
+		"sad x - Save current scheme as default with x-name \n" +
+		"ld x - Load x-named scheme from defaults !without saving current scheme!\n";
 	void CommandLineParsing(KeyDownEvent callback)
 	{
 		if (callback.keyCode != KeyCode.Return) return;
@@ -102,6 +172,9 @@ public class TestAnimatorWindow : EditorWindow
 				arg = commandLine.value.Split(' ')[1];
 				Load("Defaults/" + arg);
 				break;
+			case "help":
+				Debug.Log(helpData);
+				break;
 		}
 		commandLine.value = "";
 	}
@@ -109,7 +182,8 @@ public class TestAnimatorWindow : EditorWindow
 	{
 
 		var scheme = new AnimatorScheme();
-		scheme.Initialize(states);
+		scheme.name = ASField.fileName;
+		scheme.InitializeScheme(states);
 		if (!AssetDatabase.IsValidFolder("Assets/Animators"))
 		{
 			System.IO.Directory.CreateDirectory("Assets/Animators");
@@ -133,24 +207,32 @@ public class TestAnimatorWindow : EditorWindow
 		var formatter = new BinaryFormatter();
 		FileStream fileStream = new FileStream("Assets/Animators/"+path,FileMode.Create);
 		formatter.Serialize(fileStream, scheme);
-		fileStream.Close();
-	}
-	void Load(string path)
+        
+        fileStream.Close();
+        AssetDatabase.Refresh();
+    }
+
+    void Load(string path)
 	{
+
 		var p=path.Split('/');
-		p[p.Length - 1] = "";
+		//p[p.Length - 1] = "";
 		string folderOnly="";
 		for(int i = 0; i < p.Length-1; i++)
 		{
-			folderOnly += p[i];
-			if (i < p.Length - 2) folderOnly += "/";
+			if (p[i] != "Animators" && p[i] != "Assets")
+			{
+				folderOnly += p[i];
+				if (i < p.Length - 2) folderOnly += "/";
+			}
 		}
-		if (!Directory.Exists("Assets/Animators/" +folderOnly))
+        if (!Directory.Exists("Assets/Animators/" +folderOnly))
 		{
-			throw new System.Exception("Loading failed - Incorrect Directory: Assets/Animators/" + folderOnly);
+			throw new System.Exception("Loading failed - Incorrect Directory: Assets/Animators/" + folderOnly+"/");
 		}
+
 		var formatter = new BinaryFormatter();
-		var fileStream = new FileStream("Assets/Animators/" + path, FileMode.Open);
+		var fileStream = new FileStream("Assets/Animators/" + folderOnly+"/"+ p[p.Length - 1], FileMode.Open);
 		var scheme= (AnimatorScheme)formatter.Deserialize(fileStream);
 
 		fileStream.Close();
@@ -162,6 +244,7 @@ public class TestAnimatorWindow : EditorWindow
 			var s = new StateBox(state.name);
 			states.Add(s);
 			s.transform.position = new Vector3(state.position[0], state.position[1]);
+			s.animation = AssetDatabase.LoadAssetAtPath(state.animationPath,typeof(CustomAnimation)) as CustomAnimation;
 			statesSpace.Add(s);
 		}
 		foreach (var state in states)
@@ -170,7 +253,7 @@ public class TestAnimatorWindow : EditorWindow
 			List<Line> m_trans = new List<Line>();
 			foreach (var tran in corState.transitons)
 			{
-				var a = new Line(state, states.ElementAt(scheme.states.IndexOf(tran.endState)), tran.conditions);
+				var a = new Line(state, states.ElementAt(scheme.states.IndexOf(tran.endState)), tran.conditions,tran.hasExitTime);
 				m_trans.Add(a);
 				statesSpace.Add(a);
 			}
@@ -184,12 +267,13 @@ public class TestAnimatorWindow : EditorWindow
 	}
 
 
-	void CreateState(Vector3 pos, string name)
+	StateBox CreateState(Vector3 pos, string name)
 	{
 		var s = new StateBox(name);
 		states.Add(s);
 		s.transform.position = pos;
 		statesSpace.Add(s);
+		return s;
 	}
 
 	/// <summary>
@@ -205,14 +289,19 @@ public class TestAnimatorWindow : EditorWindow
 		rightpane.Clear();
 		if (focusOn.GetType() == typeof(Line))
 		{
-			if (!(focusOn as Line).set) return;
+            rightpane.Clear();
+            if (!(focusOn as Line).set) return;
 			rightpane.Add(new Label((focusOn as Line).startState.stateName + " --> " + (focusOn as Line).endState.stateName));
-			rightpane.Add(new Label("Conditions"));
+			var het = new Toggle("Has Exit Time");
+			het.value = (activeElement as Line).hasExitTime;
+            het.RegisterValueChangedCallback(x => (activeElement as Line).hasExitTime = x.newValue);
+            rightpane.Add(het);
+            rightpane.Add(new Label("Conditions"));
 			var list = DrawCondList(focusOn as Line);
 			var but = new Button(() =>
 			{
 				(focusOn as Line).conditions.Add(new Condition());
-				rightpane.RemoveAt(4);
+				rightpane.RemoveAt(5);//CHANGE THIS EVERY TIME YOU ADD NEW VISUAL ELEMENT TO THis INTERFACE
 				list = DrawCondList(focusOn as Line);
 				rightpane.Add(list);
 
@@ -223,8 +312,8 @@ public class TestAnimatorWindow : EditorWindow
 			{
 				list.Refresh();
 				if (list.selectedIndex >= 0) (focusOn as Line).conditions.RemoveAt(list.selectedIndex);
-				rightpane.RemoveAt(4);
-				list = DrawCondList(focusOn as Line);
+				rightpane.RemoveAt(5);//CHANGE THIS EVERY TIME YOU ADD NEW VISUAL ELEMENT TO THis INTERFACE
+                list = DrawCondList(focusOn as Line);
 				rightpane.Add(list);
 
 
@@ -236,6 +325,13 @@ public class TestAnimatorWindow : EditorWindow
 			rightpane.Add(but);
 			rightpane.Add(but2);
 			rightpane.Add(list);
+		}
+		else if(focusOn.GetType() == typeof(StateBox))
+		{
+			rightpane.Clear();
+			rightpane.Add(new Label((activeElement as StateBox).stateName));
+			rightpane.Add(new StateBoxDrawer(activeElement as StateBox).GetVisualElement());
+
 		}
 	}
 	ListView DrawCondList(Line trans)
@@ -254,3 +350,26 @@ public class TestAnimatorWindow : EditorWindow
 	}
 
 }
+public static class AnimSchemeExtensions
+{
+    public static void InitializeScheme(this AnimatorScheme scheme, List<StateBox> boxes)
+    {
+        foreach (var box in boxes)
+        {
+            scheme.states.Add(new StateInfo(box.stateName, box.transform.position, AssetDatabase.GetAssetPath(box.animation)));
+        }
+        foreach (var state in scheme.states)
+        {
+            var corBox = boxes.ElementAt(scheme.states.IndexOf(state));
+            List<AnimatorScheme.Transition> m_trans = new List<AnimatorScheme.Transition>();
+            foreach (var tran in corBox.trans)
+            {
+                m_trans.Add(new AnimatorScheme.Transition(state, scheme.states.ElementAt(boxes.IndexOf(tran.endState)), tran.conditions, tran.hasExitTime));
+            }
+            state.transitons.Clear();
+            state.transitons.AddRange(m_trans);
+        }
+
+    }
+}
+

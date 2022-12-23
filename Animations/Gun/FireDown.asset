@@ -18,25 +18,17 @@ MonoBehaviour:
   speed: 8
   frames:
   - name: basicGun_5
-    Show: 0
     sprite: {fileID: -6066427946217650860, guid: 530e0f7d5d3808d46a59f0f1ab0c776f, type: 3}
     position: {x: 0, y: 0, z: -3.14}
     point: {x: 0.2549382, y: -1.3646688, z: 0}
     rotation: 0
+    invisible: 0
     PhysicsShape: []
   - name: basicGun_6
-    Show: 0
     sprite: {fileID: -1430976632069096607, guid: 530e0f7d5d3808d46a59f0f1ab0c776f, type: 3}
     position: {x: 0, y: 0, z: -3.14}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
+    invisible: 0
     PhysicsShape:
     - {x: 0, y: 0}
-  priority: 14
-  repeatable: 0
-  interruptable: 0
-  transitionsTo:
-  - GunIdle
-  - AimDown
-  doNotTransitTo: []
-  conditionName: 

@@ -97,20 +97,10 @@ public class CustomAnimation : ScriptableObject
 	}
 #endif
 	public string animName;
-	//public bool playTrigger;
-	//public string[] attributes=new string[0];
 	public string tag;
 	public bool flip = false;
 	public float speed;//same as framerate or FPS
 	public List<CustomFrame> frames = new List<CustomFrame>();
-
-	public int priority;
-	public bool repeatable;
-	public bool interruptable;
-	public string[] transitionsTo;
-	public string[] doNotTransitTo;
-	public string conditionName = "";
-	public Misc.condition m_condition;
 	private void OnEnable()
 	{
 		name = animName;
@@ -118,17 +108,5 @@ public class CustomAnimation : ScriptableObject
 	private void OnValidate()
 	{
 		name = animName;
-	}
-	static Misc.condition alwaysTrue = (CustomAnimatorContextInfo a) => true;
-	public void InitializeCondition()
-	{
-		Debug.Log(conditionName);
-		m_condition = conditionName is "" ? alwaysTrue : FindCondition();
-
-	}
-	Misc.condition FindCondition()
-	{
-		var a = (Misc.condition)typeof(CustomAnimator).GetMethod(conditionName).CreateDelegate(typeof(Misc.condition));
-		return a;
 	}
 }

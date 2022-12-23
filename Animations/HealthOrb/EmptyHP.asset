@@ -24,9 +24,3 @@ MonoBehaviour:
     rotation: 0
     invisible: 0
     PhysicsShape: []
-  priority: 2
-  repeatable: 1
-  interruptable: 0
-  transitionsTo: []
-  doNotTransitTo: []
-  conditionName: 

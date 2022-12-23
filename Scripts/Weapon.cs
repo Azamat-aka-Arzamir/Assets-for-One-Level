@@ -239,9 +239,9 @@ public class Weapon : MonoBehaviour
 	}
 	IEnumerator IeShieldAttack()
 	{
-		yield return new WaitUntil(() => selfAnim.CurrentAnim.animName == "DefStatic");
+		yield return new WaitUntil(() => selfAnim.CurrentAnim.name == "DefStatic");
 		Activate = true;
-		yield return new WaitUntil(() => selfAnim.CurrentAnim.animName != "DefStatic");
+		yield return new WaitUntil(() => selfAnim.CurrentAnim.name != "DefStatic");
 		Activate = false;
 	}
 
@@ -255,13 +255,13 @@ public class Weapon : MonoBehaviour
 	IEnumerator IeGunAttack()
 	{
 		Shoot.Invoke();
-		yield return new WaitUntil(() => selfAnim.CurrentAnim.animName.Contains("Fire")&&selfAnim.CurrentFrameIndex==0);
+		yield return new WaitUntil(() => selfAnim.CurrentAnim.name.Contains("Fire")&&selfAnim.CurrentFrameIndex==0);
 		Vector3 point = selfAnim.currentFrame.point;
 		var bullet = Instantiate(Bullet, point + transform.position, Quaternion.identity);
 		if (FireEffect != null)
 		{
 			var feffect = Instantiate(FireEffect, point + transform.position, Quaternion.identity);
-			feffect.GetComponent<CustomAnimator>().DefaultAnim =selfAnim.CurrentAnim.animName;
+			feffect.GetComponent<CustomAnimator>().DefaultAnim =selfAnim.CurrentAnim.name;
 			if(selfAnim.side==Misc.Side.L)feffect.GetComponent<CustomAnimator>().ChangeSide();
 		}
 		var dir = new Vector2();
@@ -296,7 +296,7 @@ public class Weapon : MonoBehaviour
 		if (weaponType == type.shield)
 		{
 			UpdateImmunity();
-			if(selfAnim.CurrentAnim.animName == "Def"|| selfAnim.CurrentAnim.animName == "DefStatic")
+			if(selfAnim.CurrentAnim.name == "Def"|| selfAnim.CurrentAnim.name == "DefStatic")
 			{
 				//transform.localPosition = new Vector3(transform.localPosition.x,transform.localPosition.y,-Mathf.Sign(StartZ)*2.5f);
 			}

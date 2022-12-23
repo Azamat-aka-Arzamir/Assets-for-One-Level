@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
     {
 		Misc.DrawCross(transform.position, 1, Color.magenta, 2);
 		TryGetComponent(out selfCollider);
-		var a = weapon.GetComponent<CustomAnimator>().CurrentAnim.animName;
+		var a = weapon.GetComponent<CustomAnimator>().CurrentAnim.name;
 		if (a.Contains("Up"))
 		{
 			dir = Vector2.up;

@@ -76,23 +76,23 @@ public class Controller : MonoBehaviour
 	void ChangeGuns()
 	{
 		if (gunToFollow == null) return;
-		animHolder.Animators.Remove(FirstGunSlot.GetComponent<CustomAnimator>());
+		//animHolder.Animators.Remove(FirstGunSlot.GetComponent<CustomAnimator>());
 		var v = FirstGunSlot.transform.parent;
 		FirstGunSlot.transform.parent = null;
-		FirstGunSlot.GetComponent<SpriteRenderer>().sprite = FirstGunSlot.GetComponent<CustomAnimator>().AllAnims.Find(x => x.animName == "GunIdle").frames[0];
+		//FirstGunSlot.GetComponent<SpriteRenderer>().sprite = FirstGunSlot.GetComponent<CustomAnimator>().AllAnims.Find(x => x.animName == "GunIdle").frames[0];
 		FirstGunSlot.GetComponent<CustomAnimator>().enabled = false;
 		FirstGunSlot = gunToFollow;
-		animHolder.Animators.Add(FirstGunSlot.GetComponent<CustomAnimator>());
+		//animHolder.Animators.Add(FirstGunSlot.GetComponent<CustomAnimator>());
 		FirstGunSlot.transform.parent = v;
 		FirstGunSlot.GetComponent<CustomAnimator>().enabled = true;
 		FirstGunSlot.Initialize();
-		FirstGunSlot.GetComponent<CustomAnimator>().ChangeSide(animHolder.side);
+		//FirstGunSlot.GetComponent<CustomAnimator>().ChangeSide(animHolder.side);
 		InitializeActiveGun();
 	}
 
 	void PlayFire()
 	{
-		animHolder.PlayAnim("Fire");
+		//animHolder.PlayAnim("Fire");
 	}
 	IEnumerator JumpForce(double timest)
 	{

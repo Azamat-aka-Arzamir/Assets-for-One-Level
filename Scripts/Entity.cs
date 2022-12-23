@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
@@ -198,8 +200,17 @@ public class Entity : MonoBehaviour
 }
 public static class Misc
 {
-	public delegate bool condition(CustomAnimatorContextInfo animatorContextInfo);
-	public enum Side { L, R };
+    //public delegate bool condition(CustomAnimatorContextInfo animatorContextInfo);
+    public static AnimatorScheme LoadScheme(string path)
+    {
+		if (!Directory.Exists("Assets/Animators/" + path)) return null;
+        var formatter = new BinaryFormatter();
+        var fileStream = new FileStream("Assets/Animators/" + path, FileMode.Open);
+        var scheme = (AnimatorScheme)formatter.Deserialize(fileStream);
+        fileStream.Close();
+        return scheme;
+    }
+    public enum Side { L, R };
 	public struct MyColors
 	{
 		public static UnityEngine.Color pink

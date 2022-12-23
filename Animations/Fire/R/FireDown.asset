@@ -46,11 +46,3 @@ MonoBehaviour:
     invisible: 0
     PhysicsShape:
     - {x: -1.9183047, y: 0.45872498}
-  priority: 2
-  repeatable: 1
-  interruptable: 0
-  transitionsTo:
-  - GunIdle
-  - AimDown
-  doNotTransitTo: []
-  conditionName: 

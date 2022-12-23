@@ -23,7 +23,7 @@ public class LegsBehaviour : MonoBehaviour
     }
     void ReplaceBody()
 	{
-        var addPos = selfAnim.CurrentAnim.frames[selfAnim.CurrentFrameIndex].point;
+        var addPos = selfAnim.GetCurrentAnimation().frames[selfAnim.CurrentFrameIndex].point;
         //print(addPos+"  "+ selfAnim.CurrentAnim.animName);
         foreach(var part in BodyParts)
 		{
