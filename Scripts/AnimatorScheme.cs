@@ -65,7 +65,7 @@ public class Condition
     {
 
         var a = property.GetValue(GetObject());
-        if (value.GetType() == typeof(string) || value.GetType() == typeof(bool))
+        if (property.GetType() == typeof(string) || property.GetType() == typeof(bool))
         {
             switch (type)
             {

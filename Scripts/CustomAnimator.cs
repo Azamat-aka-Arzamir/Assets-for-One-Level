@@ -6,6 +6,7 @@ using System.IO;
 using UnityEngine.Events;
 using static AnimatorScheme;
 using System.Runtime.Serialization.Formatters.Binary;
+using System;
 
 public class CustomAnimator : MonoBehaviour
 {
@@ -50,8 +51,6 @@ public class CustomAnimator : MonoBehaviour
     private SpriteRenderer selfRender;
     private UnityEngine.UI.Image selfImage;
     [HideInInspector] public StateInfo CurrentAnim;
-    //[SerializeField] public List<CustomAnimation> AllAnims = new List<CustomAnimation>();
-    //[SerializeField] public List<CustomAnimation> AllAnimsL = new List<CustomAnimation>();
     public List<string> SynchronizeWithMA;
     public List<Sprite> SpritesInOT;
     public List<Sprite> SpritesInOTForOtherSide;
@@ -80,10 +79,13 @@ public class CustomAnimator : MonoBehaviour
         CustomAnimator animator;
         CustomFrame frame;
         bool invert = true;
+        public delegate void AnimatorDelegate(CustomAnimator sender);
+        public static event AnimatorDelegate OnEnableEvent;
         private void OnEnable()
-        {
+        {    
             animator = (CustomAnimator)target;
             value = new Vector3();
+            if(OnEnableEvent!=null)OnEnableEvent.Invoke(animator);
         }
         private void OnDisable()
         {
@@ -182,28 +184,7 @@ public class CustomAnimator : MonoBehaviour
             animDependencies.Add(state, AssetDatabase.LoadAssetAtPath(state.animationPath, typeof(CustomAnimation)) as CustomAnimation);
         }
     }
-    /*
-	static Misc.condition alwaysTrue = (CustomAnimatorContextInfo a) => true;
-	public static bool Cond(CustomAnimatorContextInfo a)
-	{
-		if (a.currentStateName == "DefStatic" || a.currentStateName == "Def") return true;
-		else
-		{
-			a.animator.PlayingQueue.RemoveAll(x => x.animName == "DefReverse");
-			return false;
-		}
-
-	}
-	public static bool DefCond(CustomAnimatorContextInfo a)
-	{
-		a.animator.PlayingQueue.RemoveAll(x => x.animName == "DefReverse");
-		return true;
-	}
-	public static bool OnGroundCond(CustomAnimatorContextInfo a)
-	{
-		if (!a.animator.GetComponentInParent<Movement>().IsOnGround) return true;
-		else return false;
-	}*/
+    
     bool ui = false;
     // Start is called before the first frame update
     void Start()
@@ -222,8 +203,6 @@ public class CustomAnimator : MonoBehaviour
         if (transform.parent != null && !ui) transform.localPosition = animDependencies[CurrentAnim].frames[0].position;
         transform.localRotation = Quaternion.Euler(0, 0, animDependencies[CurrentAnim].frames[0].rotation);
         animChanged.AddListener(OnStateChanged);
-        //AnimEnd.AddListener(OnAnimFinished);
-        //print(AllAnims.Find(x => x.animName == "Def").m_condition.Method);
     }
     //Rewrite all scripts to erase these two
     public CustomAnimation GetCurrentAnimation()
@@ -353,7 +332,7 @@ public class CustomAnimator : MonoBehaviour
         if (animatorScheme != null && animatorScheme.states.Count > 0) PlayCurrentAnim();
     }
 
-    AnimContextEvent animChanged = new AnimContextEvent();
+    public AnimContextEvent animChanged = new AnimContextEvent();
     public void PlayAnim(StateInfo anim)
     {
         if (!PlayingQueue.Exists(x => x.name == anim.name) && animatorScheme.states.Exists(x => x.name == anim.name)) PlayingQueue.Add(anim);
@@ -368,7 +347,7 @@ public class CustomAnimator : MonoBehaviour
         var anim = animatorScheme.states[animNum];
         PlayAnim(anim);
     }
-    void OnStateChanged(StateInfo newAnim)
+    void OnStateChanged(StateInfo newAnim, Transition trans)
     {
 
         CurrentAnim = newAnim;
@@ -417,7 +396,6 @@ public class CustomAnimator : MonoBehaviour
         ChangeFrame(CurrentAnim, MotherAnimator.currentFrameIndex);
         MotherAnimator.newFrame.RemoveListener(SynchronizeWithMother);
     }
-    [SerializeField] string[] saveImpulse = new string[] { "DefReverse" };
     void NewFrame()
     {
         bool finished = false;
@@ -452,6 +430,7 @@ public class CustomAnimator : MonoBehaviour
             if (result)
             {
                 nextState = trans.endState;
+                animChanged.Invoke(nextState, trans);
                 stateChanged = true;
                 break;
             }
@@ -459,7 +438,7 @@ public class CustomAnimator : MonoBehaviour
 
         if (stateChanged)
         {
-            animChanged.Invoke(nextState);
+           
         }
         else
         {
@@ -581,7 +560,7 @@ public class CustomAnimator : MonoBehaviour
     }
 }
 
-public class AnimContextEvent : UnityEngine.Events.UnityEvent<StateInfo> { }
+public class AnimContextEvent : UnityEngine.Events.UnityEvent<StateInfo,Transition> { }
 /*
 public class CustomAnimatorContextInfo
 {

@@ -1184,6 +1184,102 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1550770112
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1550770114}
+  - component: {fileID: 1550770113}
+  - component: {fileID: 1550770115}
+  m_Layer: 0
+  m_Name: Fucking slave
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1550770113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550770112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60453f004c62fe942881e846df62f55b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bucks: 0
+  semen: 0
+--- !u!4 &1550770114
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550770112}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.4115696, y: -12.773773, z: -43.895958}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1550770115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550770112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  schemeAsset: {fileID: 102900000, guid: a2b327b6be7a02b4fab7488dd2d42a6d, type: 3}
+  refInt: 0
+  m_side: 1
+  MotherAnimator: {fileID: 0}
+  DefaultAnim: 
+  Reset: 0
+  AddNewAnim: 0
+  AssignNewPosToEveryFrame: 0
+  timeFromFrameStart: 0
+  CurrentAnim:
+    animationPath: 
+  SynchronizeWithMA: []
+  SpritesInOT: []
+  SpritesInOTForOtherSide: []
+  PlayingQueue: []
+  FireAnimScheme: 
+  FireUpAnimScheme: 
+  FireDownAnimScheme: 
+  IdleAnimScheme: 
+  DefAnimScheme: 
+  AttackAnimScheme: 
+  JumpAnimScheme: 
+  FlyUpAnimScheme: 
+  FlyDownAnimScheme: 
+  LandAnimScheme: 
+  RunAnimScheme: 
+  RollAnimScheme: 
+  Attack2AnimScheme: 
+  Attack3AnimScheme: 
+  GunIdleAnimScheme: 
+  NewAnim:
+    m_PersistentCalls:
+      m_Calls: []
+  newFrame:
+    m_PersistentCalls:
+      m_Calls: []
+  saveImpulse:
+  - DefReverse
 --- !u!1 &1820256584
 GameObject:
   m_ObjectHideFlags: 0

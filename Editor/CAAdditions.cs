@@ -69,7 +69,8 @@ public class ConditionDrawer
 		List<FieldInfo> varsList = new List<FieldInfo>();
 		varsList.AddRange(inspectedCondition.objectRef.GetFields());
 		propField = new PopupField<FieldInfo>("Field", varsList, varsList[0]);
-		propField.RegisterValueChangedCallback(x => { inspectedCondition.property = x.newValue; DrawValueField(); });
+        DrawValueField();
+        propField.RegisterValueChangedCallback(x => { inspectedCondition.property = x.newValue; DrawValueField(); });
 		if (inspectedCondition.property != null && varsList.Contains(inspectedCondition.property)) propField.value = inspectedCondition.property;
 		else inspectedCondition.property = null;
 		parentVE.RemoveAt(PropPlace);
@@ -139,8 +140,8 @@ public class StateBox : Image
 		parentWindow = EditorWindow.GetWindow<TestAnimatorWindow>();
 		GetTexture();
 		image = stateBox;
-		size.x = stateBox.width / 5;
-		size.y = stateBox.height / 5;
+		size.x = stateBox.width /2;
+		size.y = stateBox.height /2;
 		style.width = size.x;
 		style.height = size.y;
 		textbox = new Box();
@@ -446,7 +447,7 @@ public class Line : Image
 	}
 	public static void GetTexture()
 	{
-		texture = (AssetDatabase.LoadAssetAtPath("Assets/Defaults/Editor/SpriteBox.png", typeof(Sprite)) as Sprite).texture;
+		texture = (AssetDatabase.LoadAssetAtPath("Assets/Defaults/Editor/Line.png", typeof(Sprite)) as Sprite).texture;
 	}
 
 
