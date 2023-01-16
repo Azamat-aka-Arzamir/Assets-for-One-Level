@@ -47,7 +47,7 @@ public class Movement : MonoBehaviour
 	public Weapon LastWeapon;
 	[Header("Debug")]
 	[SerializeField] int Wall;
-	[SerializeField] bool OnGround;
+	[SerializeField] public bool OnGround;
 	[HideInInspector]
 	public bool IsOnGround
 	{
@@ -58,7 +58,7 @@ public class Movement : MonoBehaviour
 	}
 	[SerializeField] bool OnWall;
 	[SerializeField] bool Sliding;
-	[SerializeField] bool IsJumping;
+	[SerializeField] public bool IsJumping;
 	[SerializeField] bool IsDashing;
 	[SerializeField] bool CheckTurnConstantly;
 
@@ -72,7 +72,11 @@ public class Movement : MonoBehaviour
 	[HideInInspector] public Entity selfEntity;
 	public bool IsAttack;
 	float gravityScale;
+	public float xVel;
+    public float yVel;
 
+    //REMEMBER
+    [field: SerializeField] float cock { get; set; }
 	 public bool AnotherInput;
 	// Start is called before the first frame update
 	void Start()
@@ -119,7 +123,9 @@ public class Movement : MonoBehaviour
 		}
 		SetLocalAcceleration();
 		if (CheckTurnConstantly) CheckTurn();
-	}
+		xVel = SelfRB.velocity.x;
+        yVel = SelfRB.velocity.y;
+    }
 	void CheckTurn()
 	{
 		if (SelfRB.velocity.x == 0) return;

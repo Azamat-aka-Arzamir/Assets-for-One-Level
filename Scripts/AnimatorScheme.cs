@@ -109,16 +109,16 @@ public class Condition
             }
         }
         var a = property.GetValue(objectRef);
-        if (property.GetType() == typeof(string) || property.GetType() == typeof(bool))
+        if (property.FieldType == typeof(string) || property.FieldType == typeof(bool))
         {
             if (value == null) value = "";
             switch (type)
             {
                 case CondType.E:
-                    if (a == value) return true;
+                    if (a.Equals(value)) return true;
                     else return false;
                 case CondType.NE:
-                    if (a != value) return true;
+                    if (!a.Equals(value)) return true;
                     else return false;
                 default:
                     throw new Exception("Wrong operation in some condition (FIND IT BY YOURSELF, BITCH!)\n" + "ok, property holder on " + objectRef + " and its name is  " + property.Name);
@@ -132,17 +132,17 @@ public class Condition
             if (a.GetType() == typeof(int))
             {
                 b = (int)a;
-                c= (int)value;
+                c= Convert.ToInt32(value);
             }
             else if(a.GetType() == typeof(float))
             {
                 b = (float)a;
-                c = (float)value;
+                c = Convert.ToSingle(value);
             }
             else if(a.GetType() == typeof(double))
             {
                 b = (float)(double)a ;
-                c= (float)(double)value;
+                c= Convert.ToSingle(value);
             }
 
             switch (type)

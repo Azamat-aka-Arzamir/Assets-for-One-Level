@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101f641d4b3b2f84b9c35bfba3d6bad1, type: 3}
+  m_Name: Run
+  m_EditorClassIdentifier: 
+  animName: Run
+  tag: Run
+  flip: 0
+  relativeFrames: 1
+  TakeFrameFromSecondList: 1
+  speed: 12
+  frames:
+  - name: 25
+    sprite: {fileID: 0}
+    numberInSheet: 25
+    position: {x: 0, y: 0, z: 0.5}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    invisible: 0
+    PhysicsShape: []
+  - name: 26
+    sprite: {fileID: 0}
+    numberInSheet: 26
+    position: {x: 0, y: 0, z: 0.5}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    invisible: 0
+    PhysicsShape: []
+  - name: 27
+    sprite: {fileID: 0}
+    numberInSheet: 27
+    position: {x: 0, y: 0, z: 0.5}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    invisible: 0
+    PhysicsShape: []
+  - name: 28
+    sprite: {fileID: 0}
+    numberInSheet: 28
+    position: {x: 0, y: 0, z: 0.5}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    invisible: 0
+    PhysicsShape: []
+  - name: 29
+    sprite: {fileID: 0}
+    numberInSheet: 29
+    position: {x: 0, y: 0, z: 0.5}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    invisible: 0
+    PhysicsShape: []
+  - name: 30
+    sprite: {fileID: 0}
+    numberInSheet: 30
+    position: {x: 0, y: 0, z: 0.5}
+    point: {x: 0, y: 0, z: 0}
+    rotation: 0
+    invisible: 0
+    PhysicsShape:
+    - {x: 0, y: 0}

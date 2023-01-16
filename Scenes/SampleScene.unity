@@ -1193,6 +1193,7 @@ MonoBehaviour:
   - {fileID: -8405057982145905243, guid: 1059ffd18bbcbdb4c9ed10124ee5b8fc, type: 3}
   - {fileID: 8154524439593933540, guid: 1059ffd18bbcbdb4c9ed10124ee5b8fc, type: 3}
   - {fileID: 8353438843929381661, guid: 1059ffd18bbcbdb4c9ed10124ee5b8fc, type: 3}
+  SpritesInOTSecondSide: []
   NewAnim:
     m_PersistentCalls:
       m_Calls: []
@@ -1390,6 +1391,7 @@ GameObject:
   - component: {fileID: 595071424}
   - component: {fileID: 595071425}
   - component: {fileID: 595071426}
+  - component: {fileID: 595071427}
   m_Layer: 6
   m_Name: SteelArmBracesL
   m_TagString: Untagged
@@ -1534,12 +1536,26 @@ MonoBehaviour:
   - {fileID: 73913311587030523, guid: 3adf6b6cafdebcc4180e47142166043a, type: 3}
   - {fileID: -6059518113806154091, guid: 3adf6b6cafdebcc4180e47142166043a, type: 3}
   - {fileID: -2568875945692302132, guid: 3adf6b6cafdebcc4180e47142166043a, type: 3}
+  SpritesInOTSecondSide: []
   NewAnim:
     m_PersistentCalls:
       m_Calls: []
   newFrame:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &595071427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595071423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2c058981ef613419fbc1ebf425cb70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: ed0933f7-c3d5-4d53-b3da-2aed638d2052
 --- !u!1 &617218100
 GameObject:
   m_ObjectHideFlags: 0
@@ -60806,6 +60822,7 @@ MonoBehaviour:
   - {fileID: -5944496620625242211, guid: f60d6b1f055223549b9e42dfec21612a, type: 3}
   - {fileID: 2808436629347221554, guid: f60d6b1f055223549b9e42dfec21612a, type: 3}
   - {fileID: 1156293426712423606, guid: f60d6b1f055223549b9e42dfec21612a, type: 3}
+  SpritesInOTSecondSide: []
   NewAnim:
     m_PersistentCalls:
       m_Calls: []
@@ -61099,9 +61116,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64dafd77816776f4b99334eda25e7c6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
+  Type: 0
   MaxHealthPoints: 0
-  HealthPoints: 10000
+  HealthPoints: 0
   Stamina: 0
   StaminaRemains: 0
   StaminaRegenerationSpeed: 0
@@ -61373,6 +61390,7 @@ MonoBehaviour:
   - {fileID: 1464330190478156222, guid: df59580f1060de14b8ca428a0462acb8, type: 3}
   - {fileID: 2063022065646726880, guid: df59580f1060de14b8ca428a0462acb8, type: 3}
   - {fileID: -5398444646086109725, guid: df59580f1060de14b8ca428a0462acb8, type: 3}
+  SpritesInOTSecondSide: []
   NewAnim:
     m_PersistentCalls:
       m_Calls: []
@@ -61655,6 +61673,7 @@ GameObject:
   - component: {fileID: 1016380758}
   - component: {fileID: 1016380761}
   - component: {fileID: 1016380762}
+  - component: {fileID: 1016380763}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -61815,6 +61834,7 @@ MonoBehaviour:
   - {fileID: 4177102681807366532, guid: 530e0f7d5d3808d46a59f0f1ab0c776f, type: 3}
   - {fileID: -4765635864389478044, guid: 530e0f7d5d3808d46a59f0f1ab0c776f, type: 3}
   - {fileID: -2388961416109931114, guid: 530e0f7d5d3808d46a59f0f1ab0c776f, type: 3}
+  SpritesInOTSecondSide: []
   NewAnim:
     m_PersistentCalls:
       m_Calls: []
@@ -61847,6 +61867,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &1016380763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016380757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2c058981ef613419fbc1ebf425cb70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 381cd43e-0416-476d-9cd9-e09f866f4261
 --- !u!1001 &1066124978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62099,6 +62132,7 @@ MonoBehaviour:
   - Roll
   SpritesInOT:
   - {fileID: 6069163746061206852, guid: 8677994568b03074eb80f65757081930, type: 3}
+  SpritesInOTSecondSide: []
   NewAnim:
     m_PersistentCalls:
       m_Calls: []
@@ -62325,7 +62359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  schemeAsset: {fileID: 102900000, guid: 78655025e84fec64792be6dd61611986, type: 3}
+  schemeAsset: {fileID: 0}
   MotherAnimator: {fileID: 1750976652}
   DefaultAnim: Idle
   AddNewAnim: 0
@@ -62385,6 +62419,7 @@ MonoBehaviour:
   - {fileID: -5166969267600819798, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
   - {fileID: -2690896604069519019, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
   - {fileID: 3575191129115968866, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
+  SpritesInOTSecondSide: []
   NewAnim:
     m_PersistentCalls:
       m_Calls: []
@@ -62769,6 +62804,7 @@ MonoBehaviour:
   - {fileID: -5615678405633095999, guid: ed66ff32450bcca44b7111f1336c7592, type: 3}
   - {fileID: 507258390056383007, guid: ed66ff32450bcca44b7111f1336c7592, type: 3}
   - {fileID: -2235987166959929851, guid: ed66ff32450bcca44b7111f1336c7592, type: 3}
+  SpritesInOTSecondSide: []
   NewAnim:
     m_PersistentCalls:
       m_Calls: []
@@ -63087,6 +63123,7 @@ MonoBehaviour:
   - {fileID: -4400922497535895851, guid: a3da22396c81c7844be926b56d73a2af, type: 3}
   - {fileID: -343656714838805108, guid: a3da22396c81c7844be926b56d73a2af, type: 3}
   - {fileID: -7261411885008849427, guid: a3da22396c81c7844be926b56d73a2af, type: 3}
+  SpritesInOTSecondSide: []
   NewAnim:
     m_PersistentCalls:
       m_Calls: []
@@ -63290,6 +63327,7 @@ GameObject:
   - component: {fileID: 1750976653}
   - component: {fileID: 1750976654}
   - component: {fileID: 1750976652}
+  - component: {fileID: 1750976655}
   m_Layer: 0
   m_Name: SteelGreaves
   m_TagString: Untagged
@@ -63323,8 +63361,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  schemeAsset: {fileID: 0}
-  MotherAnimator: {fileID: 1526754853}
+  schemeAsset: {fileID: 102900000, guid: 87ac7ab1968118f4a80eeff2bfb5c7b0, type: 3}
+  MotherAnimator: {fileID: 0}
   DefaultAnim: Idle
   AddNewAnim: 0
   AssignNewPosToEveryFrame: 0
@@ -63372,6 +63410,7 @@ MonoBehaviour:
   - {fileID: -1404346721040945563, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
   - {fileID: -7757570874648937012, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
   - {fileID: -6573464811670736564, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
+  SpritesInOTSecondSide: []
   NewAnim:
     m_PersistentCalls:
       m_Calls: []
@@ -63436,13 +63475,26 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1750976650}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d3f6e4503edd1e48a945cad52807570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BodyParts:
   - {fileID: 0}
+--- !u!114 &1750976655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750976650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2c058981ef613419fbc1ebf425cb70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 5dc139bc-65dc-48c7-b307-63f63b98bd96
 --- !u!1 &1753744975
 GameObject:
   m_ObjectHideFlags: 0
@@ -63642,6 +63694,7 @@ GameObject:
   - component: {fileID: 1870324628}
   - component: {fileID: 1870324627}
   - component: {fileID: 1870324634}
+  - component: {fileID: 1870324630}
   m_Layer: 6
   m_Name: MC
   m_TagString: Untagged
@@ -63729,6 +63782,9 @@ MonoBehaviour:
   lastDirY: 0
   selfEntity: {fileID: 0}
   IsAttack: 0
+  xVel: 0
+  yVel: 0
+  <cock>k__BackingField: 0
   AnotherInput: 0
   LookUpEvent:
     m_PersistentCalls:
@@ -63883,6 +63939,19 @@ MonoBehaviour:
           m_StringArgument: Roll
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1870324630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870324626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2c058981ef613419fbc1ebf425cb70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 9c5d3dd7-9aed-487c-a79b-b8b28eb1b70f
 --- !u!4 &1870324631
 Transform:
   m_ObjectHideFlags: 0
@@ -64157,12 +64226,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64dafd77816776f4b99334eda25e7c6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  MaxHealthPoints: 6
-  HealthPoints: 6
+  Type: 0
+  MaxHealthPoints: 0
+  HealthPoints: 0
   Stamina: 1000
   StaminaRemains: 0
-  StaminaRegenerationSpeed: 1
+  StaminaRegenerationSpeed: 10
   PushingExceptions: []
   Push: 1
   PushingForce: 150

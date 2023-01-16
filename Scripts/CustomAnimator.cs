@@ -42,6 +42,7 @@ public class CustomAnimator : MonoBehaviour
     [HideInInspector] public StateInfo CurrentAnim;
     public List<string> SynchronizeWithMA;
     public List<Sprite> SpritesInOT;
+    public List<Sprite> SpritesInOTSecondSide;
 
 #if UNITY_EDITOR
     [CustomEditor(typeof(CustomAnimator))]
@@ -134,6 +135,7 @@ public class CustomAnimator : MonoBehaviour
 #endif
     AnimatorScheme LoadScheme(DefaultAsset asset)
     {
+        if (asset == null) return null;
         string path = AssetDatabase.GetAssetPath(asset);
         var formatter = new BinaryFormatter();
         var fileStream = new FileStream(path, FileMode.Open);
@@ -149,7 +151,7 @@ public class CustomAnimator : MonoBehaviour
     //This dictionary contains anims for every state and should be filled only at start
     void SetDependencies()
     {
-        print(animatorScheme.name);
+        if(animatorScheme==null)return;
         foreach (var state in animatorScheme.states)
         {
             animDependencies.Add(state, AssetDatabase.LoadAssetAtPath(state.animationPath, typeof(CustomAnimation)) as CustomAnimation);
@@ -164,12 +166,14 @@ public class CustomAnimator : MonoBehaviour
         SetDependencies();
         blank = Resources.Load<Sprite>("Defaults/Blank");
         //SerializeAnimations();
-        defaultAnim = animatorScheme.states.Find(x => x.name == DefaultAnim);
-        CurrentAnim = defaultAnim;
+        if(animatorScheme!=null)defaultAnim = animatorScheme.states.Find(x => x.name == DefaultAnim);
+        if (animatorScheme != null) CurrentAnim = defaultAnim;
 
         TryGetComponent<SpriteRenderer>(out selfRender);
         if (selfRender == null) { selfImage = GetComponent<UnityEngine.UI.Image>(); ui = true; }
-        if (!ui) selfRender.sprite = animDependencies[CurrentAnim].frames[0];
+
+        if (animatorScheme == null) return;
+            if (!ui) selfRender.sprite = animDependencies[CurrentAnim].frames[0];
         else selfImage.sprite = animDependencies[CurrentAnim].frames[0];
         if (transform.parent != null && !ui) transform.localPosition = animDependencies[CurrentAnim].frames[0].position;
         transform.localRotation = Quaternion.Euler(0, 0, animDependencies[CurrentAnim].frames[0].rotation);
@@ -283,6 +287,7 @@ public class CustomAnimator : MonoBehaviour
     }
     void NewFrame()
     {
+        if (animatorScheme == null) return;
         bool finished = false;
         if (currentFrameIndex < animDependencies[CurrentAnim].frames.Count - 1)
         {
@@ -314,6 +319,7 @@ public class CustomAnimator : MonoBehaviour
             }
             if (result)
             {
+                print(trans.endState.name);
                 nextState = trans.endState;
                 animChanged.Invoke(nextState, trans);
                 stateChanged = true;
@@ -346,12 +352,25 @@ public class CustomAnimator : MonoBehaviour
         var _frame = curAnim.frames[currentFrameIndex];
         if (curAnim.relativeFrames)
         {
-            if(curAnim.frames[frame].numberInSheet <SpritesInOT.Count)_frame.sprite = SpritesInOT[curAnim.frames[frame].numberInSheet];
+            if (!curAnim.TakeFrameFromSecondList)
+            {
+                if (curAnim.frames[frame].numberInSheet < SpritesInOT.Count) _frame.sprite = SpritesInOT[curAnim.frames[frame].numberInSheet];
+                else
+                {
+                    _frame.sprite = blank;
+                    Debug.Log(gameObject.name + " don't have enough frames for " + animation.name + " animation. Using blank instead.");
+                }
+            }
             else
             {
-                _frame.sprite = blank;
-                Debug.Log(gameObject.name + " don't have enough frames for " + animation.name + " animation. Using blank instead.");
+                if (curAnim.frames[frame].numberInSheet < SpritesInOTSecondSide.Count) _frame.sprite = SpritesInOTSecondSide[curAnim.frames[frame].numberInSheet];
+                else
+                {
+                    _frame.sprite = blank;
+                    Debug.Log(gameObject.name + " don't have enough frames for " + animation.name + " animation. Using blank instead.");
+                }
             }
+
         }
 
         if (!ui)

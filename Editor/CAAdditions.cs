@@ -6,6 +6,7 @@ using System.Reflection;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 using System;
+using log4net.Util;
 
 #if UNITY_EDITOR
 public class ConditionDrawer
@@ -350,6 +351,7 @@ public class StateBoxDrawer
         listView.style.height = inspectedState.trans.Count * 16;
         listView.style.width = 100;
         listView.style.flexGrow = 1f;
+        listView.onItemsChosen +=(x)=> {TestAnimatorWindow.GetWindow<TestAnimatorWindow>().FocusOn(inspectedState.trans[listView.selectedIndex]); };
         var h1 = new Label("Transitions");
         h1.transform.position += new Vector3(20, 20);
         listView.transform.position += new Vector3(20, 50);
@@ -409,7 +411,7 @@ public class Line : Image
         Add(bulb);
         style.position = Position.Absolute;
         SendToBack();
-        RegisterCallback<PointerDownEvent>(OnPointerDownLocal);
+        bulb.RegisterCallback<PointerDownEvent>(OnPointerDownLocal);
     }
 
     public Line(StateBox startBox, StateBox endBox, List<Condition> conds, bool _het)
@@ -471,6 +473,7 @@ public class Line : Image
         if (set && evt.button == 0)
         {
             parentWindow.FocusOn(this);
+            SendToBack();
         }
     }
 
@@ -505,9 +508,10 @@ public class Line : Image
         if (startState == endState)
         {
             start = spos;
-            end = epos + Vector3.down * 20;
             style.width = 60;
             style.height = 100;
+            transform.scale=new Vector3(1, 1, 1);
+            bulb.transform.scale = new Vector3(1, 1, 1);
             transform.position = spos + new Vector3(30, 100);
             bulb.transform.position = new Vector3(18, -26);
             transform.rotation = Quaternion.Euler(0, 0, 180);
@@ -531,6 +535,8 @@ public class Line : Image
         box.AddOnMoveListener(OnEndMoved);
         set = true;
         endState = box;
+        UpdatePos(startState.transform.position + (Vector3)startState.size / 2, (endState.transform.position + (Vector3)endState.size / 2));
+
         return true;
     }
     public static void GetTexture()

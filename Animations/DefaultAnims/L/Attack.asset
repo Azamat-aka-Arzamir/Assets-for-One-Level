@@ -15,38 +15,38 @@ MonoBehaviour:
   animName: Attack
   tag: Attack
   flip: 0
-  relativeFrames: 0
-  TakeFrameFromSecondList: 0
+  relativeFrames: 1
+  TakeFrameFromSecondList: 1
   speed: 12
   frames:
-  - name: basicGun_11
-    sprite: {fileID: -2388961416109931114, guid: 530e0f7d5d3808d46a59f0f1ab0c776f, type: 3}
-    numberInSheet: 0
-    position: {x: 0, y: 0, z: -3.14}
+  - name: 13
+    sprite: {fileID: 0}
+    numberInSheet: 13
+    position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     invisible: 0
     PhysicsShape: []
-  - name: basicGun_11
-    sprite: {fileID: -2388961416109931114, guid: 530e0f7d5d3808d46a59f0f1ab0c776f, type: 3}
-    numberInSheet: 0
-    position: {x: 0, y: 0, z: -3.14}
+  - name: 14
+    sprite: {fileID: 0}
+    numberInSheet: 14
+    position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     invisible: 0
     PhysicsShape: []
-  - name: basicGun_11
-    sprite: {fileID: -2388961416109931114, guid: 530e0f7d5d3808d46a59f0f1ab0c776f, type: 3}
-    numberInSheet: 0
-    position: {x: 0, y: 0, z: -3.14}
+  - name: 15
+    sprite: {fileID: 0}
+    numberInSheet: 15
+    position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     invisible: 0
     PhysicsShape: []
-  - name: basicGun_11
-    sprite: {fileID: -2388961416109931114, guid: 530e0f7d5d3808d46a59f0f1ab0c776f, type: 3}
-    numberInSheet: 0
-    position: {x: 0, y: 0, z: -3.14}
+  - name: 16
+    sprite: {fileID: 0}
+    numberInSheet: 16
+    position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     invisible: 0

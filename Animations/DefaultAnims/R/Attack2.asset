@@ -10,43 +10,43 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 101f641d4b3b2f84b9c35bfba3d6bad1, type: 3}
-  m_Name: Attack
+  m_Name: Attack2
   m_EditorClassIdentifier: 
-  animName: Attack
+  animName: Attack2
   tag: Attack
   flip: 0
-  relativeFrames: 0
+  relativeFrames: 1
   TakeFrameFromSecondList: 0
   speed: 12
   frames:
-  - name: basicGun_11
-    sprite: {fileID: -2388961416109931114, guid: 530e0f7d5d3808d46a59f0f1ab0c776f, type: 3}
-    numberInSheet: 0
-    position: {x: 0, y: 0, z: -3.14}
+  - name: 36
+    sprite: {fileID: 0}
+    numberInSheet: 36
+    position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     invisible: 0
     PhysicsShape: []
-  - name: basicGun_11
-    sprite: {fileID: -2388961416109931114, guid: 530e0f7d5d3808d46a59f0f1ab0c776f, type: 3}
-    numberInSheet: 0
-    position: {x: 0, y: 0, z: -3.14}
+  - name: 37
+    sprite: {fileID: 0}
+    numberInSheet: 37
+    position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     invisible: 0
     PhysicsShape: []
-  - name: basicGun_11
-    sprite: {fileID: -2388961416109931114, guid: 530e0f7d5d3808d46a59f0f1ab0c776f, type: 3}
-    numberInSheet: 0
-    position: {x: 0, y: 0, z: -3.14}
+  - name: 38
+    sprite: {fileID: 0}
+    numberInSheet: 38
+    position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     invisible: 0
     PhysicsShape: []
-  - name: basicGun_11
-    sprite: {fileID: -2388961416109931114, guid: 530e0f7d5d3808d46a59f0f1ab0c776f, type: 3}
-    numberInSheet: 0
-    position: {x: 0, y: 0, z: -3.14}
+  - name: 39
+    sprite: {fileID: 0}
+    numberInSheet: 39
+    position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
     invisible: 0

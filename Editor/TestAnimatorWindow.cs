@@ -131,9 +131,12 @@ public class TestAnimatorWindow : EditorWindow
         });
         leftpane.RegisterCallback<DragPerformEvent>((x) =>
         {
-            if (DragAndDrop.objectReferences[0].GetType() == typeof(CustomAnimation))
+            int i = 0;
+            while (DragAndDrop.objectReferences[i].GetType() == typeof(CustomAnimation))
             {
-                CreateState(x.mousePosition, DragAndDrop.objectReferences[0].name).animation = DragAndDrop.objectReferences[0] as CustomAnimation;
+                CreateState(x.mousePosition+Vector2.one*i*5, DragAndDrop.objectReferences[i].name).animation = DragAndDrop.objectReferences[i] as CustomAnimation;
+                if (DragAndDrop.objectReferences.Length - 1 > i) i++;
+                else break;
             }
         });
 
@@ -178,7 +181,7 @@ public class TestAnimatorWindow : EditorWindow
     private void OnAnimChanged(StateInfo st, AnimatorScheme.Transition tr)
     {
         Line lastTrans;
-        lastState.cogImage.tintColor = Color.white;
+        if(lastState!=null)lastState.cogImage.tintColor = Color.white;
         var nextAnim = states.Find(x => x.stateName == st.name);
         if (nextAnim.endOnMe.Count != 0)
         {
@@ -464,6 +467,16 @@ public class TestAnimatorWindow : EditorWindow
 
     StateBox CreateState(Vector3 pos, string name)
     {
+        if(states.Find(x => x.stateName == name) != null)
+        {
+            int i = 1;
+            while (states.Find(x => x.stateName == name+"_"+i) != null)
+            {
+                i++;
+            }
+            name += "_" + i;
+        }
+
         var s = new StateBox(name);
         states.Add(s);
         s.transform.position = pos;
