@@ -15,10 +15,12 @@ MonoBehaviour:
   animName: FullHeart
   tag: 
   flip: 0
+  relativeFrames: 0
   speed: 10
   frames:
   - name: 
     sprite: {fileID: 892379673207337399, guid: 2b05e6d74dda2e146842bfba21bd312e, type: 3}
+    numberInSheet: 0
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
@@ -26,6 +28,7 @@ MonoBehaviour:
     PhysicsShape: []
   - name: 
     sprite: {fileID: 2436368191994344812, guid: 2b05e6d74dda2e146842bfba21bd312e, type: 3}
+    numberInSheet: 0
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
@@ -33,6 +36,7 @@ MonoBehaviour:
     PhysicsShape: []
   - name: 
     sprite: {fileID: 1394625004335712103, guid: 2b05e6d74dda2e146842bfba21bd312e, type: 3}
+    numberInSheet: 0
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
@@ -40,6 +44,7 @@ MonoBehaviour:
     PhysicsShape: []
   - name: 
     sprite: {fileID: 6702722564831579275, guid: 2b05e6d74dda2e146842bfba21bd312e, type: 3}
+    numberInSheet: 0
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0

@@ -144,8 +144,5 @@ public class HealthBar : MonoBehaviour
 	{
 		//Destroy(HealthPoints[HealthPoints.Count - 1]);
 		int curHeart = InspectedEntity.HealthPoints / 2;
-		if(InspectedEntity.HealthPoints%2==1)HealthPoints[curHeart].GetComponent<CustomAnimator>().PlayAnim("HalfHP");
-		else HealthPoints[curHeart].GetComponent<CustomAnimator>().PlayAnim("EmptyHP");
-		//HealthPoints.RemoveAt(HealthPoints.Count - 1);
 	}
 }

@@ -99,6 +99,7 @@ public class CustomAnimation : ScriptableObject
 	public string animName;
 	public string tag;
 	public bool flip = false;
+	public bool relativeFrames = false;
 	public float speed;//same as framerate or FPS
 	public List<CustomFrame> frames = new List<CustomFrame>();
 	private void OnEnable()

@@ -50,23 +50,68 @@ public class AnimatorScheme
             hasExitTime = het;
 		}
 	}
+    public static void AssignObjectsForScheme(AnimatorScheme s)
+    {
+        foreach(var st in s.states)
+        {
+            foreach(var tr in st.transitons)
+            {
+                foreach(var c in tr.conditions)
+                {
+                    c.FindObject();
+                }
+            }
+        }
+    }
 }
 [System.Serializable]
 public class Condition
 {
+    /// <summary>
+    /// Reference to field
+    /// </summary>
     public FieldInfo property;
-    public System.Reflection.TypeInfo objectRef;
-    public int objectHash;
+    /// <summary>
+    /// Type info
+    /// </summary>
+    public System.Reflection.TypeInfo typeRef;
+    /// <summary>
+    /// Non-unique hash, but i dont't give a fuck
+    /// </summary>
+    public string objectID;
+    /// <summary>
+    /// Value to compare with
+    /// </summary>
     public object value;
+    [System.NonSerialized]
+    public Component objectRef;
+    public bool localComponent;
 
     public enum CondType { E, G, L, LOE, GOE, NE }
     public CondType type;
-    public bool IsTrue()
+    /// <summary>
+    /// Checks condition and needs invoker in case if component is local
+    /// </summary>
+    /// <param name="invoker">object that called this function. It's supposed to be an animator</param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public bool IsTrue(GameObject invoker)
     {
-
-        var a = property.GetValue(GetObject());
+        if (localComponent) 
+        {
+            if(!invoker.TryGetComponent(typeRef, out objectRef))
+            {
+                Debug.LogError("There is no " + typeRef + " component on " + invoker.name + " object. Animator fail FATAL");
+            }
+            else
+            {
+                objectRef = invoker.GetComponent(typeRef);
+            }
+        }
+        var a = property.GetValue(objectRef);
         if (property.GetType() == typeof(string) || property.GetType() == typeof(bool))
         {
+            if (value == null) value = "";
             switch (type)
             {
                 case CondType.E:
@@ -76,11 +121,12 @@ public class Condition
                     if (a != value) return true;
                     else return false;
                 default:
-                    throw new Exception("Wrong operation in some condition (FIND IT BY YOURSELF, BITCH!)\n" + "ok, property holder on " + GetObject() + " and its name is  " + property.Name);
+                    throw new Exception("Wrong operation in some condition (FIND IT BY YOURSELF, BITCH!)\n" + "ok, property holder on " + objectRef + " and its name is  " + property.Name);
             }
         }
         else
         {
+            if (value == null) value = 0;
             float b = 0;
             float c = 0;
             if (a.GetType() == typeof(int))
@@ -102,7 +148,7 @@ public class Condition
             switch (type)
             {
                 case CondType.E:
-                    if (a == value) return true;
+                    if (b == c) return true;
                     break;
                 case CondType.G:
                     if (b > c) return true;
@@ -123,14 +169,17 @@ public class Condition
             return false;
         }
     }
-    public UnityEngine.Object GetObject()
+    //Call at load
+    public void FindObject()
     {
-        if (objectRef == null || objectHash == 0) return null;
+        if (typeRef == null || objectID == null||objectID=="") return;
         List<UnityEngine.Object> list = new List<UnityEngine.Object>();
-        list.AddRange(UnityEngine.Object.FindObjectsOfType(objectRef));
-        return list.Find((x) => x.GetHashCode() == objectHash);
+        list.AddRange(UnityEngine.Object.FindObjectsOfType(typeof(IDCard)));
+        var obj = list.Find((x) => (x as IDCard).ID == objectID);
+        if(obj!=null)objectRef = (obj as IDCard).gameObject.GetComponent(typeRef);
     }
 }
+
 
 
 

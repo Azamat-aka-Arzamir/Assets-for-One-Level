@@ -1195,6 +1195,7 @@ GameObject:
   - component: {fileID: 1550770114}
   - component: {fileID: 1550770113}
   - component: {fileID: 1550770115}
+  - component: {fileID: 1550770116}
   m_Layer: 0
   m_Name: Fucking slave
   m_TagString: Untagged
@@ -1237,17 +1238,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550770112}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   schemeAsset: {fileID: 102900000, guid: a2b327b6be7a02b4fab7488dd2d42a6d, type: 3}
-  refInt: 0
-  m_side: 1
   MotherAnimator: {fileID: 0}
   DefaultAnim: 
-  Reset: 0
   AddNewAnim: 0
   AssignNewPosToEveryFrame: 0
   timeFromFrameStart: 0
@@ -1255,31 +1253,25 @@ MonoBehaviour:
     animationPath: 
   SynchronizeWithMA: []
   SpritesInOT: []
-  SpritesInOTForOtherSide: []
-  PlayingQueue: []
-  FireAnimScheme: 
-  FireUpAnimScheme: 
-  FireDownAnimScheme: 
-  IdleAnimScheme: 
-  DefAnimScheme: 
-  AttackAnimScheme: 
-  JumpAnimScheme: 
-  FlyUpAnimScheme: 
-  FlyDownAnimScheme: 
-  LandAnimScheme: 
-  RunAnimScheme: 
-  RollAnimScheme: 
-  Attack2AnimScheme: 
-  Attack3AnimScheme: 
-  GunIdleAnimScheme: 
   NewAnim:
     m_PersistentCalls:
       m_Calls: []
   newFrame:
     m_PersistentCalls:
       m_Calls: []
-  saveImpulse:
-  - DefReverse
+--- !u!114 &1550770116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550770112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2c058981ef613419fbc1ebf425cb70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 80e21a56-3356-4c55-b4c3-1bd590d85cd6
 --- !u!1 &1820256584
 GameObject:
   m_ObjectHideFlags: 0
@@ -1447,6 +1439,7 @@ GameObject:
   - component: {fileID: 1865268480}
   - component: {fileID: 1865268483}
   - component: {fileID: 1865268484}
+  - component: {fileID: 1865268485}
   m_Layer: 0
   m_Name: ScareCrow
   m_TagString: Untagged
@@ -1468,7 +1461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 1
   MaxHealthPoints: 0
-  HealthPoints: 10000
+  HealthPoints: 100
   Stamina: 0
   StaminaRemains: 0
   StaminaRegenerationSpeed: 0
@@ -1595,11 +1588,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   schemeAsset: {fileID: 102900000, guid: 4bd43eb7f101c9846b098eb434a394ad, type: 3}
-  refInt: 0
-  m_side: 1
   MotherAnimator: {fileID: 0}
   DefaultAnim: FullHeart
-  Reset: 0
   AddNewAnim: 0
   AssignNewPosToEveryFrame: 0
   timeFromFrameStart: 0
@@ -1607,31 +1597,25 @@ MonoBehaviour:
     animationPath: 
   SynchronizeWithMA: []
   SpritesInOT: []
-  SpritesInOTForOtherSide: []
-  PlayingQueue: []
-  FireAnimScheme: 
-  FireUpAnimScheme: 
-  FireDownAnimScheme: 
-  IdleAnimScheme: 
-  DefAnimScheme: 
-  AttackAnimScheme: 
-  JumpAnimScheme: 
-  FlyUpAnimScheme: 
-  FlyDownAnimScheme: 
-  LandAnimScheme: 
-  RunAnimScheme: 
-  RollAnimScheme: 
-  Attack2AnimScheme: 
-  Attack3AnimScheme: 
-  GunIdleAnimScheme: 
   NewAnim:
     m_PersistentCalls:
       m_Calls: []
   newFrame:
     m_PersistentCalls:
       m_Calls: []
-  saveImpulse:
-  - DefReverse
+--- !u!114 &1865268485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865268479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2c058981ef613419fbc1ebf425cb70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 51f7a37f-0c4d-468d-a5cb-75c68f47b2d2
 --- !u!1 &1879402043
 GameObject:
   m_ObjectHideFlags: 0

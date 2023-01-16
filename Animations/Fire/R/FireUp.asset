@@ -15,10 +15,12 @@ MonoBehaviour:
   animName: FireUp
   tag: 
   flip: 0
+  relativeFrames: 0
   speed: 12
   frames:
   - name: fire_0
     sprite: {fileID: 8334651344603559088, guid: 30e7d6cf51be2f54abe4ead2450bb601, type: 3}
+    numberInSheet: 0
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 90
@@ -26,6 +28,7 @@ MonoBehaviour:
     PhysicsShape: []
   - name: fire_1
     sprite: {fileID: 9204931480678746970, guid: 30e7d6cf51be2f54abe4ead2450bb601, type: 3}
+    numberInSheet: 0
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 90
@@ -33,6 +36,7 @@ MonoBehaviour:
     PhysicsShape: []
   - name: fire_2
     sprite: {fileID: -8359625512513901107, guid: 30e7d6cf51be2f54abe4ead2450bb601, type: 3}
+    numberInSheet: 0
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 90
@@ -40,6 +44,7 @@ MonoBehaviour:
     PhysicsShape: []
   - name: fire_3
     sprite: {fileID: 7804807344221744696, guid: 30e7d6cf51be2f54abe4ead2450bb601, type: 3}
+    numberInSheet: 0
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 90

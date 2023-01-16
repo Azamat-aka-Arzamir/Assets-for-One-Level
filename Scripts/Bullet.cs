@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour
 		{
 			dir = Vector2.down;
 		}
-		else if(weapon.GetComponent<CustomAnimator>().side==Misc.Side.R)
+		else if(weapon.parentEnt.gameObject.GetComponent<Movement>().GetComponent<Rigidbody2D>().velocity.x>0)
 		{
 			dir = Vector2.right;
 		}

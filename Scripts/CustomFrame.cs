@@ -11,6 +11,7 @@ public class CustomFrame
 {
 	public string name;
 	public Sprite sprite;
+	public int numberInSheet = 0;
 	public Vector3 position= new Vector3(0,0,0);
 	public Vector3 point = new Vector3(0, 0, 0);
 	public float rotation = 0 ;

@@ -15,28 +15,23 @@ MonoBehaviour:
   animName: AimDown
   tag: 
   flip: 0
+  relativeFrames: 0
   speed: 8
   frames:
   - name: steelSword_5
-    Show: 0
     sprite: {fileID: -7927286663819768502, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
+    numberInSheet: 0
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
+    invisible: 0
     PhysicsShape: []
   - name: steelSword_6
-    Show: 0
     sprite: {fileID: 4210314593357615414, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
+    numberInSheet: 0
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
+    invisible: 0
     PhysicsShape:
     - {x: 0, y: 0}
-  priority: 10
-  repeatable: 1
-  interruptable: 0
-  transitionsTo:
-  - GunIdle
-  - AimUp
-  doNotTransitTo: []
-  conditionName: 

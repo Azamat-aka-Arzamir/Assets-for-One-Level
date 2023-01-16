@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEditor;
@@ -36,14 +37,15 @@ public class TestAnimatorWindow : EditorWindow
     VisualElement rightpane;
     TextField commandLine;
     FileField ASField;
-    Box statesSpace;
+    public Box statesSpace { get; private set; }   
     public List<StateBox> states = new List<StateBox>();
     [SerializeField] string inspectedSchemePath = "";
-    CustomAnimator inspectedAnimator;
-    [SerializeField] int inspectedAnimID;
+    public CustomAnimator inspectedAnimator { get; private set; }
+    [SerializeField] string inspectedAnimID;
 
     public VisualElement activeElement { get; private set; }
     VisualElement ActiveElement;
+    Vector2 lastLeftPaneSize;
     public void CreateGUI()
     {
 
@@ -53,6 +55,8 @@ public class TestAnimatorWindow : EditorWindow
         rightpane = new VisualElement();
         rightpane.style.backgroundColor = new Color(75 / 255f, 75 / 255f, 75 / 255f);
         panes.Add(leftpane);
+        leftpane.RegisterCallback<GeometryChangedEvent>(x => lastLeftPaneSize = leftpane.layout.size);
+
         panes.Add(rightpane);
         root.Add(panes);
         var controlPanel = new Box();
@@ -83,9 +87,40 @@ public class TestAnimatorWindow : EditorWindow
         controlPanel.style.width = 100;
         leftpane.Add(controlPanel);
         statesSpace = new Box();
-        statesSpace.style.position = Position.Absolute;
+        
 
+        statesSpace.name = "StateSpace";
+        statesSpace.style.width = 5000;
+        statesSpace.style.height = 5000;
+        statesSpace.style.backgroundImage = (AssetDatabase.LoadAssetAtPath("Assets/Defaults/Editor/AnimatorBG.png", typeof(Sprite)) as Sprite).texture;
+        statesSpace.style.position = Position.Absolute;
+        leftpane.RegisterCallback<WheelEvent>(x =>
+        {
+            statesSpace.transform.scale +=Vector3.one* x.delta.y / 100;
+            if (statesSpace.transform.scale.x <= 0.1) { statesSpace.transform.scale = Vector3.one / 10; return; }
+            statesSpace.transform.position += (statesSpace.transform.position - (Vector3)lastLeftPaneSize/2) / statesSpace.transform.scale.x * x.delta.y / 100;
+        });
+        leftpane.RegisterCallback<MouseDownEvent>(x =>
+        {
+            if(x.button == 0&&x.shiftKey)
+            {
+                leftpane.RegisterCallback<MouseMoveEvent>(Scroll);
+            }
+        });
+        leftpane.RegisterCallback<MouseUpEvent>(x =>
+        {
+            if (x.button == 0)
+            {
+                leftpane.UnregisterCallback<MouseMoveEvent>(Scroll);
+            }
+        });
+        leftpane.RegisterCallback<MouseLeaveEvent>(x =>
+        {
+            leftpane.UnregisterCallback<MouseMoveEvent>(Scroll);
+        });
         leftpane.Add(statesSpace);
+        statesSpace.SendToBack();
+
         leftpane.RegisterCallback<DragUpdatedEvent>((x) =>
         {
 
@@ -102,33 +137,54 @@ public class TestAnimatorWindow : EditorWindow
             }
         });
 
-        CustomAnimator.AnimatorEditor.OnEnableEvent += (c) =>
-        {
-            ASField.file = c.schemeAsset;
-            if (inspectedAnimator != null) inspectedAnimator.newFrame.RemoveListener(OnFrameUpdate);
-            inspectedAnimator.animChanged.RemoveListener(OnAnimChanged);
-            inspectedAnimator = c;
-            titleContent = new GUIContent(inspectedAnimator.gameObject.name);
-            inspectedAnimID = inspectedAnimator.GetInstanceID();
-            inspectedAnimator = EditorUtility.InstanceIDToObject(inspectedAnimID) as CustomAnimator;
-            inspectedAnimator = EditorUtility.InstanceIDToObject(inspectedAnimID) as CustomAnimator;
-            if (inspectedAnimator != null) inspectedAnimator.newFrame.AddListener(OnFrameUpdate);
-            inspectedAnimator.animChanged.AddListener(OnAnimChanged);
-        };
+        CustomAnimator.AnimatorEditor.OnEnableEvent += OnAnimatorInspected;
         Load(inspectedSchemePath);
-        inspectedAnimator = EditorUtility.InstanceIDToObject(inspectedAnimID) as CustomAnimator;
-        if (inspectedAnimator != null) inspectedAnimator.newFrame.AddListener(OnFrameUpdate);
+        if (inspectedAnimID != null && inspectedAnimID != "") inspectedAnimator = IDCard.FindByID(inspectedAnimID).GetComponent<CustomAnimator>();
+        if (inspectedAnimator != null)
+        { 
+            inspectedAnimator.newFrame.AddListener(OnFrameUpdate); 
+            OnAnimatorInspected(inspectedAnimator);
+        }
+    }
+    void Scroll(MouseMoveEvent context)
+    {
+        statesSpace.transform.position += (Vector3)context.mouseDelta;
+    }
+    private void OnDestroy()
+    {
+        CustomAnimator.AnimatorEditor.OnEnableEvent -= OnAnimatorInspected;
+    }
+
+    //called when there is CA component on inspected object in inspector
+    void OnAnimatorInspected(CustomAnimator c)
+    {
+        IDCard newObjectID;
+        if (!c.gameObject.TryGetComponent<IDCard>(out newObjectID))
+        {
+            newObjectID = c.gameObject.AddComponent<IDCard>();
+        }
+        if(c.schemeAsset!=null)ASField.file = c.schemeAsset;
+        if (inspectedAnimator != null) inspectedAnimator.newFrame.RemoveListener(OnFrameUpdate);
+        if (inspectedAnimator != null) inspectedAnimator.animChanged.RemoveListener(OnAnimChanged);
+        inspectedAnimator = c;
+        titleContent = new GUIContent(inspectedAnimator.gameObject.name);
+
+        inspectedAnimID = inspectedAnimator.GetComponent<IDCard>().ID;
+        inspectedAnimator = IDCard.FindByID(inspectedAnimID).GetComponent<CustomAnimator>();
+        inspectedAnimator.newFrame.AddListener(OnFrameUpdate);
+        inspectedAnimator.animChanged.AddListener(OnAnimChanged);
     }
 
     private void OnAnimChanged(StateInfo st, AnimatorScheme.Transition tr)
     {
         Line lastTrans;
+        lastState.cogImage.tintColor = Color.white;
         var nextAnim = states.Find(x => x.stateName == st.name);
         if (nextAnim.endOnMe.Count != 0)
         {
             lastTrans = nextAnim.endOnMe.Find(x => x.startState.stateName == tr.startState.name);
-            if(LinesToFade.ContainsKey(lastTrans)) LinesToFade.Remove(lastTrans);
-           LinesToFade.Add(lastTrans, Time.time);
+            if (LinesToFade.ContainsKey(lastTrans)) LinesToFade.Remove(lastTrans);
+            LinesToFade.Add(lastTrans, Time.time);
 
         }
 
@@ -137,20 +193,24 @@ public class TestAnimatorWindow : EditorWindow
     }
 
     Dictionary<Line, float> LinesToFade = new Dictionary<Line, float>();
+    //For animating purposes
+    StateBox lastState;
     void TransFade()
     {
         List<Line> ToDelete = new List<Line>();
         foreach (var tr in LinesToFade)
         {
-            tr.Key.tintColor = new Color(1f, 5*(Time.time-tr.Value), 5*(Time.time - tr.Value));
-            if(5*(Time.time - tr.Value) >= 1)
+            tr.Key.tintColor = new Color(1f, 5 * (Time.time - tr.Value), 5 * (Time.time - tr.Value));
+            tr.Key.TurnOnTheLight();
+            if (5 * (Time.time - tr.Value) >= 1)
             {
-                ToDelete.Add(tr.Key); 
+                ToDelete.Add(tr.Key);
             }
         }
-        foreach(var tr in ToDelete)
+        foreach (var tr in ToDelete)
         {
             LinesToFade.Remove(tr);
+            tr.TurnOffTheLight();
         }
         ToDelete.Clear();
 
@@ -158,13 +218,10 @@ public class TestAnimatorWindow : EditorWindow
 
     void OnFrameUpdate()
     {
-        var curAnim = states.Find(x => x.stateName == inspectedAnimator.CurrentAnim.name);
-
-        foreach (var a in states)
-        {
-            a.tintColor = Color.white;
-        }
-        curAnim.tintColor = Color.red;
+        lastState = states.Find(x => x.stateName == inspectedAnimator.CurrentAnim.name);
+        var before = lastState.cogPivot.transform.rotation.eulerAngles;
+        lastState.cogPivot.transform.rotation = Quaternion.Euler(0f, 0f, before.z+10);
+        lastState.cogImage.tintColor = new Color(0.8f,0.8f,1);
         TransFade();
     }
     class FileField : VisualElement
@@ -254,7 +311,8 @@ public class TestAnimatorWindow : EditorWindow
     }
     const string helpData =
         "sad x - Save current scheme as default with x-name \n" +
-        "ld x - Load x-named scheme from defaults !without saving current scheme!\n";
+        "ld x - Load x-named scheme from defaults !without saving current scheme!\n" +
+        "condinfo - Show all conditions info\n";
     void CommandLineParsing(KeyDownEvent callback)
     {
         if (callback.keyCode != KeyCode.Return) return;
@@ -280,6 +338,18 @@ public class TestAnimatorWindow : EditorWindow
                 break;
             case "help":
                 Debug.Log(helpData);
+                break;
+            case "condinfo":
+                foreach (var st in states)
+                {
+                    foreach (var l in st.trans)
+                    {
+                        foreach (var c in l.conditions)
+                        {
+                            Debug.Log(c.typeRef + " - Type\n" + c.typeRef + " - Hash\n");
+                        }
+                    }
+                }
                 break;
         }
         commandLine.value = "";
@@ -350,8 +420,14 @@ public class TestAnimatorWindow : EditorWindow
         var scheme = (AnimatorScheme)formatter.Deserialize(fileStream);
 
         fileStream.Close();
+
+        statesSpace.transform.scale = Vector3.one;
+        statesSpace.transform.position = Vector3.zero;
+        AnimatorScheme.AssignObjectsForScheme(scheme);
+
         states.Clear();
         statesSpace.Clear();
+       
         Debug.Log(scheme.states.Count);
         foreach (var state in scheme.states)
         {
@@ -374,8 +450,11 @@ public class TestAnimatorWindow : EditorWindow
             state.trans.Clear();
             state.trans.AddRange(m_trans);
         }
-
         inspectedSchemePath = path;
+        if (ASField.file == null)
+        {
+            ASField.file = AssetDatabase.LoadAssetAtPath(path, typeof(DefaultAsset)) as DefaultAsset;
+        }
     }
     private void Update()
     {
@@ -457,7 +536,7 @@ public class TestAnimatorWindow : EditorWindow
         {
             items.Add(new ConditionDrawer(cond).GetContentDrawer());
         }
-        var listView = new ListView(items, 100, () => new Box(), (e, i) => { e.Clear(); e.Add(items[i]); });
+        var listView = new ListView(items, 120, () => new Box(), (e, i) => { e.Clear(); e.Add(items[i]); });
         listView.style.flexGrow = 1f;
         return listView;
 

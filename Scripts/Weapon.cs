@@ -262,7 +262,6 @@ public class Weapon : MonoBehaviour
 		{
 			var feffect = Instantiate(FireEffect, point + transform.position, Quaternion.identity);
 			feffect.GetComponent<CustomAnimator>().DefaultAnim =selfAnim.CurrentAnim.name;
-			if(selfAnim.side==Misc.Side.L)feffect.GetComponent<CustomAnimator>().ChangeSide();
 		}
 		var dir = new Vector2();
 		if(parentMove.lastDirY == 0)
@@ -310,7 +309,7 @@ public class Weapon : MonoBehaviour
 	{
 		if (parentEnt != null && Activate)
 		{
-			if(selfAnim.side==Misc.Side.L)
+			/*if(selfAnim.side==Misc.Side.L)
 			//if (selfRender.sprite.name.ToString().StartsWith("L"))
 			{
 				parentEnt.ImmuneToDamageV2 = new Vector2(-1, 0);
@@ -319,7 +318,7 @@ public class Weapon : MonoBehaviour
 			//if (selfRender.sprite.name.ToString().StartsWith("R"))
 			{
 				parentEnt.ImmuneToDamageV2 = new Vector2(1, 0);
-			}
+			}*/
 		}
 		if (!Activate)
 		{
