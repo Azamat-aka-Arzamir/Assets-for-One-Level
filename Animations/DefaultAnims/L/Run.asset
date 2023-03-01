@@ -20,7 +20,7 @@ MonoBehaviour:
   speed: 12
   frames:
   - name: 25
-    sprite: {fileID: 0}
+    sprite: {fileID: 941339204415855702, guid: 1c3feb73c3b3cbb44a64e98904200f13, type: 3}
     numberInSheet: 25
     position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
@@ -28,7 +28,7 @@ MonoBehaviour:
     invisible: 0
     PhysicsShape: []
   - name: 26
-    sprite: {fileID: 0}
+    sprite: {fileID: 1385937751925822742, guid: 1c3feb73c3b3cbb44a64e98904200f13, type: 3}
     numberInSheet: 26
     position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
@@ -36,7 +36,7 @@ MonoBehaviour:
     invisible: 0
     PhysicsShape: []
   - name: 27
-    sprite: {fileID: 0}
+    sprite: {fileID: -7262085657283797700, guid: 1c035ec207ed4674d9b476d9f5dee21a, type: 3}
     numberInSheet: 27
     position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
@@ -44,7 +44,7 @@ MonoBehaviour:
     invisible: 0
     PhysicsShape: []
   - name: 28
-    sprite: {fileID: 0}
+    sprite: {fileID: -4957772492959021040, guid: 562b0ca36d6f1c94884614faf1c05b46, type: 3}
     numberInSheet: 28
     position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
@@ -52,7 +52,7 @@ MonoBehaviour:
     invisible: 0
     PhysicsShape: []
   - name: 29
-    sprite: {fileID: 0}
+    sprite: {fileID: 8819517772262367831, guid: 562b0ca36d6f1c94884614faf1c05b46, type: 3}
     numberInSheet: 29
     position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
@@ -60,7 +60,7 @@ MonoBehaviour:
     invisible: 0
     PhysicsShape: []
   - name: 30
-    sprite: {fileID: 0}
+    sprite: {fileID: 839825710674623120, guid: 1c3feb73c3b3cbb44a64e98904200f13, type: 3}
     numberInSheet: 30
     position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}

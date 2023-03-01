@@ -15,12 +15,17 @@ public class CustomAnimator : MonoBehaviour
     Dictionary<StateInfo, CustomAnimation> animDependencies = new Dictionary<StateInfo, CustomAnimation>();
     [Tooltip("If animaions between mother and child are equal, child get frame index of mother's animation")]
     public CustomAnimator MotherAnimator;
+    string CurrentAnimName;
     public string DefaultAnim;
     private StateInfo defaultAnim;
     public bool AddNewAnim;
     public bool AssignNewPosToEveryFrame;
     public float timeFromFrameStart;
     private int currentFrameIndex;
+    [Tooltip("If zero, doesn't override")]
+    public int OverrideLayer = 0;
+    [Tooltip("If true, override layer regardless of current side, else sends to back on turn")]
+    public bool AlwaysOnTop = false;
     private Sprite blank;
     private CustomFrame m_currentFrame;
     public CustomFrame currentFrame
@@ -241,16 +246,15 @@ public class CustomAnimator : MonoBehaviour
     {
 
         CurrentAnim = newAnim;
+        CurrentAnimName = newAnim.name;
         if (MotherAnimator != null && SynchronizeWithMA.Exists(x => x == newAnim.name))
         {
             //CurrentAnim = AllAnims.Find(x => x.animName == MotherAnimator.CurrentAnim.animName);
-            if (MotherAnimator.animDependencies[CurrentAnim].frames.Count == animDependencies[CurrentAnim].frames.Count)
             {
                 MotherAnimator.newFrame.AddListener(SynchronizeWithMother);
                 return;
             }
         }
-        if (MotherAnimator != null) MotherAnimator.newFrame.RemoveListener(SynchronizeWithMother);
         ChangeFrame(newAnim, 0);
     }
     //for external purposes
@@ -309,7 +313,13 @@ public class CustomAnimator : MonoBehaviour
         //Animation can be interrupted or has already finished
         bool stateChanged= false;
         var nextState = defaultAnim;
-        foreach (var trans in CurrentAnim.transitons)
+
+        var anyState = animatorScheme.states.Find(x => x.name == "Any State" || x.name == "Any state" || x.name == "any state");
+        List<Transition> transToCheck = new List<Transition>();
+        transToCheck.AddRange(anyState.transitons);
+        transToCheck.RemoveAll(x => x.endState.name == CurrentAnim.name);//prevent from looping on same anim through anystate
+        transToCheck.AddRange(CurrentAnim.transitons);
+        foreach (var trans in transToCheck)
         {
             bool result = true;
             if (trans.hasExitTime && !finished) result = false;
@@ -322,6 +332,23 @@ public class CustomAnimator : MonoBehaviour
                 print(trans.endState.name);
                 nextState = trans.endState;
                 animChanged.Invoke(nextState, trans);
+
+
+                //setting all eventinvoked var to false, so if event was invoked before new state start, it doesn't invoke next anim
+                foreach(var tr in nextState.transitons)
+                {
+                    foreach(var c in tr.conditions)
+                    {
+                        c.eventinvoked = false;
+                    }
+                }
+                foreach (var tr in anyState.transitons)
+                {
+                    foreach (var c in tr.conditions)
+                    {
+                        c.eventinvoked = false;
+                    }
+                }
                 stateChanged = true;
                 break;
             }
@@ -349,7 +376,8 @@ public class CustomAnimator : MonoBehaviour
         currentFrameIndex = frame;
 
         CustomAnimation curAnim = GetAnimation(animation);
-        var _frame = curAnim.frames[currentFrameIndex];
+        var _frame = new CustomFrame(blank);
+            _frame = curAnim.frames[currentFrameIndex];
         if (curAnim.relativeFrames)
         {
             if (!curAnim.TakeFrameFromSecondList)
@@ -385,11 +413,12 @@ public class CustomAnimator : MonoBehaviour
         }
 
         m_currentFrame = _frame;
-        int i = 1;
-        if (curAnim.flip) i = -1;
+        int i = -1;
+        if (curAnim.flip) i = 1;
+        if (curAnim.TakeFrameFromSecondList&&!AlwaysOnTop) i = 1;
         if (transform.parent != null && !ui)
         {
-            transform.localPosition = new Vector3(_frame.position.x * i, _frame.position.y, _frame.position.z);
+            transform.localPosition = new Vector3((_frame.position.x) * -i, _frame.position.y, (_frame.position.z + OverrideLayer)*i);
         }
         transform.localRotation = Quaternion.Euler(0, 0, _frame.rotation * i);
         if (!ui) selfRender.flipX = curAnim.flip;

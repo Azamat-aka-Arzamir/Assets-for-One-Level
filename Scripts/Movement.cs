@@ -70,7 +70,7 @@ public class Movement : MonoBehaviour
 	[HideInInspector] public int lastDir = 1;
 	[HideInInspector] public int lastDirY = 0;
 	[HideInInspector] public Entity selfEntity;
-	public bool IsAttack;
+	public bool IsAttack;//doesn't work
 	float gravityScale;
 	public float xVel;
     public float yVel;
@@ -296,21 +296,23 @@ public class Movement : MonoBehaviour
 		}
 		foreach (var contact in contacts)
 		{
+			var norm = contact.normal.normalized;
+			Debug.DrawRay(contact.point, norm,Color.green);
 			if (contact.collider == null)
 			{
 				break;
 			}
 			if (contact.collider.tag == "Ground")
 			{
-				if (contact.normal.y > 0.9)
+				if (norm.y > 0.9)
 				{
 					Wall = 0;
 					JumpRemains = JumpsCount;
 					return true;
 				}
-				else if (contact.normal.y == 0)
+				else if (norm.y >= -0.01f&&norm.y<=0.01f)
 				{
-					Wall = (int)contact.normal.x;
+					Wall = (int)norm.x;
 				}
 			}
 		}
@@ -361,17 +363,15 @@ public class Movement : MonoBehaviour
 			if (!CanFly) JumpRemains--;
 			IsJumping = false;
 		}
+		else
+		{
+			if (Wall != 0)
+			{
+                SelfRB.AddForce(new Vector2(Wall * 0.5f, 0).normalized * force/2 * mass);
+            }
+		}
 		StopCoroutine(IeJump(force));
 		yield break;
-	}
-
-	float GetJumpAnimationLength()
-	{
-		float length = 0;
-		List<AnimationClip> clips = new List<AnimationClip>();
-		clips.AddRange(SelfAnim.runtimeAnimatorController.animationClips);
-		if (SelfAnim.HasState(0, Animator.StringToHash("Jump L"))) length = clips.Find(x => x.name == "Jump L").length - 0.1f;
-		return length;
 	}
 
 	public static float GetAnimationLength(string name, GameObject obj)
@@ -416,6 +416,7 @@ public class Movement : MonoBehaviour
 		if (frictionForce > Physics2D.gravity.y * mass) frictionForce = Physics2D.gravity.y * mass;
 		if (SelfRB.velocity.y < -SlideSpeed) SelfRB.AddForce(Vector2.up * Physics2D.gravity.y * frictionForce);
 	}
+
 	public void Dash()
 	{
 		if (DashAbility && !DashCD && selfEntity.StaminaRemains > DashCost && OnGround)

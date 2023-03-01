@@ -28,7 +28,7 @@ MonoBehaviour:
     invisible: 0
     PhysicsShape: []
   - name: 8
-    sprite: {fileID: 4681360235049468180, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
+    sprite: {fileID: 2775660799326202479, guid: a3da22396c81c7844be926b56d73a2af, type: 3}
     numberInSheet: 8
     position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
@@ -36,7 +36,7 @@ MonoBehaviour:
     invisible: 0
     PhysicsShape: []
   - name: 9
-    sprite: {fileID: -4437249028329753115, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
+    sprite: {fileID: -7351466517248697353, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
     numberInSheet: 9
     position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
@@ -44,7 +44,7 @@ MonoBehaviour:
     invisible: 0
     PhysicsShape: []
   - name: 10
-    sprite: {fileID: -4360642337840944561, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
+    sprite: {fileID: -391014006156162194, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
     numberInSheet: 10
     position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}

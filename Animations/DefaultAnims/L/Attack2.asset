@@ -20,7 +20,7 @@ MonoBehaviour:
   speed: 12
   frames:
   - name: 36
-    sprite: {fileID: 0}
+    sprite: {fileID: -3662347538051209602, guid: 1c3feb73c3b3cbb44a64e98904200f13, type: 3}
     numberInSheet: 36
     position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
@@ -28,7 +28,7 @@ MonoBehaviour:
     invisible: 0
     PhysicsShape: []
   - name: 37
-    sprite: {fileID: 0}
+    sprite: {fileID: 6342726168703657098, guid: 1c3feb73c3b3cbb44a64e98904200f13, type: 3}
     numberInSheet: 37
     position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
@@ -36,7 +36,7 @@ MonoBehaviour:
     invisible: 0
     PhysicsShape: []
   - name: 38
-    sprite: {fileID: 0}
+    sprite: {fileID: 6552131995054667851, guid: 1c3feb73c3b3cbb44a64e98904200f13, type: 3}
     numberInSheet: 38
     position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
@@ -44,7 +44,7 @@ MonoBehaviour:
     invisible: 0
     PhysicsShape: []
   - name: 39
-    sprite: {fileID: 0}
+    sprite: {fileID: -6540448714740951211, guid: 1c3feb73c3b3cbb44a64e98904200f13, type: 3}
     numberInSheet: 39
     position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}

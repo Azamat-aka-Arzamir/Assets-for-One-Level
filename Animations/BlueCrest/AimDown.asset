@@ -15,10 +15,13 @@ MonoBehaviour:
   animName: AimDown
   tag: 
   flip: 0
+  relativeFrames: 0
+  TakeFrameFromSecondList: 0
   speed: 8
   frames:
   - name: blueCrest_5
     sprite: {fileID: 352182220747146573, guid: f60d6b1f055223549b9e42dfec21612a, type: 3}
+    numberInSheet: 0
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0
@@ -26,6 +29,7 @@ MonoBehaviour:
     PhysicsShape: []
   - name: blueCrest_6
     sprite: {fileID: -9023874007323524682, guid: f60d6b1f055223549b9e42dfec21612a, type: 3}
+    numberInSheet: 0
     position: {x: 0, y: 0, z: 0}
     point: {x: 0, y: 0, z: 0}
     rotation: 0

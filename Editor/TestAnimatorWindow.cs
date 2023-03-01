@@ -6,7 +6,9 @@ using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Cryptography.X509Certificates;
 using UnityEditor;
+using UnityEditor.Graphs;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -37,7 +39,7 @@ public class TestAnimatorWindow : EditorWindow
     VisualElement rightpane;
     TextField commandLine;
     FileField ASField;
-    public Box statesSpace { get; private set; }   
+    public Box statesSpace { get; private set; }
     public List<StateBox> states = new List<StateBox>();
     [SerializeField] string inspectedSchemePath = "";
     public CustomAnimator inspectedAnimator { get; private set; }
@@ -87,7 +89,7 @@ public class TestAnimatorWindow : EditorWindow
         controlPanel.style.width = 100;
         leftpane.Add(controlPanel);
         statesSpace = new Box();
-        
+
 
         statesSpace.name = "StateSpace";
         statesSpace.style.width = 5000;
@@ -96,13 +98,18 @@ public class TestAnimatorWindow : EditorWindow
         statesSpace.style.position = Position.Absolute;
         leftpane.RegisterCallback<WheelEvent>(x =>
         {
-            statesSpace.transform.scale +=Vector3.one* x.delta.y / 100;
+            statesSpace.transform.scale += Vector3.one * x.delta.y / 100;
             if (statesSpace.transform.scale.x <= 0.1) { statesSpace.transform.scale = Vector3.one / 10; return; }
-            statesSpace.transform.position += (statesSpace.transform.position - (Vector3)lastLeftPaneSize/2) / statesSpace.transform.scale.x * x.delta.y / 100;
+            statesSpace.transform.position += (statesSpace.transform.position - (Vector3)lastLeftPaneSize / 2) / statesSpace.transform.scale.x * x.delta.y / 100;
+            foreach (var state in states)
+            {
+                state.Resize(statesSpace.transform.scale.x);
+            }
+
         });
         leftpane.RegisterCallback<MouseDownEvent>(x =>
         {
-            if(x.button == 0&&x.shiftKey)
+            if (x.button == 0 && x.shiftKey)
             {
                 leftpane.RegisterCallback<MouseMoveEvent>(Scroll);
             }
@@ -134,7 +141,7 @@ public class TestAnimatorWindow : EditorWindow
             int i = 0;
             while (DragAndDrop.objectReferences[i].GetType() == typeof(CustomAnimation))
             {
-                CreateState(x.mousePosition+Vector2.one*i*5, DragAndDrop.objectReferences[i].name).animation = DragAndDrop.objectReferences[i] as CustomAnimation;
+                CreateState(x.mousePosition + Vector2.one * i * 5, DragAndDrop.objectReferences[i].name).animation = DragAndDrop.objectReferences[i] as CustomAnimation;
                 if (DragAndDrop.objectReferences.Length - 1 > i) i++;
                 else break;
             }
@@ -144,8 +151,8 @@ public class TestAnimatorWindow : EditorWindow
         Load(inspectedSchemePath);
         if (inspectedAnimID != null && inspectedAnimID != "") inspectedAnimator = IDCard.FindByID(inspectedAnimID).GetComponent<CustomAnimator>();
         if (inspectedAnimator != null)
-        { 
-            inspectedAnimator.newFrame.AddListener(OnFrameUpdate); 
+        {
+            inspectedAnimator.newFrame.AddListener(OnFrameUpdate);
             OnAnimatorInspected(inspectedAnimator);
         }
     }
@@ -166,7 +173,7 @@ public class TestAnimatorWindow : EditorWindow
         {
             newObjectID = c.gameObject.AddComponent<IDCard>();
         }
-        if(c.schemeAsset!=null)ASField.file = c.schemeAsset;
+        if (c.schemeAsset != null) ASField.file = c.schemeAsset;
         if (inspectedAnimator != null) inspectedAnimator.newFrame.RemoveListener(OnFrameUpdate);
         if (inspectedAnimator != null) inspectedAnimator.animChanged.RemoveListener(OnAnimChanged);
         inspectedAnimator = c;
@@ -181,7 +188,7 @@ public class TestAnimatorWindow : EditorWindow
     private void OnAnimChanged(StateInfo st, AnimatorScheme.Transition tr)
     {
         Line lastTrans;
-        if(lastState!=null)lastState.cogImage.tintColor = Color.white;
+        if (lastState != null) lastState.cogImage.tintColor = Color.white;
         var nextAnim = states.Find(x => x.stateName == st.name);
         if (nextAnim.endOnMe.Count != 0)
         {
@@ -223,8 +230,8 @@ public class TestAnimatorWindow : EditorWindow
     {
         lastState = states.Find(x => x.stateName == inspectedAnimator.CurrentAnim.name);
         var before = lastState.cogPivot.transform.rotation.eulerAngles;
-        lastState.cogPivot.transform.rotation = Quaternion.Euler(0f, 0f, before.z+10);
-        lastState.cogImage.tintColor = new Color(0.8f,0.8f,1);
+        lastState.cogPivot.transform.rotation = Quaternion.Euler(0f, 0f, before.z + 10);
+        lastState.cogImage.tintColor = new Color(0.8f, 0.8f, 1);
         TransFade();
     }
     class FileField : VisualElement
@@ -430,7 +437,7 @@ public class TestAnimatorWindow : EditorWindow
 
         states.Clear();
         statesSpace.Clear();
-       
+
         Debug.Log(scheme.states.Count);
         foreach (var state in scheme.states)
         {
@@ -458,19 +465,31 @@ public class TestAnimatorWindow : EditorWindow
         {
             ASField.file = AssetDatabase.LoadAssetAtPath(path, typeof(DefaultAsset)) as DefaultAsset;
         }
+        CheckIfEverythingFine(scheme.name);
     }
     private void Update()
     {
 
     }
-
+    void CheckIfEverythingFine(string name)
+    {
+        int anyStateCount = 0;
+        foreach (var state in states)
+        {
+            if (state.stateName == "Any State" || state.stateName == "Any state" || state.stateName == "any state")
+            {
+                anyStateCount++;
+            }
+        }
+        if (anyStateCount > 1) UnityEngine.Debug.LogError("There is more than one AnyState statebox in " + name + " scheme. Only onne of them will work properly.");
+    }
 
     StateBox CreateState(Vector3 pos, string name)
     {
-        if(states.Find(x => x.stateName == name) != null)
+        if (states.Find(x => x.stateName == name) != null)
         {
             int i = 1;
-            while (states.Find(x => x.stateName == name+"_"+i) != null)
+            while (states.Find(x => x.stateName == name + "_" + i) != null)
             {
                 i++;
             }
@@ -496,9 +515,22 @@ public class TestAnimatorWindow : EditorWindow
         rightpane.Clear();
         if (focusOn.GetType() == typeof(Line))
         {
+
             rightpane.Clear();
             if (!(focusOn as Line).set) return;
-            rightpane.Add(new Label((focusOn as Line).startState.stateName + " --> " + (focusOn as Line).endState.stateName));
+            var lable = new Label((focusOn as Line).startState.stateName + " --> " + (focusOn as Line).endState.stateName);
+            lable.style.fontSize = 24;
+            lable.style.alignSelf = Align.Center;
+            lable.style.backgroundColor = new Color(0.2f, 0.2f, 0.2f);
+            lable.style.paddingLeft = 10;
+            lable.style.paddingRight = 10;
+            lable.style.borderBottomLeftRadius = 8;
+            lable.style.borderBottomRightRadius = 8;
+            lable.style.borderTopLeftRadius = 8;
+            lable.style.borderTopRightRadius = 8;
+            lable.style.marginTop = 5;
+            lable.style.marginBottom = 5;
+            rightpane.Add(lable);
             var het = new Toggle("Has Exit Time");
             het.value = (activeElement as Line).hasExitTime;
             het.RegisterValueChangedCallback(x => (activeElement as Line).hasExitTime = x.newValue);
@@ -508,7 +540,7 @@ public class TestAnimatorWindow : EditorWindow
             var but = new Button(() =>
             {
                 (focusOn as Line).conditions.Add(new Condition());
-                rightpane.RemoveAt(5);//CHANGE THIS EVERY TIME YOU ADD NEW VISUAL ELEMENT TO THis INTERFACE
+                rightpane.RemoveAt(6);//CHANGE THIS EVERY TIME YOU ADD NEW VISUAL ELEMENT TO THis INTERFACE
                 list = DrawCondList(focusOn as Line);
                 rightpane.Add(list);
 
@@ -519,19 +551,36 @@ public class TestAnimatorWindow : EditorWindow
             {
                 list.Refresh();
                 if (list.selectedIndex >= 0) (focusOn as Line).conditions.RemoveAt(list.selectedIndex);
-                rightpane.RemoveAt(5);//CHANGE THIS EVERY TIME YOU ADD NEW VISUAL ELEMENT TO THis INTERFACE
+                rightpane.RemoveAt(6);//CHANGE THIS EVERY TIME YOU ADD NEW VISUAL ELEMENT TO THis INTERFACE
                 list = DrawCondList(focusOn as Line);
                 rightpane.Add(list);
 
 
             });
             but2.text = "Remove condition";
+            var but3 = new Button(() =>
+            {
+                activeElement.parent.Remove(activeElement);
+                (activeElement as Line).startState.trans.Remove(activeElement as Line);
+                (activeElement as Line).endState.trans.Remove(activeElement as Line);
+
+
+            });
+            but3.text = "Remove transition (No undo)";
+            but3.style.backgroundColor = new Color(0.5f, 0f, 0f);
+            but3.style.color = Color.white;
 
 
 
             rightpane.Add(but);
             rightpane.Add(but2);
+            rightpane.Add(but3);
             rightpane.Add(list);
+            foreach (var a in rightpane.Children())
+            {
+                a.style.marginLeft = 10;
+                a.style.marginRight = 10;
+            }
         }
         else if (focusOn.GetType() == typeof(StateBox))
         {

@@ -7,6 +7,7 @@ using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 using System;
 using log4net.Util;
+using UnityEngine.Events;
 
 #if UNITY_EDITOR
 public class ConditionDrawer
@@ -77,8 +78,12 @@ public class ConditionDrawer
         List<FieldInfo> varsList = new List<FieldInfo>();
         varsList.AddRange(inspectedCondition.typeRef.GetFields());
         propField = new PopupField<FieldInfo>("Field", varsList, varsList[0]);
+        if (inspectedCondition.property == null) inspectedCondition.property = varsList[0];
         DrawValueField();
-        propField.RegisterValueChangedCallback(x => { inspectedCondition.property = x.newValue; DrawValueField(); });
+        propField.RegisterValueChangedCallback(x => 
+        { 
+            inspectedCondition.property = x.newValue; DrawValueField(); 
+        });
         if (inspectedCondition.property != null && varsList.Contains(inspectedCondition.property)) propField.value = inspectedCondition.property;
         else inspectedCondition.property = null;
         parentVE.RemoveAt(PropPlace);
@@ -122,6 +127,10 @@ public class ConditionDrawer
             value.RegisterValueChangedCallback(x => inspectedCondition.value = x.newValue);
             valueField = value;
 
+        }
+        else if(type == typeof(UnityEvent))
+        {
+            valueField = new VisualElement();//empty
         }
         parentVE.RemoveAt(ValuePlace);
         parentVE.Insert(ValuePlace, valueField);
@@ -178,6 +187,39 @@ public class StateBox : VisualElement
         Add(cogPivot);
         cogPivot.Add(cogImage);
     }
+    public void Resize(float currentScale)
+    {
+        if (currentScale > 0.5)
+        {
+            textLabel.style.fontSize = 12;
+            textLabel.style.backgroundColor = new Color(0f, 0f, 0f, 0f);
+            textLabel.style.borderBottomLeftRadius = 0;
+            textLabel.style.borderBottomRightRadius = 0;
+            textLabel.style.borderTopRightRadius = 0;
+            textLabel.style.paddingBottom = 0;
+            textLabel.style.paddingTop = 0;
+            textLabel.style.paddingLeft = 0;
+            textLabel.style.paddingRight = 0;
+            textLabel.style.color = new Color(0, 0, 0, 1);
+        }
+        else
+        {
+            if (20 / currentScale < 2000) { textLabel.style.fontSize = 20 / currentScale; }
+            else textLabel.style.fontSize = 2000;
+
+            textLabel.style.backgroundColor = new Color(0f, 0f, 0f, 0.2f);
+            textLabel.style.borderBottomLeftRadius = 20;
+            textLabel.style.borderBottomRightRadius = 20;
+            textLabel.style.borderTopRightRadius = 20;
+            textLabel.style.paddingBottom = 10;
+            textLabel.style.paddingTop = 10;
+            textLabel.style.paddingLeft= 10;
+            textLabel.style.paddingRight = 10;
+            textLabel.style.color = new Color(1, 1, 1, 0.8f);
+            textbox.style.width = (textLabel as Label).text.Length*15 / currentScale;
+
+        }
+    }
     public StateBox(string text)
     {
         parentWindow = EditorWindow.GetWindow<TestAnimatorWindow>();
@@ -209,6 +251,11 @@ public class StateBox : VisualElement
 
         ContextualMenuManipulator m = new ContextualMenuManipulator(ContextMenuActions);
         m.target = this;
+
+        if (stateName == "Any State" || stateName == "Any state" || stateName == "any state")
+        {
+            boxImage.tintColor = Color.green;
+        }
 
     }
 
@@ -255,6 +302,14 @@ public class StateBox : VisualElement
                 stateName = l.text;
                 textbox.RemoveAt(0);
                 textbox.Insert(0, textLabel);
+                if(stateName=="Any State"|| stateName == "Any state"||stateName == "any state")
+                {
+                    boxImage.tintColor = Color.green;
+                }
+                else
+                {
+                    boxImage.tintColor = Color.white;
+                }
             }
         });
 
@@ -356,7 +411,6 @@ public class StateBoxDrawer
         h1.transform.position += new Vector3(20, 20);
         listView.transform.position += new Vector3(20, 50);
         output.Add(h1);
-
         output.Add(listView);
 
         return output;
@@ -411,7 +465,7 @@ public class Line : Image
         Add(bulb);
         style.position = Position.Absolute;
         SendToBack();
-        bulb.RegisterCallback<PointerDownEvent>(OnPointerDownLocal);
+        RegisterCallback<PointerDownEvent>(OnPointerDownLocal);
     }
 
     public Line(StateBox startBox, StateBox endBox, List<Condition> conds, bool _het)

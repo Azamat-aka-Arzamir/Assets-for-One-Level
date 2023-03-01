@@ -116,7 +116,10 @@ public class Controller : MonoBehaviour
 		print("semen");
 		if (context.performed && !context.started)
 		{
-			FirstAttack.Invoke();
+			if (!selfMove.IsAttack)
+			{
+                FirstAttack.Invoke();
+            }
 			//selfMove.SelfAnim.SetTrigger("Attack 1");
 		}
 	}

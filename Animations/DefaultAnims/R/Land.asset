@@ -20,7 +20,7 @@ MonoBehaviour:
   speed: 8
   frames:
   - name: 23
-    sprite: {fileID: 0}
+    sprite: {fileID: 6547520604719375088, guid: a3da22396c81c7844be926b56d73a2af, type: 3}
     numberInSheet: 23
     position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
@@ -28,7 +28,7 @@ MonoBehaviour:
     invisible: 0
     PhysicsShape: []
   - name: 24
-    sprite: {fileID: 0}
+    sprite: {fileID: -8026704956702150564, guid: a3da22396c81c7844be926b56d73a2af, type: 3}
     numberInSheet: 24
     position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}

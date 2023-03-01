@@ -8,6 +8,8 @@ using UnityEditor;
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Reflection;
+using UnityEngine.Events;
+using System.Threading;
 
 [Serializable]
 public class AnimatorScheme
@@ -75,14 +77,13 @@ public class Condition
     /// Type info
     /// </summary>
     public System.Reflection.TypeInfo typeRef;
-    /// <summary>
-    /// Non-unique hash, but i dont't give a fuck
-    /// </summary>
+
     public string objectID;
     /// <summary>
     /// Value to compare with
     /// </summary>
     public object value;
+    public bool eventinvoked;
     [System.NonSerialized]
     public Component objectRef;
     public bool localComponent;
@@ -111,7 +112,14 @@ public class Condition
         var a = property.GetValue(objectRef);
         if (property.FieldType == typeof(string) || property.FieldType == typeof(bool))
         {
-            if (value == null) value = "";
+            if(value==null&& property.FieldType == typeof(string))
+            {
+                value = string.Empty; 
+            }
+            else if (value == null && (property.FieldType == typeof(bool)))
+            {
+                value = false;
+            }
             switch (type)
             {
                 case CondType.E:
@@ -123,6 +131,17 @@ public class Condition
                 default:
                     throw new Exception("Wrong operation in some condition (FIND IT BY YOURSELF, BITCH!)\n" + "ok, property holder on " + objectRef + " and its name is  " + property.Name);
             }
+        }
+        else if (property.FieldType==typeof(UnityEvent))
+        {
+            (a as UnityEvent).RemoveListener(ResetInvokeBool);
+            (a as UnityEvent).AddListener(ResetInvokeBool);
+            if (eventinvoked)
+            {
+                (a as UnityEvent).RemoveListener(ResetInvokeBool);
+                return true;
+            }
+            else return false;
         }
         else
         {
@@ -178,7 +197,13 @@ public class Condition
         var obj = list.Find((x) => (x as IDCard).ID == objectID);
         if(obj!=null)objectRef = (obj as IDCard).gameObject.GetComponent(typeRef);
     }
+    void ResetInvokeBool()
+    {
+        eventinvoked = true;
+        Debug.Log("inv");
+    }
 }
+
 
 
 
