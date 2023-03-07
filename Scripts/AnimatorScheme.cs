@@ -200,7 +200,6 @@ public class Condition
     void ResetInvokeBool()
     {
         eventinvoked = true;
-        Debug.Log("inv");
     }
 }
 

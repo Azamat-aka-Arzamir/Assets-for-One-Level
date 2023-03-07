@@ -48,6 +48,16 @@ public class TestAnimatorWindow : EditorWindow
     public VisualElement activeElement { get; private set; }
     VisualElement ActiveElement;
     Vector2 lastLeftPaneSize;
+    TextField DLog;
+    void Log(string text)
+    {
+        if (DLog.value != text) { DLog.value = text; }
+        else
+        {
+            DLog.value = text+" one more time";
+        }
+        GetWindow<TestAnimatorWindow>().DLog.value = text;
+    }
     public void CreateGUI()
     {
 
@@ -77,6 +87,14 @@ public class TestAnimatorWindow : EditorWindow
         controlPanel.Add(ASField);
         controlPanel.Add(btn);
         controlPanel.Add(btn2);
+
+        DLog = new TextField();
+        DLog.focusable = false;
+        DLog.style.position = Position.Absolute;
+        DLog.style.backgroundColor = Color.black;
+        DLog.style.bottom = 0;
+        DLog.style.left=0;
+        DLog.style.right=0;
         //controlPanel.Add(btn3);
 
 
@@ -148,6 +166,7 @@ public class TestAnimatorWindow : EditorWindow
         });
 
         CustomAnimator.AnimatorEditor.OnEnableEvent += OnAnimatorInspected;
+        CustomAnimator.Log += Log;
         Load(inspectedSchemePath);
         if (inspectedAnimID != null && inspectedAnimID != "") inspectedAnimator = IDCard.FindByID(inspectedAnimID).GetComponent<CustomAnimator>();
         if (inspectedAnimator != null)
@@ -155,6 +174,9 @@ public class TestAnimatorWindow : EditorWindow
             inspectedAnimator.newFrame.AddListener(OnFrameUpdate);
             OnAnimatorInspected(inspectedAnimator);
         }
+
+
+        leftpane.Add(DLog);
     }
     void Scroll(MouseMoveEvent context)
     {
@@ -347,7 +369,7 @@ public class TestAnimatorWindow : EditorWindow
                 Load("Defaults/" + arg);
                 break;
             case "help":
-                Debug.Log(helpData);
+                Log(helpData);
                 break;
             case "condinfo":
                 foreach (var st in states)
@@ -356,7 +378,7 @@ public class TestAnimatorWindow : EditorWindow
                     {
                         foreach (var c in l.conditions)
                         {
-                            Debug.Log(c.typeRef + " - Type\n" + c.typeRef + " - Hash\n");
+                            Log(c.typeRef + " - Type\n" + c.typeRef + " - Hash\n");
                         }
                     }
                 }
@@ -406,7 +428,7 @@ public class TestAnimatorWindow : EditorWindow
     {
         if (path == "" || path == null)
         {
-            Debug.Log("Nothing to load");
+            Log("Nothing to load");
             return;
         }
         var p = path.Split('/');
@@ -438,7 +460,7 @@ public class TestAnimatorWindow : EditorWindow
         states.Clear();
         statesSpace.Clear();
 
-        Debug.Log(scheme.states.Count);
+        Log(scheme.states.Count.ToString());
         foreach (var state in scheme.states)
         {
             var s = new StateBox(state.name);
@@ -603,6 +625,10 @@ public class TestAnimatorWindow : EditorWindow
         return listView;
 
 
+    }
+    private void OnDisable()
+    {
+        CustomAnimator.Log -= Log;
     }
 
 }

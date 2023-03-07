@@ -167,6 +167,7 @@ public class CustomAnimator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Log += (string a) =>{};
         animatorScheme = LoadScheme(schemeAsset);
         SetDependencies();
         blank = Resources.Load<Sprite>("Defaults/Blank");
@@ -235,7 +236,7 @@ public class CustomAnimator : MonoBehaviour
 		SerializeAnimation(Misc.Side.L, FireDownAnimScheme, "AimDown", 8, true, new string[] { "GunIdle", "AimUp" });
 		*/
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (animatorScheme != null && animatorScheme.states.Count > 0) PlayCurrentAnim();
     }
@@ -276,8 +277,8 @@ public class CustomAnimator : MonoBehaviour
     public UnityEvent newFrame = new UnityEvent();
     void PlayCurrentAnim()
     {
-        timeFromFrameStart += Time.deltaTime;
-        if (timeFromFrameStart >= 1 / animDependencies[CurrentAnim].speed)
+        timeFromFrameStart += 1;
+        if (timeFromFrameStart >= 50 / animDependencies[CurrentAnim].speed)
         {
             timeFromFrameStart = 0;
             NewFrame();
@@ -329,7 +330,6 @@ public class CustomAnimator : MonoBehaviour
             }
             if (result)
             {
-                print(trans.endState.name);
                 nextState = trans.endState;
                 animChanged.Invoke(nextState, trans);
 
@@ -371,6 +371,8 @@ public class CustomAnimator : MonoBehaviour
         currentFrameIndex++;
         ChangeFrame(animation, currentFrameIndex);
     }
+    public delegate void LogEvent(string message);
+    public static event LogEvent Log;
     void ChangeFrame(StateInfo animation, int frame)
     {
         currentFrameIndex = frame;
@@ -386,7 +388,7 @@ public class CustomAnimator : MonoBehaviour
                 else
                 {
                     _frame.sprite = blank;
-                    Debug.Log(gameObject.name + " don't have enough frames for " + animation.name + " animation. Using blank instead.");
+                     Log.Invoke(gameObject.name + " don't have enough frames for " + animation.name + " animation. Using blank instead.");
                 }
             }
             else
@@ -395,7 +397,7 @@ public class CustomAnimator : MonoBehaviour
                 else
                 {
                     _frame.sprite = blank;
-                    Debug.Log(gameObject.name + " don't have enough frames for " + animation.name + " animation. Using blank instead.");
+                    Log.Invoke(gameObject.name + " don't have enough frames for " + animation.name + " animation. Using blank instead.");
                 }
             }
 

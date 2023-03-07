@@ -28,7 +28,7 @@ MonoBehaviour:
     invisible: 0
     PhysicsShape: []
   - name: 20
-    sprite: {fileID: 7351380478308917105, guid: 562b0ca36d6f1c94884614faf1c05b46, type: 3}
+    sprite: {fileID: -6502101395405241776, guid: 1c035ec207ed4674d9b476d9f5dee21a, type: 3}
     numberInSheet: 20
     position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}

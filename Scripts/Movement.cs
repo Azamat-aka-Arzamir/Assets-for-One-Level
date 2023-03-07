@@ -108,7 +108,6 @@ public class Movement : MonoBehaviour
 		if (!lastGroundCheck && OnGround)
 		{
 			LandEvent.Invoke();
-			print("Landed");
 		}
 		if (!OnGround && !lastGroundCheck)
 		{

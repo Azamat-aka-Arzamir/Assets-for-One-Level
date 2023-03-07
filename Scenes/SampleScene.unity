@@ -63963,8 +63963,8 @@ MonoBehaviour:
   Knockback: 0
   StaminaCost: 100
   StartZ: 0
-  attackFrames: 50
-  beforeAttackFrames: 5
+  attackFrames: 5
+  beforeAttackFrames: 0
   pushingForce: 500
   AttackSameEntity: 0
   DynamicAttackFrames: 0

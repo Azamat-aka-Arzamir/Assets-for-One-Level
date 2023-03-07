@@ -42,7 +42,9 @@ public class Controller : MonoBehaviour
 	public void GetMovement(InputAction.CallbackContext context)
 	{
 		//x = context.ReadValue<Vector2>().x;
+		if (context.started && !context.performed) return;
 		input = context.ReadValue<Vector2>();
+		print(input);
 		if (Mathf.Abs(input.y) < 0.7f)
 		{
 			lookUp.Invoke(0);
@@ -102,6 +104,7 @@ public class Controller : MonoBehaviour
 		if (f < 0.7) f = 0.7f;
 		if (f > 1) f = 1;
 		selfMove.Jump(selfMove.JumpForce*f);
+		print("jump");
 		yield break;
 	}
 	public void GetDash(InputAction.CallbackContext context)
@@ -109,14 +112,16 @@ public class Controller : MonoBehaviour
 		if (context.performed && !context.started)
 		{
 			selfMove.Dash();
+			print("dash");
 		}
 	}
 	public void GetAttack(InputAction.CallbackContext context)
 	{
-		print("semen");
+
 		if (context.performed && !context.started)
 		{
-			if (!selfMove.IsAttack)
+            print("attack");
+            if (!selfMove.IsAttack)
 			{
                 FirstAttack.Invoke();
             }
@@ -129,12 +134,14 @@ public class Controller : MonoBehaviour
 		{
 			//selfMove.SelfAnim.SetBool("Attack 2",true);
 			Defend.Invoke();
-		}
+            print("defStart");
+        }
 		if (context.canceled)
 		{
 			//selfMove.SelfAnim.SetBool("Attack 2", false);
 			DefendStop.Invoke();
-		}
+            print("defStop");
+        }
 	}
 	public void Die()
 	{

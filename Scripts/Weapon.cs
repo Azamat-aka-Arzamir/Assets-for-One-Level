@@ -198,7 +198,7 @@ public class Weapon : MonoBehaviour
 
 	void SwordAttack()
 	{
-		StartCoroutine(IeSwordAttack());
+		if(!Activate)StartCoroutine(IeSwordAttack());
 	}
 	public void OnLookUp(int context)
 	{
@@ -207,10 +207,12 @@ public class Weapon : MonoBehaviour
 	}
 	IEnumerator IeSwordAttack()
 	{
-		//var currentState = parentAnim.GetCurrentAnimatorStateInfo(0);
-		//var a = currentState.length;
-		//if (a == 0 || !DynamicAttackFrames)
-		{
+        parentMove.IsAttack = true;
+		attackFrames = Mathf.RoundToInt(selfAnim.GetCurrentAnimation().frames.Count/selfAnim.GetCurrentAnimation().speed);
+        //var currentState = parentAnim.GetCurrentAnimatorStateInfo(0);
+        //var a = currentState.length;
+        //if (a == 0 || !DynamicAttackFrames)
+        {
 			if (beforeAttackFrames != 0)
 			{
 				for (int i = 0; i < beforeAttackFrames; i++)
@@ -220,9 +222,10 @@ public class Weapon : MonoBehaviour
 			}
 
 			Activate = true;
+			
 			for (int i = 0; i < attackFrames; i++)
 			{
-				Misc.DrawCross(new Vector2(transform.position.x - 2 * transform.localPosition.z, transform.position.y), Time.fixedDeltaTime, Color.red, 3);
+				Misc.DrawCross(new Vector2(transform.position.x - 2 * transform.localPosition.z, transform.position.y+i/10), Time.fixedDeltaTime, Color.red, 3);
 				yield return new WaitForFixedUpdate();
 			}
 		}
@@ -232,7 +235,8 @@ public class Weapon : MonoBehaviour
 			//yield return new WaitForSeconds(a);
 		}
 		Activate = false;
-	}
+        parentMove.IsAttack = false;
+    }
 	void ShieldAttack()
 	{
 		StartCoroutine(IeShieldAttack());
