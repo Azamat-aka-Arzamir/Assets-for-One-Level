@@ -63692,17 +63692,17 @@ MonoBehaviour:
     animationPath: Assets/Animations/DefaultAnims/L/AimDown.asset
   - _name: AimUp
     animationPath: Assets/Animations/DefaultAnims/L/AimUp.asset
-  - _name: Attack
+  - _name: Attack_L
     animationPath: Assets/Animations/DefaultAnims/L/Attack.asset
-  - _name: Attack2
+  - _name: Attack_L2
     animationPath: Assets/Animations/DefaultAnims/L/Attack2.asset
-  - _name: Attack3
+  - _name: Attack_L3
     animationPath: Assets/Animations/DefaultAnims/L/Attack3.asset
-  - _name: Def
+  - _name: Def_L
     animationPath: Assets/Animations/DefaultAnims/L/Def.asset
-  - _name: DefReverse
+  - _name: DefReverse_L
     animationPath: Assets/Animations/DefaultAnims/L/DefReverse.asset
-  - _name: DefStatic
+  - _name: DefStatic_L
     animationPath: Assets/Animations/DefaultAnims/L/DefStatic.asset
   - _name: Fire
     animationPath: Assets/Animations/DefaultAnims/L/Fire.asset
@@ -63710,21 +63710,21 @@ MonoBehaviour:
     animationPath: Assets/Animations/DefaultAnims/L/FireDown.asset
   - _name: FireUp
     animationPath: Assets/Animations/DefaultAnims/L/FireUp.asset
-  - _name: FlyDown
+  - _name: FlyDown_L
     animationPath: Assets/Animations/DefaultAnims/L/FlyDown.asset
-  - _name: FlyUp
+  - _name: FlyUp_L
     animationPath: Assets/Animations/DefaultAnims/L/FlyUp.asset
   - _name: GunIdle
     animationPath: Assets/Animations/DefaultAnims/L/GunIdle.asset
-  - _name: Idle
+  - _name: Idle_L
     animationPath: Assets/Animations/DefaultAnims/L/Idle.asset
-  - _name: Jump
+  - _name: Jump_L
     animationPath: Assets/Animations/DefaultAnims/L/Jump.asset
-  - _name: Land
+  - _name: Land_L
     animationPath: Assets/Animations/DefaultAnims/L/Land.asset
-  - _name: Roll
+  - _name: Roll_L
     animationPath: Assets/Animations/DefaultAnims/L/Roll.asset
-  - _name: Run
+  - _name: Run_L
     animationPath: Assets/Animations/DefaultAnims/L/Run.asset
   - _name: AnyState
     animationPath: 
@@ -66364,13 +66364,13 @@ MonoBehaviour:
     animationPath: Assets/Animations/DefaultAnims/L/AimDown.asset
   - _name: AimUp
     animationPath: Assets/Animations/DefaultAnims/L/AimUp.asset
-  - _name: Attack
+  - _name: Attack_L
     animationPath: Assets/Animations/DefaultAnims/L/Attack.asset
-  - _name: Def
+  - _name: Def_L
     animationPath: Assets/Animations/DefaultAnims/L/Def.asset
-  - _name: DefReverse
+  - _name: DefReverse_L
     animationPath: Assets/Animations/DefaultAnims/L/DefReverse.asset
-  - _name: DefStatic
+  - _name: DefStatic_L
     animationPath: Assets/Animations/DefaultAnims/L/DefStatic.asset
   - _name: Fire
     animationPath: Assets/Animations/DefaultAnims/L/Fire.asset
@@ -66378,21 +66378,21 @@ MonoBehaviour:
     animationPath: Assets/Animations/DefaultAnims/L/FireDown.asset
   - _name: FireUp
     animationPath: Assets/Animations/DefaultAnims/L/FireUp.asset
-  - _name: FlyDown
+  - _name: FlyDown_L
     animationPath: Assets/Animations/DefaultAnims/L/FlyDown.asset
-  - _name: FlyUp
+  - _name: FlyUp__L
     animationPath: Assets/Animations/DefaultAnims/L/FlyUp.asset
   - _name: GunIdle
     animationPath: Assets/Animations/DefaultAnims/L/GunIdle.asset
-  - _name: Idle
+  - _name: Idle_L
     animationPath: Assets/Animations/DefaultAnims/L/Idle.asset
-  - _name: Jump
+  - _name: Jump_L
     animationPath: Assets/Animations/DefaultAnims/L/Jump.asset
-  - _name: Land
+  - _name: Land_L
     animationPath: Assets/Animations/DefaultAnims/L/Land.asset
-  - _name: Roll
+  - _name: Roll_L
     animationPath: Assets/Animations/DefaultAnims/L/Roll.asset
-  - _name: Run
+  - _name: Run_L
     animationPath: Assets/Animations/DefaultAnims/L/Run.asset
   - _name: AnyState
     animationPath: 

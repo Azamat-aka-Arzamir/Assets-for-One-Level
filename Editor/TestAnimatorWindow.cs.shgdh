@@ -1,5 +1,4 @@
 ﻿
-using ICSharpCode.NRefactory.Ast;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -342,45 +341,17 @@ public class TestAnimatorWindow : EditorWindow
 
         }
     }
-
-    string lastCommand;
     const string helpData =
         "sad x - Save current scheme as default with x-name \n" +
         "ld x - Load x-named scheme from defaults !without saving current scheme!\n" +
-        "condinfo - Show all conditions info\n"+
-        "schi *startState* *endState* *numOfCondition* - Show condition info\n";
+        "condinfo - Show all conditions info\n";
     void CommandLineParsing(KeyDownEvent callback)
     {
-        if(callback.keyCode == KeyCode.UpArrow) commandLine.value = lastCommand;
         if (callback.keyCode != KeyCode.Return) return;
-        lastCommand = commandLine.value;
         string command = commandLine.value.Split(' ')[0];
         string arg;
         switch (command)
         {
-            case "shci":
-                if (commandLine.value.Split(' ').Length != 4)
-                {
-                    throw new System.Exception("Incorrect Argument");
-                }
-                try
-                {
-                    var stst = commandLine.value.Split(' ')[1];
-                    var enst = commandLine.value.Split(' ')[2];
-                    int num = Int32.Parse(commandLine.value.Split(' ')[3]) - 1;
-                    foreach(var st in states)
-                    {
-                        if (st.stateName.Contains(stst))
-                        {
-                            Log(st.trans.Find(x => x.endState.stateName.Contains(enst)).conditions[num].GetInfo());
-                        }
-                    }
-                }
-                catch(Exception e)
-                {
-                    Debug.LogError(e);
-                }
-                break;
             case "sad"://SaveAsDefault
                 if (commandLine.value.Split(' ').Length == 1)
                 {
@@ -412,9 +383,6 @@ public class TestAnimatorWindow : EditorWindow
                     }
                 }
                 break;
-                default:
-                Log("Unknown command");
-                break;
         }
         commandLine.value = "";
     }
@@ -424,9 +392,9 @@ public class TestAnimatorWindow : EditorWindow
         var scheme = new AnimatorScheme();
         scheme.name = ASField.fileName;
         scheme.InitializeScheme(states);
-        if (!AssetDatabase.IsValidFolder("Assets/Resources/Animators"))
+        if (!AssetDatabase.IsValidFolder("Assets/Animators"))
         {
-            System.IO.Directory.CreateDirectory("Assets/Resources/Animators");
+            System.IO.Directory.CreateDirectory("Assets/Animators");
         }
         AssetDatabase.Refresh();
         var splittedPath = path.Split('/');
@@ -436,9 +404,9 @@ public class TestAnimatorWindow : EditorWindow
             for (int i = 0; i < splittedPath.Length - 1; i++)
             {
                 string p = splittedPath[i];
-                if (!AssetDatabase.IsValidFolder("Assets/Resources/Animators" + pa + p))
+                if (!AssetDatabase.IsValidFolder("Assets/Animators" + pa + p))
                 {
-                    System.IO.Directory.CreateDirectory("Assets/Resources/Animators" + pa + p);
+                    System.IO.Directory.CreateDirectory("Assets/Animators" + pa + p);
                 }
                 pa += p + "/";
             }
@@ -668,26 +636,9 @@ public static class AnimSchemeExtensions
 {
     public static void InitializeScheme(this AnimatorScheme scheme, List<StateBox> boxes)
     {
-        bool anystate=false;
-        scheme.states.Clear();
         foreach (var box in boxes)
         {
-            string name = box.stateName;
-            if (name == null || name == "Unnamed")
-            {
-                if (box.animation == null && anystate == false)
-                {
-                    name = "AnyState";
-                    anystate = true;
-                }
-                else if (box.animation != null)
-                {
-                    name = box.animation.animName;
-                    Debug.LogWarning("New name assigned");
-                }
-                else throw new Exception("Some state has no anim. It's not an Anystate btw. Fix dat");
-            } 
-            scheme.states.Add(new StateInfo(name, box.transform.position, AssetDatabase.GetAssetPath(box.animation)));
+            scheme.states.Add(new StateInfo(box.stateName, box.transform.position, AssetDatabase.GetAssetPath(box.animation)));
         }
         foreach (var state in scheme.states)
         {
@@ -700,6 +651,7 @@ public static class AnimSchemeExtensions
             state.transitons.Clear();
             state.transitons.AddRange(m_trans);
         }
+
     }
 }
 

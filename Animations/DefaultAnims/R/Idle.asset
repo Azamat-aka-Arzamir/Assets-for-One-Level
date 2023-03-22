@@ -20,7 +20,7 @@ MonoBehaviour:
   speed: 8
   frames:
   - name: 7
-    sprite: {fileID: -7117650045036301251, guid: a3da22396c81c7844be926b56d73a2af, type: 3}
+    sprite: {fileID: -5601891617960226539, guid: 530e0f7d5d3808d46a59f0f1ab0c776f, type: 3}
     numberInSheet: 7
     position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
