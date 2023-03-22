@@ -22,7 +22,8 @@ public class AnimatorScheme
 	[System.Serializable]
 	public struct StateInfo
 	{
-		public string name { get; }
+        [SerializeField]string _name;
+        public string name { get { return _name; } }
 		public float[] position { get; }
 		public List<Transition> transitons { get; internal set; }
 
@@ -30,7 +31,8 @@ public class AnimatorScheme
 		//animation, frames etc.
 		public StateInfo(string _text, Vector2 _pos, string animPath)
 		{
-			name = _text;
+			_name = _text;
+            if (_name == null) _name = "Unnamed";
 			position = new float[] {_pos.x,_pos.y};
 			transitons = new List<Transition>();
 			animationPath = animPath;
@@ -61,6 +63,7 @@ public class AnimatorScheme
                 foreach(var c in tr.conditions)
                 {
                     c.FindObject();
+                   // if(c.property!=null&&c.property.FieldType ==typeof(UnityEvent))Debug.Log("Found obj for state" + st.name + ", trans " + tr.endState.name + ", condition " + c.property.Name + " in scheme named " + s.name);
                 }
             }
         }
@@ -88,7 +91,7 @@ public class Condition
     public Component objectRef;
     public bool localComponent;
 
-    public enum CondType { E, G, L, LOE, GOE, NE }
+    public enum CondType { E, G, L, LOE, GOE, NE, CONTAINS, NOTCONTAIN }
     public CondType type;
     /// <summary>
     /// Checks condition and needs invoker in case if component is local
@@ -110,6 +113,15 @@ public class Condition
             }
         }
         var a = property.GetValue(objectRef);
+        if (property.FieldType == typeof(string) && type == CondType.CONTAINS)
+        {
+            return (a as String).Contains(value as string);
+
+        }
+        if (property.FieldType == typeof(string) && type == CondType.NOTCONTAIN)
+        {
+            return !(a as String).Contains(value as string);    
+        }
         if (property.FieldType == typeof(string) || property.FieldType == typeof(bool))
         {
             if(value==null&& property.FieldType == typeof(string))
@@ -124,24 +136,36 @@ public class Condition
             {
                 case CondType.E:
                     if (a.Equals(value)) return true;
-                    else return false;
+                    else
+                    {
+                        invoker.GetComponent<CustomAnimator>().ALog("           Failed condition: " + property.Name + " equals to " + value +". Actual value is"+a);
+                        return false;
+                    }
+
                 case CondType.NE:
                     if (!a.Equals(value)) return true;
-                    else return false;
+                    else
+                    {
+                        invoker.GetComponent<CustomAnimator>().ALog("           Failed condition: " + property.Name + "not equals to " + value + ". Actual value is" + a);
+                        return false;
+                    }
                 default:
                     throw new Exception("Wrong operation in some condition (FIND IT BY YOURSELF, BITCH!)\n" + "ok, property holder on " + objectRef + " and its name is  " + property.Name);
             }
         }
         else if (property.FieldType==typeof(UnityEvent))
         {
-            (a as UnityEvent).RemoveListener(ResetInvokeBool);
-            (a as UnityEvent).AddListener(ResetInvokeBool);
             if (eventinvoked)
             {
-                (a as UnityEvent).RemoveListener(ResetInvokeBool);
+                invoker.GetComponent<CustomAnimator>().ALog(property.Name + " were invoked and cond passed");
                 return true;
             }
-            else return false;
+            else
+            {
+                invoker.GetComponent<CustomAnimator>().ALog("           Failed condition: " + property.Name + " wasn't invoked");
+                return false;
+            }
+
         }
         else
         {
@@ -185,17 +209,44 @@ public class Condition
                     if (b != c) return true;
                     break;
             }
+            invoker.GetComponent<CustomAnimator>().ALog("           Failed condition: " + property.Name + " is not "+type.ToString()+" to " + value + ". Actual value is" + a);
             return false;
         }
     }
+    public string GetInfo()
+    {
+        string output = objectID + ", ";
+        try
+        {
+            output +="object name: "+ objectRef.name + ", ";
+        }
+        catch(Exception e) { };
+        try
+        {
+            output += "type: " + typeRef.Name + ", ";
+        }
+        catch (Exception e) { };
+        try
+        {
+            output += "prop: " + property.Name + ", ";
+        }
+        catch (Exception e) { };
+        return output + "loaded: " + (objectRef != null);
+    }
+
     //Call at load
     public void FindObject()
     {
+        if (objectRef!=null) return;//already have been loaded correctly
         if (typeRef == null || objectID == null||objectID=="") return;
         List<UnityEngine.Object> list = new List<UnityEngine.Object>();
         list.AddRange(UnityEngine.Object.FindObjectsOfType(typeof(IDCard)));
         var obj = list.Find((x) => (x as IDCard).ID == objectID);
         if(obj!=null)objectRef = (obj as IDCard).gameObject.GetComponent(typeRef);
+        if (property!=null&&property.FieldType == typeof(UnityEvent))
+        {
+            (property.GetValue(objectRef) as UnityEvent).AddListener(() => { ResetInvokeBool();});
+        }
     }
     void ResetInvokeBool()
     {

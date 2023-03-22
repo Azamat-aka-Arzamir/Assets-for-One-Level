@@ -28,6 +28,7 @@ public class Controller : MonoBehaviour
 		selfMove = GetComponent<Movement>();
 		DeathScreen.GetComponent<UnityEngine.UI.Image>().color = Color.clear;
 		InitializeActiveGun();
+		
 	}
 
 	// Update is called once per frame
@@ -37,14 +38,20 @@ public class Controller : MonoBehaviour
 	}
 	public void GetPause(InputAction.CallbackContext context)
 	{
-		Debug.Break();
+        if (context.performed && !context.started)
+		{
+            foreach (var a in selfMove.GetComponentsInChildren<CustomAnimator>())
+            {
+                a.TOLOG = !a.TOLOG;
+            }
+        }
+
 	}
 	public void GetMovement(InputAction.CallbackContext context)
 	{
 		//x = context.ReadValue<Vector2>().x;
 		if (context.started && !context.performed) return;
 		input = context.ReadValue<Vector2>();
-		print(input);
 		if (Mathf.Abs(input.y) < 0.7f)
 		{
 			lookUp.Invoke(0);
@@ -121,7 +128,6 @@ public class Controller : MonoBehaviour
 		if (context.performed && !context.started)
 		{
             print("attack");
-            if (!selfMove.IsAttack)
 			{
                 FirstAttack.Invoke();
             }

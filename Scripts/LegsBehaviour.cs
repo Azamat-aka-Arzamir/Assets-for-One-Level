@@ -13,7 +13,7 @@ public class LegsBehaviour : MonoBehaviour
     {
         selfAnim=GetComponent<CustomAnimator>();
         AssignStartPos();
-        selfAnim.newFrame.AddListener(ReplaceBody);
+        selfAnim.newFrameEvent.AddListener(ReplaceBody);
     }
 
     // Update is called once per frame

@@ -1,16 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using UnityEngine.UIElements;
-using UnityEditorInternal;
+
 
 [CreateAssetMenu(fileName = "New Custom Animation", menuName = "Custom Animations", order = 51)]
 public class CustomAnimation : ScriptableObject
 {
 #if UNITY_EDITOR
 	[CustomEditor(typeof(CustomAnimation))]
-	public class AnimEditor : Editor
+
+    [CanEditMultipleObjects]
+    public class AnimEditor : Editor
 	{
 		int activeFrame = 0;
 		CustomFrame frame;
@@ -101,7 +101,7 @@ public class CustomAnimation : ScriptableObject
 	public bool flip = false;
 	public bool relativeFrames = false;
 	public bool TakeFrameFromSecondList;
-	public float speed;//same as framerate or FPS
+	public int speed;//same as framerate or FPS
 	public List<CustomFrame> frames = new List<CustomFrame>();
 	private void OnEnable()
 	{

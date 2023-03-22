@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5969052629021043214, guid: 5d59bf7a4daaef34489200be79c132c8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8102307133736631643, guid: 5d59bf7a4daaef34489200be79c132c8, type: 3}
       propertyPath: m_Name
       value: Fire
@@ -246,6 +250,165 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7016695251876039015, guid: 0b65f185b6e5e5e4eafbdb9ff464bc71, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0b65f185b6e5e5e4eafbdb9ff464bc71, type: 3}
+--- !u!1 &112824344
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 112824345}
+  m_Layer: 0
+  m_Name: New Game Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &112824345
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112824344}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 137462919}
+  m_Father: {fileID: 0}
+  m_RootOrder: 37
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &130930264
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 130930265}
+  m_Layer: 0
+  m_Name: New Game Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &130930265
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130930264}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1107443854}
+  m_Father: {fileID: 0}
+  m_RootOrder: 36
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &137462918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 137462919}
+  - component: {fileID: 137462921}
+  - component: {fileID: 137462920}
+  m_Layer: 0
+  m_Name: steelSword_40
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &137462919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137462918}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 112824345}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &137462920
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137462918}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -2963529764097973984, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 8, y: 8}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &137462921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137462918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4bbc3ed692967d41a87eceefddb1bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posDifference: {x: -0, y: -0}
+  PPU: 16
 --- !u!1001 &184090327
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -716,6 +879,55 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7016695251876039015, guid: 0b65f185b6e5e5e4eafbdb9ff464bc71, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0b65f185b6e5e5e4eafbdb9ff464bc71, type: 3}
+--- !u!1 &355674090 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8102307133736631643, guid: 5d59bf7a4daaef34489200be79c132c8, type: 3}
+  m_PrefabInstance: {fileID: 11756536}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &355674094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355674090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2c058981ef613419fbc1ebf425cb70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 92cc8f59-6225-4346-a36c-a79e00daa8a7
+--- !u!1 &403922377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 403922378}
+  m_Layer: 0
+  m_Name: New Game Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &403922378
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403922377}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 570924536}
+  m_Father: {fileID: 0}
+  m_RootOrder: 33
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &428779586
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,6 +1107,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -23.377}
+--- !u!1 &493816671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 493816672}
+  m_Layer: 0
+  m_Name: New Game Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &493816672
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493816671}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1574907862}
+  m_Father: {fileID: 0}
+  m_RootOrder: 34
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &499306459
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1115,8 +1358,116 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  schemeAsset: {fileID: 102900000, guid: 96fbe7db60e5d0d4d8e6604d4c65bf9f, type: 3}
+  animatorPath: Assets/Animators/torso_head
+  animations:
+  - {fileID: 11400000, guid: e463db12b0562534bafb367dcfa540de, type: 2}
+  - {fileID: 11400000, guid: 5f317a2d5ffb0f14d9fbcf0b2de1a3df, type: 2}
+  - {fileID: 11400000, guid: e4247dacc48af274281a0b8379968be8, type: 2}
+  - {fileID: 11400000, guid: cd24c1733d6db194ea9a6d23cdf386be, type: 2}
+  - {fileID: 11400000, guid: 369a7f15acb402644a16319bf122b9d8, type: 2}
+  - {fileID: 11400000, guid: 8663e39de1d829a40a833824fa90b2e2, type: 2}
+  - {fileID: 11400000, guid: 13499ad3ac7ab5a4b99a1823956520ca, type: 2}
+  - {fileID: 11400000, guid: f3602c59447ff914dbfe21035531617f, type: 2}
+  - {fileID: 11400000, guid: 16392f9fa5361d842be494c7e01480f3, type: 2}
+  - {fileID: 11400000, guid: 64dfde97d640fa641811440263231959, type: 2}
+  - {fileID: 11400000, guid: f5072fd9942e8f743908b1873a1234f8, type: 2}
+  - {fileID: 11400000, guid: d6d72f642fb745c42822b54485b67948, type: 2}
+  - {fileID: 11400000, guid: 6f02e684793aebf48afdd14400daa7f8, type: 2}
+  - {fileID: 11400000, guid: aaaa1bc42a351b6419db703de0ec366e, type: 2}
+  - {fileID: 11400000, guid: 8262742a03a899d459af5817255342cf, type: 2}
+  - {fileID: 11400000, guid: aad625035f634bc40a051bf955293a50, type: 2}
+  - {fileID: 11400000, guid: 603841a006a6b2b45a7d95fcee4ba452, type: 2}
+  - {fileID: 11400000, guid: bd6705bd817914f4c82e78083562a58d, type: 2}
+  - {fileID: 11400000, guid: c7a5018eace8b334a866ea2d394b9f91, type: 2}
+  - {fileID: 11400000, guid: d347ed3e5cf2e7c40b8789d4434bf147, type: 2}
+  - {fileID: 11400000, guid: 265a30e5e9009c140ab26005446c050c, type: 2}
+  - {fileID: 11400000, guid: d50544f78a8d22245bf45b8d50e90f4d, type: 2}
+  - {fileID: 11400000, guid: 8a8e8fe6cb9dc974286ea675b9d379dd, type: 2}
+  - {fileID: 11400000, guid: 56618e530b93a9342a58d64d5f8631b1, type: 2}
+  - {fileID: 11400000, guid: c21659990b884f445ae86c93d6b3a4f6, type: 2}
+  - {fileID: 11400000, guid: 8dcf54d6073ee974eba31325d88d67b6, type: 2}
+  - {fileID: 11400000, guid: 0bda228a3fb6f964e96ccef844854b1e, type: 2}
+  - {fileID: 11400000, guid: 0181d995ea864c34a8b49f0be3f82a86, type: 2}
+  - {fileID: 11400000, guid: c0662f0507ee5ff4b948a326bcb46d9e, type: 2}
+  - {fileID: 11400000, guid: de26b3492dc69ba4ca32a3ee89d9af7b, type: 2}
+  - {fileID: 11400000, guid: ea33d04cc9841e44d990b8561d1ca477, type: 2}
+  - {fileID: 11400000, guid: 645aad23de4fff9479e2bd6cffd6ddbe, type: 2}
+  - {fileID: 11400000, guid: 3ecf1b6d05c22d7409bc74bf222f9c2f, type: 2}
+  - {fileID: 11400000, guid: acd708e8e523a224983bb4a9f04be716, type: 2}
+  - {fileID: 0}
+  states:
+  - _name: AimDown
+    animationPath: Assets/Animations/DefaultAnims/R/AimDown.asset
+  - _name: AimUp
+    animationPath: Assets/Animations/DefaultAnims/R/AimUp.asset
+  - _name: Attack
+    animationPath: Assets/Animations/DefaultAnims/R/Attack.asset
+  - _name: Def
+    animationPath: Assets/Animations/DefaultAnims/R/Def.asset
+  - _name: DefReverse
+    animationPath: Assets/Animations/DefaultAnims/R/DefReverse.asset
+  - _name: DefStatic
+    animationPath: Assets/Animations/DefaultAnims/R/DefStatic.asset
+  - _name: Fire
+    animationPath: Assets/Animations/DefaultAnims/R/Fire.asset
+  - _name: FireDown
+    animationPath: Assets/Animations/DefaultAnims/R/FireDown.asset
+  - _name: FireUp
+    animationPath: Assets/Animations/DefaultAnims/R/FireUp.asset
+  - _name: FlyDown
+    animationPath: Assets/Animations/DefaultAnims/R/FlyDown.asset
+  - _name: FlyUp
+    animationPath: Assets/Animations/DefaultAnims/R/FlyUp.asset
+  - _name: GunIdle
+    animationPath: Assets/Animations/DefaultAnims/R/GunIdle.asset
+  - _name: Idle
+    animationPath: Assets/Animations/DefaultAnims/R/Idle.asset
+  - _name: Jump
+    animationPath: Assets/Animations/DefaultAnims/R/Jump.asset
+  - _name: Land
+    animationPath: Assets/Animations/DefaultAnims/R/Land.asset
+  - _name: Roll
+    animationPath: Assets/Animations/DefaultAnims/R/Roll.asset
+  - _name: Run
+    animationPath: Assets/Animations/DefaultAnims/R/Run.asset
+  - _name: AimDown
+    animationPath: Assets/Animations/DefaultAnims/L/AimDown.asset
+  - _name: AimUp
+    animationPath: Assets/Animations/DefaultAnims/L/AimUp.asset
+  - _name: Attack_L
+    animationPath: Assets/Animations/DefaultAnims/L/Attack.asset
+  - _name: Def_L
+    animationPath: Assets/Animations/DefaultAnims/L/Def.asset
+  - _name: DefReverse_L
+    animationPath: Assets/Animations/DefaultAnims/L/DefReverse.asset
+  - _name: DefStatic_L
+    animationPath: Assets/Animations/DefaultAnims/L/DefStatic.asset
+  - _name: Fire
+    animationPath: Assets/Animations/DefaultAnims/L/Fire.asset
+  - _name: FireDown
+    animationPath: Assets/Animations/DefaultAnims/L/FireDown.asset
+  - _name: FireUp
+    animationPath: Assets/Animations/DefaultAnims/L/FireUp.asset
+  - _name: FlyDown_L
+    animationPath: Assets/Animations/DefaultAnims/L/FlyDown.asset
+  - _name: FlyUp__L
+    animationPath: Assets/Animations/DefaultAnims/L/FlyUp.asset
+  - _name: GunIdle
+    animationPath: Assets/Animations/DefaultAnims/L/GunIdle.asset
+  - _name: Idle_L
+    animationPath: Assets/Animations/DefaultAnims/L/Idle.asset
+  - _name: Jump_L
+    animationPath: Assets/Animations/DefaultAnims/L/Jump.asset
+  - _name: Land_L
+    animationPath: Assets/Animations/DefaultAnims/L/Land.asset
+  - _name: Roll_L
+    animationPath: Assets/Animations/DefaultAnims/L/Roll.asset
+  - _name: Run_L
+    animationPath: Assets/Animations/DefaultAnims/L/Run.asset
+  - _name: AnyState
+    animationPath: 
   MotherAnimator: {fileID: 1750976652}
+  CurrentAnimName: 
   DefaultAnim: Idle
   AddNewAnim: 0
   AssignNewPosToEveryFrame: 0
@@ -1124,6 +1475,7 @@ MonoBehaviour:
   OverrideLayer: -6
   AlwaysOnTop: 0
   CurrentAnim:
+    _name: 
     animationPath: 
   SynchronizeWithMA: []
   SpritesInOT:
@@ -1200,12 +1552,11 @@ MonoBehaviour:
   - {fileID: -8405057982145905243, guid: 270c52ac17523df469f8bc3e796a675f, type: 3}
   - {fileID: 8154524439593933540, guid: 270c52ac17523df469f8bc3e796a675f, type: 3}
   - {fileID: 8353438843929381661, guid: 270c52ac17523df469f8bc3e796a675f, type: 3}
-  NewAnim:
+  schemeAsset: {fileID: 102900000, guid: 96fbe7db60e5d0d4d8e6604d4c65bf9f, type: 3}
+  newFrameEvent:
     m_PersistentCalls:
       m_Calls: []
-  newFrame:
-    m_PersistentCalls:
-      m_Calls: []
+  TOLOG: 0
 --- !u!114 &507509308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1219,6 +1570,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 2eab5c88-797f-4bd7-940e-c7a8e00dea34
+--- !u!1 &517494262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 517494263}
+  m_Layer: 0
+  m_Name: New Game Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &517494263
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517494262}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1527181781}
+  m_Father: {fileID: 0}
+  m_RootOrder: 30
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &550243902
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,6 +1702,200 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &558619363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 558619364}
+  - component: {fileID: 558619366}
+  - component: {fileID: 558619365}
+  m_Layer: 0
+  m_Name: steelgreaves_25
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &558619364
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558619363}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 987239150}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &558619365
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558619363}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 5512108270074666871, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 8, y: 8}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &558619366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558619363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4bbc3ed692967d41a87eceefddb1bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posDifference: {x: -0, y: -0}
+  PPU: 16
+--- !u!1 &570924535
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 570924536}
+  - component: {fileID: 570924538}
+  - component: {fileID: 570924537}
+  m_Layer: 0
+  m_Name: steelgreaves_25
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &570924536
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570924535}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 403922378}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &570924537
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570924535}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 5512108270074666871, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 8, y: 8}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &570924538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570924535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4bbc3ed692967d41a87eceefddb1bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posDifference: {x: -0, y: -0}
+  PPU: 16
 --- !u!1001 &579849819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1482,8 +2058,116 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  schemeAsset: {fileID: 102900000, guid: 96fbe7db60e5d0d4d8e6604d4c65bf9f, type: 3}
+  animatorPath: Assets/Animators/torso_head
+  animations:
+  - {fileID: 11400000, guid: e463db12b0562534bafb367dcfa540de, type: 2}
+  - {fileID: 11400000, guid: 5f317a2d5ffb0f14d9fbcf0b2de1a3df, type: 2}
+  - {fileID: 11400000, guid: e4247dacc48af274281a0b8379968be8, type: 2}
+  - {fileID: 11400000, guid: cd24c1733d6db194ea9a6d23cdf386be, type: 2}
+  - {fileID: 11400000, guid: 369a7f15acb402644a16319bf122b9d8, type: 2}
+  - {fileID: 11400000, guid: 8663e39de1d829a40a833824fa90b2e2, type: 2}
+  - {fileID: 11400000, guid: 13499ad3ac7ab5a4b99a1823956520ca, type: 2}
+  - {fileID: 11400000, guid: f3602c59447ff914dbfe21035531617f, type: 2}
+  - {fileID: 11400000, guid: 16392f9fa5361d842be494c7e01480f3, type: 2}
+  - {fileID: 11400000, guid: 64dfde97d640fa641811440263231959, type: 2}
+  - {fileID: 11400000, guid: f5072fd9942e8f743908b1873a1234f8, type: 2}
+  - {fileID: 11400000, guid: d6d72f642fb745c42822b54485b67948, type: 2}
+  - {fileID: 11400000, guid: 6f02e684793aebf48afdd14400daa7f8, type: 2}
+  - {fileID: 11400000, guid: aaaa1bc42a351b6419db703de0ec366e, type: 2}
+  - {fileID: 11400000, guid: 8262742a03a899d459af5817255342cf, type: 2}
+  - {fileID: 11400000, guid: aad625035f634bc40a051bf955293a50, type: 2}
+  - {fileID: 11400000, guid: 603841a006a6b2b45a7d95fcee4ba452, type: 2}
+  - {fileID: 11400000, guid: bd6705bd817914f4c82e78083562a58d, type: 2}
+  - {fileID: 11400000, guid: c7a5018eace8b334a866ea2d394b9f91, type: 2}
+  - {fileID: 11400000, guid: d347ed3e5cf2e7c40b8789d4434bf147, type: 2}
+  - {fileID: 11400000, guid: 265a30e5e9009c140ab26005446c050c, type: 2}
+  - {fileID: 11400000, guid: d50544f78a8d22245bf45b8d50e90f4d, type: 2}
+  - {fileID: 11400000, guid: 8a8e8fe6cb9dc974286ea675b9d379dd, type: 2}
+  - {fileID: 11400000, guid: 56618e530b93a9342a58d64d5f8631b1, type: 2}
+  - {fileID: 11400000, guid: c21659990b884f445ae86c93d6b3a4f6, type: 2}
+  - {fileID: 11400000, guid: 8dcf54d6073ee974eba31325d88d67b6, type: 2}
+  - {fileID: 11400000, guid: 0bda228a3fb6f964e96ccef844854b1e, type: 2}
+  - {fileID: 11400000, guid: 0181d995ea864c34a8b49f0be3f82a86, type: 2}
+  - {fileID: 11400000, guid: c0662f0507ee5ff4b948a326bcb46d9e, type: 2}
+  - {fileID: 11400000, guid: de26b3492dc69ba4ca32a3ee89d9af7b, type: 2}
+  - {fileID: 11400000, guid: ea33d04cc9841e44d990b8561d1ca477, type: 2}
+  - {fileID: 11400000, guid: 645aad23de4fff9479e2bd6cffd6ddbe, type: 2}
+  - {fileID: 11400000, guid: 3ecf1b6d05c22d7409bc74bf222f9c2f, type: 2}
+  - {fileID: 11400000, guid: acd708e8e523a224983bb4a9f04be716, type: 2}
+  - {fileID: 0}
+  states:
+  - _name: AimDown
+    animationPath: Assets/Animations/DefaultAnims/R/AimDown.asset
+  - _name: AimUp
+    animationPath: Assets/Animations/DefaultAnims/R/AimUp.asset
+  - _name: Attack
+    animationPath: Assets/Animations/DefaultAnims/R/Attack.asset
+  - _name: Def
+    animationPath: Assets/Animations/DefaultAnims/R/Def.asset
+  - _name: DefReverse
+    animationPath: Assets/Animations/DefaultAnims/R/DefReverse.asset
+  - _name: DefStatic
+    animationPath: Assets/Animations/DefaultAnims/R/DefStatic.asset
+  - _name: Fire
+    animationPath: Assets/Animations/DefaultAnims/R/Fire.asset
+  - _name: FireDown
+    animationPath: Assets/Animations/DefaultAnims/R/FireDown.asset
+  - _name: FireUp
+    animationPath: Assets/Animations/DefaultAnims/R/FireUp.asset
+  - _name: FlyDown
+    animationPath: Assets/Animations/DefaultAnims/R/FlyDown.asset
+  - _name: FlyUp
+    animationPath: Assets/Animations/DefaultAnims/R/FlyUp.asset
+  - _name: GunIdle
+    animationPath: Assets/Animations/DefaultAnims/R/GunIdle.asset
+  - _name: Idle
+    animationPath: Assets/Animations/DefaultAnims/R/Idle.asset
+  - _name: Jump
+    animationPath: Assets/Animations/DefaultAnims/R/Jump.asset
+  - _name: Land
+    animationPath: Assets/Animations/DefaultAnims/R/Land.asset
+  - _name: Roll
+    animationPath: Assets/Animations/DefaultAnims/R/Roll.asset
+  - _name: Run
+    animationPath: Assets/Animations/DefaultAnims/R/Run.asset
+  - _name: AimDown
+    animationPath: Assets/Animations/DefaultAnims/L/AimDown.asset
+  - _name: AimUp
+    animationPath: Assets/Animations/DefaultAnims/L/AimUp.asset
+  - _name: Attack_L
+    animationPath: Assets/Animations/DefaultAnims/L/Attack.asset
+  - _name: Def_L
+    animationPath: Assets/Animations/DefaultAnims/L/Def.asset
+  - _name: DefReverse_L
+    animationPath: Assets/Animations/DefaultAnims/L/DefReverse.asset
+  - _name: DefStatic_L
+    animationPath: Assets/Animations/DefaultAnims/L/DefStatic.asset
+  - _name: Fire
+    animationPath: Assets/Animations/DefaultAnims/L/Fire.asset
+  - _name: FireDown
+    animationPath: Assets/Animations/DefaultAnims/L/FireDown.asset
+  - _name: FireUp
+    animationPath: Assets/Animations/DefaultAnims/L/FireUp.asset
+  - _name: FlyDown_L
+    animationPath: Assets/Animations/DefaultAnims/L/FlyDown.asset
+  - _name: FlyUp__L
+    animationPath: Assets/Animations/DefaultAnims/L/FlyUp.asset
+  - _name: GunIdle
+    animationPath: Assets/Animations/DefaultAnims/L/GunIdle.asset
+  - _name: Idle_L
+    animationPath: Assets/Animations/DefaultAnims/L/Idle.asset
+  - _name: Jump_L
+    animationPath: Assets/Animations/DefaultAnims/L/Jump.asset
+  - _name: Land_L
+    animationPath: Assets/Animations/DefaultAnims/L/Land.asset
+  - _name: Roll_L
+    animationPath: Assets/Animations/DefaultAnims/L/Roll.asset
+  - _name: Run_L
+    animationPath: Assets/Animations/DefaultAnims/L/Run.asset
+  - _name: AnyState
+    animationPath: 
   MotherAnimator: {fileID: 1750976652}
+  CurrentAnimName: 
   DefaultAnim: Idle
   AddNewAnim: 0
   AssignNewPosToEveryFrame: 0
@@ -1491,6 +2175,7 @@ MonoBehaviour:
   OverrideLayer: -5
   AlwaysOnTop: 0
   CurrentAnim:
+    _name: 
     animationPath: 
   SynchronizeWithMA: []
   SpritesInOT:
@@ -1591,12 +2276,11 @@ MonoBehaviour:
   - {fileID: 73913311587030523, guid: 2c31d9cc2f55f2d498e5e18e8139e855, type: 3}
   - {fileID: -6059518113806154091, guid: 2c31d9cc2f55f2d498e5e18e8139e855, type: 3}
   - {fileID: -2568875945692302132, guid: 2c31d9cc2f55f2d498e5e18e8139e855, type: 3}
-  NewAnim:
+  schemeAsset: {fileID: 102900000, guid: 96fbe7db60e5d0d4d8e6604d4c65bf9f, type: 3}
+  newFrameEvent:
     m_PersistentCalls:
       m_Calls: []
-  newFrame:
-    m_PersistentCalls:
-      m_Calls: []
+  TOLOG: 0
 --- !u!114 &595071427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62134,8 +62818,116 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  schemeAsset: {fileID: 102900000, guid: 96fbe7db60e5d0d4d8e6604d4c65bf9f, type: 3}
+  animatorPath: Assets/Animators/torso_head
+  animations:
+  - {fileID: 11400000, guid: e463db12b0562534bafb367dcfa540de, type: 2}
+  - {fileID: 11400000, guid: 5f317a2d5ffb0f14d9fbcf0b2de1a3df, type: 2}
+  - {fileID: 11400000, guid: e4247dacc48af274281a0b8379968be8, type: 2}
+  - {fileID: 11400000, guid: cd24c1733d6db194ea9a6d23cdf386be, type: 2}
+  - {fileID: 11400000, guid: 369a7f15acb402644a16319bf122b9d8, type: 2}
+  - {fileID: 11400000, guid: 8663e39de1d829a40a833824fa90b2e2, type: 2}
+  - {fileID: 11400000, guid: 13499ad3ac7ab5a4b99a1823956520ca, type: 2}
+  - {fileID: 11400000, guid: f3602c59447ff914dbfe21035531617f, type: 2}
+  - {fileID: 11400000, guid: 16392f9fa5361d842be494c7e01480f3, type: 2}
+  - {fileID: 11400000, guid: 64dfde97d640fa641811440263231959, type: 2}
+  - {fileID: 11400000, guid: f5072fd9942e8f743908b1873a1234f8, type: 2}
+  - {fileID: 11400000, guid: d6d72f642fb745c42822b54485b67948, type: 2}
+  - {fileID: 11400000, guid: 6f02e684793aebf48afdd14400daa7f8, type: 2}
+  - {fileID: 11400000, guid: aaaa1bc42a351b6419db703de0ec366e, type: 2}
+  - {fileID: 11400000, guid: 8262742a03a899d459af5817255342cf, type: 2}
+  - {fileID: 11400000, guid: aad625035f634bc40a051bf955293a50, type: 2}
+  - {fileID: 11400000, guid: 603841a006a6b2b45a7d95fcee4ba452, type: 2}
+  - {fileID: 11400000, guid: bd6705bd817914f4c82e78083562a58d, type: 2}
+  - {fileID: 11400000, guid: c7a5018eace8b334a866ea2d394b9f91, type: 2}
+  - {fileID: 11400000, guid: d347ed3e5cf2e7c40b8789d4434bf147, type: 2}
+  - {fileID: 11400000, guid: 265a30e5e9009c140ab26005446c050c, type: 2}
+  - {fileID: 11400000, guid: d50544f78a8d22245bf45b8d50e90f4d, type: 2}
+  - {fileID: 11400000, guid: 8a8e8fe6cb9dc974286ea675b9d379dd, type: 2}
+  - {fileID: 11400000, guid: 56618e530b93a9342a58d64d5f8631b1, type: 2}
+  - {fileID: 11400000, guid: c21659990b884f445ae86c93d6b3a4f6, type: 2}
+  - {fileID: 11400000, guid: 8dcf54d6073ee974eba31325d88d67b6, type: 2}
+  - {fileID: 11400000, guid: 0bda228a3fb6f964e96ccef844854b1e, type: 2}
+  - {fileID: 11400000, guid: 0181d995ea864c34a8b49f0be3f82a86, type: 2}
+  - {fileID: 11400000, guid: c0662f0507ee5ff4b948a326bcb46d9e, type: 2}
+  - {fileID: 11400000, guid: de26b3492dc69ba4ca32a3ee89d9af7b, type: 2}
+  - {fileID: 11400000, guid: ea33d04cc9841e44d990b8561d1ca477, type: 2}
+  - {fileID: 11400000, guid: 645aad23de4fff9479e2bd6cffd6ddbe, type: 2}
+  - {fileID: 11400000, guid: 3ecf1b6d05c22d7409bc74bf222f9c2f, type: 2}
+  - {fileID: 11400000, guid: acd708e8e523a224983bb4a9f04be716, type: 2}
+  - {fileID: 0}
+  states:
+  - _name: AimDown
+    animationPath: Assets/Animations/DefaultAnims/R/AimDown.asset
+  - _name: AimUp
+    animationPath: Assets/Animations/DefaultAnims/R/AimUp.asset
+  - _name: Attack
+    animationPath: Assets/Animations/DefaultAnims/R/Attack.asset
+  - _name: Def
+    animationPath: Assets/Animations/DefaultAnims/R/Def.asset
+  - _name: DefReverse
+    animationPath: Assets/Animations/DefaultAnims/R/DefReverse.asset
+  - _name: DefStatic
+    animationPath: Assets/Animations/DefaultAnims/R/DefStatic.asset
+  - _name: Fire
+    animationPath: Assets/Animations/DefaultAnims/R/Fire.asset
+  - _name: FireDown
+    animationPath: Assets/Animations/DefaultAnims/R/FireDown.asset
+  - _name: FireUp
+    animationPath: Assets/Animations/DefaultAnims/R/FireUp.asset
+  - _name: FlyDown
+    animationPath: Assets/Animations/DefaultAnims/R/FlyDown.asset
+  - _name: FlyUp
+    animationPath: Assets/Animations/DefaultAnims/R/FlyUp.asset
+  - _name: GunIdle
+    animationPath: Assets/Animations/DefaultAnims/R/GunIdle.asset
+  - _name: Idle
+    animationPath: Assets/Animations/DefaultAnims/R/Idle.asset
+  - _name: Jump
+    animationPath: Assets/Animations/DefaultAnims/R/Jump.asset
+  - _name: Land
+    animationPath: Assets/Animations/DefaultAnims/R/Land.asset
+  - _name: Roll
+    animationPath: Assets/Animations/DefaultAnims/R/Roll.asset
+  - _name: Run
+    animationPath: Assets/Animations/DefaultAnims/R/Run.asset
+  - _name: AimDown
+    animationPath: Assets/Animations/DefaultAnims/L/AimDown.asset
+  - _name: AimUp
+    animationPath: Assets/Animations/DefaultAnims/L/AimUp.asset
+  - _name: Attack_L
+    animationPath: Assets/Animations/DefaultAnims/L/Attack.asset
+  - _name: Def_L
+    animationPath: Assets/Animations/DefaultAnims/L/Def.asset
+  - _name: DefReverse_L
+    animationPath: Assets/Animations/DefaultAnims/L/DefReverse.asset
+  - _name: DefStatic_L
+    animationPath: Assets/Animations/DefaultAnims/L/DefStatic.asset
+  - _name: Fire
+    animationPath: Assets/Animations/DefaultAnims/L/Fire.asset
+  - _name: FireDown
+    animationPath: Assets/Animations/DefaultAnims/L/FireDown.asset
+  - _name: FireUp
+    animationPath: Assets/Animations/DefaultAnims/L/FireUp.asset
+  - _name: FlyDown_L
+    animationPath: Assets/Animations/DefaultAnims/L/FlyDown.asset
+  - _name: FlyUp__L
+    animationPath: Assets/Animations/DefaultAnims/L/FlyUp.asset
+  - _name: GunIdle
+    animationPath: Assets/Animations/DefaultAnims/L/GunIdle.asset
+  - _name: Idle_L
+    animationPath: Assets/Animations/DefaultAnims/L/Idle.asset
+  - _name: Jump_L
+    animationPath: Assets/Animations/DefaultAnims/L/Jump.asset
+  - _name: Land_L
+    animationPath: Assets/Animations/DefaultAnims/L/Land.asset
+  - _name: Roll_L
+    animationPath: Assets/Animations/DefaultAnims/L/Roll.asset
+  - _name: Run_L
+    animationPath: Assets/Animations/DefaultAnims/L/Run.asset
+  - _name: AnyState
+    animationPath: 
   MotherAnimator: {fileID: 1420165597}
+  CurrentAnimName: 
   DefaultAnim: Idle
   AddNewAnim: 0
   AssignNewPosToEveryFrame: 0
@@ -62143,6 +62935,7 @@ MonoBehaviour:
   OverrideLayer: 0
   AlwaysOnTop: 0
   CurrentAnim:
+    _name: 
     animationPath: 
   SynchronizeWithMA: []
   SpritesInOT:
@@ -62219,12 +63012,11 @@ MonoBehaviour:
   - {fileID: -5944496620625242211, guid: 9c2f912e9f3b9fb4d8c01de8d3eae64e, type: 3}
   - {fileID: 2808436629347221554, guid: 9c2f912e9f3b9fb4d8c01de8d3eae64e, type: 3}
   - {fileID: 1156293426712423606, guid: 9c2f912e9f3b9fb4d8c01de8d3eae64e, type: 3}
-  NewAnim:
+  schemeAsset: {fileID: 102900000, guid: 96fbe7db60e5d0d4d8e6604d4c65bf9f, type: 3}
+  newFrameEvent:
     m_PersistentCalls:
       m_Calls: []
-  newFrame:
-    m_PersistentCalls:
-      m_Calls: []
+  TOLOG: 0
 --- !u!212 &701834699
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -62688,6 +63480,103 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posDifference: {x: -0, y: 0}
   PPU: 16
+--- !u!1 &855105859
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 855105860}
+  - component: {fileID: 855105862}
+  - component: {fileID: 855105861}
+  m_Layer: 0
+  m_Name: New Game Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &855105860
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855105859}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1705808693}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &855105861
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855105859}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &855105862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855105859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4bbc3ed692967d41a87eceefddb1bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posDifference: {x: -0, y: -0}
+  PPU: 16
 --- !u!1 &881871181
 GameObject:
   m_ObjectHideFlags: 0
@@ -62719,8 +63608,128 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  schemeAsset: {fileID: 102900000, guid: 5ffb2b0f5109cdb4c94ee1bf743eb98c, type: 3}
-  MotherAnimator: {fileID: 1750976652}
+  animatorPath: Assets/Animators/arms
+  animations:
+  - {fileID: 11400000, guid: e463db12b0562534bafb367dcfa540de, type: 2}
+  - {fileID: 11400000, guid: 5f317a2d5ffb0f14d9fbcf0b2de1a3df, type: 2}
+  - {fileID: 11400000, guid: e4247dacc48af274281a0b8379968be8, type: 2}
+  - {fileID: 11400000, guid: 74c804ad945a2b944a9d63b9cc35ae8c, type: 2}
+  - {fileID: 11400000, guid: a1032796e07db524ea9db1f2983e0668, type: 2}
+  - {fileID: 11400000, guid: cd24c1733d6db194ea9a6d23cdf386be, type: 2}
+  - {fileID: 11400000, guid: 369a7f15acb402644a16319bf122b9d8, type: 2}
+  - {fileID: 11400000, guid: 8663e39de1d829a40a833824fa90b2e2, type: 2}
+  - {fileID: 11400000, guid: 13499ad3ac7ab5a4b99a1823956520ca, type: 2}
+  - {fileID: 11400000, guid: f3602c59447ff914dbfe21035531617f, type: 2}
+  - {fileID: 11400000, guid: 16392f9fa5361d842be494c7e01480f3, type: 2}
+  - {fileID: 11400000, guid: 64dfde97d640fa641811440263231959, type: 2}
+  - {fileID: 11400000, guid: f5072fd9942e8f743908b1873a1234f8, type: 2}
+  - {fileID: 11400000, guid: d6d72f642fb745c42822b54485b67948, type: 2}
+  - {fileID: 11400000, guid: 6f02e684793aebf48afdd14400daa7f8, type: 2}
+  - {fileID: 11400000, guid: aaaa1bc42a351b6419db703de0ec366e, type: 2}
+  - {fileID: 11400000, guid: 8262742a03a899d459af5817255342cf, type: 2}
+  - {fileID: 11400000, guid: aad625035f634bc40a051bf955293a50, type: 2}
+  - {fileID: 11400000, guid: 603841a006a6b2b45a7d95fcee4ba452, type: 2}
+  - {fileID: 11400000, guid: bd6705bd817914f4c82e78083562a58d, type: 2}
+  - {fileID: 11400000, guid: c7a5018eace8b334a866ea2d394b9f91, type: 2}
+  - {fileID: 11400000, guid: d347ed3e5cf2e7c40b8789d4434bf147, type: 2}
+  - {fileID: 11400000, guid: ed8080dd4c7404a4e8faccbc754ebb6e, type: 2}
+  - {fileID: 11400000, guid: dd7381fcaa933214fb59e34bdc9024a2, type: 2}
+  - {fileID: 11400000, guid: 265a30e5e9009c140ab26005446c050c, type: 2}
+  - {fileID: 11400000, guid: d50544f78a8d22245bf45b8d50e90f4d, type: 2}
+  - {fileID: 11400000, guid: 8a8e8fe6cb9dc974286ea675b9d379dd, type: 2}
+  - {fileID: 11400000, guid: 56618e530b93a9342a58d64d5f8631b1, type: 2}
+  - {fileID: 11400000, guid: c21659990b884f445ae86c93d6b3a4f6, type: 2}
+  - {fileID: 11400000, guid: 8dcf54d6073ee974eba31325d88d67b6, type: 2}
+  - {fileID: 11400000, guid: 0bda228a3fb6f964e96ccef844854b1e, type: 2}
+  - {fileID: 11400000, guid: 0181d995ea864c34a8b49f0be3f82a86, type: 2}
+  - {fileID: 11400000, guid: c0662f0507ee5ff4b948a326bcb46d9e, type: 2}
+  - {fileID: 11400000, guid: de26b3492dc69ba4ca32a3ee89d9af7b, type: 2}
+  - {fileID: 11400000, guid: ea33d04cc9841e44d990b8561d1ca477, type: 2}
+  - {fileID: 11400000, guid: 645aad23de4fff9479e2bd6cffd6ddbe, type: 2}
+  - {fileID: 11400000, guid: 3ecf1b6d05c22d7409bc74bf222f9c2f, type: 2}
+  - {fileID: 11400000, guid: acd708e8e523a224983bb4a9f04be716, type: 2}
+  - {fileID: 0}
+  states:
+  - _name: AimDown
+    animationPath: Assets/Animations/DefaultAnims/R/AimDown.asset
+  - _name: AimUp
+    animationPath: Assets/Animations/DefaultAnims/R/AimUp.asset
+  - _name: Attack
+    animationPath: Assets/Animations/DefaultAnims/R/Attack.asset
+  - _name: Attack2
+    animationPath: Assets/Animations/DefaultAnims/R/Attack2.asset
+  - _name: Attack3
+    animationPath: Assets/Animations/DefaultAnims/R/Attack3.asset
+  - _name: Def
+    animationPath: Assets/Animations/DefaultAnims/R/Def.asset
+  - _name: DefReverse
+    animationPath: Assets/Animations/DefaultAnims/R/DefReverse.asset
+  - _name: DefStatic
+    animationPath: Assets/Animations/DefaultAnims/R/DefStatic.asset
+  - _name: Fire
+    animationPath: Assets/Animations/DefaultAnims/R/Fire.asset
+  - _name: FireDown
+    animationPath: Assets/Animations/DefaultAnims/R/FireDown.asset
+  - _name: FireUp
+    animationPath: Assets/Animations/DefaultAnims/R/FireUp.asset
+  - _name: FlyDown
+    animationPath: Assets/Animations/DefaultAnims/R/FlyDown.asset
+  - _name: FlyUp
+    animationPath: Assets/Animations/DefaultAnims/R/FlyUp.asset
+  - _name: GunIdle
+    animationPath: Assets/Animations/DefaultAnims/R/GunIdle.asset
+  - _name: Idle
+    animationPath: Assets/Animations/DefaultAnims/R/Idle.asset
+  - _name: Jump
+    animationPath: Assets/Animations/DefaultAnims/R/Jump.asset
+  - _name: Land
+    animationPath: Assets/Animations/DefaultAnims/R/Land.asset
+  - _name: Roll
+    animationPath: Assets/Animations/DefaultAnims/R/Roll.asset
+  - _name: Run
+    animationPath: Assets/Animations/DefaultAnims/R/Run.asset
+  - _name: AimDown
+    animationPath: Assets/Animations/DefaultAnims/L/AimDown.asset
+  - _name: AimUp
+    animationPath: Assets/Animations/DefaultAnims/L/AimUp.asset
+  - _name: Attack
+    animationPath: Assets/Animations/DefaultAnims/L/Attack.asset
+  - _name: Attack2
+    animationPath: Assets/Animations/DefaultAnims/L/Attack2.asset
+  - _name: Attack3
+    animationPath: Assets/Animations/DefaultAnims/L/Attack3.asset
+  - _name: Def
+    animationPath: Assets/Animations/DefaultAnims/L/Def.asset
+  - _name: DefReverse
+    animationPath: Assets/Animations/DefaultAnims/L/DefReverse.asset
+  - _name: DefStatic
+    animationPath: Assets/Animations/DefaultAnims/L/DefStatic.asset
+  - _name: Fire
+    animationPath: Assets/Animations/DefaultAnims/L/Fire.asset
+  - _name: FireDown
+    animationPath: Assets/Animations/DefaultAnims/L/FireDown.asset
+  - _name: FireUp
+    animationPath: Assets/Animations/DefaultAnims/L/FireUp.asset
+  - _name: FlyDown
+    animationPath: Assets/Animations/DefaultAnims/L/FlyDown.asset
+  - _name: FlyUp
+    animationPath: Assets/Animations/DefaultAnims/L/FlyUp.asset
+  - _name: GunIdle
+    animationPath: Assets/Animations/DefaultAnims/L/GunIdle.asset
+  - _name: Idle
+    animationPath: Assets/Animations/DefaultAnims/L/Idle.asset
+  - _name: Jump
+    animationPath: Assets/Animations/DefaultAnims/L/Jump.asset
+  - _name: Land
+    animationPath: Assets/Animations/DefaultAnims/L/Land.asset
+  - _name: Roll
+    animationPath: Assets/Animations/DefaultAnims/L/Roll.asset
+  - _name: Run
+    animationPath: Assets/Animations/DefaultAnims/L/Run.asset
+  - _name: AnyState
+    animationPath: 
+  MotherAnimator: {fileID: 0}
+  CurrentAnimName: 
   DefaultAnim: Idle
   AddNewAnim: 0
   AssignNewPosToEveryFrame: 0
@@ -62728,6 +63737,7 @@ MonoBehaviour:
   OverrideLayer: 5
   AlwaysOnTop: 0
   CurrentAnim:
+    _name: 
     animationPath: 
   SynchronizeWithMA: []
   SpritesInOT:
@@ -62828,12 +63838,11 @@ MonoBehaviour:
   - {fileID: 1464330190478156222, guid: f65876a2ae616e04bbdea20c88039af0, type: 3}
   - {fileID: 2063022065646726880, guid: f65876a2ae616e04bbdea20c88039af0, type: 3}
   - {fileID: -5398444646086109725, guid: f65876a2ae616e04bbdea20c88039af0, type: 3}
-  NewAnim:
+  schemeAsset: {fileID: 102900000, guid: 5ffb2b0f5109cdb4c94ee1bf743eb98c, type: 3}
+  newFrameEvent:
     m_PersistentCalls:
       m_Calls: []
-  newFrame:
-    m_PersistentCalls:
-      m_Calls: []
+  TOLOG: 0
 --- !u!212 &881871183
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -62912,6 +63921,68 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 63eb7218-3dbd-44db-a49c-2cf617951b97
+--- !u!1 &987239149
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 987239150}
+  m_Layer: 0
+  m_Name: New Game Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &987239150
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987239149}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 558619364}
+  m_Father: {fileID: 0}
+  m_RootOrder: 35
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1002147067
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1002147068}
+  m_Layer: 0
+  m_Name: New Game Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1002147068
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002147067}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1994244771}
+  m_Father: {fileID: 0}
+  m_RootOrder: 32
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1006201780
 GameObject:
   m_ObjectHideFlags: 0
@@ -63163,8 +64234,128 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  schemeAsset: {fileID: 102900000, guid: 87ac7ab1968118f4a80eeff2bfb5c7b0, type: 3}
-  MotherAnimator: {fileID: 1750976652}
+  animatorPath: Assets/Animators/default
+  animations:
+  - {fileID: 11400000, guid: e463db12b0562534bafb367dcfa540de, type: 2}
+  - {fileID: 11400000, guid: 5f317a2d5ffb0f14d9fbcf0b2de1a3df, type: 2}
+  - {fileID: 11400000, guid: e4247dacc48af274281a0b8379968be8, type: 2}
+  - {fileID: 11400000, guid: e4247dacc48af274281a0b8379968be8, type: 2}
+  - {fileID: 11400000, guid: e4247dacc48af274281a0b8379968be8, type: 2}
+  - {fileID: 11400000, guid: cd24c1733d6db194ea9a6d23cdf386be, type: 2}
+  - {fileID: 11400000, guid: 369a7f15acb402644a16319bf122b9d8, type: 2}
+  - {fileID: 11400000, guid: 8663e39de1d829a40a833824fa90b2e2, type: 2}
+  - {fileID: 11400000, guid: 13499ad3ac7ab5a4b99a1823956520ca, type: 2}
+  - {fileID: 11400000, guid: f3602c59447ff914dbfe21035531617f, type: 2}
+  - {fileID: 11400000, guid: 16392f9fa5361d842be494c7e01480f3, type: 2}
+  - {fileID: 11400000, guid: 64dfde97d640fa641811440263231959, type: 2}
+  - {fileID: 11400000, guid: f5072fd9942e8f743908b1873a1234f8, type: 2}
+  - {fileID: 11400000, guid: d6d72f642fb745c42822b54485b67948, type: 2}
+  - {fileID: 11400000, guid: 6f02e684793aebf48afdd14400daa7f8, type: 2}
+  - {fileID: 11400000, guid: aaaa1bc42a351b6419db703de0ec366e, type: 2}
+  - {fileID: 11400000, guid: 8262742a03a899d459af5817255342cf, type: 2}
+  - {fileID: 11400000, guid: aad625035f634bc40a051bf955293a50, type: 2}
+  - {fileID: 11400000, guid: 603841a006a6b2b45a7d95fcee4ba452, type: 2}
+  - {fileID: 11400000, guid: bd6705bd817914f4c82e78083562a58d, type: 2}
+  - {fileID: 11400000, guid: c7a5018eace8b334a866ea2d394b9f91, type: 2}
+  - {fileID: 11400000, guid: d347ed3e5cf2e7c40b8789d4434bf147, type: 2}
+  - {fileID: 11400000, guid: d347ed3e5cf2e7c40b8789d4434bf147, type: 2}
+  - {fileID: 11400000, guid: d347ed3e5cf2e7c40b8789d4434bf147, type: 2}
+  - {fileID: 11400000, guid: 265a30e5e9009c140ab26005446c050c, type: 2}
+  - {fileID: 11400000, guid: d50544f78a8d22245bf45b8d50e90f4d, type: 2}
+  - {fileID: 11400000, guid: 8a8e8fe6cb9dc974286ea675b9d379dd, type: 2}
+  - {fileID: 11400000, guid: 56618e530b93a9342a58d64d5f8631b1, type: 2}
+  - {fileID: 11400000, guid: c21659990b884f445ae86c93d6b3a4f6, type: 2}
+  - {fileID: 11400000, guid: 8dcf54d6073ee974eba31325d88d67b6, type: 2}
+  - {fileID: 11400000, guid: 0bda228a3fb6f964e96ccef844854b1e, type: 2}
+  - {fileID: 11400000, guid: 0181d995ea864c34a8b49f0be3f82a86, type: 2}
+  - {fileID: 11400000, guid: c0662f0507ee5ff4b948a326bcb46d9e, type: 2}
+  - {fileID: 11400000, guid: de26b3492dc69ba4ca32a3ee89d9af7b, type: 2}
+  - {fileID: 11400000, guid: ea33d04cc9841e44d990b8561d1ca477, type: 2}
+  - {fileID: 11400000, guid: 645aad23de4fff9479e2bd6cffd6ddbe, type: 2}
+  - {fileID: 11400000, guid: 3ecf1b6d05c22d7409bc74bf222f9c2f, type: 2}
+  - {fileID: 11400000, guid: acd708e8e523a224983bb4a9f04be716, type: 2}
+  - {fileID: 0}
+  states:
+  - _name: AimDown
+    animationPath: Assets/Animations/DefaultAnims/R/AimDown.asset
+  - _name: AimUp
+    animationPath: Assets/Animations/DefaultAnims/R/AimUp.asset
+  - _name: Attack
+    animationPath: Assets/Animations/DefaultAnims/R/Attack.asset
+  - _name: Attack
+    animationPath: Assets/Animations/DefaultAnims/R/Attack.asset
+  - _name: Attack
+    animationPath: Assets/Animations/DefaultAnims/R/Attack.asset
+  - _name: Def
+    animationPath: Assets/Animations/DefaultAnims/R/Def.asset
+  - _name: DefReverse
+    animationPath: Assets/Animations/DefaultAnims/R/DefReverse.asset
+  - _name: DefStatic
+    animationPath: Assets/Animations/DefaultAnims/R/DefStatic.asset
+  - _name: Fire
+    animationPath: Assets/Animations/DefaultAnims/R/Fire.asset
+  - _name: FireDown
+    animationPath: Assets/Animations/DefaultAnims/R/FireDown.asset
+  - _name: FireUp
+    animationPath: Assets/Animations/DefaultAnims/R/FireUp.asset
+  - _name: FlyDown
+    animationPath: Assets/Animations/DefaultAnims/R/FlyDown.asset
+  - _name: FlyUp
+    animationPath: Assets/Animations/DefaultAnims/R/FlyUp.asset
+  - _name: GunIdle
+    animationPath: Assets/Animations/DefaultAnims/R/GunIdle.asset
+  - _name: Idle
+    animationPath: Assets/Animations/DefaultAnims/R/Idle.asset
+  - _name: Jump
+    animationPath: Assets/Animations/DefaultAnims/R/Jump.asset
+  - _name: Land
+    animationPath: Assets/Animations/DefaultAnims/R/Land.asset
+  - _name: Roll
+    animationPath: Assets/Animations/DefaultAnims/R/Roll.asset
+  - _name: Run
+    animationPath: Assets/Animations/DefaultAnims/R/Run.asset
+  - _name: AimDown
+    animationPath: Assets/Animations/DefaultAnims/L/AimDown.asset
+  - _name: AimUp
+    animationPath: Assets/Animations/DefaultAnims/L/AimUp.asset
+  - _name: Attack_L
+    animationPath: Assets/Animations/DefaultAnims/L/Attack.asset
+  - _name: Attack_L
+    animationPath: Assets/Animations/DefaultAnims/L/Attack.asset
+  - _name: Attack_L
+    animationPath: Assets/Animations/DefaultAnims/L/Attack.asset
+  - _name: Def_L
+    animationPath: Assets/Animations/DefaultAnims/L/Def.asset
+  - _name: DefReverse_L
+    animationPath: Assets/Animations/DefaultAnims/L/DefReverse.asset
+  - _name: DefStatic_L
+    animationPath: Assets/Animations/DefaultAnims/L/DefStatic.asset
+  - _name: Fire
+    animationPath: Assets/Animations/DefaultAnims/L/Fire.asset
+  - _name: FireDown
+    animationPath: Assets/Animations/DefaultAnims/L/FireDown.asset
+  - _name: FireUp
+    animationPath: Assets/Animations/DefaultAnims/L/FireUp.asset
+  - _name: FlyDown_L
+    animationPath: Assets/Animations/DefaultAnims/L/FlyDown.asset
+  - _name: FlyUp_L
+    animationPath: Assets/Animations/DefaultAnims/L/FlyUp.asset
+  - _name: GunIdle
+    animationPath: Assets/Animations/DefaultAnims/L/GunIdle.asset
+  - _name: Idle_L
+    animationPath: Assets/Animations/DefaultAnims/L/Idle.asset
+  - _name: Jump_L
+    animationPath: Assets/Animations/DefaultAnims/L/Jump.asset
+  - _name: Land_L
+    animationPath: Assets/Animations/DefaultAnims/L/Land.asset
+  - _name: Roll_L
+    animationPath: Assets/Animations/DefaultAnims/L/Roll.asset
+  - _name: Run_L
+    animationPath: Assets/Animations/DefaultAnims/L/Run.asset
+  - _name: AnyState
+    animationPath: 
+  MotherAnimator: {fileID: 0}
+  CurrentAnimName: 
   DefaultAnim: Idle
   AddNewAnim: 0
   AssignNewPosToEveryFrame: 0
@@ -63172,6 +64363,7 @@ MonoBehaviour:
   OverrideLayer: 0
   AlwaysOnTop: 0
   CurrentAnim:
+    _name: 
     animationPath: 
   SynchronizeWithMA: []
   SpritesInOT:
@@ -63200,12 +64392,11 @@ MonoBehaviour:
   - {fileID: 4177102681807366532, guid: 110ce67d3de17ac45a3e881cb130c3a9, type: 3}
   - {fileID: -4765635864389478044, guid: 110ce67d3de17ac45a3e881cb130c3a9, type: 3}
   - {fileID: -2388961416109931114, guid: 110ce67d3de17ac45a3e881cb130c3a9, type: 3}
-  NewAnim:
+  schemeAsset: {fileID: 102900000, guid: 87ac7ab1968118f4a80eeff2bfb5c7b0, type: 3}
+  newFrameEvent:
     m_PersistentCalls:
       m_Calls: []
-  newFrame:
-    m_PersistentCalls:
-      m_Calls: []
+  TOLOG: 0
 --- !u!61 &1016380762
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -63245,6 +64436,103 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 381cd43e-0416-476d-9cd9-e09f866f4261
+--- !u!1 &1023881858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1023881859}
+  - component: {fileID: 1023881861}
+  - component: {fileID: 1023881860}
+  m_Layer: 0
+  m_Name: Blank
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1023881859
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023881858}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1341059430}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1023881860
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023881858}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 73a7c562a4fa2654084574e52782a66c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.01, y: 0.01}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &1023881861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023881858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4bbc3ed692967d41a87eceefddb1bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posDifference: {x: -0, y: -0}
+  PPU: 100
 --- !u!1001 &1066124978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63311,6 +64599,200 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7016695251876039015, guid: 0b65f185b6e5e5e4eafbdb9ff464bc71, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0b65f185b6e5e5e4eafbdb9ff464bc71, type: 3}
+--- !u!1 &1107443853
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1107443854}
+  - component: {fileID: 1107443856}
+  - component: {fileID: 1107443855}
+  m_Layer: 0
+  m_Name: steelgreaves_25
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1107443854
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107443853}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 130930265}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1107443855
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107443853}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 5512108270074666871, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 8, y: 8}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &1107443856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107443853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4bbc3ed692967d41a87eceefddb1bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posDifference: {x: -0, y: -0}
+  PPU: 16
+--- !u!1 &1137185111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1137185112}
+  - component: {fileID: 1137185114}
+  - component: {fileID: 1137185113}
+  m_Layer: 0
+  m_Name: New Game Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1137185112
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137185111}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1491953508}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1137185113
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137185111}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &1137185114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137185111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4bbc3ed692967d41a87eceefddb1bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posDifference: {x: -0, y: -0}
+  PPU: 16
 --- !u!1 &1200699561
 GameObject:
   m_ObjectHideFlags: 0
@@ -63484,8 +64966,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  schemeAsset: {fileID: 0}
+  animatorPath: 
+  animations: []
+  states: []
   MotherAnimator: {fileID: 1750976652}
+  CurrentAnimName: 
   DefaultAnim: Idle
   AddNewAnim: 0
   AssignNewPosToEveryFrame: 0
@@ -63493,6 +64978,7 @@ MonoBehaviour:
   OverrideLayer: 0
   AlwaysOnTop: 0
   CurrentAnim:
+    _name: 
     animationPath: 
   SynchronizeWithMA:
   - Run
@@ -63500,12 +64986,11 @@ MonoBehaviour:
   SpritesInOT:
   - {fileID: 6069163746061206852, guid: 8677994568b03074eb80f65757081930, type: 3}
   SpritesInOTSecondSide: []
-  NewAnim:
+  schemeAsset: {fileID: 0}
+  newFrameEvent:
     m_PersistentCalls:
       m_Calls: []
-  newFrame:
-    m_PersistentCalls:
-      m_Calls: []
+  TOLOG: 0
 --- !u!114 &1285592404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63726,8 +65211,128 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  schemeAsset: {fileID: 102900000, guid: 5ffb2b0f5109cdb4c94ee1bf743eb98c, type: 3}
-  MotherAnimator: {fileID: 1750976652}
+  animatorPath: Assets/Animators/arms
+  animations:
+  - {fileID: 11400000, guid: e463db12b0562534bafb367dcfa540de, type: 2}
+  - {fileID: 11400000, guid: 5f317a2d5ffb0f14d9fbcf0b2de1a3df, type: 2}
+  - {fileID: 11400000, guid: e4247dacc48af274281a0b8379968be8, type: 2}
+  - {fileID: 11400000, guid: 74c804ad945a2b944a9d63b9cc35ae8c, type: 2}
+  - {fileID: 11400000, guid: a1032796e07db524ea9db1f2983e0668, type: 2}
+  - {fileID: 11400000, guid: cd24c1733d6db194ea9a6d23cdf386be, type: 2}
+  - {fileID: 11400000, guid: 369a7f15acb402644a16319bf122b9d8, type: 2}
+  - {fileID: 11400000, guid: 8663e39de1d829a40a833824fa90b2e2, type: 2}
+  - {fileID: 11400000, guid: 13499ad3ac7ab5a4b99a1823956520ca, type: 2}
+  - {fileID: 11400000, guid: f3602c59447ff914dbfe21035531617f, type: 2}
+  - {fileID: 11400000, guid: 16392f9fa5361d842be494c7e01480f3, type: 2}
+  - {fileID: 11400000, guid: 64dfde97d640fa641811440263231959, type: 2}
+  - {fileID: 11400000, guid: f5072fd9942e8f743908b1873a1234f8, type: 2}
+  - {fileID: 11400000, guid: d6d72f642fb745c42822b54485b67948, type: 2}
+  - {fileID: 11400000, guid: 6f02e684793aebf48afdd14400daa7f8, type: 2}
+  - {fileID: 11400000, guid: aaaa1bc42a351b6419db703de0ec366e, type: 2}
+  - {fileID: 11400000, guid: 8262742a03a899d459af5817255342cf, type: 2}
+  - {fileID: 11400000, guid: aad625035f634bc40a051bf955293a50, type: 2}
+  - {fileID: 11400000, guid: 603841a006a6b2b45a7d95fcee4ba452, type: 2}
+  - {fileID: 11400000, guid: bd6705bd817914f4c82e78083562a58d, type: 2}
+  - {fileID: 11400000, guid: c7a5018eace8b334a866ea2d394b9f91, type: 2}
+  - {fileID: 11400000, guid: d347ed3e5cf2e7c40b8789d4434bf147, type: 2}
+  - {fileID: 11400000, guid: ed8080dd4c7404a4e8faccbc754ebb6e, type: 2}
+  - {fileID: 11400000, guid: dd7381fcaa933214fb59e34bdc9024a2, type: 2}
+  - {fileID: 11400000, guid: 265a30e5e9009c140ab26005446c050c, type: 2}
+  - {fileID: 11400000, guid: d50544f78a8d22245bf45b8d50e90f4d, type: 2}
+  - {fileID: 11400000, guid: 8a8e8fe6cb9dc974286ea675b9d379dd, type: 2}
+  - {fileID: 11400000, guid: 56618e530b93a9342a58d64d5f8631b1, type: 2}
+  - {fileID: 11400000, guid: c21659990b884f445ae86c93d6b3a4f6, type: 2}
+  - {fileID: 11400000, guid: 8dcf54d6073ee974eba31325d88d67b6, type: 2}
+  - {fileID: 11400000, guid: 0bda228a3fb6f964e96ccef844854b1e, type: 2}
+  - {fileID: 11400000, guid: 0181d995ea864c34a8b49f0be3f82a86, type: 2}
+  - {fileID: 11400000, guid: c0662f0507ee5ff4b948a326bcb46d9e, type: 2}
+  - {fileID: 11400000, guid: de26b3492dc69ba4ca32a3ee89d9af7b, type: 2}
+  - {fileID: 11400000, guid: ea33d04cc9841e44d990b8561d1ca477, type: 2}
+  - {fileID: 11400000, guid: 645aad23de4fff9479e2bd6cffd6ddbe, type: 2}
+  - {fileID: 11400000, guid: 3ecf1b6d05c22d7409bc74bf222f9c2f, type: 2}
+  - {fileID: 11400000, guid: acd708e8e523a224983bb4a9f04be716, type: 2}
+  - {fileID: 0}
+  states:
+  - _name: AimDown
+    animationPath: Assets/Animations/DefaultAnims/R/AimDown.asset
+  - _name: AimUp
+    animationPath: Assets/Animations/DefaultAnims/R/AimUp.asset
+  - _name: Attack
+    animationPath: Assets/Animations/DefaultAnims/R/Attack.asset
+  - _name: Attack2
+    animationPath: Assets/Animations/DefaultAnims/R/Attack2.asset
+  - _name: Attack3
+    animationPath: Assets/Animations/DefaultAnims/R/Attack3.asset
+  - _name: Def
+    animationPath: Assets/Animations/DefaultAnims/R/Def.asset
+  - _name: DefReverse
+    animationPath: Assets/Animations/DefaultAnims/R/DefReverse.asset
+  - _name: DefStatic
+    animationPath: Assets/Animations/DefaultAnims/R/DefStatic.asset
+  - _name: Fire
+    animationPath: Assets/Animations/DefaultAnims/R/Fire.asset
+  - _name: FireDown
+    animationPath: Assets/Animations/DefaultAnims/R/FireDown.asset
+  - _name: FireUp
+    animationPath: Assets/Animations/DefaultAnims/R/FireUp.asset
+  - _name: FlyDown
+    animationPath: Assets/Animations/DefaultAnims/R/FlyDown.asset
+  - _name: FlyUp
+    animationPath: Assets/Animations/DefaultAnims/R/FlyUp.asset
+  - _name: GunIdle
+    animationPath: Assets/Animations/DefaultAnims/R/GunIdle.asset
+  - _name: Idle
+    animationPath: Assets/Animations/DefaultAnims/R/Idle.asset
+  - _name: Jump
+    animationPath: Assets/Animations/DefaultAnims/R/Jump.asset
+  - _name: Land
+    animationPath: Assets/Animations/DefaultAnims/R/Land.asset
+  - _name: Roll
+    animationPath: Assets/Animations/DefaultAnims/R/Roll.asset
+  - _name: Run
+    animationPath: Assets/Animations/DefaultAnims/R/Run.asset
+  - _name: AimDown
+    animationPath: Assets/Animations/DefaultAnims/L/AimDown.asset
+  - _name: AimUp
+    animationPath: Assets/Animations/DefaultAnims/L/AimUp.asset
+  - _name: Attack_L
+    animationPath: Assets/Animations/DefaultAnims/L/Attack.asset
+  - _name: Attack_L2
+    animationPath: Assets/Animations/DefaultAnims/L/Attack2.asset
+  - _name: Attack_L3
+    animationPath: Assets/Animations/DefaultAnims/L/Attack3.asset
+  - _name: Def_L
+    animationPath: Assets/Animations/DefaultAnims/L/Def.asset
+  - _name: DefReverse_L
+    animationPath: Assets/Animations/DefaultAnims/L/DefReverse.asset
+  - _name: DefStatic_L
+    animationPath: Assets/Animations/DefaultAnims/L/DefStatic.asset
+  - _name: Fire
+    animationPath: Assets/Animations/DefaultAnims/L/Fire.asset
+  - _name: FireDown
+    animationPath: Assets/Animations/DefaultAnims/L/FireDown.asset
+  - _name: FireUp
+    animationPath: Assets/Animations/DefaultAnims/L/FireUp.asset
+  - _name: FlyDown_L
+    animationPath: Assets/Animations/DefaultAnims/L/FlyDown.asset
+  - _name: FlyUp_L
+    animationPath: Assets/Animations/DefaultAnims/L/FlyUp.asset
+  - _name: GunIdle
+    animationPath: Assets/Animations/DefaultAnims/L/GunIdle.asset
+  - _name: Idle_L
+    animationPath: Assets/Animations/DefaultAnims/L/Idle.asset
+  - _name: Jump_L
+    animationPath: Assets/Animations/DefaultAnims/L/Jump.asset
+  - _name: Land_L
+    animationPath: Assets/Animations/DefaultAnims/L/Land.asset
+  - _name: Roll_L
+    animationPath: Assets/Animations/DefaultAnims/L/Roll.asset
+  - _name: Run_L
+    animationPath: Assets/Animations/DefaultAnims/L/Run.asset
+  - _name: AnyState
+    animationPath: 
+  MotherAnimator: {fileID: 881871182}
+  CurrentAnimName: 
   DefaultAnim: Idle
   AddNewAnim: 0
   AssignNewPosToEveryFrame: 0
@@ -63735,8 +65340,10 @@ MonoBehaviour:
   OverrideLayer: 0
   AlwaysOnTop: 0
   CurrentAnim:
+    _name: 
     animationPath: 
-  SynchronizeWithMA: []
+  SynchronizeWithMA:
+  - Idle
   SpritesInOT:
   - {fileID: 59781083939082751, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
   - {fileID: -3874382230517278458, guid: aad9a6cbdce03b04989f97422657fb84, type: 3}
@@ -63835,24 +65442,11 @@ MonoBehaviour:
   - {fileID: -5166969267600819798, guid: 1c3feb73c3b3cbb44a64e98904200f13, type: 3}
   - {fileID: -2690896604069519019, guid: 1c3feb73c3b3cbb44a64e98904200f13, type: 3}
   - {fileID: 3575191129115968866, guid: 1c3feb73c3b3cbb44a64e98904200f13, type: 3}
-  NewAnim:
+  schemeAsset: {fileID: 102900000, guid: 5ffb2b0f5109cdb4c94ee1bf743eb98c, type: 3}
+  newFrameEvent:
     m_PersistentCalls:
       m_Calls: []
-  newFrame:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1333705046}
-        m_TargetAssemblyTypeName: Weapon, Assembly-CSharp
-        m_MethodName: UpdatePhysicsOutline
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  TOLOG: 0
 --- !u!60 &1333705044
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -63963,7 +65557,7 @@ MonoBehaviour:
   Knockback: 0
   StaminaCost: 100
   StartZ: 0
-  attackFrames: 5
+  attackFrames: 20
   beforeAttackFrames: 0
   pushingForce: 500
   AttackSameEntity: 0
@@ -64006,6 +65600,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: c3cad601-5ee3-4c15-a197-c4d17ec71d0d
+--- !u!1 &1341059429
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1341059430}
+  m_Layer: 0
+  m_Name: New Game Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1341059430
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341059429}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1023881859}
+  m_Father: {fileID: 0}
+  m_RootOrder: 28
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1352350654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64169,8 +65794,116 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  schemeAsset: {fileID: 102900000, guid: 96fbe7db60e5d0d4d8e6604d4c65bf9f, type: 3}
+  animatorPath: Assets/Animators/torso_head
+  animations:
+  - {fileID: 11400000, guid: e463db12b0562534bafb367dcfa540de, type: 2}
+  - {fileID: 11400000, guid: 5f317a2d5ffb0f14d9fbcf0b2de1a3df, type: 2}
+  - {fileID: 11400000, guid: e4247dacc48af274281a0b8379968be8, type: 2}
+  - {fileID: 11400000, guid: cd24c1733d6db194ea9a6d23cdf386be, type: 2}
+  - {fileID: 11400000, guid: 369a7f15acb402644a16319bf122b9d8, type: 2}
+  - {fileID: 11400000, guid: 8663e39de1d829a40a833824fa90b2e2, type: 2}
+  - {fileID: 11400000, guid: 13499ad3ac7ab5a4b99a1823956520ca, type: 2}
+  - {fileID: 11400000, guid: f3602c59447ff914dbfe21035531617f, type: 2}
+  - {fileID: 11400000, guid: 16392f9fa5361d842be494c7e01480f3, type: 2}
+  - {fileID: 11400000, guid: 64dfde97d640fa641811440263231959, type: 2}
+  - {fileID: 11400000, guid: f5072fd9942e8f743908b1873a1234f8, type: 2}
+  - {fileID: 11400000, guid: d6d72f642fb745c42822b54485b67948, type: 2}
+  - {fileID: 11400000, guid: 6f02e684793aebf48afdd14400daa7f8, type: 2}
+  - {fileID: 11400000, guid: aaaa1bc42a351b6419db703de0ec366e, type: 2}
+  - {fileID: 11400000, guid: 8262742a03a899d459af5817255342cf, type: 2}
+  - {fileID: 11400000, guid: aad625035f634bc40a051bf955293a50, type: 2}
+  - {fileID: 11400000, guid: 603841a006a6b2b45a7d95fcee4ba452, type: 2}
+  - {fileID: 11400000, guid: bd6705bd817914f4c82e78083562a58d, type: 2}
+  - {fileID: 11400000, guid: c7a5018eace8b334a866ea2d394b9f91, type: 2}
+  - {fileID: 11400000, guid: d347ed3e5cf2e7c40b8789d4434bf147, type: 2}
+  - {fileID: 11400000, guid: 265a30e5e9009c140ab26005446c050c, type: 2}
+  - {fileID: 11400000, guid: d50544f78a8d22245bf45b8d50e90f4d, type: 2}
+  - {fileID: 11400000, guid: 8a8e8fe6cb9dc974286ea675b9d379dd, type: 2}
+  - {fileID: 11400000, guid: 56618e530b93a9342a58d64d5f8631b1, type: 2}
+  - {fileID: 11400000, guid: c21659990b884f445ae86c93d6b3a4f6, type: 2}
+  - {fileID: 11400000, guid: 8dcf54d6073ee974eba31325d88d67b6, type: 2}
+  - {fileID: 11400000, guid: 0bda228a3fb6f964e96ccef844854b1e, type: 2}
+  - {fileID: 11400000, guid: 0181d995ea864c34a8b49f0be3f82a86, type: 2}
+  - {fileID: 11400000, guid: c0662f0507ee5ff4b948a326bcb46d9e, type: 2}
+  - {fileID: 11400000, guid: de26b3492dc69ba4ca32a3ee89d9af7b, type: 2}
+  - {fileID: 11400000, guid: ea33d04cc9841e44d990b8561d1ca477, type: 2}
+  - {fileID: 11400000, guid: 645aad23de4fff9479e2bd6cffd6ddbe, type: 2}
+  - {fileID: 11400000, guid: 3ecf1b6d05c22d7409bc74bf222f9c2f, type: 2}
+  - {fileID: 11400000, guid: acd708e8e523a224983bb4a9f04be716, type: 2}
+  - {fileID: 0}
+  states:
+  - _name: AimDown
+    animationPath: Assets/Animations/DefaultAnims/R/AimDown.asset
+  - _name: AimUp
+    animationPath: Assets/Animations/DefaultAnims/R/AimUp.asset
+  - _name: Attack
+    animationPath: Assets/Animations/DefaultAnims/R/Attack.asset
+  - _name: Def
+    animationPath: Assets/Animations/DefaultAnims/R/Def.asset
+  - _name: DefReverse
+    animationPath: Assets/Animations/DefaultAnims/R/DefReverse.asset
+  - _name: DefStatic
+    animationPath: Assets/Animations/DefaultAnims/R/DefStatic.asset
+  - _name: Fire
+    animationPath: Assets/Animations/DefaultAnims/R/Fire.asset
+  - _name: FireDown
+    animationPath: Assets/Animations/DefaultAnims/R/FireDown.asset
+  - _name: FireUp
+    animationPath: Assets/Animations/DefaultAnims/R/FireUp.asset
+  - _name: FlyDown
+    animationPath: Assets/Animations/DefaultAnims/R/FlyDown.asset
+  - _name: FlyUp
+    animationPath: Assets/Animations/DefaultAnims/R/FlyUp.asset
+  - _name: GunIdle
+    animationPath: Assets/Animations/DefaultAnims/R/GunIdle.asset
+  - _name: Idle
+    animationPath: Assets/Animations/DefaultAnims/R/Idle.asset
+  - _name: Jump
+    animationPath: Assets/Animations/DefaultAnims/R/Jump.asset
+  - _name: Land
+    animationPath: Assets/Animations/DefaultAnims/R/Land.asset
+  - _name: Roll
+    animationPath: Assets/Animations/DefaultAnims/R/Roll.asset
+  - _name: Run
+    animationPath: Assets/Animations/DefaultAnims/R/Run.asset
+  - _name: AimDown
+    animationPath: Assets/Animations/DefaultAnims/L/AimDown.asset
+  - _name: AimUp
+    animationPath: Assets/Animations/DefaultAnims/L/AimUp.asset
+  - _name: Attack_L
+    animationPath: Assets/Animations/DefaultAnims/L/Attack.asset
+  - _name: Def_L
+    animationPath: Assets/Animations/DefaultAnims/L/Def.asset
+  - _name: DefReverse_L
+    animationPath: Assets/Animations/DefaultAnims/L/DefReverse.asset
+  - _name: DefStatic_L
+    animationPath: Assets/Animations/DefaultAnims/L/DefStatic.asset
+  - _name: Fire
+    animationPath: Assets/Animations/DefaultAnims/L/Fire.asset
+  - _name: FireDown
+    animationPath: Assets/Animations/DefaultAnims/L/FireDown.asset
+  - _name: FireUp
+    animationPath: Assets/Animations/DefaultAnims/L/FireUp.asset
+  - _name: FlyDown_L
+    animationPath: Assets/Animations/DefaultAnims/L/FlyDown.asset
+  - _name: FlyUp__L
+    animationPath: Assets/Animations/DefaultAnims/L/FlyUp.asset
+  - _name: GunIdle
+    animationPath: Assets/Animations/DefaultAnims/L/GunIdle.asset
+  - _name: Idle_L
+    animationPath: Assets/Animations/DefaultAnims/L/Idle.asset
+  - _name: Jump_L
+    animationPath: Assets/Animations/DefaultAnims/L/Jump.asset
+  - _name: Land_L
+    animationPath: Assets/Animations/DefaultAnims/L/Land.asset
+  - _name: Roll_L
+    animationPath: Assets/Animations/DefaultAnims/L/Roll.asset
+  - _name: Run_L
+    animationPath: Assets/Animations/DefaultAnims/L/Run.asset
+  - _name: AnyState
+    animationPath: 
   MotherAnimator: {fileID: 1526754853}
+  CurrentAnimName: 
   DefaultAnim: Idle
   AddNewAnim: 0
   AssignNewPosToEveryFrame: 0
@@ -64178,6 +65911,7 @@ MonoBehaviour:
   OverrideLayer: 3
   AlwaysOnTop: 1
   CurrentAnim:
+    _name: 
     animationPath: 
   SynchronizeWithMA: []
   SpritesInOT:
@@ -64254,12 +65988,11 @@ MonoBehaviour:
   - {fileID: -5615678405633095999, guid: 8fa0e4723863041438258d9ed8eba296, type: 3}
   - {fileID: 507258390056383007, guid: 8fa0e4723863041438258d9ed8eba296, type: 3}
   - {fileID: -2235987166959929851, guid: 8fa0e4723863041438258d9ed8eba296, type: 3}
-  NewAnim:
+  schemeAsset: {fileID: 102900000, guid: 96fbe7db60e5d0d4d8e6604d4c65bf9f, type: 3}
+  newFrameEvent:
     m_PersistentCalls:
       m_Calls: []
-  newFrame:
-    m_PersistentCalls:
-      m_Calls: []
+  TOLOG: 0
 --- !u!212 &1420165598
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -64413,6 +66146,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1474525143}
   m_CullTransparentMesh: 1
+--- !u!1 &1491953507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1491953508}
+  m_Layer: 0
+  m_Name: New Game Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1491953508
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491953507}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1137185112}
+  m_Father: {fileID: 0}
+  m_RootOrder: 31
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1496036554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64524,8 +66288,116 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  schemeAsset: {fileID: 102900000, guid: 96fbe7db60e5d0d4d8e6604d4c65bf9f, type: 3}
+  animatorPath: Assets/Animators/torso_head
+  animations:
+  - {fileID: 11400000, guid: e463db12b0562534bafb367dcfa540de, type: 2}
+  - {fileID: 11400000, guid: 5f317a2d5ffb0f14d9fbcf0b2de1a3df, type: 2}
+  - {fileID: 11400000, guid: e4247dacc48af274281a0b8379968be8, type: 2}
+  - {fileID: 11400000, guid: cd24c1733d6db194ea9a6d23cdf386be, type: 2}
+  - {fileID: 11400000, guid: 369a7f15acb402644a16319bf122b9d8, type: 2}
+  - {fileID: 11400000, guid: 8663e39de1d829a40a833824fa90b2e2, type: 2}
+  - {fileID: 11400000, guid: 13499ad3ac7ab5a4b99a1823956520ca, type: 2}
+  - {fileID: 11400000, guid: f3602c59447ff914dbfe21035531617f, type: 2}
+  - {fileID: 11400000, guid: 16392f9fa5361d842be494c7e01480f3, type: 2}
+  - {fileID: 11400000, guid: 64dfde97d640fa641811440263231959, type: 2}
+  - {fileID: 11400000, guid: f5072fd9942e8f743908b1873a1234f8, type: 2}
+  - {fileID: 11400000, guid: d6d72f642fb745c42822b54485b67948, type: 2}
+  - {fileID: 11400000, guid: 6f02e684793aebf48afdd14400daa7f8, type: 2}
+  - {fileID: 11400000, guid: aaaa1bc42a351b6419db703de0ec366e, type: 2}
+  - {fileID: 11400000, guid: 8262742a03a899d459af5817255342cf, type: 2}
+  - {fileID: 11400000, guid: aad625035f634bc40a051bf955293a50, type: 2}
+  - {fileID: 11400000, guid: 603841a006a6b2b45a7d95fcee4ba452, type: 2}
+  - {fileID: 11400000, guid: bd6705bd817914f4c82e78083562a58d, type: 2}
+  - {fileID: 11400000, guid: c7a5018eace8b334a866ea2d394b9f91, type: 2}
+  - {fileID: 11400000, guid: d347ed3e5cf2e7c40b8789d4434bf147, type: 2}
+  - {fileID: 11400000, guid: 265a30e5e9009c140ab26005446c050c, type: 2}
+  - {fileID: 11400000, guid: d50544f78a8d22245bf45b8d50e90f4d, type: 2}
+  - {fileID: 11400000, guid: 8a8e8fe6cb9dc974286ea675b9d379dd, type: 2}
+  - {fileID: 11400000, guid: 56618e530b93a9342a58d64d5f8631b1, type: 2}
+  - {fileID: 11400000, guid: c21659990b884f445ae86c93d6b3a4f6, type: 2}
+  - {fileID: 11400000, guid: 8dcf54d6073ee974eba31325d88d67b6, type: 2}
+  - {fileID: 11400000, guid: 0bda228a3fb6f964e96ccef844854b1e, type: 2}
+  - {fileID: 11400000, guid: 0181d995ea864c34a8b49f0be3f82a86, type: 2}
+  - {fileID: 11400000, guid: c0662f0507ee5ff4b948a326bcb46d9e, type: 2}
+  - {fileID: 11400000, guid: de26b3492dc69ba4ca32a3ee89d9af7b, type: 2}
+  - {fileID: 11400000, guid: ea33d04cc9841e44d990b8561d1ca477, type: 2}
+  - {fileID: 11400000, guid: 645aad23de4fff9479e2bd6cffd6ddbe, type: 2}
+  - {fileID: 11400000, guid: 3ecf1b6d05c22d7409bc74bf222f9c2f, type: 2}
+  - {fileID: 11400000, guid: acd708e8e523a224983bb4a9f04be716, type: 2}
+  - {fileID: 0}
+  states:
+  - _name: AimDown
+    animationPath: Assets/Animations/DefaultAnims/R/AimDown.asset
+  - _name: AimUp
+    animationPath: Assets/Animations/DefaultAnims/R/AimUp.asset
+  - _name: Attack
+    animationPath: Assets/Animations/DefaultAnims/R/Attack.asset
+  - _name: Def
+    animationPath: Assets/Animations/DefaultAnims/R/Def.asset
+  - _name: DefReverse
+    animationPath: Assets/Animations/DefaultAnims/R/DefReverse.asset
+  - _name: DefStatic
+    animationPath: Assets/Animations/DefaultAnims/R/DefStatic.asset
+  - _name: Fire
+    animationPath: Assets/Animations/DefaultAnims/R/Fire.asset
+  - _name: FireDown
+    animationPath: Assets/Animations/DefaultAnims/R/FireDown.asset
+  - _name: FireUp
+    animationPath: Assets/Animations/DefaultAnims/R/FireUp.asset
+  - _name: FlyDown
+    animationPath: Assets/Animations/DefaultAnims/R/FlyDown.asset
+  - _name: FlyUp
+    animationPath: Assets/Animations/DefaultAnims/R/FlyUp.asset
+  - _name: GunIdle
+    animationPath: Assets/Animations/DefaultAnims/R/GunIdle.asset
+  - _name: Idle
+    animationPath: Assets/Animations/DefaultAnims/R/Idle.asset
+  - _name: Jump
+    animationPath: Assets/Animations/DefaultAnims/R/Jump.asset
+  - _name: Land
+    animationPath: Assets/Animations/DefaultAnims/R/Land.asset
+  - _name: Roll
+    animationPath: Assets/Animations/DefaultAnims/R/Roll.asset
+  - _name: Run
+    animationPath: Assets/Animations/DefaultAnims/R/Run.asset
+  - _name: AimDown
+    animationPath: Assets/Animations/DefaultAnims/L/AimDown.asset
+  - _name: AimUp
+    animationPath: Assets/Animations/DefaultAnims/L/AimUp.asset
+  - _name: Attack
+    animationPath: Assets/Animations/DefaultAnims/L/Attack.asset
+  - _name: Def
+    animationPath: Assets/Animations/DefaultAnims/L/Def.asset
+  - _name: DefReverse
+    animationPath: Assets/Animations/DefaultAnims/L/DefReverse.asset
+  - _name: DefStatic
+    animationPath: Assets/Animations/DefaultAnims/L/DefStatic.asset
+  - _name: Fire
+    animationPath: Assets/Animations/DefaultAnims/L/Fire.asset
+  - _name: FireDown
+    animationPath: Assets/Animations/DefaultAnims/L/FireDown.asset
+  - _name: FireUp
+    animationPath: Assets/Animations/DefaultAnims/L/FireUp.asset
+  - _name: FlyDown
+    animationPath: Assets/Animations/DefaultAnims/L/FlyDown.asset
+  - _name: FlyUp
+    animationPath: Assets/Animations/DefaultAnims/L/FlyUp.asset
+  - _name: GunIdle
+    animationPath: Assets/Animations/DefaultAnims/L/GunIdle.asset
+  - _name: Idle
+    animationPath: Assets/Animations/DefaultAnims/L/Idle.asset
+  - _name: Jump
+    animationPath: Assets/Animations/DefaultAnims/L/Jump.asset
+  - _name: Land
+    animationPath: Assets/Animations/DefaultAnims/L/Land.asset
+  - _name: Roll
+    animationPath: Assets/Animations/DefaultAnims/L/Roll.asset
+  - _name: Run
+    animationPath: Assets/Animations/DefaultAnims/L/Run.asset
+  - _name: AnyState
+    animationPath: 
   MotherAnimator: {fileID: 1750976652}
+  CurrentAnimName: 
   DefaultAnim: Idle
   AddNewAnim: 0
   AssignNewPosToEveryFrame: 0
@@ -64533,8 +66405,10 @@ MonoBehaviour:
   OverrideLayer: 1
   AlwaysOnTop: 1
   CurrentAnim:
+    _name: 
     animationPath: 
-  SynchronizeWithMA: []
+  SynchronizeWithMA:
+  - Idle
   SpritesInOT:
   - {fileID: -3054655231761646878, guid: a3da22396c81c7844be926b56d73a2af, type: 3}
   - {fileID: 3624451327878721169, guid: a3da22396c81c7844be926b56d73a2af, type: 3}
@@ -64609,12 +66483,11 @@ MonoBehaviour:
   - {fileID: 5857100572626248953, guid: 562b0ca36d6f1c94884614faf1c05b46, type: 3}
   - {fileID: -1169780541655136922, guid: 562b0ca36d6f1c94884614faf1c05b46, type: 3}
   - {fileID: 1276651204479450858, guid: 562b0ca36d6f1c94884614faf1c05b46, type: 3}
-  NewAnim:
+  schemeAsset: {fileID: 102900000, guid: 96fbe7db60e5d0d4d8e6604d4c65bf9f, type: 3}
+  newFrameEvent:
     m_PersistentCalls:
       m_Calls: []
-  newFrame:
-    m_PersistentCalls:
-      m_Calls: []
+  TOLOG: 0
 --- !u!212 &1526754854
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -64679,6 +66552,103 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 8bc571b9-592a-42b1-9840-04033ccbf266
+--- !u!1 &1527181780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1527181781}
+  - component: {fileID: 1527181783}
+  - component: {fileID: 1527181782}
+  m_Layer: 0
+  m_Name: New Game Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1527181781
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527181780}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 517494263}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1527181782
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527181780}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &1527181783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527181780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4bbc3ed692967d41a87eceefddb1bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posDifference: {x: -0, y: -0}
+  PPU: 16
 --- !u!1 &1573294140
 GameObject:
   m_ObjectHideFlags: 0
@@ -64752,6 +66722,134 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 26
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1574907861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1574907862}
+  - component: {fileID: 1574907864}
+  - component: {fileID: 1574907863}
+  m_Layer: 0
+  m_Name: steelgreaves_25
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1574907862
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574907861}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 493816672}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1574907863
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574907861}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 5512108270074666871, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 8, y: 8}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &1574907864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574907861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4bbc3ed692967d41a87eceefddb1bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posDifference: {x: -0, y: -0}
+  PPU: 16
+--- !u!1 &1705808692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1705808693}
+  m_Layer: 0
+  m_Name: New Game Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1705808693
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705808692}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 855105860}
+  m_Father: {fileID: 0}
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1746958964
 GameObject:
@@ -64846,8 +66944,116 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  schemeAsset: {fileID: 102900000, guid: 1c31b65a9d57e934c965470f8de264e6, type: 3}
+  animatorPath: Assets/Animators/legs
+  animations:
+  - {fileID: 11400000, guid: e463db12b0562534bafb367dcfa540de, type: 2}
+  - {fileID: 11400000, guid: 5f317a2d5ffb0f14d9fbcf0b2de1a3df, type: 2}
+  - {fileID: 11400000, guid: e4247dacc48af274281a0b8379968be8, type: 2}
+  - {fileID: 11400000, guid: cd24c1733d6db194ea9a6d23cdf386be, type: 2}
+  - {fileID: 11400000, guid: 369a7f15acb402644a16319bf122b9d8, type: 2}
+  - {fileID: 11400000, guid: 8663e39de1d829a40a833824fa90b2e2, type: 2}
+  - {fileID: 11400000, guid: 13499ad3ac7ab5a4b99a1823956520ca, type: 2}
+  - {fileID: 11400000, guid: f3602c59447ff914dbfe21035531617f, type: 2}
+  - {fileID: 11400000, guid: 16392f9fa5361d842be494c7e01480f3, type: 2}
+  - {fileID: 11400000, guid: 64dfde97d640fa641811440263231959, type: 2}
+  - {fileID: 11400000, guid: f5072fd9942e8f743908b1873a1234f8, type: 2}
+  - {fileID: 11400000, guid: d6d72f642fb745c42822b54485b67948, type: 2}
+  - {fileID: 11400000, guid: 6f02e684793aebf48afdd14400daa7f8, type: 2}
+  - {fileID: 11400000, guid: aaaa1bc42a351b6419db703de0ec366e, type: 2}
+  - {fileID: 11400000, guid: 8262742a03a899d459af5817255342cf, type: 2}
+  - {fileID: 11400000, guid: aad625035f634bc40a051bf955293a50, type: 2}
+  - {fileID: 11400000, guid: 603841a006a6b2b45a7d95fcee4ba452, type: 2}
+  - {fileID: 11400000, guid: bd6705bd817914f4c82e78083562a58d, type: 2}
+  - {fileID: 11400000, guid: c7a5018eace8b334a866ea2d394b9f91, type: 2}
+  - {fileID: 11400000, guid: d347ed3e5cf2e7c40b8789d4434bf147, type: 2}
+  - {fileID: 11400000, guid: 265a30e5e9009c140ab26005446c050c, type: 2}
+  - {fileID: 11400000, guid: d50544f78a8d22245bf45b8d50e90f4d, type: 2}
+  - {fileID: 11400000, guid: 8a8e8fe6cb9dc974286ea675b9d379dd, type: 2}
+  - {fileID: 11400000, guid: 56618e530b93a9342a58d64d5f8631b1, type: 2}
+  - {fileID: 11400000, guid: c21659990b884f445ae86c93d6b3a4f6, type: 2}
+  - {fileID: 11400000, guid: 8dcf54d6073ee974eba31325d88d67b6, type: 2}
+  - {fileID: 11400000, guid: 0bda228a3fb6f964e96ccef844854b1e, type: 2}
+  - {fileID: 11400000, guid: 0181d995ea864c34a8b49f0be3f82a86, type: 2}
+  - {fileID: 11400000, guid: c0662f0507ee5ff4b948a326bcb46d9e, type: 2}
+  - {fileID: 11400000, guid: de26b3492dc69ba4ca32a3ee89d9af7b, type: 2}
+  - {fileID: 11400000, guid: ea33d04cc9841e44d990b8561d1ca477, type: 2}
+  - {fileID: 11400000, guid: 645aad23de4fff9479e2bd6cffd6ddbe, type: 2}
+  - {fileID: 11400000, guid: 3ecf1b6d05c22d7409bc74bf222f9c2f, type: 2}
+  - {fileID: 11400000, guid: acd708e8e523a224983bb4a9f04be716, type: 2}
+  - {fileID: 0}
+  states:
+  - _name: AimDown
+    animationPath: Assets/Animations/DefaultAnims/R/AimDown.asset
+  - _name: AimUp
+    animationPath: Assets/Animations/DefaultAnims/R/AimUp.asset
+  - _name: Attack
+    animationPath: Assets/Animations/DefaultAnims/R/Attack.asset
+  - _name: Def
+    animationPath: Assets/Animations/DefaultAnims/R/Def.asset
+  - _name: DefReverse
+    animationPath: Assets/Animations/DefaultAnims/R/DefReverse.asset
+  - _name: DefStatic
+    animationPath: Assets/Animations/DefaultAnims/R/DefStatic.asset
+  - _name: Fire
+    animationPath: Assets/Animations/DefaultAnims/R/Fire.asset
+  - _name: FireDown
+    animationPath: Assets/Animations/DefaultAnims/R/FireDown.asset
+  - _name: FireUp
+    animationPath: Assets/Animations/DefaultAnims/R/FireUp.asset
+  - _name: FlyDown
+    animationPath: Assets/Animations/DefaultAnims/R/FlyDown.asset
+  - _name: FlyUp
+    animationPath: Assets/Animations/DefaultAnims/R/FlyUp.asset
+  - _name: GunIdle
+    animationPath: Assets/Animations/DefaultAnims/R/GunIdle.asset
+  - _name: Idle
+    animationPath: Assets/Animations/DefaultAnims/R/Idle.asset
+  - _name: Jump
+    animationPath: Assets/Animations/DefaultAnims/R/Jump.asset
+  - _name: Land
+    animationPath: Assets/Animations/DefaultAnims/R/Land.asset
+  - _name: Roll
+    animationPath: Assets/Animations/DefaultAnims/R/Roll.asset
+  - _name: Run
+    animationPath: Assets/Animations/DefaultAnims/R/Run.asset
+  - _name: AimDown
+    animationPath: Assets/Animations/DefaultAnims/L/AimDown.asset
+  - _name: AimUp
+    animationPath: Assets/Animations/DefaultAnims/L/AimUp.asset
+  - _name: Attack_L
+    animationPath: Assets/Animations/DefaultAnims/L/Attack.asset
+  - _name: Def_L
+    animationPath: Assets/Animations/DefaultAnims/L/Def.asset
+  - _name: DefReverse_L
+    animationPath: Assets/Animations/DefaultAnims/L/DefReverse.asset
+  - _name: DefStatic_L
+    animationPath: Assets/Animations/DefaultAnims/L/DefStatic.asset
+  - _name: Fire
+    animationPath: Assets/Animations/DefaultAnims/L/Fire.asset
+  - _name: FireDown
+    animationPath: Assets/Animations/DefaultAnims/L/FireDown.asset
+  - _name: FireUp
+    animationPath: Assets/Animations/DefaultAnims/L/FireUp.asset
+  - _name: FlyDown_L
+    animationPath: Assets/Animations/DefaultAnims/L/FlyDown.asset
+  - _name: FlyUp_L
+    animationPath: Assets/Animations/DefaultAnims/L/FlyUp.asset
+  - _name: GunIdle
+    animationPath: Assets/Animations/DefaultAnims/L/GunIdle.asset
+  - _name: Idle_L
+    animationPath: Assets/Animations/DefaultAnims/L/Idle.asset
+  - _name: Jump_L
+    animationPath: Assets/Animations/DefaultAnims/L/Jump.asset
+  - _name: Land_L
+    animationPath: Assets/Animations/DefaultAnims/L/Land.asset
+  - _name: Roll_L
+    animationPath: Assets/Animations/DefaultAnims/L/Roll.asset
+  - _name: Run_L
+    animationPath: Assets/Animations/DefaultAnims/L/Run.asset
+  - _name: AnyState
+    animationPath: 
   MotherAnimator: {fileID: 1333705043}
+  CurrentAnimName: 
   DefaultAnim: Idle
   AddNewAnim: 0
   AssignNewPosToEveryFrame: 0
@@ -64855,11 +67061,12 @@ MonoBehaviour:
   OverrideLayer: 0
   AlwaysOnTop: 0
   CurrentAnim:
+    _name: 
     animationPath: 
   SynchronizeWithMA:
   - Attack
-  - Attack2
-  - Attack3
+  - Attack2_R
+  - Attack3_R
   - Attack3_L
   - Attack2_L
   - Attack_L
@@ -64937,12 +67144,11 @@ MonoBehaviour:
   - {fileID: 8137440103341792519, guid: 1c035ec207ed4674d9b476d9f5dee21a, type: 3}
   - {fileID: -4982185474327558478, guid: 1c035ec207ed4674d9b476d9f5dee21a, type: 3}
   - {fileID: -3764331585359617260, guid: 1c035ec207ed4674d9b476d9f5dee21a, type: 3}
-  NewAnim:
+  schemeAsset: {fileID: 102900000, guid: 1c31b65a9d57e934c965470f8de264e6, type: 3}
+  newFrameEvent:
     m_PersistentCalls:
       m_Calls: []
-  newFrame:
-    m_PersistentCalls:
-      m_Calls: []
+  TOLOG: 0
 --- !u!212 &1750976653
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -65782,6 +67988,103 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7016695251876039015, guid: 0b65f185b6e5e5e4eafbdb9ff464bc71, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0b65f185b6e5e5e4eafbdb9ff464bc71, type: 3}
+--- !u!1 &1994244770
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1994244771}
+  - component: {fileID: 1994244773}
+  - component: {fileID: 1994244772}
+  m_Layer: 0
+  m_Name: steelgreaves_25
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1994244771
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994244770}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1002147068}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1994244772
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994244770}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 5512108270074666871, guid: 278badcbce17868438c642afdf9de1d2, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 8, y: 8}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &1994244773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994244770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4bbc3ed692967d41a87eceefddb1bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posDifference: {x: -0, y: -0}
+  PPU: 16
 --- !u!1 &2115701261
 GameObject:
   m_ObjectHideFlags: 0
@@ -65791,6 +68094,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2115701262}
+  - component: {fileID: 2115701263}
   m_Layer: 0
   m_Name: ArmourHolder
   m_TagString: Untagged
@@ -65821,6 +68125,18 @@ Transform:
   m_Father: {fileID: 825190856}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2115701263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115701261}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e1d72fe6ace06644b43a8c949b7a0c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2139863598
 PrefabInstance:
   m_ObjectHideFlags: 0

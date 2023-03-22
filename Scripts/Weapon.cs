@@ -7,6 +7,7 @@ using UnityEditor;
 
 public class Weapon : MonoBehaviour
 {
+	public bool asyncInput { get; private set; }
 	public enum type { sword, shield, gun };
 	public type weaponType;
 	PolygonCollider2D selfColl;
@@ -195,9 +196,16 @@ public class Weapon : MonoBehaviour
 			selfColl.points = a;
 		}
 	}
+	int[] currentCombo;
+	int[,] combos = new int[,] { {1,1,1} }; 
+	void ComboParser(int input)
+	{
+		 
+	}
 
 	void SwordAttack()
 	{
+		if (Activate) asyncInput = true;
 		if(!Activate)StartCoroutine(IeSwordAttack());
 	}
 	public void OnLookUp(int context)
@@ -208,7 +216,8 @@ public class Weapon : MonoBehaviour
 	IEnumerator IeSwordAttack()
 	{
         parentMove.IsAttack = true;
-		attackFrames = Mathf.RoundToInt(selfAnim.GetCurrentAnimation().frames.Count/selfAnim.GetCurrentAnimation().speed);
+		//Debug.Log((selfAnim.GetCurrentAnimation().frames.Count+"   "+ selfAnim.GetCurrentAnimation().speed));
+		//attackFrames = (int)(selfAnim.GetCurrentAnimation().frames.Count*  1f/Time.fixedDeltaTime / selfAnim.GetCurrentAnimation().speed);
         //var currentState = parentAnim.GetCurrentAnimatorStateInfo(0);
         //var a = currentState.length;
         //if (a == 0 || !DynamicAttackFrames)

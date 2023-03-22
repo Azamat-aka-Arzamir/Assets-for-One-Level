@@ -11,7 +11,7 @@ public class IDCard : MonoBehaviour
     private void Awake()
     {
         if (ID == null || ID == "") ID = Guid.NewGuid().ToString();
-        print(ID);
+        //print(ID);
     }
     public static GameObject FindByID(string objectID)
     {

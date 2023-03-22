@@ -90,54 +90,32 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1324208028466546368}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3633c627898e7a247a5340f56c551ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_side: 1
+  animatorPath: 
+  animations: []
+  states: []
   MotherAnimator: {fileID: 0}
+  CurrentAnimName: 
   DefaultAnim: Fly
-  Reset: 0
   AddNewAnim: 0
   AssignNewPosToEveryFrame: 0
   timeFromFrameStart: 0
-  CurrentAnim: {fileID: 0}
-  AllAnims:
-  - {fileID: 11400000, guid: 67dc46f9d2bb3804aaaf9f0259bea8f3, type: 2}
-  - {fileID: 11400000, guid: b7fd86476dae29e459b5225fc59623ca, type: 2}
-  - {fileID: 11400000, guid: cb20ce6e9ff07d74a810c633f4721dfe, type: 2}
-  AllAnimsL:
-  - {fileID: 11400000, guid: 75008d03ce0b8e045a8006622c735632, type: 2}
-  - {fileID: 11400000, guid: 126e17d262580374db5cff6444e4e7d7, type: 2}
-  - {fileID: 11400000, guid: 6cb2f081061451a478a48e26b9f35bd8, type: 2}
+  OverrideLayer: 0
+  AlwaysOnTop: 0
+  CurrentAnim:
+    animationPath: 
   SynchronizeWithMA: []
   SpritesInOT: []
-  SpritesInOTForOtherSide: []
-  PlayingQueue: []
-  FireAnimScheme: 
-  FireUpAnimScheme: 
-  FireDownAnimScheme: 
-  IdleAnimScheme: 
-  DefAnimScheme: 
-  AttackAnimScheme: 
-  JumpAnimScheme: 00000000
-  FlyUpAnimScheme: 
-  FlyDownAnimScheme: 
-  LandAnimScheme: 
-  RunAnimScheme: 
-  RollAnimScheme: 
-  Attack2AnimScheme: 
-  Attack3AnimScheme: 
-  GunIdleAnimScheme: 
-  NewAnim:
+  SpritesInOTSecondSide: []
+  schemeAsset: {fileID: 0}
+  newFrameEvent:
     m_PersistentCalls:
       m_Calls: []
-  newFrame:
-    m_PersistentCalls:
-      m_Calls: []
-  saveImpulse:
-  - DefReverse
+  TOLOG: 0
 --- !u!1 &7016695250716642030
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,6 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponType: 0
   Activate: 0
+  Reloaded: 1
   GunCD: 0
   Damage: 1
   BarrelPoint: {x: 0, y: 0, z: 0}
@@ -384,6 +363,9 @@ MonoBehaviour:
   lastDirY: 0
   selfEntity: {fileID: 0}
   IsAttack: 0
+  xVel: 0
+  yVel: 0
+  <cock>k__BackingField: 0
   AnotherInput: 0
   LookUpEvent:
     m_PersistentCalls:
@@ -790,6 +772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponType: 0
   Activate: 0
+  Reloaded: 1
   GunCD: 0
   Damage: 1
   BarrelPoint: {x: 0, y: 0, z: 0}
