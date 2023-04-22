@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 using UnityEngine.Events;
+using System.IO;
 
 public class Controller : MonoBehaviour
 {
@@ -28,14 +29,29 @@ public class Controller : MonoBehaviour
 		selfMove = GetComponent<Movement>();
 		DeathScreen.GetComponent<UnityEngine.UI.Image>().color = Color.clear;
 		InitializeActiveGun();
-		
+		//File.Delete("C:/OneLevelLogs/TAASBOT.txt");
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
 		selfMove.Move(input, false, selfMove.LocalAcceleration);
-	}
+		/*string a = "";
+        string d = "";
+        string space = "";
+        string lmb = "";
+		if (input.x < 0) a = "1";
+        if (input.x > 0) d = "1";
+        if (jump) space = "1";
+		if (attack) lmb = "1";
+		jump = false;
+		attack = false;
+
+		string line = a + '\t' + d + '\t' + space + '\t' + lmb;
+		StreamWriter wr = File.AppendText("C:/OneLevelLogs/TAASBOT.txt");
+		wr.WriteLine(line);
+		wr.Close();*/
+    }
 	public void GetPause(InputAction.CallbackContext context)
 	{
         if (context.performed && !context.started)
@@ -47,10 +63,11 @@ public class Controller : MonoBehaviour
         }
 
 	}
+	public void SetInput(Vector2 _input)=>input = _input;
 	public void GetMovement(InputAction.CallbackContext context)
 	{
-		//x = context.ReadValue<Vector2>().x;
-		if (context.started && !context.performed) return;
+        //x = context.ReadValue<Vector2>().x;
+        if (context.started && !context.performed) return;
 		input = context.ReadValue<Vector2>();
 		if (Mathf.Abs(input.y) < 0.7f)
 		{
@@ -62,13 +79,17 @@ public class Controller : MonoBehaviour
 		}
 	}
 	bool jumpEnd = false;
+	bool jump;
 	public void GetJump(InputAction.CallbackContext context)
 	{
-		if (!context.performed && context.started)
+        if (context.action==null||(!context.performed && context.started))
 		{
 			jumpEnd = false;
-			StartCoroutine(JumpForce(Time.time));
-		}
+			jump = true;
+            StartCoroutine(JumpForce(Time.time));
+			selfMove.Jump(selfMove.JumpForce * (float)context.duration);
+			
+        }
 		if (!context.performed && !context.started)
 		{
 			jumpEnd = true;
@@ -111,6 +132,7 @@ public class Controller : MonoBehaviour
 		if (f < 0.7) f = 0.7f;
 		if (f > 1) f = 1;
 		selfMove.Jump(selfMove.JumpForce*f);
+		jumpEnd = true;
 		print("jump");
 		yield break;
 	}
@@ -122,11 +144,13 @@ public class Controller : MonoBehaviour
 			print("dash");
 		}
 	}
+	bool attack;
 	public void GetAttack(InputAction.CallbackContext context)
 	{
 
-		if (context.performed && !context.started)
+		if (context.action == null || (context.performed && !context.started))
 		{
+			attack = true;
             print("attack");
 			{
                 FirstAttack.Invoke();

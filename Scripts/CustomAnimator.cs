@@ -13,7 +13,7 @@ public class CustomAnimator : MonoBehaviour
     [SerializeField]
     string animatorPath;
     AnimatorScheme animatorScheme;
-    [SerializeField]CustomAnimation[] animations;
+    [SerializeField] CustomAnimation[] animations;
     [SerializeField] StateInfo[] states;
     //Dictionary<StateInfo, CustomAnimation> animDependencies = new Dictionary<StateInfo, CustomAnimation>();
     [Tooltip("If animaions between mother and child are equal, child get frame index of mother's animation")]
@@ -67,7 +67,7 @@ public class CustomAnimator : MonoBehaviour
 
             animator = (CustomAnimator)target;
             value = new Vector3();
-            if (OnEnableEvent!=null)OnEnableEvent.Invoke(animator);
+            if (OnEnableEvent != null) OnEnableEvent.Invoke(animator);
             animator.animatorPath = AssetDatabase.GetAssetPath(animator.schemeAsset);
             animator.SetDependencies();
             //print(animator.animations.Length);
@@ -164,11 +164,15 @@ public class CustomAnimator : MonoBehaviour
     AnimatorScheme LoadScheme(string path)
     {
         if (path == "") return null;
-        var formatter = new BinaryFormatter();
-        var fileStream = new FileStream(path, FileMode.Open);
-        var scheme = (AnimatorScheme)formatter.Deserialize(fileStream);
+        path = path.Remove(0, 7);
 
-        fileStream.Close();
+        TextAsset asset = Resources.Load(path) as TextAsset;
+        Stream s = new MemoryStream(asset.bytes);
+        var formatter = new BinaryFormatter();
+        //var fileStream = new FileStream(Application.dataPath+path, FileMode.Open);
+        var scheme = (AnimatorScheme)formatter.Deserialize(s);
+        s.Close();
+        //fileStream.Close();
         AnimatorScheme.AssignObjectsForScheme(scheme);
         return scheme;
     }
@@ -177,23 +181,23 @@ public class CustomAnimator : MonoBehaviour
     //but i don't want to do it neither in runtime nor in other specific class like "runtimeStateInfo"
     //This dictionary contains anims for every state and should be filled only at start
 
-    
+
     bool ui = false;
     // Start is called before the first frame update
     void Start()
     {
-        Log += (string a) =>{};
+        Log += (string a) => { };
         animatorScheme = LoadScheme(animatorPath);
         blank = Resources.Load<Sprite>("Defaults/Blank");
         //SerializeAnimations();
-        if(animatorScheme!=null)defaultAnim = animatorScheme.states.Find(x => x.name == DefaultAnim);
+        if (animatorScheme != null) defaultAnim = animatorScheme.states.Find(x => x.name == DefaultAnim);
         if (animatorScheme != null) CurrentAnim = defaultAnim;
 
         TryGetComponent<SpriteRenderer>(out selfRender);
         if (selfRender == null) { selfImage = GetComponent<UnityEngine.UI.Image>(); ui = true; }
         var curanim = GetCurrentAnimation();
         if (animatorScheme == null) return;
-            if (!ui) selfRender.sprite = curanim.frames[0];
+        if (!ui) selfRender.sprite = curanim.frames[0];
         else selfImage.sprite = curanim.frames[0];
         if (transform.parent != null && !ui) transform.localPosition = curanim.frames[0].position;
         transform.localRotation = Quaternion.Euler(0, 0, curanim.frames[0].rotation);
@@ -206,11 +210,11 @@ public class CustomAnimator : MonoBehaviour
         {
 
         }
-        for(int i = 0; i < states.Length;i++)
+        for (int i = 0; i < states.Length; i++)
         {
             if (states[i].name == CurrentAnim.name)
             {
-                
+
                 return animations[i];
             }
         }
@@ -224,14 +228,14 @@ public class CustomAnimator : MonoBehaviour
         {
             if (states[i].name == st.name)
             {
-                output += states[i].name+"\n";
+                output += states[i].name + "\n";
                 return animations[i];
             }
         }
-        print(animatorScheme.name+"  "+animatorPath+"   "+gameObject.name);
+        print(animatorScheme.name + "  " + animatorPath + "   " + gameObject.name);
         throw new Exception("Animation for state " + st.name + " not found");
     }
-        
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -240,7 +244,7 @@ public class CustomAnimator : MonoBehaviour
     public void AnimatorUpdate()
     {
         if (animatorScheme != null && animatorScheme.states.Count > 0) PlayCurrentAnim();
-        ALog("-----" + gameObject.name + " says: everything's done", "globalLog");
+        ALog("-----" + gameObject.name + " says: everything's done", "globalLog",this);
     }
     //is called if animation state changed
     public AnimContextEvent animChangedEvent = new AnimContextEvent();
@@ -250,13 +254,13 @@ public class CustomAnimator : MonoBehaviour
         CurrentAnim = newAnim;
         CurrentAnimName = newAnim.name;
 
-        if (MotherAnimator!=null&&MotherAnimator.CurrentAnim.name.Contains(CurrentAnim.name))
+        if (MotherAnimator != null && MotherAnimator.CurrentAnim.name.Contains(CurrentAnim.name))
         {
             ChangeFrame(newAnim, MotherAnimator.CurrentFrameIndex, MotherAnimator.timeFromFrameStart);
-            ALog(gameObject.name+" has started playing " + CurrentAnim.name+" with frame "+ MotherAnimator.CurrentFrameIndex+" and time "+MotherAnimator.timeFromFrameStart, "globalLog");
+            ALog(gameObject.name + " has started playing " + CurrentAnim.name + " with frame " + MotherAnimator.CurrentFrameIndex + " and time " + MotherAnimator.timeFromFrameStart, "globalLog", this);
             return;
         }
-        ALog(gameObject.name + " has started playing " + CurrentAnim.name, "globalLog");
+        ALog(gameObject.name + " has started playing " + CurrentAnim.name, "globalLog", this);
         ChangeFrame(newAnim, 0);
     }
 
@@ -291,69 +295,74 @@ public class CustomAnimator : MonoBehaviour
         {
             finished = true;
         }
-        bool stateChanged= false;
+        bool stateChanged = false;
         var nextState = defaultAnim;
 
         var anyState = animatorScheme.states.Find(x => x.name == "Any State" || x.name == "Any state" || x.name == "any state" || x.name == "AnyState");
         List<Transition> transToCheck = new List<Transition>();
-        transToCheck.AddRange(anyState.transitons);
-        transToCheck.RemoveAll(x => x.endState.name == CurrentAnim.name);//prevent from looping on same anim through anystate
-        transToCheck.AddRange(CurrentAnim.transitons);
-        foreach (var trans in transToCheck)
+        bool result = true;
+        int counter = 0;
+        //while (result == true&&counter<10)
         {
-            ALog("   *OwO* Trying to transit from " + CurrentAnim.name + " to " + trans.endState.name);
-            bool result = true;
-            if (trans.hasExitTime && !finished) result = false;
-            int ctr = 0;
-            if (result)//if there is sense in it after first check
+            counter++;
+            transToCheck.AddRange(anyState.transitons);
+            transToCheck.RemoveAll(x => x.endState.name == CurrentAnim.name);//prevent from looping on same anim through anystate
+            transToCheck.AddRange(CurrentAnim.transitons);
+            foreach (var trans in transToCheck)
             {
-                foreach (var cond in trans.conditions)
+                ALog("   *OwO* Trying to transit from " + CurrentAnim.name + " to " + trans.endState.name);
+                result = true;
+                if (trans.hasExitTime && !finished) result = false;
+                int ctr = 0;
+                if (result)//if there is sense in it after first check
                 {
-                    ctr++;
-                    ALog("   Checking cond " + ctr + "/" + trans.conditions.Count);
-                    if (!cond.IsTrue(gameObject))
+                    foreach (var cond in trans.conditions)
                     {
-                        result = false;
-                        ALog("      Cond check failed at " + CurrentAnim.name + ", failed trans: " + trans.endState.name);
-                        break;
+                        ctr++;
+                        ALog("   Checking cond " + ctr + "/" + trans.conditions.Count);
+                        if (!cond.IsTrue(gameObject))
+                        {
+                            result = false;
+                            ALog("      Cond check failed at " + CurrentAnim.name + ", failed trans: " + trans.endState.name);
+                            break;
+                        }
                     }
                 }
-            }
-            else
-            {
-                ALog("  Transition denied: not finished yet");
-            }
-            if (result)
-            {
-                nextState = trans.endState;
-                ALog("Successful trans from " + CurrentAnim.name + " to " + nextState.name);
-                animChangedEvent.Invoke(nextState, trans);
-                OnStateChanged(nextState, trans);
+                else
+                {
+                    ALog("  Transition denied: not finished yet");
+                }
+                if (result)
+                {
+                    nextState = trans.endState;
+                    ALog("Successful trans from " + CurrentAnim.name + " to " + nextState.name);
+                    animChangedEvent.Invoke(nextState, trans);
+                    OnStateChanged(nextState, trans);
 
 
-                //setting all eventinvoked var to false, so if event was invoked before new state start, it doesn't invoke next anim
-                foreach (var tr in nextState.transitons)
-                {
-                    foreach(var c in tr.conditions)
+                    //setting all eventinvoked var to false, so if event was invoked before new state start, it doesn't invoke next anim
+                    foreach (var tr in nextState.transitons)
                     {
-                        c.eventinvoked = false;
+                        foreach (var c in tr.conditions)
+                        {
+                            c.eventinvoked = false;
+                        }
                     }
-                }
-                foreach (var tr in anyState.transitons)
-                {
-                    foreach (var c in tr.conditions)
+                    foreach (var tr in anyState.transitons)
                     {
-                        c.eventinvoked = false;
+                        foreach (var c in tr.conditions)
+                        {
+                            c.eventinvoked = false;
+                        }
                     }
+                    stateChanged = true;
+                    break;
                 }
-                stateChanged = true;
-                break;
             }
         }
-
         if (stateChanged)
         {
-           
+
         }
         else
         {
@@ -361,7 +370,7 @@ public class CustomAnimator : MonoBehaviour
             ChangeFrame(CurrentAnim);
         }
     }
-    
+
     void ChangeFrame(StateInfo animation)
     {
         currentFrameIndex++;
@@ -380,7 +389,14 @@ public class CustomAnimator : MonoBehaviour
 
         CustomAnimation curAnim = GetAnimation(animation);
         var _frame = new CustomFrame(blank);
-        _frame = curAnim.frames[currentFrameIndex];
+        try
+        {
+            _frame = curAnim.frames[currentFrameIndex];
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Frame index is more than number of frames in current animation " + e);
+        }
         if (curAnim.relativeFrames)
         {
             if (!curAnim.TakeFrameFromSecondList)
@@ -443,26 +459,36 @@ public class CustomAnimator : MonoBehaviour
         {
             attemptNum++;
         }
-        while (File.Exists("C:/OneLevelLogs/Attempt_"+attemptNum+"/"+gameObject.name + ".txt"));
+        while (File.Exists("C:/OneLevelLogs/Attempt_" + attemptNum + "/" + gameObject.name + ".txt"));
         Directory.CreateDirectory("C:/OneLevelLogs/Attempt_" + attemptNum);
     }
     public void ALog(string msg)
     {
         if (!TOLOG) return;
-        ALog(msg, gameObject.name);
-    }
-    public void ALog(string msg,string file)
-    {
         if (attemptNum == -1) PrepareFolder();
-        StreamWriter writer = File.AppendText("C:/OneLevelLogs/Attempt_" + attemptNum + "/" + file + ".txt");
-        writer.WriteLine(Time.frameCount + " " + msg + GetInfo());
+        ALog(msg, "Attempt_"+attemptNum+" / "+gameObject.name, this);
+    }
+    public static void ALog(string msg, string file, CustomAnimator animator)
+    {
+        StreamWriter writer = File.AppendText("C:/OneLevelLogs/" + file + ".txt");
+        writer.WriteLine(Time.frameCount + " " + msg + animator.GetInfo());
         writer.Close();
+    }
+    public static void ALog(string msg, string file)
+    {
+        StreamWriter writer = File.AppendText("C:/OneLevelLogs/" + file + ".txt");
+        writer.WriteLine(Time.frameCount + " " + msg);
+        writer.Close();
+    }
+    public static void DeleteFile(string file)
+    {
+        File.Delete("C:/OneLevelLogs/"+file+".txt");
     }
     string GetInfo()
     {
-        string o = " ("+CurrentAnim.name+" "+currentFrameIndex+" "+timeFromFrameStart+")";
+        string o = " (" + CurrentAnim.name + " " + currentFrameIndex + " " + timeFromFrameStart + ")";
         return o;
     }
 }
 
-public class AnimContextEvent : UnityEngine.Events.UnityEvent<StateInfo,Transition> { }
+public class AnimContextEvent : UnityEngine.Events.UnityEvent<StateInfo, Transition> { }

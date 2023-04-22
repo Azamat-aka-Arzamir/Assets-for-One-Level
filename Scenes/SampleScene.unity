@@ -67366,6 +67366,7 @@ GameObject:
   - component: {fileID: 1870324627}
   - component: {fileID: 1870324634}
   - component: {fileID: 1870324630}
+  - component: {fileID: 1870324632}
   m_Layer: 6
   m_Name: MC
   m_TagString: Untagged
@@ -67639,6 +67640,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1870324632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870324626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6eb0b44044df2e4b8919f85d77d1969, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textfile: {fileID: 0}
 --- !u!114 &1870324633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67766,6 +67780,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1870324632}
+        m_TargetAssemblyTypeName: TASBot, Assembly-CSharp
+        m_MethodName: AddContext
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 7bdb1332-e919-4b18-9947-0d411558e53a
     m_ActionName: New action map/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/XInputControllerWindows/leftStick,/XInputControllerWindows/leftStick,/XInputControllerWindows/leftStick,/XInputControllerWindows/leftStick]
   - m_PersistentCalls:
@@ -67773,6 +67799,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1870324633}
         m_TargetAssemblyTypeName: Controller, Assembly-CSharp
         m_MethodName: GetJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1870324632}
+        m_TargetAssemblyTypeName: TASBot, Assembly-CSharp
+        m_MethodName: AddContext
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -67798,6 +67836,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1870324632}
+        m_TargetAssemblyTypeName: TASBot, Assembly-CSharp
+        m_MethodName: AddContext
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 3cd917a0-f2fa-4be8-8bfb-2a4fa26e27b5
     m_ActionName: New action map/Dash[/Keyboard/leftShift,/XInputControllerWindows/buttonEast]
   - m_PersistentCalls:
@@ -67805,6 +67855,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1870324633}
         m_TargetAssemblyTypeName: Controller, Assembly-CSharp
         m_MethodName: GetAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1870324632}
+        m_TargetAssemblyTypeName: TASBot, Assembly-CSharp
+        m_MethodName: AddContext
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

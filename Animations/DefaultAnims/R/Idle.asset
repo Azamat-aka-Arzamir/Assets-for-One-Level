@@ -36,7 +36,7 @@ MonoBehaviour:
     invisible: 0
     PhysicsShape: []
   - name: 9
-    sprite: {fileID: 4177102681807366532, guid: 530e0f7d5d3808d46a59f0f1ab0c776f, type: 3}
+    sprite: {fileID: -208530824152613540, guid: f60d6b1f055223549b9e42dfec21612a, type: 3}
     numberInSheet: 9
     position: {x: 0, y: 0, z: 0.5}
     point: {x: 0, y: 0, z: 0}
